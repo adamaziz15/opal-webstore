@@ -1,0 +1,21 @@
+# Add configuration values here, as shown below.
+
+# Tenant Credentials
+tenant_id: my_tenant_id
+tenant_key: my_tenant_access_key
+
+# Emailing platform - Mandrill (default mandrill)
+# mandrill_key: changeme
+
+# Rails secret key
+SECRET_KEY_BASE: 14c3b6318ea1491f32b2ef77ab743f31f010a36f219a7847e896af1e6cf584d1840c9e4b48d5102d87e88e40d66210e068924df0b06aa89ecd02a925947e07f9
+
+# Emailing platform
+SMTP_HOST: smtp.mailgun.org
+SMTP_PORT: 587
+SMTP_DOMAIN: mg.opal-enterprise-mnoe-uat.maestrano.io
+SMTP_USERNAME:
+SMTP_PASSWORD:
+
+#Opal endpoint for authentication
+REMOTE_AUTH_URL: https://awg-capability4.verecloud.com//nimbus4-api/auth

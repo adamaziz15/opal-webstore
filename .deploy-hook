@@ -1,0 +1,7 @@
+#!/bin/bash
+# -
+# Nex! deploy hook
+# Use env-based settings
+# -
+rm -f ./config/settings/$RAILS_ENV.yml
+cp -p ./config/settings/env.yml ./config/settings/$RAILS_ENV.yml

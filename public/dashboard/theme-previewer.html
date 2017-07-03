@@ -1,0 +1,51 @@
+<!doctype html>
+<html ng-app="mnoEnterpriseAngular">
+  <head>
+    <meta charset="utf-8">
+    <title state-title="Dashboard" pattern="{{::app_name}} - Dashboard - %s"></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="images/favicons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="images/favicons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/favicons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="images/favicons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/favicons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="images/favicons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="images/favicons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="images/favicons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/favicons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="images/favicons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicons/favicon-16x16.png">
+    <link rel="manifest" href="images/favicons/manifest.json">
+    <meta name="msapplication-TileImage" content="images/favicons/ms-icon-144x144.png">
+
+    <link rel="stylesheet" href="styles/vendor-54a207d071.css">
+
+    <link rel="stylesheet/less" type="text/css" href="styles/theme-previewer.less">
+  </head>
+  <body>
+    <!--[if lt IE 10]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div ng-if="!isLoggedIn" class="layout-loading text-center">
+      <mno-loader></mno-loader>
+      <span class="layout-loading-text" translate="mno_enterprise.templates.components.layout.your_dashboard_is_loading"></span>
+    </div>
+
+    <div ui-view class="myspace"></div>
+
+    <theme-editor></theme-editor>
+
+    <script src="scripts/less-670f43abc7.js"></script>
+
+    <script src="scripts/vendor-b01bb0dda9.js"></script>
+
+    <script src="scripts/app-62d8f24334.js"></script>
+
+    <script src="/mnoe/config.js"></script>
+  </body>
+</html>

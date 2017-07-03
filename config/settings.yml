@@ -1,0 +1,41 @@
+impac:
+  protocol: https
+  host: api-impac.maestrano.com
+  paths:
+    mnohub_api: /mnoe/jpi/v1
+mno:
+  protocol: https
+  host: api-hub.maestrano.com
+  paths:
+    root: /api/mnoe/v1
+frontend_host:
+
+#===============================================
+# Feature Flags
+#===============================================
+pricing:
+  enabled: true
+  currency: USD
+api:
+  events:
+    currency: USD
+dock:
+  enabled: true
+payment:
+  disabled: true
+organization_management:
+  billing:
+    enabled: false
+# Disable user registration
+devise:
+  registration:
+    disabled: true
+
+# Admin Panel Config
+admin_panel:
+  audit_log:
+    enabled: false
+  impersonation:
+    disabled: true
+  finance:
+    enabled: false
