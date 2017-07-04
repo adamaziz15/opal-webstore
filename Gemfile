@@ -8,13 +8,13 @@ gem 'turbolinks'
 gem 'jquery-rails'
 gem 'puma'
 gem 'sinatra'
-gem 'figaro'
 gem 'httparty'
 gem 'uglifier', '>= 1.3.0'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'uuid'
 gem 'intercom', '~> 3.5.4'
+
 # Maestrano Enterprise Engine
 gem 'mno-enterprise', git: 'https://github.com/maestrano/mno-enterprise.git', branch: '4.0'
 # gem 'mno-enterprise', path: '../mno-enterprise'
@@ -28,6 +28,10 @@ gem 'money'
 gem 'webmock', '~> 3.0.1'
 gem 'fakeweb', '~> 1.3'
 
+group :uat, :production do
+  gem 'newrelic_rpm'
+  gem 'nex_client', '~> 0.16.0'
+end
 
 group :development, :test do
   gem 'figaro'
@@ -39,5 +43,4 @@ group :test do
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
   gem 'timecop'
-
 end
