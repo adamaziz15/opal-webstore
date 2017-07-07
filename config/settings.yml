@@ -41,10 +41,10 @@ admin_panel:
   finance:
     enabled: false
 # Allow for a default SMTP server to be set via MnoHub
-# system:
-#   smtp:
-#     address: ENV['SMTP_HOST']
-#     port: ENV['SMTP_PORT']
-#     domain: ENV['SMTP_DOMAIN']
-#     user_name: ENV['SMTP_USERNAME']
-#     password: ENV['SMTP_PASSWORD']
+system:
+  smtp:
+    address: <%= ENV['SMTP_HOST'] %>
+    port: <%= ENV['SMTP_PORT'] %>
+    domain: <%= ENV['SMTP_DOMAIN'] %>
+    user_name: <%= ENV['SMTP_USERNAME'] %>
+    password: <%= ENV['SMTP_PASSWORD'] %>
