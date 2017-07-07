@@ -27,8 +27,8 @@ dashboard:
   organization_management:
     billing:
       enabled: false
-# registration:
-#    enabled: false
+  registration:
+     enabled: false
 api:
   events:
     currency: USD
