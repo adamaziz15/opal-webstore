@@ -45,6 +45,12 @@ system:
   smtp:
     address: <%= ENV['SMTP_HOST'] %>
     port: <%= ENV['SMTP_PORT'] %>
+<% if ENV['SMTP_DOMAIN']&.present? %>
     domain: <%= ENV['SMTP_DOMAIN'] %>
+<% end %>
+<% if ENV['SMTP_USERNAME']&.present? %>
     user_name: <%= ENV['SMTP_USERNAME'] %>
+<% end %>
+<% if ENV['SMTP_PASSWORD']&.present? %>
     password: <%= ENV['SMTP_PASSWORD'] %>
+<% end %>
