@@ -113,414 +113,6 @@ body {
 // Color used as a decoration on small icons or specific text
 @decorator-touch-color:         #26719d;
 
-// Use this file to override Twitter Bootstrap variables or define own variables.
-/*-----------------------------------------------------------------------*/
-/*-----------------------------------------------------------------------*/
-/*-----------------------------------------------------------------------*/
-/*                       Design variables                                */
-/*-----------------------------------------------------------------------*/
-/*-----------------------------------------------------------------------*/
-/*-----------------------------------------------------------------------*/
-
-/*-----------------------------------------------------------------------*/
-/*                       Twitter Bootstrap colors                        */
-/*-----------------------------------------------------------------------*/
-@brand-success:                  @decorator-inverse-color;
-@brand-warning:                  @decorator-inverse-color;
-@brand-info:                     @text-inverse-color;
-@brand-danger:                   @text-inverse-color;
-@brand-primary:                  @text-inverse-color;
-
-/*-----------------------------------------------------------------------*/
-/*                          Fonts & Text                                 */
-/*-----------------------------------------------------------------------*/
-@font-family-sans-serif:             Lato-Light, "Helvetica Neue", Helvetica, sans-serif;
-@font-family-base:                   @font-family-sans-serif;
-@font-path:                          '/dashboard/fonts';
-@small:                              11px;
-@normal:                             13px;
-
-/*-----------------------------------------------------------------------*/
-/*                        Public Page Header                             */
-/*-----------------------------------------------------------------------*/
-// Simple top header with brand logo - can be enabled/disabled via styleguide configuration
-@public-page-header-bg-color:        @bg-inverse-color;
-@public-page-header-padding:         10px;
-
-@public-page-header-logo-img:        "mno_enterprise/main-logo.png";
-@public-page-header-logo:            { min-height: 61px; max-width: 160px; max-height: 130px; margin: 17px auto 5px auto; };
-
-/*-----------------------------------------------------------------------*/
-/*                              Login Page                               */
-/*-----------------------------------------------------------------------*/
-@login-bg-img:                        false;
-@login-bg-color:                      @bg-main-color;
-@login-box-grid-position:             { margin-top: 80px; .make-sm-column(4); .make-sm-column-offset(4); };
-
-@login-box-corners:                   0px;
-@login-box-title-color:               @decorator-main-color;
-@login-box-title:                     { text-transform: uppercase; };
-@login-box-title-display-box-arrow:   false;
-
-@login-box-bg-color:                  @bg-inverse-color;
-@login-box-padding:                   20px;
-@login-box-brand-logo-img:            "mno_enterprise/main-logo.png";
-@login-box-brand-logo:                { min-height: 61px; max-width: 160px; max-height: 130px; margin: 17px auto 5px auto; };
-@login-box-btn-login:                 { width: 100%; };
-
-@login-box-sso-intuit-logo:           "mno_enterprise/logo-intuit.png";
-@login-box-oauth-text-color:          #fff;
-@login-box-oauth-bg-color-facebook:   #3b5998;
-@login-box-oauth-bg-color-google:     #dd4b39;
-@login-box-oauth-bg-color-linkedin:   #0074C4;
-@login-box-oauth-bg-color-intuit:     #fff;
-
-/*-----------------------------------------------------------------------*/
-/*                           Dashboard Layout                            */
-/*-----------------------------------------------------------------------*/
-@dashboard-bg-color:                            @bg-main-color;
-
-@dashboard-section-title-color:                 @text-strong-color;
-@dashboard-section-title-alignment:             center;
-@dashboard-section-title-display-subline:       true;
-
-// Loaders
-//--------------------------------------
-@dashboard-loader-color:                        @bg-inverse-color;
-@dashboard-loader-icon:                         { .icon-fa(refresh); .fa-2x; .fa-spin; }; //pass a ruleset
-
-// User without organisation
-//--------------------------------------
-@without-organisation-well-bg:                  @bg-inverse-color;
-@without-organisation-text-color:               @text-inverse-color;
-
-// Side navbar menu
-//--------------------------------------
-@dashboard-side-menu-padding:                   30px 0px 0px 14px;
-@dashboard-side-menu-bg-color:                  @bg-inverse-color;
-
-@dashboard-side-menu-brand-logo-img:            "../images/main-logo.png";
-@dashboard-side-menu-brand-logo:                { background-size: 204px; width: 51px; margin-left: 5px; };
-@dashboard-side-menu-brand-logo-expanded:       { width: 201px; background-size: 100%; };
-
-@dashboard-side-menu-link-color:                @decorator-inverse-color;
-@dashboard-side-menu-link-bg-color:             @dashboard-side-menu-bg-color;
-
-@dashboard-side-menu-link-hover-color:          @text-strong-color;
-@dashboard-side-menu-link-hover-bg-color:       @bg-inverse-color;
-
-@dashboard-side-menu-link-active-color:         @text-strong-color;
-@dashboard-side-menu-link-active-bg-color:      @bg-inverse-color;
-
-@_default_style:                                { .fa-2x; margin-top: 6px; margin-left: 2px; color: @dashboard-side-menu-link-color; };
-@_default_style_active:                         { @_default_style(); color: @dashboard-side-menu-link-active-color; };
-@dashboard-side-menu-btn-dashboard:             { .icon-fa(th); @_default_style(); };
-@dashboard-side-menu-btn-dashboard-active:      { .icon-fa(th); @_default_style_active(); };
-@dashboard-side-menu-btn-impac:                 { .icon-fa(pie-chart); @_default_style(); };
-@dashboard-side-menu-btn-impac-active:          { .icon-fa(pie-chart); @_default_style_active(); };
-@dashboard-side-menu-btn-account:               { .icon-fa(user); @_default_style(); margin-left: 5px; };
-@dashboard-side-menu-btn-account-active:        { .icon-fa(user); @_default_style_active(); margin-left: 5px; };
-@dashboard-side-menu-btn-company:               { .icon-fa(briefcase); @_default_style(); };
-@dashboard-side-menu-btn-company-active:        { .icon-fa(briefcase); @_default_style_active(); };
-@dashboard-side-menu-btn-subscriptions:         { .icon-fa(tasks); @_default_style(); margin-left: 5px; };
-@dashboard-side-menu-btn-subscriptions-active:  { .icon-fa(tasks); @_default_style_active(); margin-left: 5px; };
-@dashboard-side-menu-btn-marketplace:           { .icon-fa(plus-square-o); @_default_style(); margin-left: 5px; };
-@dashboard-side-menu-btn-marketplace-active:    { .icon-fa(plus-square-o); @_default_style_active(); margin-left: 5px; };
-@dashboard-side-menu-btn-logout:                { .icon-fa(lock); @_default_style(); margin-left: 6px; };
-@dashboard-side-menu-btn-logout-active:         { .icon-fa(lock); @_default_style_active(); margin-left: 6px; };
-
-// Company select box (top right)
-//--------------------------------------
-@dashboard-cpy-select-width:                    280px;
-@dashboard-cpy-select-pic-width:                50px;
-@dashboard-cpy-select-bg-color:                 @decorator-inverse-color;
-@dashboard-cpy-select-border-radius:            0 0 0 10px;
-@dashboard-cpy-select-border-color:             @text-inverse-color;
-@dashboard-cpy-select-list-border-color:        lighten(@bg-inverse-color, 10%);
-
-@dashboard-cpy-select-header-title-color:       #ffffff;
-@dashboard-cpy-select-header-company-color:     #ffffff;
-@dashboard-cpy-select-header-text-size:         13px;
-
-@dashboard-cpy-select-link-text-color:          @link-color;
-@dashboard-cpy-select-link-icon-color:          #ffffff;
-
-@dashboard-cpy-select-link-color:               #ffffff;
-@dashboard-cpy-select-link-hover-color:         @dashboard-cpy-select-link-color;
-@dashboard-cpy-select-link-hover-bg-color:      lighten(@dashboard-cpy-select-bg-color,10%);
-
-@dashboard-cpy-select-link-create-text-color:   @text-inverse-strong-color;
-@dashboard-cpy-select-link-create-color:        @bg-inverse-color;
-@dashboard-cpy-select-link-admin-color:         #ffffff;
-
-@dashboard-cpy-select-switch-btn-color:         @dashboard-cpy-select-header-company-color;
-@dashboard-cpy-select-switch-btn-bg-color:      @dashboard-cpy-select-bg-color;
-@dashboard-cpy-select-switch-btn-icon:          { .icon-fa(caret-down); }; //pass a ruleset
-@dashboard-cpy-select-switch-btn-icon-active:   { .icon-fa(caret-up); }; //pass a ruleset
-@dashboard-cpy-select-list-border-color:        #5598bf;
-
-@dashboard-cpy-tabcontent-text-color:           @text-inverse-color;
-
-/*-----------------------------------------------------------------------*/
-/*                        Dashboard > Apps Section                       */
-/*-----------------------------------------------------------------------*/
-@dashboard-apps-tile-bg-color:                  @bg-inverse-color;
-@dashboard-apps-tile-text-color:                @text-inverse-color;
-
-@dashboard-apps-tile-logo-border-size:          0px;
-@dashboard-apps-tile-logo-border-color:         @decorator-main-color;
-
-@dashboard-apps-tile-settings-color:            @dashboard-apps-tile-text-color;
-@dashboard-apps-tile-settings-bg-color:         @dashboard-apps-tile-bg-color;
-
-@dashboard-apps-tile-settings-hover-color:      @dashboard-apps-tile-text-color;
-@dashboard-apps-tile-settings-hover-bg-color:   @dashboard-apps-tile-bg-color;
-
-@dashboard-apps-tile-add-color:                 @dashboard-apps-tile-text-color;
-@dashboard-apps-tile-add-bg-color:              @dashboard-apps-tile-bg-color;
-
-/*-----------------------------------------------------------------------*/
-/*                      Dashboard > My account Section                   */
-/*-----------------------------------------------------------------------*/
-@dashboard-account-tabs-bg-color:                    @bg-on-bg-inverse-color;
-@dashboard-account-tabs-text-color:                  @text-inverse-color;
-@dashboard-account-panel-header-bg-color:            @bg-inverse-color;
-@dashboard-account-panel-header-text-color:          @text-inverse-color;
-@dashboard-account-panel-body-bg-color:              @bg-inverse-color;
-@dashboard-account-panel-text-color:                 @text-strong-color;
-@dashboard-account-inline-text-color-checked:        @brand-success;
-@dashboard-account-inline-text-color-unchecked:      @decorator-inverse-color;
-
-/*-----------------------------------------------------------------------*/
-/*                      Dashboard > Company Section                      */
-/*-----------------------------------------------------------------------*/
-// Tab Heading
-//--------------------------------------
-@dashboard-cpy-tabs-bg-color:                    @decorator-main-color;
-@dashboard-cpy-tabs-text-color:                  @text-strong-color;
-@dashboard-cpy-tabs-border-radius:               2px;
-
-@dashboard-cpy-tabs-subline-size:                0px;
-@dashboard-cpy-tabs-subline-color:               transparent;
-
-@dashboard-cpy-tabs-active-text-color:           @decorator-main-color;
-@dashboard-cpy-tabs-active-bg-color:             @bg-inverse-color;
-
-@dashboard-cpy-tabs-hover-text-color:            @bg-inverse-color;
-@dashboard-cpy-tabs-hover-bg-color:              @decorator-inverse-color;
-
-// Tab Content
-//--------------------------------------
-@dashboard-cpy-tabcontent-header-bg-color:       @bg-inverse-color;
-@dashboard-cpy-tabcontent-body-bg-color:         @bg-on-bg-inverse-color;
-@dashboard-cpy-tabcontent-bg-color:              @bg-inverse-color;
-@dashboard-cpy-tabcontent-text-color:            @text-inverse-strong-color;
-
-// Teams section
-//--------------------------------------
-@dashboard-cpy-teams-matrix-bg-color:            @bg-inverse-color;
-@dashboard-cpy-teams-matrix-border-color:        lighten(@bg-main-color,30%);
-@dashboard-cpy-teams-matrix-text-color:          @text-inverse-color;
-@dashboard-cpy-teams-matrix-text-hover-color:    @text-inverse-color;
-@dashboard-cpy-teams-matrix-text-edit-color:     @text-strong-color;
-
-/*-----------------------------------------------------------------------*/
-/*                              Dock                                     */
-/*-----------------------------------------------------------------------*/
-@mno-dock-bg-color:                             @decorator-main-color;
-@mno-dock-add-app-border-color:                 @text-inverse-strong-color;
-@mno-dock-add-app-text-color:                   @text-inverse-strong-color;
-@mno-dock-expand-arrow-color:                   @decorator-inverse-color;
-@mno-dock-expand-arrow-color-hover:             darken(@mno-dock-expand-arrow-color, 5%);
-@mno-dock-expand-left-border-color:             @text-inverse-strong-color;
-@mno-dock-app-loader-color:                     @mno-dock-expand-arrow-color;
-@mno-dock-app-title-color:                      @text-inverse-strong-color;
-@mno-dock-app-logo-square-width:                70px;
-@mno-dock-app-logo-minimized-square-width:      50px;
-@mno-dock-app-box-shadow:                       0 6px 12px rgba(0, 0, 0, 0.175);
-@mno-dock-app-box-border:                       1px solid rgba(0, 0, 0, 0.15);
-
-@mno-dock-sub-menu-box-shadow:                  0 6px 12px rgba(0, 0, 0, 0.175);
-@mno-dock-sub-menu-bg-color:                    @bg-inverse-color;
-@mno-dock-sub-menu-hover:                       @decorator-main-color;
-@mno-dock-sub-menu-icon:                        @decorator-touch-color;
-@mno-dock-sub-menu-text-color:                  @text-inverse-color;
-@mno-dock-sub-menu-text-hover-color:            darken(@mno-dock-sub-menu-text-color, 10%);
-
-// Mobile dock
-@mno-dock-mobile-bg-color:                      @bg-on-bg-inverse-color;
-@mno-dock-mobile-button-color:                  @text-inverse-strong-color;
-@mno-dock-mobile-button-bg-color:               @decorator-inverse-color;
-@mno-dock-mobile-app-active-color:              lighten(@mno-dock-mobile-button-bg-color, 20%);
-@mno-dock-mobile-app-border-bottom:             1px solid darken(@mno-dock-bg-color, 10%);
-@mno-dock-mobile-add-app-color:                 @text-strong-color;
-@mno-dock-mobile-app-name-color:                @text-strong-color;
-
-/*-----------------------------------------------------------------------*/
-/*                              Dock Settings                            */
-/*-----------------------------------------------------------------------*/
-@mno-dock-settings-app-running:                 #33d375;
-@mno-dock-settings-app-terminating:             #ffe6ea;
-@mno-dock-settings-app-upgrading:               #ffdb99;
-@mno-dock-settings-app-neutral:                 #E0FFFF;
-
-/*-----------------------------------------------------------------------*/
-/*                              IMPAC                                    */
-/*-----------------------------------------------------------------------*/
-// Dashboard
-//--------------------------------------
-@impac-dashboard-padding-top:                   33px;
-@impac-dashboard-margin-left:                   0px;
-
-// Title
-@impac-dashboard-title-label-color:             @text-strong-color;
-@impac-dashboard-title-color:                   @text-strong-color;
-@impac-dashboard-source-color:                  @impac-dashboard-title-label-color;
-@impac-dashboard-buttons-border-radius:         4px;
-
-// Widgets container
-@impac-placeholder-border:                      2px dashed @bg-inverse-color;
-@impac-padding-between-widgets:                 12px;
-@impac-minimum-widget-size:                     258px;
-
-// Widgets
-//--------------------------------------
-// Global
-@impac-widget-background-color:                 @bg-inverse-color;
-@impac-widget-text-color:                       @text-strong-color;
-@impac-widget-text-color-light:                 lighten(@impac-widget-text-color,20%);
-@impac-widget-borders-color:                    lighten(@impac-widget-text-color-light,10%);
-@impac-widget-link-color:                       @decorator-inverse-color;
-@impac-widget-top-buttons-color:                lighten(@impac-widget-text-color, 70%);
-
-// Title
-@impac-widget-title-text-color:                 darken(@impac-widget-text-color,5%);
-@impac-widget-title-bg:                         @impac-widget-background-color;
-@impac-widget-title-border:                     solid 1px @impac-widget-borders-color;
-@impac-widget-title-text-transform:             uppercase;
-@impac-widget-title-text-size:                  12px;
-@impac-widget-title-border-radius:              5px 5px 0px 0px;
-
-// Content
-@impac-widget-content-border-radius:            0px 0px 5px 5px;
-@impac-widget-lines-container-max-height:       210px;
-
-// Hist Mode Choser
-@impac-widget-hist-text-transform:              uppercase;
-@impac-widget-hist-text-size:                   12px;
-@impac-widget-hist-text-color:                  @impac-widget-text-color-light;
-
-// Price
-@impac-widget-price-color:                      @impac-widget-text-color;
-@impac-widget-price-positive-color:             @brand-success;
-@impac-widget-price-negative-color:             @brand-danger;
-@impac-widget-currency-color:                   @impac-widget-text-color-light;
-@impac-widget-legend-color:                     lighten(@impac-widget-text-color,30%);
-
-// Edit settings
-@impac-widget-sub-bg-color:                     darken(@impac-widget-background-color,10%);
-@impac-widget-sub-bg-color-light:               lighten(@impac-widget-sub-bg-color,5%);
-
-// Invoices list
-@impac-widget-line-hover-bg:                    lighten(@bg-inverse-color,10%);
-@impac-widget-line-hover-text:                  @text-inverse-color;
-
-// Accounts Comparison
-@impac-big-widget-size:                         581px;
-@impac-big-widget-bottom-padding:               30px;
-@impac-widget-accounts-comparison-lines-container-max-height: 250px;
-
-/*-----------------------------------------------------------------------*/
-/*                       Marketplace Section                             */
-/*-----------------------------------------------------------------------*/
-@dashboard-marketplace-search-text-color:             @text-strong-color;
-@dashboard-marketplace-search-border-color:           @text-strong-color;
-
-@dashboard-marketplace-tile-bg-color:                 @bg-inverse-color;
-@dashboard-marketplace-tile-text-color:               @text-strong-color;
-@dashboard-marketplace-tile-name-color:               @bg-inverse-color;
-@dashboard-marketplace-tile-img-border-color:         @dashboard-marketplace-tile-bg-color;
-
-@dashboard-marketplace-tile-hover-bg-color:           light-grey;
-@dashboard-marketplace-tile-hover-text-color:         @dashboard-marketplace-tile-text-color;
-@dashboard-marketplace-tile-hover-img-border-color:   darken(@decorator-main-color,10%);
-@dashboard-marketplace-tile-hover-arrow-color:        @text-strong-color;
-
-@dashboard-marketplace-show-header-text-color:        @text-strong-color;
-@dashboard-marketplace-show-sections-bg-color:        @bg-inverse-color;
-@dashboard-marketplace-show-sections-text-color:      @text-strong-color;
-
-@dashboard-marketplace-app-card:                      { display: block; padding: 10px; height: 120px; margin-bottom: 10px; font-weight: 300; };
-
-@provisioning-breadcrumb-item-color:                  @text-strong-color;
-@provisioning-breadcrumb-item-badge-bg:               @decorator-main-color;
-@provisioning-breadcrumb-item-active-color:           @text-strong-color;
-@provisioning-breadcrumb-item-active-badge-bg:        @decorator-touch-color;
-@provisioning-well-bg-color:                          @bg-on-bg-inverse-color;
-
-/*-----------------------------------------------------------------------*/
-/*                          Reviews and comments                         */
-/*-----------------------------------------------------------------------*/
-@no-review-bg-panel-color:       darken(@bg-on-bg-inverse-color, 5%);
-
-@comment-bg:                     @bg-main-color;
-@comment-text-color:             @text-strong-color;
-@comment-attributes-color:       @bg-inverse-color;
-
-@no-question-bg-panel-color:     darken(@bg-on-bg-inverse-color, 5%);
-@question-search-btn-bg:         @bg-inverse-color;
-@question-search-btn-color:      @text-inverse-color;
-@question-search-border:         1px solid @bg-inverse-color;
-@question-bg:                    @bg-on-bg-inverse-color;
-@question-ribbon-bg:             @bg-on-bg-inverse-color;
-
-/*-----------------------------------------------------------------------*/
-/*                     Responsive Table (cell table)                     */
-/*-----------------------------------------------------------------------*/
-@table-cell-header-row-spacing:        10px;
-@table-cell-header-row-padding:        3px;
-@table-cell-row-spacing:               0;
-@table-cell-row-padding:               3px;
-
-@table-cell-header-text-size:          12px;
-@table-cell-header-text-color:         @text-strong-color;
-@table-cell-header-bg-color:           @bg-main-color;
-@table-cell-header-additional-rule:    { text-transform: uppercase; };
-
-@table-cell-row-text-size:             13px;
-@table-cell-row-odd-bg-color:          fade(@bg-main-color,30%);
-@table-cell-row-even-bg-color:         fade(@bg-main-color,10%);
-
-@table-inverse-cell-header-text-color: @text-inverse-strong-color;
-@table-inverse-cell-header-bg-color:   lighten(@bg-inverse-color, 5%);
-@table-inverse-cell-row-odd-bg-color:  darken(@bg-main-color,4%);
-@table-inverse-cell-row-even-bg-color: darken(@bg-main-color,0%);
-
-/*-----------------------------------------------------------------------*/
-/*                          Navbar Customization                         */
-/*-----------------------------------------------------------------------*/
-@navbar-inverse-bg:              @bg-inverse-color;
-@navbar-height:                  40px;
-@navbar-inverse-link-color:      @decorator-inverse-color;
-@navbar-border-radius:           0px;
-@navbar-inverse-border:          @bg-inverse-color;
-@navbar-desktop-height:          120px;
-@navbar-inverse-link-active-bg:  @navbar-inverse-bg;
-
-/*-----------------------------------------------------------------------*/
-/*                          Form Customization                           */
-/*-----------------------------------------------------------------------*/
-@input-bg:                       white;
-@input-color:                    @text-strong-color;
-@input-color-placeholder:        @input-color;
-@input-label-color:              @text-inverse-color;
-@deletion-sentence-color:        @brand-danger;
-
-/*-----------------------------------------------------------------------*/
-/*                                 Buttons                               */
-/*-----------------------------------------------------------------------*/
-@btn-danger-background:          @brand-danger;
-
 
 // Hide the company list
 dashboard-company-selectbox .company-select-box {
@@ -941,7 +533,10 @@ dashboard-company-selectbox .company-select-box {
 
 @dashboard-marketplace-app-card:                      { display: block; padding: 10px; height: 120px; margin-bottom: 10px; font-weight: 300; };
 
+@provisioning-breadcrumb-item-color:                  @text-strong-color;
+@provisioning-breadcrumb-item-badge-bg:               @decorator-main-color;
 @provisioning-breadcrumb-item-active-color:           @text-strong-color;
+@provisioning-breadcrumb-item-active-badge-bg:        @decorator-touch-color;
 @provisioning-well-bg-color:                          @bg-on-bg-inverse-color;
 
 /*-----------------------------------------------------------------------*/
@@ -997,6 +592,414 @@ dashboard-company-selectbox .company-select-box {
 /*                          Form Customization                           */
 /*-----------------------------------------------------------------------*/
 @input-bg:                       @bg-on-bg-inverse-color;
+@input-color:                    @text-strong-color;
+@input-color-placeholder:        @input-color;
+@input-label-color:              @text-inverse-color;
+@deletion-sentence-color:        @brand-danger;
+
+/*-----------------------------------------------------------------------*/
+/*                                 Buttons                               */
+/*-----------------------------------------------------------------------*/
+@btn-danger-background:          @brand-danger;
+
+// Use this file to override Twitter Bootstrap variables or define own variables.
+/*-----------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------*/
+/*                       Design variables                                */
+/*-----------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------*/
+
+/*-----------------------------------------------------------------------*/
+/*                       Twitter Bootstrap colors                        */
+/*-----------------------------------------------------------------------*/
+@brand-success:                  @decorator-inverse-color;
+@brand-warning:                  @decorator-inverse-color;
+@brand-info:                     @text-inverse-color;
+@brand-danger:                   @text-inverse-color;
+@brand-primary:                  @text-inverse-color;
+
+/*-----------------------------------------------------------------------*/
+/*                          Fonts & Text                                 */
+/*-----------------------------------------------------------------------*/
+@font-family-sans-serif:             Lato-Light, "Helvetica Neue", Helvetica, sans-serif;
+@font-family-base:                   @font-family-sans-serif;
+@font-path:                          '/dashboard/fonts';
+@small:                              11px;
+@normal:                             13px;
+
+/*-----------------------------------------------------------------------*/
+/*                        Public Page Header                             */
+/*-----------------------------------------------------------------------*/
+// Simple top header with brand logo - can be enabled/disabled via styleguide configuration
+@public-page-header-bg-color:        @bg-inverse-color;
+@public-page-header-padding:         10px;
+
+@public-page-header-logo-img:        "mno_enterprise/main-logo.png";
+@public-page-header-logo:            { min-height: 61px; max-width: 160px; max-height: 130px; margin: 17px auto 5px auto; };
+
+/*-----------------------------------------------------------------------*/
+/*                              Login Page                               */
+/*-----------------------------------------------------------------------*/
+@login-bg-img:                        false;
+@login-bg-color:                      @bg-main-color;
+@login-box-grid-position:             { margin-top: 80px; .make-sm-column(4); .make-sm-column-offset(4); };
+
+@login-box-corners:                   0px;
+@login-box-title-color:               @decorator-main-color;
+@login-box-title:                     { text-transform: uppercase; };
+@login-box-title-display-box-arrow:   false;
+
+@login-box-bg-color:                  @bg-inverse-color;
+@login-box-padding:                   20px;
+@login-box-brand-logo-img:            "mno_enterprise/main-logo.png";
+@login-box-brand-logo:                { min-height: 61px; max-width: 160px; max-height: 130px; margin: 17px auto 5px auto; };
+@login-box-btn-login:                 { width: 100%; };
+
+@login-box-sso-intuit-logo:           "mno_enterprise/logo-intuit.png";
+@login-box-oauth-text-color:          #fff;
+@login-box-oauth-bg-color-facebook:   #3b5998;
+@login-box-oauth-bg-color-google:     #dd4b39;
+@login-box-oauth-bg-color-linkedin:   #0074C4;
+@login-box-oauth-bg-color-intuit:     #fff;
+
+/*-----------------------------------------------------------------------*/
+/*                           Dashboard Layout                            */
+/*-----------------------------------------------------------------------*/
+@dashboard-bg-color:                            @bg-main-color;
+
+@dashboard-section-title-color:                 @text-strong-color;
+@dashboard-section-title-alignment:             center;
+@dashboard-section-title-display-subline:       true;
+
+// Loaders
+//--------------------------------------
+@dashboard-loader-color:                        @bg-inverse-color;
+@dashboard-loader-icon:                         { .icon-fa(refresh); .fa-2x; .fa-spin; }; //pass a ruleset
+
+// User without organisation
+//--------------------------------------
+@without-organisation-well-bg:                  @bg-inverse-color;
+@without-organisation-text-color:               @text-inverse-color;
+
+// Side navbar menu
+//--------------------------------------
+@dashboard-side-menu-padding:                   30px 0px 0px 14px;
+@dashboard-side-menu-bg-color:                  @bg-inverse-color;
+
+@dashboard-side-menu-brand-logo-img:            "../images/main-logo.png";
+@dashboard-side-menu-brand-logo:                { background-size: 204px; width: 51px; margin-left: 5px; };
+@dashboard-side-menu-brand-logo-expanded:       { width: 201px; background-size: 100%; };
+
+@dashboard-side-menu-link-color:                @decorator-inverse-color;
+@dashboard-side-menu-link-bg-color:             @dashboard-side-menu-bg-color;
+
+@dashboard-side-menu-link-hover-color:          @text-strong-color;
+@dashboard-side-menu-link-hover-bg-color:       @bg-inverse-color;
+
+@dashboard-side-menu-link-active-color:         @text-strong-color;
+@dashboard-side-menu-link-active-bg-color:      @bg-inverse-color;
+
+@_default_style:                                { .fa-2x; margin-top: 6px; margin-left: 2px; color: @dashboard-side-menu-link-color; };
+@_default_style_active:                         { @_default_style(); color: @dashboard-side-menu-link-active-color; };
+@dashboard-side-menu-btn-dashboard:             { .icon-fa(th); @_default_style(); };
+@dashboard-side-menu-btn-dashboard-active:      { .icon-fa(th); @_default_style_active(); };
+@dashboard-side-menu-btn-impac:                 { .icon-fa(pie-chart); @_default_style(); };
+@dashboard-side-menu-btn-impac-active:          { .icon-fa(pie-chart); @_default_style_active(); };
+@dashboard-side-menu-btn-account:               { .icon-fa(user); @_default_style(); margin-left: 5px; };
+@dashboard-side-menu-btn-account-active:        { .icon-fa(user); @_default_style_active(); margin-left: 5px; };
+@dashboard-side-menu-btn-company:               { .icon-fa(briefcase); @_default_style(); };
+@dashboard-side-menu-btn-company-active:        { .icon-fa(briefcase); @_default_style_active(); };
+@dashboard-side-menu-btn-subscriptions:         { .icon-fa(tasks); @_default_style(); margin-left: 5px; };
+@dashboard-side-menu-btn-subscriptions-active:  { .icon-fa(tasks); @_default_style_active(); margin-left: 5px; };
+@dashboard-side-menu-btn-marketplace:           { .icon-fa(plus-square-o); @_default_style(); margin-left: 5px; };
+@dashboard-side-menu-btn-marketplace-active:    { .icon-fa(plus-square-o); @_default_style_active(); margin-left: 5px; };
+@dashboard-side-menu-btn-logout:                { .icon-fa(lock); @_default_style(); margin-left: 6px; };
+@dashboard-side-menu-btn-logout-active:         { .icon-fa(lock); @_default_style_active(); margin-left: 6px; };
+
+// Company select box (top right)
+//--------------------------------------
+@dashboard-cpy-select-width:                    280px;
+@dashboard-cpy-select-pic-width:                50px;
+@dashboard-cpy-select-bg-color:                 @decorator-inverse-color;
+@dashboard-cpy-select-border-radius:            0 0 0 10px;
+@dashboard-cpy-select-border-color:             @text-inverse-color;
+@dashboard-cpy-select-list-border-color:        lighten(@bg-inverse-color, 10%);
+
+@dashboard-cpy-select-header-title-color:       #ffffff;
+@dashboard-cpy-select-header-company-color:     #ffffff;
+@dashboard-cpy-select-header-text-size:         13px;
+
+@dashboard-cpy-select-link-text-color:          @link-color;
+@dashboard-cpy-select-link-icon-color:          #ffffff;
+
+@dashboard-cpy-select-link-color:               #ffffff;
+@dashboard-cpy-select-link-hover-color:         @dashboard-cpy-select-link-color;
+@dashboard-cpy-select-link-hover-bg-color:      lighten(@dashboard-cpy-select-bg-color,10%);
+
+@dashboard-cpy-select-link-create-text-color:   @text-inverse-strong-color;
+@dashboard-cpy-select-link-create-color:        @bg-inverse-color;
+@dashboard-cpy-select-link-admin-color:         #ffffff;
+
+@dashboard-cpy-select-switch-btn-color:         @dashboard-cpy-select-header-company-color;
+@dashboard-cpy-select-switch-btn-bg-color:      @dashboard-cpy-select-bg-color;
+@dashboard-cpy-select-switch-btn-icon:          { .icon-fa(caret-down); }; //pass a ruleset
+@dashboard-cpy-select-switch-btn-icon-active:   { .icon-fa(caret-up); }; //pass a ruleset
+@dashboard-cpy-select-list-border-color:        #5598bf;
+
+@dashboard-cpy-tabcontent-text-color:           @text-inverse-color;
+
+/*-----------------------------------------------------------------------*/
+/*                        Dashboard > Apps Section                       */
+/*-----------------------------------------------------------------------*/
+@dashboard-apps-tile-bg-color:                  @bg-inverse-color;
+@dashboard-apps-tile-text-color:                @text-inverse-color;
+
+@dashboard-apps-tile-logo-border-size:          0px;
+@dashboard-apps-tile-logo-border-color:         @decorator-main-color;
+
+@dashboard-apps-tile-settings-color:            @dashboard-apps-tile-text-color;
+@dashboard-apps-tile-settings-bg-color:         @dashboard-apps-tile-bg-color;
+
+@dashboard-apps-tile-settings-hover-color:      @dashboard-apps-tile-text-color;
+@dashboard-apps-tile-settings-hover-bg-color:   @dashboard-apps-tile-bg-color;
+
+@dashboard-apps-tile-add-color:                 @dashboard-apps-tile-text-color;
+@dashboard-apps-tile-add-bg-color:              @dashboard-apps-tile-bg-color;
+
+/*-----------------------------------------------------------------------*/
+/*                      Dashboard > My account Section                   */
+/*-----------------------------------------------------------------------*/
+@dashboard-account-tabs-bg-color:                    @bg-on-bg-inverse-color;
+@dashboard-account-tabs-text-color:                  @text-inverse-color;
+@dashboard-account-panel-header-bg-color:            @bg-inverse-color;
+@dashboard-account-panel-header-text-color:          @text-inverse-color;
+@dashboard-account-panel-body-bg-color:              @bg-inverse-color;
+@dashboard-account-panel-text-color:                 @text-strong-color;
+@dashboard-account-inline-text-color-checked:        @brand-success;
+@dashboard-account-inline-text-color-unchecked:      @decorator-inverse-color;
+
+/*-----------------------------------------------------------------------*/
+/*                      Dashboard > Company Section                      */
+/*-----------------------------------------------------------------------*/
+// Tab Heading
+//--------------------------------------
+@dashboard-cpy-tabs-bg-color:                    @decorator-main-color;
+@dashboard-cpy-tabs-text-color:                  @text-strong-color;
+@dashboard-cpy-tabs-border-radius:               2px;
+
+@dashboard-cpy-tabs-subline-size:                0px;
+@dashboard-cpy-tabs-subline-color:               transparent;
+
+@dashboard-cpy-tabs-active-text-color:           @decorator-main-color;
+@dashboard-cpy-tabs-active-bg-color:             @bg-inverse-color;
+
+@dashboard-cpy-tabs-hover-text-color:            @bg-inverse-color;
+@dashboard-cpy-tabs-hover-bg-color:              @decorator-inverse-color;
+
+// Tab Content
+//--------------------------------------
+@dashboard-cpy-tabcontent-header-bg-color:       @bg-inverse-color;
+@dashboard-cpy-tabcontent-body-bg-color:         @bg-on-bg-inverse-color;
+@dashboard-cpy-tabcontent-bg-color:              @bg-inverse-color;
+@dashboard-cpy-tabcontent-text-color:            @text-inverse-strong-color;
+
+// Teams section
+//--------------------------------------
+@dashboard-cpy-teams-matrix-bg-color:            @bg-inverse-color;
+@dashboard-cpy-teams-matrix-border-color:        lighten(@bg-main-color,30%);
+@dashboard-cpy-teams-matrix-text-color:          @text-inverse-color;
+@dashboard-cpy-teams-matrix-text-hover-color:    @text-inverse-color;
+@dashboard-cpy-teams-matrix-text-edit-color:     @text-strong-color;
+
+/*-----------------------------------------------------------------------*/
+/*                              Dock                                     */
+/*-----------------------------------------------------------------------*/
+@mno-dock-bg-color:                             @decorator-main-color;
+@mno-dock-add-app-border-color:                 @text-inverse-strong-color;
+@mno-dock-add-app-text-color:                   @text-inverse-strong-color;
+@mno-dock-expand-arrow-color:                   @decorator-inverse-color;
+@mno-dock-expand-arrow-color-hover:             darken(@mno-dock-expand-arrow-color, 5%);
+@mno-dock-expand-left-border-color:             @text-inverse-strong-color;
+@mno-dock-app-loader-color:                     @mno-dock-expand-arrow-color;
+@mno-dock-app-title-color:                      @text-inverse-strong-color;
+@mno-dock-app-logo-square-width:                70px;
+@mno-dock-app-logo-minimized-square-width:      50px;
+@mno-dock-app-box-shadow:                       0 6px 12px rgba(0, 0, 0, 0.175);
+@mno-dock-app-box-border:                       1px solid rgba(0, 0, 0, 0.15);
+
+@mno-dock-sub-menu-box-shadow:                  0 6px 12px rgba(0, 0, 0, 0.175);
+@mno-dock-sub-menu-bg-color:                    @bg-inverse-color;
+@mno-dock-sub-menu-hover:                       @decorator-main-color;
+@mno-dock-sub-menu-icon:                        @decorator-touch-color;
+@mno-dock-sub-menu-text-color:                  @text-inverse-color;
+@mno-dock-sub-menu-text-hover-color:            darken(@mno-dock-sub-menu-text-color, 10%);
+
+// Mobile dock
+@mno-dock-mobile-bg-color:                      @bg-on-bg-inverse-color;
+@mno-dock-mobile-button-color:                  @text-inverse-strong-color;
+@mno-dock-mobile-button-bg-color:               @decorator-inverse-color;
+@mno-dock-mobile-app-active-color:              lighten(@mno-dock-mobile-button-bg-color, 20%);
+@mno-dock-mobile-app-border-bottom:             1px solid darken(@mno-dock-bg-color, 10%);
+@mno-dock-mobile-add-app-color:                 @text-strong-color;
+@mno-dock-mobile-app-name-color:                @text-strong-color;
+
+/*-----------------------------------------------------------------------*/
+/*                              Dock Settings                            */
+/*-----------------------------------------------------------------------*/
+@mno-dock-settings-app-running:                 #33d375;
+@mno-dock-settings-app-terminating:             #ffe6ea;
+@mno-dock-settings-app-upgrading:               #ffdb99;
+@mno-dock-settings-app-neutral:                 #E0FFFF;
+
+/*-----------------------------------------------------------------------*/
+/*                              IMPAC                                    */
+/*-----------------------------------------------------------------------*/
+// Dashboard
+//--------------------------------------
+@impac-dashboard-padding-top:                   33px;
+@impac-dashboard-margin-left:                   0px;
+
+// Title
+@impac-dashboard-title-label-color:             @text-strong-color;
+@impac-dashboard-title-color:                   @text-strong-color;
+@impac-dashboard-source-color:                  @impac-dashboard-title-label-color;
+@impac-dashboard-buttons-border-radius:         4px;
+
+// Widgets container
+@impac-placeholder-border:                      2px dashed @bg-inverse-color;
+@impac-padding-between-widgets:                 12px;
+@impac-minimum-widget-size:                     258px;
+
+// Widgets
+//--------------------------------------
+// Global
+@impac-widget-background-color:                 @bg-inverse-color;
+@impac-widget-text-color:                       @text-strong-color;
+@impac-widget-text-color-light:                 lighten(@impac-widget-text-color,20%);
+@impac-widget-borders-color:                    lighten(@impac-widget-text-color-light,10%);
+@impac-widget-link-color:                       @decorator-inverse-color;
+@impac-widget-top-buttons-color:                lighten(@impac-widget-text-color, 70%);
+
+// Title
+@impac-widget-title-text-color:                 darken(@impac-widget-text-color,5%);
+@impac-widget-title-bg:                         @impac-widget-background-color;
+@impac-widget-title-border:                     solid 1px @impac-widget-borders-color;
+@impac-widget-title-text-transform:             uppercase;
+@impac-widget-title-text-size:                  12px;
+@impac-widget-title-border-radius:              5px 5px 0px 0px;
+
+// Content
+@impac-widget-content-border-radius:            0px 0px 5px 5px;
+@impac-widget-lines-container-max-height:       210px;
+
+// Hist Mode Choser
+@impac-widget-hist-text-transform:              uppercase;
+@impac-widget-hist-text-size:                   12px;
+@impac-widget-hist-text-color:                  @impac-widget-text-color-light;
+
+// Price
+@impac-widget-price-color:                      @impac-widget-text-color;
+@impac-widget-price-positive-color:             @brand-success;
+@impac-widget-price-negative-color:             @brand-danger;
+@impac-widget-currency-color:                   @impac-widget-text-color-light;
+@impac-widget-legend-color:                     lighten(@impac-widget-text-color,30%);
+
+// Edit settings
+@impac-widget-sub-bg-color:                     darken(@impac-widget-background-color,10%);
+@impac-widget-sub-bg-color-light:               lighten(@impac-widget-sub-bg-color,5%);
+
+// Invoices list
+@impac-widget-line-hover-bg:                    lighten(@bg-inverse-color,10%);
+@impac-widget-line-hover-text:                  @text-inverse-color;
+
+// Accounts Comparison
+@impac-big-widget-size:                         581px;
+@impac-big-widget-bottom-padding:               30px;
+@impac-widget-accounts-comparison-lines-container-max-height: 250px;
+
+/*-----------------------------------------------------------------------*/
+/*                       Marketplace Section                             */
+/*-----------------------------------------------------------------------*/
+@dashboard-marketplace-search-text-color:             @text-strong-color;
+@dashboard-marketplace-search-border-color:           @text-strong-color;
+
+@dashboard-marketplace-tile-bg-color:                 @bg-inverse-color;
+@dashboard-marketplace-tile-text-color:               @text-strong-color;
+@dashboard-marketplace-tile-name-color:               @bg-inverse-color;
+@dashboard-marketplace-tile-img-border-color:         @dashboard-marketplace-tile-bg-color;
+
+@dashboard-marketplace-tile-hover-bg-color:           light-grey;
+@dashboard-marketplace-tile-hover-text-color:         @dashboard-marketplace-tile-text-color;
+@dashboard-marketplace-tile-hover-img-border-color:   darken(@decorator-main-color,10%);
+@dashboard-marketplace-tile-hover-arrow-color:        @text-strong-color;
+
+@dashboard-marketplace-show-header-text-color:        @text-strong-color;
+@dashboard-marketplace-show-sections-bg-color:        @bg-inverse-color;
+@dashboard-marketplace-show-sections-text-color:      @text-strong-color;
+
+@dashboard-marketplace-app-card:                      { display: block; padding: 10px; height: 120px; margin-bottom: 10px; font-weight: 300; };
+
+@provisioning-breadcrumb-item-color:                  @text-strong-color;
+@provisioning-breadcrumb-item-badge-bg:               @decorator-main-color;
+@provisioning-breadcrumb-item-active-color:           @text-strong-color;
+@provisioning-breadcrumb-item-active-badge-bg:        @decorator-touch-color;
+@provisioning-well-bg-color:                          @bg-on-bg-inverse-color;
+
+/*-----------------------------------------------------------------------*/
+/*                          Reviews and comments                         */
+/*-----------------------------------------------------------------------*/
+@no-review-bg-panel-color:       darken(@bg-on-bg-inverse-color, 5%);
+
+@comment-bg:                     @bg-main-color;
+@comment-text-color:             @text-strong-color;
+@comment-attributes-color:       @bg-inverse-color;
+
+@no-question-bg-panel-color:     darken(@bg-on-bg-inverse-color, 5%);
+@question-search-btn-bg:         @bg-inverse-color;
+@question-search-btn-color:      @text-inverse-color;
+@question-search-border:         1px solid @bg-inverse-color;
+@question-bg:                    @bg-on-bg-inverse-color;
+@question-ribbon-bg:             @bg-on-bg-inverse-color;
+
+/*-----------------------------------------------------------------------*/
+/*                     Responsive Table (cell table)                     */
+/*-----------------------------------------------------------------------*/
+@table-cell-header-row-spacing:        10px;
+@table-cell-header-row-padding:        3px;
+@table-cell-row-spacing:               0;
+@table-cell-row-padding:               3px;
+
+@table-cell-header-text-size:          12px;
+@table-cell-header-text-color:         @text-strong-color;
+@table-cell-header-bg-color:           @bg-main-color;
+@table-cell-header-additional-rule:    { text-transform: uppercase; };
+
+@table-cell-row-text-size:             13px;
+@table-cell-row-odd-bg-color:          fade(@bg-main-color,30%);
+@table-cell-row-even-bg-color:         fade(@bg-main-color,10%);
+
+@table-inverse-cell-header-text-color: @text-inverse-strong-color;
+@table-inverse-cell-header-bg-color:   lighten(@bg-inverse-color, 5%);
+@table-inverse-cell-row-odd-bg-color:  darken(@bg-main-color,4%);
+@table-inverse-cell-row-even-bg-color: darken(@bg-main-color,0%);
+
+/*-----------------------------------------------------------------------*/
+/*                          Navbar Customization                         */
+/*-----------------------------------------------------------------------*/
+@navbar-inverse-bg:              @bg-inverse-color;
+@navbar-height:                  40px;
+@navbar-inverse-link-color:      @decorator-inverse-color;
+@navbar-border-radius:           0px;
+@navbar-inverse-border:          @bg-inverse-color;
+@navbar-desktop-height:          120px;
+@navbar-inverse-link-active-bg:  @navbar-inverse-bg;
+
+/*-----------------------------------------------------------------------*/
+/*                          Form Customization                           */
+/*-----------------------------------------------------------------------*/
+@input-bg:                       white;
 @input-color:                    @text-strong-color;
 @input-color-placeholder:        @input-color;
 @input-label-color:              @text-inverse-color;
@@ -1072,6 +1075,882 @@ dashboard-company-selectbox .company-select-box {
     margin-left: @menu-left-width;
     .container {
       width: @container-lg - @menu-left-width;
+    }
+  }
+}
+
+#app-dock-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  text-align: center;
+}
+
+ul.dock {
+  position: relative;
+  display: inline-block;
+  background-color: @mno-dock-bg-color;
+  opacity: 1;
+  padding: 5px;
+  z-index: 999;
+  .border-bottom-radius(5px);
+  height: 90px;
+  .transition(height 0.3s);
+
+  & > li {
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+
+    .loader-icon {
+      color: @mno-dock-app-loader-color;
+      font-size: 40px;
+      margin: 10px 8px 0 10px;
+    }
+
+    .title {
+      position: absolute;
+      top: 0;
+      color: @mno-dock-app-title-color;
+      display: none;
+      width: 100%;
+      text-align: center;
+    }
+
+    img.app-logo {
+      outline: none;
+      cursor: pointer;
+      margin: 5px;
+      .square(@mno-dock-app-logo-square-width);
+      .transition(all 0.3s);
+      .border-top-radius(5px);
+      .border-bottom-radius(5px);
+      .transform-origin(50% 0%); // Origin from top
+    }
+
+    .add-app {
+      cursor: pointer;
+      margin: 5px;
+      .square(@mno-dock-app-logo-square-width);
+      .transition(all 0.3s);
+      .transform-origin(50% 0%); // Origin from top
+      border: 1px solid @mno-dock-add-app-border-color;
+      .border-top-radius(5px);
+      .border-bottom-radius(5px);
+
+      display: table;
+
+      a {
+        display: table-cell;
+        vertical-align: middle;
+        color: @mno-dock-add-app-text-color;
+      }
+    }
+  }
+
+  // Expand button
+  li.expand-menu {
+    border-left: 1px solid @mno-dock-expand-left-border-color;
+    height: 100%;
+
+    & > div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+
+      a {
+        padding-left: 6px;
+        padding-right: 5px;
+        .transition(height 0.3s);
+        cursor: pointer;
+        color: @mno-dock-expand-arrow-color;
+
+        &:hover {
+          text-decoration: none;
+          color: @mno-dock-expand-arrow-color-hover;
+        }
+      }
+    }
+  }
+
+  //=======================================
+  // Submenu
+  //=======================================
+  .dock-menu {
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    z-index: 1000;
+    margin-top: 68px;
+    visibility:hidden;
+    opacity:0;
+    transition: visibility 0s linear 0.5s,opacity 0.5s linear;
+
+    div.dock-arrow {
+      position: relative;
+      right: 50%;
+    }
+
+    div.inner-dock-menu { // Inner div holding the menu
+      position: relative;
+      right: 50%;
+      padding: 5px 0px;
+      .border-top-radius(5px);
+      .border-bottom-radius(5px);
+      background-color: @mno-dock-sub-menu-bg-color;
+
+      .box-shadow(@mno-dock-sub-menu-box-shadow);
+      .menu-item {
+        cursor: pointer;
+
+        &:hover {
+          background-color: @mno-dock-sub-menu-hover;
+
+          a {
+            color: @mno-dock-sub-menu-text-hover-color;
+          }
+        }
+
+        a {
+          display: flex;
+          text-decoration: none;
+          color: @mno-dock-sub-menu-text-color;
+          padding: 5px 20px;
+
+          &.connect-btn-center, img.connect-btn-center {
+            margin: auto;
+          }
+
+          i.fa {
+            color: @mno-dock-sub-menu-icon;
+            margin-top: 3px;
+            margin-right: 6px;
+          }
+        }
+
+        .connector-logo {
+          margin-top:3px;
+          margin-bottom:3px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  & > li.active {
+    .dock-menu {
+      // display: block;
+      visibility: visible;
+      opacity: 1;
+      transition-delay: 0s;
+    }
+  }
+}
+
+ul.dock.minimized {
+  height: @mno-dock-app-logo-square-width;
+  .transition(height 0.3s);
+
+  img.app-logo, .add-app {
+    .square(@mno-dock-app-logo-minimized-square-width);
+  }
+
+  .add-app {
+    span {
+      .transition(all 0.3s);
+      display: none;
+    }
+  }
+
+  .dock-menu {
+    margin-top: @mno-dock-app-logo-minimized-square-width;
+  }
+}
+
+ul.dock.animated  > li:hover, ul.dock > li.active {
+  img.app-logo {
+    transform: scale(1.8) translate(0, 10px);
+    margin: 5px 1.6em 5px;
+    z-index: 9999;
+
+    border: @mno-dock-app-box-border;
+    .box-shadow(@mno-dock-app-box-shadow);
+  }
+
+  .title {
+    display: block;
+  }
+
+  /* one element after and element before (with JS)*/
+  & + li img.app-logo, ul.dock > li.prev img.app-logo {
+    .scale(1.4);
+    margin: 5px 1.6em 5px;
+  }
+}
+
+ul.dock > li.prev img.app-logo {
+  .scale(1.4);
+  margin: 5px 1.4em 5px;
+}
+
+// Mobile
+#app-dock-mobile-container {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 1030;
+
+  .mobile-dock-button {
+    width: 100%;
+    text-transform: uppercase;
+    padding: 10px;
+    color: @mno-dock-mobile-button-color;
+    background-color: @mno-dock-mobile-button-bg-color;
+  }
+
+  #mobile-dock {
+    z-index: 1030;
+
+    &.collapse.in {
+      overflow-y: auto;
+    }
+
+    .btn {
+      text-transform: uppercase;
+    }
+
+    ul {
+      margin-bottom: 0;
+      background-color: @mno-dock-mobile-bg-color;
+
+      & > li {
+        border-bottom: @mno-dock-mobile-app-border-bottom;
+        padding-top: 5px;
+        padding-bottom: 5px;
+
+        .app-line {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+
+          .title {
+            color: @mno-dock-mobile-app-name-color;
+            font-weight: bold;
+          }
+
+          img.app-logo {
+            .square(48px);
+          }
+        }
+
+        &:hover, &.active {
+          background-color: @mno-dock-mobile-app-active-color;
+        }
+      }
+    }
+
+    .add-app {
+      color: @mno-dock-mobile-add-app-color;
+    }
+  }
+}
+
+dashboard-company-selectbox {
+  /*-----------------------------------------------------------------------*/
+  /*                       Company Select Box                              */
+  /*-----------------------------------------------------------------------*/
+  .company-select-box {
+    position: absolute;
+    right: 0;
+    width: @dashboard-cpy-select-width;
+    background-color: @dashboard-cpy-select-bg-color;
+    font-size: @dashboard-cpy-select-header-text-size;
+    border-radius: @dashboard-cpy-select-border-radius;
+    border-left: 1px solid @dashboard-cpy-select-border-color;
+    border-bottom: 1px solid @dashboard-cpy-select-border-color;
+    z-index: 999;
+    overflow: hidden;
+
+    @media (max-width: @screen-sm) {
+      border-radius: 0;
+    }
+
+    // Section always visible
+    .box-header {
+      cursor: pointer;
+      text-align: right;
+      outline: none;
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+
+      img {
+        border-radius: 50%;
+        height: @dashboard-cpy-select-pic-width;
+        width: @dashboard-cpy-select-pic-width;
+      }
+
+      .title {
+        margin: 0 10px;
+        width: ~'calc(100% -' (2 * @dashboard-cpy-select-pic-width) ~')';
+        text-align: left;
+
+        .name {
+          font-weight: bold;
+          color: @dashboard-cpy-select-header-title-color;
+        }
+
+        .company {
+          width: 100%;
+          display: block;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          color: @dashboard-cpy-select-header-company-color;
+        }
+      }
+      .expand-menu {
+        margin-left: auto;
+      }
+    }
+
+    // Section visible when change company is clicked
+    .box-content {
+      border-top: solid 1px @dashboard-cpy-select-list-border-color;
+      overflow: hidden;
+
+      // General look of the links
+      a {
+        line-height: 17px;
+        display: block;
+        padding: 4px 0 4px 20px;
+        outline: none;
+      }
+
+      // List of companies
+      ul {
+        padding: 15px 20px 0 20px;
+        max-height: 400px;
+        min-width: 250px;
+        overflow-y: auto;
+
+        > li {
+
+          > a.company-link {
+            text-decoration: none;
+            padding: 4px;
+            display: flex;
+            color: @dashboard-cpy-select-link-text-color;
+
+            &:hover {
+              background-color: @dashboard-cpy-select-link-hover-bg-color;
+              border-bottom-left-radius: 0;
+            }
+
+            // Circle next to company name
+            // Indicate which company is currently viewed on dashboard
+            > i {
+              flex: 0 0 20px;
+              width: 13px;
+              padding: 2px 0;
+              display: inline-flex;
+              text-align: center;
+              color: @dashboard-cpy-select-link-icon-color;
+            }
+
+            > span {
+              text-align: left;
+              display: inline-flex;
+              flex: 1 1 auto;
+            }
+          }
+        }
+      }
+
+      .default-link {
+        color: @dashboard-cpy-select-link-color;
+        padding: 10px 20px;
+        text-align: left;
+        border-top: 1px solid @dashboard-cpy-select-list-border-color;
+
+        .btn {
+          width: 100%;
+          padding: 3px;
+        }
+
+        // Icon on the left side of the link
+        i {
+          width: 20px;
+          text-align: center;
+          font-size: 11pt;
+        }
+
+        &:hover {
+          text-decoration: none;
+          color: @dashboard-cpy-select-link-hover-color;
+          background-color: @dashboard-cpy-select-link-hover-bg-color;
+        }
+      }
+    }
+  }
+
+  @media (max-width: @screen-sm) {
+    .company-select-box {
+      width: 100%;
+      position: fixed;
+      border-left: none;
+      border-top: 1px solid @dashboard-cpy-select-border-color;
+      top: ~'calc(1px + ' @navbar-height ~')';  // Add top border
+    }
+  }
+}
+
+
+dashboard-language-selectbox {
+  display: block;
+
+  .selector-line {
+    display: inline-block;
+    margin: 5px auto;
+  }
+}
+
+dashboard-menu {
+  /*-----------------------------------------------------------------------*/
+  /*                         Mobile menu                                   */
+  /*-----------------------------------------------------------------------*/
+  .navbar {
+    &.navbar-inverse {
+      font-weight:300;
+      letter-spacing:1px;
+
+      .navbar-toggle {
+        background-color: #fff;
+        .icon-bar {
+          background-color: #333;
+        }
+
+        &:hover, &:focus {
+          background-color: #333;
+          .icon-bar {
+            background-color: #fff;
+          }
+        }
+      }
+
+      ul.nav.navbar-nav {
+        padding:0px;
+        text-transform:uppercase;
+        a {
+          font-size:@normal;
+          text-align:center;
+          background-color:#111c21;
+          border-bottom: solid 1px @bg-inverse-color;
+          padding:22px 0px;
+
+          &.active {
+            color: @dashboard-side-menu-link-active-color;
+          }
+        }
+
+        ul.dropdown-menu {
+          padding:0px;
+          a {
+            background-color:@bg-inverse-color;
+            border-bottom: solid 1px #111c21;
+            padding:13px 0px;
+          }
+        }
+      }
+    }
+  }
+
+  /*-----------------------------------------------------------------------*/
+  /*                         Dashboard Left Navbar                         */
+  /*-----------------------------------------------------------------------*/
+  .menu {
+
+    a:hover { text-decoration: none; }
+
+    // Dashboard Button > Active State
+    .dashboard-button.active, .dashboard-button.active:hover {
+      color: @dashboard-side-menu-link-active-color;
+      background-color: @dashboard-side-menu-link-active-bg-color;
+    }
+
+    // Dashboard Button Content > Active State
+    .dashboard-button.active .content, .dashboard-button.active:hover .content {
+      color: @dashboard-side-menu-link-active-color;
+      background-color: @dashboard-side-menu-link-active-bg-color;
+    }
+
+    // Dashboard Button Content > Normal State
+    .dashboard-button,
+    .dashboard-button .content {
+      color: @dashboard-side-menu-link-color;
+      background-color: @dashboard-side-menu-link-bg-color;
+    }
+
+    // Dashboard Button Content > Normal State Hover
+    .dashboard-button:hover, .dashboard-button:hover .content {
+      color: @dashboard-side-menu-link-hover-color;
+      background-color: @dashboard-side-menu-link-hover-bg-color;
+    }
+
+    // Vertical menu
+    &.vertical {
+      z-index:100;
+      position:fixed;
+      left:0px;
+      top:0px;
+      padding: @dashboard-side-menu-padding;
+      width:80px;
+      min-height:100%;
+      height:99%;
+
+      // Dashboard Button > Normal State
+      .dashboard-button {
+        display: block;
+        border-radius: 5px;
+        width: 51px;
+        height: 51px;
+        padding-top: 7px;
+        padding-left: 9px;
+      }
+
+      &:hover .dashboard-button {
+        width: 250px;
+      }
+
+      // Dashboard Button Content > Normal State
+      .dashboard-button .content {
+        display: none;
+      }
+
+      &:hover .dashboard-button .content {
+        display: block;
+        white-space: nowrap;
+        position: absolute;
+        margin: 8px 0px 0px 55px;
+        font-size: 15px;
+      }
+
+      // Side menu brand logo
+      .brand-logo {
+        height: 90px;
+        background-repeat: no-repeat;
+        background-image: url(@dashboard-side-menu-brand-logo-img);
+        background-size: 100%;
+        @dashboard-side-menu-brand-logo();
+      }
+      .brand-logo.expanded {
+        @dashboard-side-menu-brand-logo-expanded();
+      }
+    }
+
+    background-color: @dashboard-side-menu-bg-color;
+
+    hr {
+      border-top: 2px dashed darken(@dashboard-side-menu-bg-color, 5%);
+      margin-right: 11px;
+    }
+
+    // Icon configuration for each dashboard button
+    .dashboard-button i.dhb-icon-dashboard {
+      @dashboard-side-menu-btn-dashboard();
+    }
+    .dashboard-button:hover i.dhb-icon-dashboard,
+    .dashboard-button.active i.dhb-icon-dashboard {
+      @dashboard-side-menu-btn-dashboard-active();
+    }
+
+    .dashboard-button i.dhb-icon-impac {
+      @dashboard-side-menu-btn-impac();
+    }
+    .dashboard-button.active i.dhb-icon-impac,
+    .dashboard-button:hover i.dhb-icon-impac {
+      @dashboard-side-menu-btn-impac-active();
+    }
+
+    .dashboard-button i.dhb-icon-account {
+      @dashboard-side-menu-btn-account();
+    }
+    .dashboard-button:hover i.dhb-icon-account,
+    .dashboard-button.active i.dhb-icon-account {
+      @dashboard-side-menu-btn-account-active();
+    }
+
+    .dashboard-button i.dhb-icon-company {
+      @dashboard-side-menu-btn-company();
+    }
+    .dashboard-button:hover i.dhb-icon-company,
+    .dashboard-button.active i.dhb-icon-company {
+      @dashboard-side-menu-btn-company-active();
+    }
+
+    .dashboard-button i.dhb-icon-subscriptions {
+      @dashboard-side-menu-btn-subscriptions();
+    }
+    .dashboard-button:hover i.dhb-icon-subscriptions,
+    .dashboard-button.active i.dhb-icon-subscriptions {
+      @dashboard-side-menu-btn-subscriptions-active();
+    }
+
+    .dashboard-button i.dhb-icon-marketplace {
+      @dashboard-side-menu-btn-marketplace();
+    }
+    .dashboard-button:hover i.dhb-icon-marketplace,
+    .dashboard-button.active i.dhb-icon-marketplace {
+      @dashboard-side-menu-btn-marketplace-active();
+    }
+
+    .dashboard-button i.dhb-icon-logout {
+      @dashboard-side-menu-btn-logout();
+    }
+    .dashboard-button:hover i.dhb-icon-logout,
+    .dashboard-button.active i.dhb-icon-logout {
+      @dashboard-side-menu-btn-logout-active();
+    }
+  }
+}
+
+#app-features {
+  border: @onboarding-app-features-border;
+  color: @onboarding-app-features-color;
+
+  .center-element {
+    margin-left: 10px;
+    margin-bottom: 12px;
+  }
+
+  .fa-check-square-o {
+    color: @onboarding-app-features-checked;
+  }
+  .fa-square-o {
+    color: @onboarding-app-features-unchecked;
+  }
+}
+
+mno-app-onboarding-btn {
+  display: block;
+
+  .button-check {
+    color: @onboarding-app-connect-check;
+  }
+
+  .button-loader {
+    color: @onboarding-app-connect-loader;
+  }
+
+  .btn {
+    margin-top: 5px;
+  }
+}
+
+mno-audit-events-list {
+  .table > thead > tr {
+    color: @table-cell-header-text-color;
+    background-color: @table-cell-header-bg-color;
+  }
+
+  .table-striped > tbody > tr {
+    &:nth-of-type(even) {
+      background-color: @table-cell-row-even-bg-color
+    }
+
+    &:nth-of-type(odd) {
+      background-color: @table-cell-row-odd-bg-color
+    }
+  }
+}
+
+mno-impersonation-bar {
+  #impersonate-bar {
+    color: @text-inverse-strong-color;
+    background-color: @bg-inverse-color;
+    padding-top: 3px;
+    padding-bottom: 3px;
+
+    @media (max-width: @screen-xs-max) {
+      padding-top: 40px;
+    }
+  }
+}
+
+mno-inline-message {
+  .mno-inline-checked {
+    color: @dashboard-account-inline-text-color-checked;
+  }
+
+  .mno-inline-unchecked {
+    color: @dashboard-account-inline-text-color-unchecked;
+  }
+}
+
+mno-loader {
+  display: block;
+
+  .loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: @dashboard-loader-color;
+
+    .loader-icon {
+      @dashboard-loader-icon();
+    }
+
+    .background-layer {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: grey;
+      opacity: 0.6;
+    }
+  }
+}
+
+.loader-content {
+  position: relative;
+}
+
+mno-pagination {
+  display: block;
+  overflow: auto;
+
+  .pagination {
+    margin: 0;
+  }
+
+  .nb-items-col {
+    float: right;
+
+    .items-per-page-select {
+      display: inline;
+      width: 75px;
+
+      @media (max-width: @screen-xs-max) {
+        margin-top: 15px;
+      }
+    }
+  }
+}
+
+mno-password {
+  display: block;
+}
+
+mno-without-organisation {
+  .well {
+    background-color: @without-organisation-well-bg;
+    color: @without-organisation-text-color;
+
+    h2 {
+      margin-top: 0;
+    }
+  }
+}
+
+average-star-rating, star-rating {
+  position: relative;
+  display: block;
+
+  ul.rating {
+    margin: 0;
+    padding: 0 !important;
+    display: inline-block;
+
+    li {
+      padding: 1px;
+      color: #ddd;
+      font-size: 20px;
+      text-shadow: .05em .05em #aaa;
+      list-style-type: none;
+      display: inline-block;
+      cursor: pointer;
+      outline: none;
+
+      &.filled {
+        color: #fd0; //#21568b
+      }
+    }
+
+    &.readonly li.filled {
+      color: #666;
+    }
+  }
+
+  .average-rating-container {
+    display: inline-block;
+    position: relative;
+    height: 31px;
+    width: 103px;
+    overflow: hidden;
+
+    &.withrating {
+      margin-right: 37px;
+    }
+
+    .rating li {
+      cursor: inherit;
+    }
+
+    .background,
+    .foreground {
+      position: absolute;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+  }
+
+  .badge {
+    position: absolute;
+    top: 5px;
+    right: 0;
+  }
+}
+
+theme-editor {
+  .theme-previewer-side-panel {
+    z-index: 9999;
+    width: 80%;
+    position: absolute;
+    right: -1px;
+    top: 5%;
+    height: 90%;
+    background-color: white;
+    border: solid 1px #c8d7d9;
+    border-radius: 6px 0 0 6px;
+    box-shadow: 0 1px 8px -4px;
+    transition: ease-out 0.5s;
+    overflow: hidden;
+
+    &.closed {
+      //right: 25px;
+      transform: translate3d(~'calc(100% - 30px)', 0, 0);
+    }
+
+    .collapse-switch-btn {
+      position: absolute;
+      left: 10px;
+      top: 3px;
+      font-size: 18px;
+    }
+
+    .content {
+      position: relative;
+      height: ~"calc(100% - 30px)";
+      margin-top: 30px;
+      padding-left: 15px;
+      padding-right: 15px;
+      overflow-y: auto;
     }
   }
 }
@@ -2320,16 +3199,33 @@ form.editable-wrap .editable-controls input {
   nav {
     display: flex;
     justify-content: space-around;
-    margin-top: 50px;
+    .top-buffer-5;
 
     .breadcrumb-item {
+      // Deactivate the link
+      pointer-events: none;
+      color: @provisioning-breadcrumb-item-color;
+
+      .badge {
+        background-color: @provisioning-breadcrumb-item-badge-bg;
+      }
+
       &.active {
         color: @provisioning-breadcrumb-item-active-color;
+
+        .badge {
+          background-color: @provisioning-breadcrumb-item-active-badge-bg;
+        }
       }
     }
   }
 
+  h1 {
+    .top-buffer-3;
+  }
+
   .well {
+    .top-buffer-1;
     background-color: @provisioning-well-bg-color;
   }
 }
@@ -2354,882 +3250,6 @@ form.editable-wrap .editable-controls input {
 
 #provisioning-summary {
 
-}
-
-dashboard-company-selectbox {
-  /*-----------------------------------------------------------------------*/
-  /*                       Company Select Box                              */
-  /*-----------------------------------------------------------------------*/
-  .company-select-box {
-    position: absolute;
-    right: 0;
-    width: @dashboard-cpy-select-width;
-    background-color: @dashboard-cpy-select-bg-color;
-    font-size: @dashboard-cpy-select-header-text-size;
-    border-radius: @dashboard-cpy-select-border-radius;
-    border-left: 1px solid @dashboard-cpy-select-border-color;
-    border-bottom: 1px solid @dashboard-cpy-select-border-color;
-    z-index: 999;
-    overflow: hidden;
-
-    @media (max-width: @screen-sm) {
-      border-radius: 0;
-    }
-
-    // Section always visible
-    .box-header {
-      cursor: pointer;
-      text-align: right;
-      outline: none;
-      display: flex;
-      align-items: center;
-      padding: 10px 20px;
-
-      img {
-        border-radius: 50%;
-        height: @dashboard-cpy-select-pic-width;
-        width: @dashboard-cpy-select-pic-width;
-      }
-
-      .title {
-        margin: 0 10px;
-        width: ~'calc(100% -' (2 * @dashboard-cpy-select-pic-width) ~')';
-        text-align: left;
-
-        .name {
-          font-weight: bold;
-          color: @dashboard-cpy-select-header-title-color;
-        }
-
-        .company {
-          width: 100%;
-          display: block;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          color: @dashboard-cpy-select-header-company-color;
-        }
-      }
-      .expand-menu {
-        margin-left: auto;
-      }
-    }
-
-    // Section visible when change company is clicked
-    .box-content {
-      border-top: solid 1px @dashboard-cpy-select-list-border-color;
-      overflow: hidden;
-
-      // General look of the links
-      a {
-        line-height: 17px;
-        display: block;
-        padding: 4px 0 4px 20px;
-        outline: none;
-      }
-
-      // List of companies
-      ul {
-        padding: 15px 20px 0 20px;
-        max-height: 400px;
-        min-width: 250px;
-        overflow-y: auto;
-
-        > li {
-
-          > a.company-link {
-            text-decoration: none;
-            padding: 4px;
-            display: flex;
-            color: @dashboard-cpy-select-link-text-color;
-
-            &:hover {
-              background-color: @dashboard-cpy-select-link-hover-bg-color;
-              border-bottom-left-radius: 0;
-            }
-
-            // Circle next to company name
-            // Indicate which company is currently viewed on dashboard
-            > i {
-              flex: 0 0 20px;
-              width: 13px;
-              padding: 2px 0;
-              display: inline-flex;
-              text-align: center;
-              color: @dashboard-cpy-select-link-icon-color;
-            }
-
-            > span {
-              text-align: left;
-              display: inline-flex;
-              flex: 1 1 auto;
-            }
-          }
-        }
-      }
-
-      .default-link {
-        color: @dashboard-cpy-select-link-color;
-        padding: 10px 20px;
-        text-align: left;
-        border-top: 1px solid @dashboard-cpy-select-list-border-color;
-
-        .btn {
-          width: 100%;
-          padding: 3px;
-        }
-
-        // Icon on the left side of the link
-        i {
-          width: 20px;
-          text-align: center;
-          font-size: 11pt;
-        }
-
-        &:hover {
-          text-decoration: none;
-          color: @dashboard-cpy-select-link-hover-color;
-          background-color: @dashboard-cpy-select-link-hover-bg-color;
-        }
-      }
-    }
-  }
-
-  @media (max-width: @screen-sm) {
-    .company-select-box {
-      width: 100%;
-      position: fixed;
-      border-left: none;
-      border-top: 1px solid @dashboard-cpy-select-border-color;
-      top: ~'calc(1px + ' @navbar-height ~')';  // Add top border
-    }
-  }
-}
-
-
-dashboard-language-selectbox {
-  display: block;
-
-  .selector-line {
-    display: inline-block;
-    margin: 5px auto;
-  }
-}
-
-#app-dock-container {
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  text-align: center;
-}
-
-ul.dock {
-  position: relative;
-  display: inline-block;
-  background-color: @mno-dock-bg-color;
-  opacity: 1;
-  padding: 5px;
-  z-index: 999;
-  .border-bottom-radius(5px);
-  height: 90px;
-  .transition(height 0.3s);
-
-  & > li {
-    display: inline-block;
-    position: relative;
-    vertical-align: top;
-
-    .loader-icon {
-      color: @mno-dock-app-loader-color;
-      font-size: 40px;
-      margin: 10px 8px 0 10px;
-    }
-
-    .title {
-      position: absolute;
-      top: 0;
-      color: @mno-dock-app-title-color;
-      display: none;
-      width: 100%;
-      text-align: center;
-    }
-
-    img.app-logo {
-      outline: none;
-      cursor: pointer;
-      margin: 5px;
-      .square(@mno-dock-app-logo-square-width);
-      .transition(all 0.3s);
-      .border-top-radius(5px);
-      .border-bottom-radius(5px);
-      .transform-origin(50% 0%); // Origin from top
-    }
-
-    .add-app {
-      cursor: pointer;
-      margin: 5px;
-      .square(@mno-dock-app-logo-square-width);
-      .transition(all 0.3s);
-      .transform-origin(50% 0%); // Origin from top
-      border: 1px solid @mno-dock-add-app-border-color;
-      .border-top-radius(5px);
-      .border-bottom-radius(5px);
-
-      display: table;
-
-      a {
-        display: table-cell;
-        vertical-align: middle;
-        color: @mno-dock-add-app-text-color;
-      }
-    }
-  }
-
-  // Expand button
-  li.expand-menu {
-    border-left: 1px solid @mno-dock-expand-left-border-color;
-    height: 100%;
-
-    & > div {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
-
-      a {
-        padding-left: 6px;
-        padding-right: 5px;
-        .transition(height 0.3s);
-        cursor: pointer;
-        color: @mno-dock-expand-arrow-color;
-
-        &:hover {
-          text-decoration: none;
-          color: @mno-dock-expand-arrow-color-hover;
-        }
-      }
-    }
-  }
-
-  //=======================================
-  // Submenu
-  //=======================================
-  .dock-menu {
-    position: absolute;
-    left: 50%;
-    top: 100%;
-    z-index: 1000;
-    margin-top: 68px;
-    visibility:hidden;
-    opacity:0;
-    transition: visibility 0s linear 0.5s,opacity 0.5s linear;
-
-    div.dock-arrow {
-      position: relative;
-      right: 50%;
-    }
-
-    div.inner-dock-menu { // Inner div holding the menu
-      position: relative;
-      right: 50%;
-      padding: 5px 0px;
-      .border-top-radius(5px);
-      .border-bottom-radius(5px);
-      background-color: @mno-dock-sub-menu-bg-color;
-
-      .box-shadow(@mno-dock-sub-menu-box-shadow);
-      .menu-item {
-        cursor: pointer;
-
-        &:hover {
-          background-color: @mno-dock-sub-menu-hover;
-
-          a {
-            color: @mno-dock-sub-menu-text-hover-color;
-          }
-        }
-
-        a {
-          display: flex;
-          text-decoration: none;
-          color: @mno-dock-sub-menu-text-color;
-          padding: 5px 20px;
-
-          &.connect-btn-center, img.connect-btn-center {
-            margin: auto;
-          }
-
-          i.fa {
-            color: @mno-dock-sub-menu-icon;
-            margin-top: 3px;
-            margin-right: 6px;
-          }
-        }
-
-        .connector-logo {
-          margin-top:3px;
-          margin-bottom:3px;
-          cursor: pointer;
-        }
-      }
-    }
-  }
-
-  & > li.active {
-    .dock-menu {
-      // display: block;
-      visibility: visible;
-      opacity: 1;
-      transition-delay: 0s;
-    }
-  }
-}
-
-ul.dock.minimized {
-  height: @mno-dock-app-logo-square-width;
-  .transition(height 0.3s);
-
-  img.app-logo, .add-app {
-    .square(@mno-dock-app-logo-minimized-square-width);
-  }
-
-  .add-app {
-    span {
-      .transition(all 0.3s);
-      display: none;
-    }
-  }
-
-  .dock-menu {
-    margin-top: @mno-dock-app-logo-minimized-square-width;
-  }
-}
-
-ul.dock.animated  > li:hover, ul.dock > li.active {
-  img.app-logo {
-    transform: scale(1.8) translate(0, 10px);
-    margin: 5px 1.6em 5px;
-    z-index: 9999;
-
-    border: @mno-dock-app-box-border;
-    .box-shadow(@mno-dock-app-box-shadow);
-  }
-
-  .title {
-    display: block;
-  }
-
-  /* one element after and element before (with JS)*/
-  & + li img.app-logo, ul.dock > li.prev img.app-logo {
-    .scale(1.4);
-    margin: 5px 1.6em 5px;
-  }
-}
-
-ul.dock > li.prev img.app-logo {
-  .scale(1.4);
-  margin: 5px 1.4em 5px;
-}
-
-// Mobile
-#app-dock-mobile-container {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  z-index: 1030;
-
-  .mobile-dock-button {
-    width: 100%;
-    text-transform: uppercase;
-    padding: 10px;
-    color: @mno-dock-mobile-button-color;
-    background-color: @mno-dock-mobile-button-bg-color;
-  }
-
-  #mobile-dock {
-    z-index: 1030;
-
-    &.collapse.in {
-      overflow-y: auto;
-    }
-
-    .btn {
-      text-transform: uppercase;
-    }
-
-    ul {
-      margin-bottom: 0;
-      background-color: @mno-dock-mobile-bg-color;
-
-      & > li {
-        border-bottom: @mno-dock-mobile-app-border-bottom;
-        padding-top: 5px;
-        padding-bottom: 5px;
-
-        .app-line {
-          display: flex;
-          justify-content: space-around;
-          align-items: center;
-
-          .title {
-            color: @mno-dock-mobile-app-name-color;
-            font-weight: bold;
-          }
-
-          img.app-logo {
-            .square(48px);
-          }
-        }
-
-        &:hover, &.active {
-          background-color: @mno-dock-mobile-app-active-color;
-        }
-      }
-    }
-
-    .add-app {
-      color: @mno-dock-mobile-add-app-color;
-    }
-  }
-}
-
-dashboard-menu {
-  /*-----------------------------------------------------------------------*/
-  /*                         Mobile menu                                   */
-  /*-----------------------------------------------------------------------*/
-  .navbar {
-    &.navbar-inverse {
-      font-weight:300;
-      letter-spacing:1px;
-
-      .navbar-toggle {
-        background-color: #fff;
-        .icon-bar {
-          background-color: #333;
-        }
-
-        &:hover, &:focus {
-          background-color: #333;
-          .icon-bar {
-            background-color: #fff;
-          }
-        }
-      }
-
-      ul.nav.navbar-nav {
-        padding:0px;
-        text-transform:uppercase;
-        a {
-          font-size:@normal;
-          text-align:center;
-          background-color:#111c21;
-          border-bottom: solid 1px @bg-inverse-color;
-          padding:22px 0px;
-
-          &.active {
-            color: @dashboard-side-menu-link-active-color;
-          }
-        }
-
-        ul.dropdown-menu {
-          padding:0px;
-          a {
-            background-color:@bg-inverse-color;
-            border-bottom: solid 1px #111c21;
-            padding:13px 0px;
-          }
-        }
-      }
-    }
-  }
-
-  /*-----------------------------------------------------------------------*/
-  /*                         Dashboard Left Navbar                         */
-  /*-----------------------------------------------------------------------*/
-  .menu {
-
-    a:hover { text-decoration: none; }
-
-    // Dashboard Button > Active State
-    .dashboard-button.active, .dashboard-button.active:hover {
-      color: @dashboard-side-menu-link-active-color;
-      background-color: @dashboard-side-menu-link-active-bg-color;
-    }
-
-    // Dashboard Button Content > Active State
-    .dashboard-button.active .content, .dashboard-button.active:hover .content {
-      color: @dashboard-side-menu-link-active-color;
-      background-color: @dashboard-side-menu-link-active-bg-color;
-    }
-
-    // Dashboard Button Content > Normal State
-    .dashboard-button,
-    .dashboard-button .content {
-      color: @dashboard-side-menu-link-color;
-      background-color: @dashboard-side-menu-link-bg-color;
-    }
-
-    // Dashboard Button Content > Normal State Hover
-    .dashboard-button:hover, .dashboard-button:hover .content {
-      color: @dashboard-side-menu-link-hover-color;
-      background-color: @dashboard-side-menu-link-hover-bg-color;
-    }
-
-    // Vertical menu
-    &.vertical {
-      z-index:100;
-      position:fixed;
-      left:0px;
-      top:0px;
-      padding: @dashboard-side-menu-padding;
-      width:80px;
-      min-height:100%;
-      height:99%;
-
-      // Dashboard Button > Normal State
-      .dashboard-button {
-        display: block;
-        border-radius: 5px;
-        width: 51px;
-        height: 51px;
-        padding-top: 7px;
-        padding-left: 9px;
-      }
-
-      &:hover .dashboard-button {
-        width: 250px;
-      }
-
-      // Dashboard Button Content > Normal State
-      .dashboard-button .content {
-        display: none;
-      }
-
-      &:hover .dashboard-button .content {
-        display: block;
-        white-space: nowrap;
-        position: absolute;
-        margin: 8px 0px 0px 55px;
-        font-size: 15px;
-      }
-
-      // Side menu brand logo
-      .brand-logo {
-        height: 90px;
-        background-repeat: no-repeat;
-        background-image: url(@dashboard-side-menu-brand-logo-img);
-        background-size: 100%;
-        @dashboard-side-menu-brand-logo();
-      }
-      .brand-logo.expanded {
-        @dashboard-side-menu-brand-logo-expanded();
-      }
-    }
-
-    background-color: @dashboard-side-menu-bg-color;
-
-    hr {
-      border-top: 2px dashed darken(@dashboard-side-menu-bg-color, 5%);
-      margin-right: 11px;
-    }
-
-    // Icon configuration for each dashboard button
-    .dashboard-button i.dhb-icon-dashboard {
-      @dashboard-side-menu-btn-dashboard();
-    }
-    .dashboard-button:hover i.dhb-icon-dashboard,
-    .dashboard-button.active i.dhb-icon-dashboard {
-      @dashboard-side-menu-btn-dashboard-active();
-    }
-
-    .dashboard-button i.dhb-icon-impac {
-      @dashboard-side-menu-btn-impac();
-    }
-    .dashboard-button.active i.dhb-icon-impac,
-    .dashboard-button:hover i.dhb-icon-impac {
-      @dashboard-side-menu-btn-impac-active();
-    }
-
-    .dashboard-button i.dhb-icon-account {
-      @dashboard-side-menu-btn-account();
-    }
-    .dashboard-button:hover i.dhb-icon-account,
-    .dashboard-button.active i.dhb-icon-account {
-      @dashboard-side-menu-btn-account-active();
-    }
-
-    .dashboard-button i.dhb-icon-company {
-      @dashboard-side-menu-btn-company();
-    }
-    .dashboard-button:hover i.dhb-icon-company,
-    .dashboard-button.active i.dhb-icon-company {
-      @dashboard-side-menu-btn-company-active();
-    }
-
-    .dashboard-button i.dhb-icon-subscriptions {
-      @dashboard-side-menu-btn-subscriptions();
-    }
-    .dashboard-button:hover i.dhb-icon-subscriptions,
-    .dashboard-button.active i.dhb-icon-subscriptions {
-      @dashboard-side-menu-btn-subscriptions-active();
-    }
-
-    .dashboard-button i.dhb-icon-marketplace {
-      @dashboard-side-menu-btn-marketplace();
-    }
-    .dashboard-button:hover i.dhb-icon-marketplace,
-    .dashboard-button.active i.dhb-icon-marketplace {
-      @dashboard-side-menu-btn-marketplace-active();
-    }
-
-    .dashboard-button i.dhb-icon-logout {
-      @dashboard-side-menu-btn-logout();
-    }
-    .dashboard-button:hover i.dhb-icon-logout,
-    .dashboard-button.active i.dhb-icon-logout {
-      @dashboard-side-menu-btn-logout-active();
-    }
-  }
-}
-
-#app-features {
-  border: @onboarding-app-features-border;
-  color: @onboarding-app-features-color;
-
-  .center-element {
-    margin-left: 10px;
-    margin-bottom: 12px;
-  }
-
-  .fa-check-square-o {
-    color: @onboarding-app-features-checked;
-  }
-  .fa-square-o {
-    color: @onboarding-app-features-unchecked;
-  }
-}
-
-mno-app-onboarding-btn {
-  display: block;
-
-  .button-check {
-    color: @onboarding-app-connect-check;
-  }
-
-  .button-loader {
-    color: @onboarding-app-connect-loader;
-  }
-
-  .btn {
-    margin-top: 5px;
-  }
-}
-
-mno-audit-events-list {
-  .table > thead > tr {
-    color: @table-cell-header-text-color;
-    background-color: @table-cell-header-bg-color;
-  }
-
-  .table-striped > tbody > tr {
-    &:nth-of-type(even) {
-      background-color: @table-cell-row-even-bg-color
-    }
-
-    &:nth-of-type(odd) {
-      background-color: @table-cell-row-odd-bg-color
-    }
-  }
-}
-
-mno-loader {
-  display: block;
-
-  .loading {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: @dashboard-loader-color;
-
-    .loader-icon {
-      @dashboard-loader-icon();
-    }
-
-    .background-layer {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background-color: grey;
-      opacity: 0.6;
-    }
-  }
-}
-
-.loader-content {
-  position: relative;
-}
-
-mno-impersonation-bar {
-  #impersonate-bar {
-    color: @text-inverse-strong-color;
-    background-color: @bg-inverse-color;
-    padding-top: 3px;
-    padding-bottom: 3px;
-
-    @media (max-width: @screen-xs-max) {
-      padding-top: 40px;
-    }
-  }
-}
-
-mno-inline-message {
-  .mno-inline-checked {
-    color: @dashboard-account-inline-text-color-checked;
-  }
-
-  .mno-inline-unchecked {
-    color: @dashboard-account-inline-text-color-unchecked;
-  }
-}
-
-mno-pagination {
-  display: block;
-  overflow: auto;
-
-  .pagination {
-    margin: 0;
-  }
-
-  .nb-items-col {
-    float: right;
-
-    .items-per-page-select {
-      display: inline;
-      width: 75px;
-
-      @media (max-width: @screen-xs-max) {
-        margin-top: 15px;
-      }
-    }
-  }
-}
-
-mno-password {
-  display: block;
-}
-
-mno-without-organisation {
-  .well {
-    background-color: @without-organisation-well-bg;
-    color: @without-organisation-text-color;
-
-    h2 {
-      margin-top: 0;
-    }
-  }
-}
-
-average-star-rating, star-rating {
-  position: relative;
-  display: block;
-
-  ul.rating {
-    margin: 0;
-    padding: 0 !important;
-    display: inline-block;
-
-    li {
-      padding: 1px;
-      color: #ddd;
-      font-size: 20px;
-      text-shadow: .05em .05em #aaa;
-      list-style-type: none;
-      display: inline-block;
-      cursor: pointer;
-      outline: none;
-
-      &.filled {
-        color: #fd0; //#21568b
-      }
-    }
-
-    &.readonly li.filled {
-      color: #666;
-    }
-  }
-
-  .average-rating-container {
-    display: inline-block;
-    position: relative;
-    height: 31px;
-    width: 103px;
-    overflow: hidden;
-
-    &.withrating {
-      margin-right: 37px;
-    }
-
-    .rating li {
-      cursor: inherit;
-    }
-
-    .background,
-    .foreground {
-      position: absolute;
-      top: 0;
-      left: 0;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-  }
-
-  .badge {
-    position: absolute;
-    top: 5px;
-    right: 0;
-  }
-}
-
-theme-editor {
-  .theme-previewer-side-panel {
-    z-index: 9999;
-    width: 80%;
-    position: absolute;
-    right: -1px;
-    top: 5%;
-    height: 90%;
-    background-color: white;
-    border: solid 1px #c8d7d9;
-    border-radius: 6px 0 0 6px;
-    box-shadow: 0 1px 8px -4px;
-    transition: ease-out 0.5s;
-    overflow: hidden;
-
-    &.closed {
-      //right: 25px;
-      transform: translate3d(~'calc(100% - 30px)', 0, 0);
-    }
-
-    .collapse-switch-btn {
-      position: absolute;
-      left: 10px;
-      top: 3px;
-      font-size: 18px;
-    }
-
-    .content {
-      position: relative;
-      height: ~"calc(100% - 30px)";
-      margin-top: 30px;
-      padding-left: 15px;
-      padding-right: 15px;
-      overflow-y: auto;
-    }
-  }
 }
 
 #app-connect-modal {
