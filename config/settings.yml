@@ -16,17 +16,19 @@ frontend_host:
 # Feature Flags
 #===============================================
 dashboard:
+  dock:
+    enabled: true
   marketplace:
     pricing:
       enabled: true
       currency: USD
-  dock:
-    enabled: true
-  payment:
-    enabled: false
   organization_management:
     billing:
       enabled: false
+  payment:
+    enabled: false
+  provisioning:
+    enabled: true
   registration:
      enabled: false
 api:
