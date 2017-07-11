@@ -1,55 +1,15 @@
-.btn.btn-grey {
-  background-color: #26719d !important;
-}
 
-.text-bg-inverse {
-  color: @text-color !important;
-}
-
-@input-bg: white;
-.panel-title {
-  color: @text-strong-color !important;
-}
-
-.testimonial {
-  &.promo-dark {
-    color: @text-strong-color !important;
-    padding: 30px !important;
-  }
-}
-
-.dashboard-marketplace-app {
-  .show-content .ribbon-testimonial .from .name {
-    color: @text-strong-color !important;
-  }
-}
-
-.brand-logo {
-  display: none !important;
-}
-
+// Hide the company list
 dashboard-company-selectbox .company-select-box {
   .box-content {
     border-top: transparent !important;
   }
-  border-bottom-left-radius: 10px !important;
   ul {
     display: none !important;
   }
-  .default-link button {
-    display: none !important;
-  }
 }
 
-dashboard-company-selectbox .company-select-box {
-  .box-header .title .company {
-    color: @text-inverse-strong-color;
-  }
-  .box-content div.default-link {
-    display: none;
-  }
-}
-
+// Add a line on the panels between the header and body
 .panel-group .panel-heading + .panel-collapse > .panel-body, .panel-group .panel-heading + .panel-collapse > .list-group {
   border-top: 1px solid @input-border !important;
 }
