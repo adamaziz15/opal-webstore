@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/maestrano/mno-enterprise.git
-  revision: 5a6cbe064a85e40870b816f1c00c572479de3c73
+  revision: 579a535adcead8f918c8374413e7cfe5c04ce5da
   branch: 4.0
   specs:
     mno-enterprise (3.3.0)
@@ -166,7 +166,7 @@ GEM
     httparty (0.13.7)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
-    i18n (0.8.4)
+    i18n (0.8.6)
     i18n_data (0.7.0)
     intercom (3.5.12)
       json (>= 1.8)

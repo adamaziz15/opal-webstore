@@ -8,7 +8,7 @@
 
 "mno-enterprise-angular@git+https://git@github.com/maestrano/mno-enterprise-angular.git#2.0":
   version "1.1.0"
-  resolved "git+https://git@github.com/maestrano/mno-enterprise-angular.git#c2d2fb2c73c9ded3863d17ff8268fecee5eb8dc5"
+  resolved "git+https://git@github.com/maestrano/mno-enterprise-angular.git#1f8570089d6a31aee89706429dd4553000b6d7ff"
 
 "mnoe-admin-panel@git+https://git@github.com/maestrano/mnoe-admin-panel.git#2.0":
   version "1.0.0"
