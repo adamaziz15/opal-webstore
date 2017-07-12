@@ -12,6 +12,10 @@ export RAILS_LOG_TO_STDOUT=${RAILS_LOG_TO_STDOUT:-true}
 export GIT_BRANCH=${GIT_BRANCH:-master}
 export BUNDLE_JOBS=${BUNDLE_JOBS:-$(nproc)} # default to number of cores
 
+# Set mno-enterprise environnment variables
+export mailer_default_host=${DEFAULT_APP_HOST}
+export mailer_default_protocol=${DEFAULT_APP_PROTOCOL}
+
 # Configure bundler to use gemstash server if specified
 if [ -n "$GEMSTASH_SERVER" ]; then
   bundle config mirror.https://rubygems.org $GEMSTASH_SERVER
