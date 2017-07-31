@@ -7,13 +7,13 @@
   resolved "https://github.com/sstephenson/bats#03608115df2071fff4eaaff1605768c275e5f81f"
 
 "impac-angular@git+https://git@github.com/maestrano/impac-angular.git#1.5.x":
-  version "1.5.2"
-  resolved "git+https://git@github.com/maestrano/impac-angular.git#846e9831e52a469698f8a9bb2bc83b5c5f7b6660"
+  version "1.5.3"
+  resolved "git+https://git@github.com/maestrano/impac-angular.git#95a3a89d9ee5acdcd8e3b3f86fec65085465f7a7"
 
 "mno-enterprise-angular@git+https://git@github.com/maestrano/mno-enterprise-angular.git#2.0":
-  version "1.1.0"
-  resolved "git+https://git@github.com/maestrano/mno-enterprise-angular.git#1f8570089d6a31aee89706429dd4553000b6d7ff"
+  version "2.0.0-dev"
+  resolved "git+https://git@github.com/maestrano/mno-enterprise-angular.git#acf9b4249ebefc837bcee15b8f5f2d2ed4e1a439"
 
 "mnoe-admin-panel@git+https://git@github.com/maestrano/mnoe-admin-panel.git#2.0":
-  version "1.0.0"
-  resolved "git+https://git@github.com/maestrano/mnoe-admin-panel.git#378ea4389d84008a36fe788d3940a6acacfafb00"
+  version "2.0.0-dev"
+  resolved "git+https://git@github.com/maestrano/mnoe-admin-panel.git#71920918938bd0b1386ec0d2707f7b4b627ed3dc"
