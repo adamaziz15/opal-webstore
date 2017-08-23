@@ -39,7 +39,8 @@ admin_panel:
   audit_log:
     enabled: false
   impersonation:
-    enabled: false
+    enabled: true
+    consent_required: true
   finance:
     enabled: false
 # Allow for a default SMTP server to be set via MnoHub
