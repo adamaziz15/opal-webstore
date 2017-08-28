@@ -6,6 +6,6 @@ Rails.application.routes.draw do
 
   mount MnoEnterprise::Engine, at: '/mnoe', as: :mno_enterprise
 
-  root to: redirect('mnoe/auth/users/sign_in')
+  root to: redirect('dashboard/')
 
 end
