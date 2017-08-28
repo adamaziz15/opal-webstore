@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/maestrano/mno-enterprise.git
-  revision: bc11e085a1731ca56137129bab83c59a2a670db6
+  revision: 1556a7ae1c7d6547f962c484f5be2b04bfb1ea23
   branch: 4.0
   specs:
     mno-enterprise (3.3.1)
@@ -82,8 +82,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    addressable (2.5.1)
-      public_suffix (~> 2.0, >= 2.0.2)
+    addressable (2.5.2)
+      public_suffix (>= 2.0.2, < 4.0)
     arel (6.0.4)
     bcrypt (3.1.11)
     builder (3.2.3)
@@ -240,7 +240,7 @@ GEM
       ttfunk (~> 1.5)
     prawn-table (0.2.2)
       prawn (>= 1.3.0, < 3.0.0)
-    public_suffix (2.0.5)
+    public_suffix (3.0.0)
     puma (3.7.1)
     rack (1.6.8)
     rack-protection (1.5.3)
