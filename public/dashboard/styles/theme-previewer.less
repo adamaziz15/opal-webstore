@@ -1112,166 +1112,6 @@ dashboard-company-selectbox .company-select-box {
   }
 }
 
-dashboard-company-selectbox {
-  /*-----------------------------------------------------------------------*/
-  /*                       Company Select Box                              */
-  /*-----------------------------------------------------------------------*/
-  .company-select-box {
-    position: absolute;
-    right: 0;
-    width: @dashboard-cpy-select-width;
-    background-color: @dashboard-cpy-select-bg-color;
-    font-size: @dashboard-cpy-select-header-text-size;
-    border-radius: @dashboard-cpy-select-border-radius;
-    border-left: 1px solid @dashboard-cpy-select-border-color;
-    border-bottom: 1px solid @dashboard-cpy-select-border-color;
-    z-index: 999;
-    overflow: hidden;
-
-    @media (max-width: @screen-sm) {
-      border-radius: 0;
-    }
-
-    // Section always visible
-    .box-header {
-      cursor: pointer;
-      text-align: right;
-      outline: none;
-      display: flex;
-      align-items: center;
-      padding: 10px 20px;
-
-      img {
-        border-radius: 50%;
-        height: @dashboard-cpy-select-pic-width;
-        width: @dashboard-cpy-select-pic-width;
-      }
-
-      .title {
-        margin: 0 10px;
-        width: ~'calc(100% -' (2 * @dashboard-cpy-select-pic-width) ~')';
-        text-align: left;
-
-        .name {
-          font-weight: bold;
-          color: @dashboard-cpy-select-header-title-color;
-        }
-
-        .company {
-          width: 100%;
-          display: block;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          color: @dashboard-cpy-select-header-company-color;
-        }
-      }
-      .expand-menu {
-        margin-left: auto;
-      }
-    }
-
-    // Section visible when change company is clicked
-    .box-content {
-      border-top: solid 1px @dashboard-cpy-select-list-border-color;
-      overflow: hidden;
-
-      // General look of the links
-      a {
-        line-height: 17px;
-        display: block;
-        padding: 4px 0 4px 20px;
-        outline: none;
-      }
-
-      // List of companies
-      ul {
-        padding: 15px 20px 0 20px;
-        max-height: 400px;
-        min-width: 250px;
-        overflow-y: auto;
-
-        > li {
-
-          > a.company-link {
-            text-decoration: none;
-            padding: 4px;
-            display: flex;
-            color: @dashboard-cpy-select-link-text-color;
-
-            &:hover {
-              background-color: @dashboard-cpy-select-link-hover-bg-color;
-              border-bottom-left-radius: 0;
-            }
-
-            // Circle next to company name
-            // Indicate which company is currently viewed on dashboard
-            > i {
-              flex: 0 0 20px;
-              width: 13px;
-              padding: 2px 0;
-              display: inline-flex;
-              text-align: center;
-              color: @dashboard-cpy-select-link-icon-color;
-            }
-
-            > span {
-              text-align: left;
-              display: inline-flex;
-              flex: 1 1 auto;
-            }
-          }
-        }
-      }
-
-      .default-link {
-        color: @dashboard-cpy-select-link-color;
-        padding: 10px 20px;
-        text-align: left;
-        border-top: 1px solid @dashboard-cpy-select-list-border-color;
-
-        .btn {
-          width: 100%;
-          padding: 3px;
-        }
-
-        // Icon on the left side of the link
-        i {
-          width: 20px;
-          text-align: center;
-          font-size: 11pt;
-        }
-
-        &:hover {
-          text-decoration: none;
-          color: @dashboard-cpy-select-link-hover-color;
-          background-color: @dashboard-cpy-select-link-hover-bg-color;
-        }
-      }
-    }
-  }
-
-  @media (max-width: @screen-sm) {
-    .company-select-box {
-      width: 100%;
-      position: fixed;
-      border-left: none;
-      border-top: 1px solid @dashboard-cpy-select-border-color;
-      top: ~'calc(1px + ' @navbar-height ~')';  // Add top border
-    }
-  }
-}
-
-
-dashboard-language-selectbox {
-  display: block;
-
-  .selector-line {
-    display: inline-block;
-    margin: 5px auto;
-  }
-}
-
 #app-dock-container {
   position: absolute;
   left: 0;
@@ -1556,6 +1396,166 @@ ul.dock > li.prev img.app-logo {
   }
 }
 
+dashboard-company-selectbox {
+  /*-----------------------------------------------------------------------*/
+  /*                       Company Select Box                              */
+  /*-----------------------------------------------------------------------*/
+  .company-select-box {
+    position: absolute;
+    right: 0;
+    width: @dashboard-cpy-select-width;
+    background-color: @dashboard-cpy-select-bg-color;
+    font-size: @dashboard-cpy-select-header-text-size;
+    border-radius: @dashboard-cpy-select-border-radius;
+    border-left: 1px solid @dashboard-cpy-select-border-color;
+    border-bottom: 1px solid @dashboard-cpy-select-border-color;
+    z-index: 999;
+    overflow: hidden;
+
+    @media (max-width: @screen-sm) {
+      border-radius: 0;
+    }
+
+    // Section always visible
+    .box-header {
+      cursor: pointer;
+      text-align: right;
+      outline: none;
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+
+      img {
+        border-radius: 50%;
+        height: @dashboard-cpy-select-pic-width;
+        width: @dashboard-cpy-select-pic-width;
+      }
+
+      .title {
+        margin: 0 10px;
+        width: ~'calc(100% -' (2 * @dashboard-cpy-select-pic-width) ~')';
+        text-align: left;
+
+        .name {
+          font-weight: bold;
+          color: @dashboard-cpy-select-header-title-color;
+        }
+
+        .company {
+          width: 100%;
+          display: block;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          color: @dashboard-cpy-select-header-company-color;
+        }
+      }
+      .expand-menu {
+        margin-left: auto;
+      }
+    }
+
+    // Section visible when change company is clicked
+    .box-content {
+      border-top: solid 1px @dashboard-cpy-select-list-border-color;
+      overflow: hidden;
+
+      // General look of the links
+      a {
+        line-height: 17px;
+        display: block;
+        padding: 4px 0 4px 20px;
+        outline: none;
+      }
+
+      // List of companies
+      ul {
+        padding: 15px 20px 0 20px;
+        max-height: 400px;
+        min-width: 250px;
+        overflow-y: auto;
+
+        > li {
+
+          > a.company-link {
+            text-decoration: none;
+            padding: 4px;
+            display: flex;
+            color: @dashboard-cpy-select-link-text-color;
+
+            &:hover {
+              background-color: @dashboard-cpy-select-link-hover-bg-color;
+              border-bottom-left-radius: 0;
+            }
+
+            // Circle next to company name
+            // Indicate which company is currently viewed on dashboard
+            > i {
+              flex: 0 0 20px;
+              width: 13px;
+              padding: 2px 0;
+              display: inline-flex;
+              text-align: center;
+              color: @dashboard-cpy-select-link-icon-color;
+            }
+
+            > span {
+              text-align: left;
+              display: inline-flex;
+              flex: 1 1 auto;
+            }
+          }
+        }
+      }
+
+      .default-link {
+        color: @dashboard-cpy-select-link-color;
+        padding: 10px 20px;
+        text-align: left;
+        border-top: 1px solid @dashboard-cpy-select-list-border-color;
+
+        .btn {
+          width: 100%;
+          padding: 3px;
+        }
+
+        // Icon on the left side of the link
+        i {
+          width: 20px;
+          text-align: center;
+          font-size: 11pt;
+        }
+
+        &:hover {
+          text-decoration: none;
+          color: @dashboard-cpy-select-link-hover-color;
+          background-color: @dashboard-cpy-select-link-hover-bg-color;
+        }
+      }
+    }
+  }
+
+  @media (max-width: @screen-sm) {
+    .company-select-box {
+      width: 100%;
+      position: fixed;
+      border-left: none;
+      border-top: 1px solid @dashboard-cpy-select-border-color;
+      top: ~'calc(1px + ' @navbar-height ~')';  // Add top border
+    }
+  }
+}
+
+
+dashboard-language-selectbox {
+  display: block;
+
+  .selector-line {
+    display: inline-block;
+    margin: 5px auto;
+  }
+}
+
 dashboard-menu {
   /*-----------------------------------------------------------------------*/
   /*                         Mobile menu                                   */
@@ -1778,6 +1778,22 @@ impersonification-notification {
   }
 }
 
+mno-app-onboarding-btn {
+  display: block;
+
+  .button-check {
+    color: @onboarding-app-connect-check;
+  }
+
+  .button-loader {
+    color: @onboarding-app-connect-loader;
+  }
+
+  .btn {
+    margin-top: 5px;
+  }
+}
+
 mno-audit-events-list {
   .table > thead > tr {
     color: @table-cell-header-text-color;
@@ -1792,22 +1808,6 @@ mno-audit-events-list {
     &:nth-of-type(odd) {
       background-color: @table-cell-row-odd-bg-color
     }
-  }
-}
-
-mno-app-onboarding-btn {
-  display: block;
-
-  .button-check {
-    color: @onboarding-app-connect-check;
-  }
-
-  .button-loader {
-    color: @onboarding-app-connect-loader;
-  }
-
-  .btn {
-    margin-top: 5px;
   }
 }
 
