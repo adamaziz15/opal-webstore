@@ -13,7 +13,6 @@ gem 'uglifier', '>= 1.3.0'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'uuid'
-gem 'intercom', '~> 3.5.4'
 
 # Maestrano Enterprise Engine
 gem 'mno-enterprise', git: 'https://github.com/maestrano/mno-enterprise.git', branch: '4.0'

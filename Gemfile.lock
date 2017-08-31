@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/maestrano/mno-enterprise.git
-  revision: c1078c9ad14bf7636888a7981a5ee748e84313d2
+  revision: f261a7211c62645335968b776761a2783bb1459e
   branch: 4.0
   specs:
     mno-enterprise (3.3.1)
@@ -13,6 +13,7 @@ GIT
       haml (~> 4.0)
       health_check (~> 2.4)
       httparty (~> 0.13.7)
+      intercom (~> 3.5.17)
       jbuilder (~> 2.2.16)
       mno-enterprise-core (= 3.3.1)
       sprockets-rails (~> 2.3)
@@ -168,7 +169,7 @@ GEM
       multi_xml (>= 0.5.2)
     i18n (0.8.6)
     i18n_data (0.7.0)
-    intercom (3.5.12)
+    intercom (3.5.17)
       json (>= 1.8)
     jbuilder (2.2.16)
       activesupport (>= 3.0.0, < 5)
@@ -360,7 +361,6 @@ DEPENDENCIES
   fakeweb (~> 1.3)
   figaro
   httparty
-  intercom (~> 3.5.4)
   jquery-rails
   mno-enterprise!
   monetize
