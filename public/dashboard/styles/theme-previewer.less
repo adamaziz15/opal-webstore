@@ -1396,156 +1396,6 @@ ul.dock > li.prev img.app-logo {
   }
 }
 
-dashboard-company-selectbox {
-  /*-----------------------------------------------------------------------*/
-  /*                       Company Select Box                              */
-  /*-----------------------------------------------------------------------*/
-  .company-select-box {
-    position: absolute;
-    right: 0;
-    width: @dashboard-cpy-select-width;
-    background-color: @dashboard-cpy-select-bg-color;
-    font-size: @dashboard-cpy-select-header-text-size;
-    border-radius: @dashboard-cpy-select-border-radius;
-    border-left: 1px solid @dashboard-cpy-select-border-color;
-    border-bottom: 1px solid @dashboard-cpy-select-border-color;
-    z-index: 999;
-    overflow: hidden;
-
-    @media (max-width: @screen-sm) {
-      border-radius: 0;
-    }
-
-    // Section always visible
-    .box-header {
-      cursor: pointer;
-      text-align: right;
-      outline: none;
-      display: flex;
-      align-items: center;
-      padding: 10px 20px;
-
-      img {
-        border-radius: 50%;
-        height: @dashboard-cpy-select-pic-width;
-        width: @dashboard-cpy-select-pic-width;
-      }
-
-      .title {
-        margin: 0 10px;
-        width: ~'calc(100% -' (2 * @dashboard-cpy-select-pic-width) ~')';
-        text-align: left;
-
-        .name {
-          font-weight: bold;
-          color: @dashboard-cpy-select-header-title-color;
-        }
-
-        .company {
-          width: 100%;
-          display: block;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          color: @dashboard-cpy-select-header-company-color;
-        }
-      }
-      .expand-menu {
-        margin-left: auto;
-      }
-    }
-
-    // Section visible when change company is clicked
-    .box-content {
-      border-top: solid 1px @dashboard-cpy-select-list-border-color;
-      overflow: hidden;
-
-      // General look of the links
-      a {
-        line-height: 17px;
-        display: block;
-        padding: 4px 0 4px 20px;
-        outline: none;
-      }
-
-      // List of companies
-      ul {
-        padding: 15px 20px 0 20px;
-        max-height: 400px;
-        min-width: 250px;
-        overflow-y: auto;
-
-        > li {
-
-          > a.company-link {
-            text-decoration: none;
-            padding: 4px;
-            display: flex;
-            color: @dashboard-cpy-select-link-text-color;
-
-            &:hover {
-              background-color: @dashboard-cpy-select-link-hover-bg-color;
-              border-bottom-left-radius: 0;
-            }
-
-            // Circle next to company name
-            // Indicate which company is currently viewed on dashboard
-            > i {
-              flex: 0 0 20px;
-              width: 13px;
-              padding: 2px 0;
-              display: inline-flex;
-              text-align: center;
-              color: @dashboard-cpy-select-link-icon-color;
-            }
-
-            > span {
-              text-align: left;
-              display: inline-flex;
-              flex: 1 1 auto;
-            }
-          }
-        }
-      }
-
-      .default-link {
-        color: @dashboard-cpy-select-link-color;
-        padding: 10px 20px;
-        text-align: left;
-        border-top: 1px solid @dashboard-cpy-select-list-border-color;
-
-        .btn {
-          width: 100%;
-          padding: 3px;
-        }
-
-        // Icon on the left side of the link
-        i {
-          width: 20px;
-          text-align: center;
-          font-size: 11pt;
-        }
-
-        &:hover {
-          text-decoration: none;
-          color: @dashboard-cpy-select-link-hover-color;
-          background-color: @dashboard-cpy-select-link-hover-bg-color;
-        }
-      }
-    }
-  }
-
-  @media (max-width: @screen-sm) {
-    .company-select-box {
-      width: 100%;
-      position: fixed;
-      border-left: none;
-      border-top: 1px solid @dashboard-cpy-select-border-color;
-      top: ~'calc(1px + ' @navbar-height ~')';  // Add top border
-    }
-  }
-}
-
 
 dashboard-language-selectbox {
   display: block;
@@ -1755,9 +1605,153 @@ dashboard-menu {
   }
 }
 
-impersonification-notification {
-  .notifications {
-    padding-top: 70px;
+dashboard-company-selectbox {
+  /*-----------------------------------------------------------------------*/
+  /*                       Company Select Box                              */
+  /*-----------------------------------------------------------------------*/
+  .company-select-box {
+    position: absolute;
+    right: 0;
+    width: @dashboard-cpy-select-width;
+    background-color: @dashboard-cpy-select-bg-color;
+    font-size: @dashboard-cpy-select-header-text-size;
+    border-radius: @dashboard-cpy-select-border-radius;
+    border-left: 1px solid @dashboard-cpy-select-border-color;
+    border-bottom: 1px solid @dashboard-cpy-select-border-color;
+    z-index: 999;
+    overflow: hidden;
+
+    @media (max-width: @screen-sm) {
+      border-radius: 0;
+    }
+
+    // Section always visible
+    .box-header {
+      cursor: pointer;
+      text-align: right;
+      outline: none;
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+
+      img {
+        border-radius: 50%;
+        height: @dashboard-cpy-select-pic-width;
+        width: @dashboard-cpy-select-pic-width;
+      }
+
+      .title {
+        margin: 0 10px;
+        width: ~'calc(100% -' (2 * @dashboard-cpy-select-pic-width) ~')';
+        text-align: left;
+
+        .name {
+          font-weight: bold;
+          color: @dashboard-cpy-select-header-title-color;
+        }
+
+        .company {
+          width: 100%;
+          display: block;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          color: @dashboard-cpy-select-header-company-color;
+        }
+      }
+      .expand-menu {
+        margin-left: auto;
+      }
+    }
+
+    // Section visible when change company is clicked
+    .box-content {
+      border-top: solid 1px @dashboard-cpy-select-list-border-color;
+      overflow: hidden;
+
+      // General look of the links
+      a {
+        line-height: 17px;
+        display: block;
+        padding: 4px 0 4px 20px;
+        outline: none;
+      }
+
+      // List of companies
+      ul {
+        padding: 15px 20px 0 20px;
+        max-height: 400px;
+        min-width: 250px;
+        overflow-y: auto;
+
+        > li {
+
+          > a.company-link {
+            text-decoration: none;
+            padding: 4px;
+            display: flex;
+            color: @dashboard-cpy-select-link-text-color;
+
+            &:hover {
+              background-color: @dashboard-cpy-select-link-hover-bg-color;
+              border-bottom-left-radius: 0;
+            }
+
+            // Circle next to company name
+            // Indicate which company is currently viewed on dashboard
+            > i {
+              flex: 0 0 20px;
+              width: 13px;
+              padding: 2px 0;
+              display: inline-flex;
+              text-align: center;
+              color: @dashboard-cpy-select-link-icon-color;
+            }
+
+            > span {
+              text-align: left;
+              display: inline-flex;
+              flex: 1 1 auto;
+            }
+          }
+        }
+      }
+
+      .default-link {
+        color: @dashboard-cpy-select-link-color;
+        padding: 10px 20px;
+        text-align: left;
+        border-top: 1px solid @dashboard-cpy-select-list-border-color;
+
+        .btn {
+          width: 100%;
+          padding: 3px;
+        }
+
+        // Icon on the left side of the link
+        i {
+          width: 20px;
+          text-align: center;
+          font-size: 11pt;
+        }
+
+        &:hover {
+          text-decoration: none;
+          color: @dashboard-cpy-select-link-hover-color;
+          background-color: @dashboard-cpy-select-link-hover-bg-color;
+        }
+      }
+    }
+  }
+
+  @media (max-width: @screen-sm) {
+    .company-select-box {
+      width: 100%;
+      position: fixed;
+      border-left: none;
+      border-top: 1px solid @dashboard-cpy-select-border-color;
+      top: ~'calc(1px + ' @navbar-height ~')';  // Add top border
+    }
   }
 }
 
@@ -1775,6 +1769,12 @@ impersonification-notification {
   }
   .fa-square-o {
     color: @onboarding-app-features-unchecked;
+  }
+}
+
+impersonification-notification {
+  .notifications {
+    padding-top: 70px;
   }
 }
 
@@ -1897,67 +1897,6 @@ mno-without-organisation {
     h2 {
       margin-top: 0;
     }
-  }
-}
-
-average-star-rating, star-rating {
-  position: relative;
-  display: block;
-
-  ul.rating {
-    margin: 0;
-    padding: 0 !important;
-    display: inline-block;
-
-    li {
-      padding: 1px;
-      color: #ddd;
-      font-size: 20px;
-      text-shadow: .05em .05em #aaa;
-      list-style-type: none;
-      display: inline-block;
-      cursor: pointer;
-      outline: none;
-
-      &.filled {
-        color: #fd0; //#21568b
-      }
-    }
-
-    &.readonly li.filled {
-      color: #666;
-    }
-  }
-
-  .average-rating-container {
-    display: inline-block;
-    position: relative;
-    height: 31px;
-    width: 103px;
-    overflow: hidden;
-
-    &.withrating {
-      margin-right: 37px;
-    }
-
-    .rating li {
-      cursor: inherit;
-    }
-
-    .background,
-    .foreground {
-      position: absolute;
-      top: 0;
-      left: 0;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-  }
-
-  .badge {
-    position: absolute;
-    top: 5px;
-    right: 0;
   }
 }
 
@@ -2290,9 +2229,64 @@ form.editable-wrap .editable-controls input {
   padding-left: 5px;
 }
 
-#account {
-  .row:not(:first-child) {
-    margin-top: 15px;
+average-star-rating, star-rating {
+  position: relative;
+  display: block;
+
+  ul.rating {
+    margin: 0;
+    padding: 0 !important;
+    display: inline-block;
+
+    li {
+      padding: 1px;
+      color: #ddd;
+      font-size: 20px;
+      text-shadow: .05em .05em #aaa;
+      list-style-type: none;
+      display: inline-block;
+      cursor: pointer;
+      outline: none;
+
+      &.filled {
+        color: #fd0; //#21568b
+      }
+    }
+
+    &.readonly li.filled {
+      color: #666;
+    }
+  }
+
+  .average-rating-container {
+    display: inline-block;
+    position: relative;
+    height: 31px;
+    width: 103px;
+    overflow: hidden;
+
+    &.withrating {
+      margin-right: 37px;
+    }
+
+    .rating li {
+      cursor: inherit;
+    }
+
+    .background,
+    .foreground {
+      position: absolute;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+  }
+
+  .badge {
+    position: absolute;
+    top: 5px;
+    right: 0;
   }
 }
 
@@ -2385,6 +2379,21 @@ form.editable-wrap .editable-controls input {
         color: @brand-warning;
       }
     }
+  }
+}
+
+#impac {
+  impac-dashboard.with-dock {
+    @media(min-width: @screen-md-min) {
+      display: block;
+      .top-buffer-4;
+    }
+  }
+}
+
+#account {
+  .row:not(:first-child) {
+    margin-top: 15px;
   }
 }
 
@@ -2544,15 +2553,6 @@ form.editable-wrap .editable-controls input {
 
 .team-member-add-modal table tr td:last-child {
   text-align: left;
-}
-
-#impac {
-  impac-dashboard.with-dock {
-    @media(min-width: @screen-md-min) {
-      display: block;
-      .top-buffer-4;
-    }
-  }
 }
 
 //-------------------------------
