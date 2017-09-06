@@ -1120,16 +1120,6 @@ dashboard-company-selectbox .company-select-box {
   }
 }
 
-
-dashboard-language-selectbox {
-  display: block;
-
-  .selector-line {
-    display: inline-block;
-    margin: 5px auto;
-  }
-}
-
 #app-dock-container {
   position: absolute;
   left: 0;
@@ -1564,20 +1554,13 @@ dashboard-company-selectbox {
   }
 }
 
-#app-features {
-  border: @onboarding-app-features-border;
-  color: @onboarding-app-features-color;
 
-  .center-element {
-    margin-left: 10px;
-    margin-bottom: 12px;
-  }
+dashboard-language-selectbox {
+  display: block;
 
-  .fa-check-square-o {
-    color: @onboarding-app-features-checked;
-  }
-  .fa-square-o {
-    color: @onboarding-app-features-unchecked;
+  .selector-line {
+    display: inline-block;
+    margin: 5px auto;
   }
 }
 
@@ -1786,20 +1769,20 @@ impersonification-notification {
   }
 }
 
-mno-audit-events-list {
-  .table > thead > tr {
-    color: @table-cell-header-text-color;
-    background-color: @table-cell-header-bg-color;
+#app-features {
+  border: @onboarding-app-features-border;
+  color: @onboarding-app-features-color;
+
+  .center-element {
+    margin-left: 10px;
+    margin-bottom: 12px;
   }
 
-  .table-striped > tbody > tr {
-    &:nth-of-type(even) {
-      background-color: @table-cell-row-even-bg-color
-    }
-
-    &:nth-of-type(odd) {
-      background-color: @table-cell-row-odd-bg-color
-    }
+  .fa-check-square-o {
+    color: @onboarding-app-features-checked;
+  }
+  .fa-square-o {
+    color: @onboarding-app-features-unchecked;
   }
 }
 
@@ -1816,6 +1799,23 @@ mno-app-onboarding-btn {
 
   .btn {
     margin-top: 5px;
+  }
+}
+
+mno-audit-events-list {
+  .table > thead > tr {
+    color: @table-cell-header-text-color;
+    background-color: @table-cell-header-bg-color;
+  }
+
+  .table-striped > tbody > tr {
+    &:nth-of-type(even) {
+      background-color: @table-cell-row-even-bg-color
+    }
+
+    &:nth-of-type(odd) {
+      background-color: @table-cell-row-odd-bg-color
+    }
   }
 }
 
@@ -1966,6 +1966,44 @@ average-star-rating, star-rating {
     position: absolute;
     top: 5px;
     right: 0;
+  }
+}
+
+theme-editor {
+  .theme-previewer-side-panel {
+    z-index: 9999;
+    width: 80%;
+    position: absolute;
+    right: -1px;
+    top: 5%;
+    height: 90%;
+    background-color: white;
+    border: solid 1px #c8d7d9;
+    border-radius: 6px 0 0 6px;
+    box-shadow: 0 1px 8px -4px;
+    transition: ease-out 0.5s;
+    overflow: hidden;
+
+    &.closed {
+      //right: 25px;
+      transform: translate3d(~'calc(100% - 30px)', 0, 0);
+    }
+
+    .collapse-switch-btn {
+      position: absolute;
+      left: 10px;
+      top: 3px;
+      font-size: 18px;
+    }
+
+    .content {
+      position: relative;
+      height: ~"calc(100% - 30px)";
+      margin-top: 30px;
+      padding-left: 15px;
+      padding-right: 15px;
+      overflow-y: auto;
+    }
   }
 }
 
@@ -2260,6 +2298,104 @@ form.editable-wrap .editable-controls input {
   padding-left: 5px;
 }
 
+#account {
+  .row:not(:first-child) {
+    margin-top: 15px;
+  }
+}
+
+#dashboard-apps-list {
+  .app-dashboard {
+    min-height: 280px;
+    max-width: 225px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    background-color: @dashboard-apps-tile-bg-color;
+    text-align: center;
+    padding: 30px 0px;
+    padding-bottom: 0px;
+    margin-top: 15px;
+
+    .btn-change-plan {
+      margin-top:50px;
+    }
+
+    .title {
+      .font(14px,normal,@dashboard-apps-tile-text-color);
+      margin-top:10px;
+      margin-bottom:10px;
+    }
+
+    .app-line {
+      .font(12px,normal,@text-inverse-color);
+    }
+
+    img.app-logo {
+      border-radius: 5px;
+      .square(85px);
+      border: solid @dashboard-apps-tile-logo-border-size @dashboard-apps-tile-logo-border-color;
+    }
+
+    .connector-logo {
+      margin-top: 3px;
+      margin-bottom: 3px;
+      cursor: pointer;
+    }
+
+    .office365-connector-logo {
+      height: 32px;
+      padding: 2px;
+    }
+
+    .tutorial {
+      display:block;
+      margin-top: 7px;
+    }
+
+    // App Tile Settings (top right)
+    a.options {
+      line-height: 19px;
+      .square(20px);
+      border-radius: 20px;
+      color: @dashboard-apps-tile-settings-color;
+      background-color: @dashboard-apps-tile-settings-bg-color;
+      float:right;
+      margin: -25px 5px 0px 0px;
+    }
+
+    a.options:hover {
+      color: @dashboard-apps-tile-settings-hover-color;
+      background-color: @dashboard-apps-tile-settings-hover-bg-color;
+    }
+    a.options i {
+      margin-top: 3px;
+    }
+
+    .app-custom-info {
+      position: relative;
+      top: -10px;
+      z-index: 999;
+    }
+
+    // Add application tile (tile with + button)
+    &.add-app {
+      padding:15px 0px;
+      font-size:140px;
+      color: @dashboard-apps-tile-add-color;
+      background-color: @dashboard-apps-tile-add-bg-color;
+    }
+
+    &.add-app a {
+      color: @dashboard-bg-color;
+
+      &:hover {
+        color: @brand-warning;
+      }
+    }
+  }
+}
+
 .dashboard-organization {
 
   //-----------------------------------
@@ -2423,142 +2559,6 @@ form.editable-wrap .editable-controls input {
     @media(min-width: @screen-md-min) {
       display: block;
       .top-buffer-4;
-    }
-  }
-}
-
-#account {
-  .row:not(:first-child) {
-    margin-top: 15px;
-  }
-}
-
-theme-editor {
-  .theme-previewer-side-panel {
-    z-index: 9999;
-    width: 80%;
-    position: absolute;
-    right: -1px;
-    top: 5%;
-    height: 90%;
-    background-color: white;
-    border: solid 1px #c8d7d9;
-    border-radius: 6px 0 0 6px;
-    box-shadow: 0 1px 8px -4px;
-    transition: ease-out 0.5s;
-    overflow: hidden;
-
-    &.closed {
-      //right: 25px;
-      transform: translate3d(~'calc(100% - 30px)', 0, 0);
-    }
-
-    .collapse-switch-btn {
-      position: absolute;
-      left: 10px;
-      top: 3px;
-      font-size: 18px;
-    }
-
-    .content {
-      position: relative;
-      height: ~"calc(100% - 30px)";
-      margin-top: 30px;
-      padding-left: 15px;
-      padding-right: 15px;
-      overflow-y: auto;
-    }
-  }
-}
-
-#dashboard-apps-list {
-  .app-dashboard {
-    min-height: 280px;
-    max-width: 225px;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 5px;
-    background-color: @dashboard-apps-tile-bg-color;
-    text-align: center;
-    padding: 30px 0px;
-    padding-bottom: 0px;
-    margin-top: 15px;
-
-    .btn-change-plan {
-      margin-top:50px;
-    }
-
-    .title {
-      .font(14px,normal,@dashboard-apps-tile-text-color);
-      margin-top:10px;
-      margin-bottom:10px;
-    }
-
-    .app-line {
-      .font(12px,normal,@text-inverse-color);
-    }
-
-    img.app-logo {
-      border-radius: 5px;
-      .square(85px);
-      border: solid @dashboard-apps-tile-logo-border-size @dashboard-apps-tile-logo-border-color;
-    }
-
-    .connector-logo {
-      margin-top: 3px;
-      margin-bottom: 3px;
-      cursor: pointer;
-    }
-
-    .office365-connector-logo {
-      height: 32px;
-      padding: 2px;
-    }
-
-    .tutorial {
-      display:block;
-      margin-top: 7px;
-    }
-
-    // App Tile Settings (top right)
-    a.options {
-      line-height: 19px;
-      .square(20px);
-      border-radius: 20px;
-      color: @dashboard-apps-tile-settings-color;
-      background-color: @dashboard-apps-tile-settings-bg-color;
-      float:right;
-      margin: -25px 5px 0px 0px;
-    }
-
-    a.options:hover {
-      color: @dashboard-apps-tile-settings-hover-color;
-      background-color: @dashboard-apps-tile-settings-hover-bg-color;
-    }
-    a.options i {
-      margin-top: 3px;
-    }
-
-    .app-custom-info {
-      position: relative;
-      top: -10px;
-      z-index: 999;
-    }
-
-    // Add application tile (tile with + button)
-    &.add-app {
-      padding:15px 0px;
-      font-size:140px;
-      color: @dashboard-apps-tile-add-color;
-      background-color: @dashboard-apps-tile-add-bg-color;
-    }
-
-    &.add-app a {
-      color: @dashboard-bg-color;
-
-      &:hover {
-        color: @brand-warning;
-      }
     }
   }
 }
@@ -3474,21 +3474,6 @@ theme-editor {
   }
 }
 
-.dashboard-organization {
-  // credit card icons display modes
-  //---------------------------------
-
-  [class^="mnoe-icon-cc-icons-mno-cc-"].disabled,
-  [class*="mnoe-icon-cc-icons-mno-cc-"].disabled {
-    opacity: 0.4;
-  }
-
-  [class^="mnoe-icon-cc-icons-mno-cc-"].enabled,
-  [class*="mnoe-icon-cc-icons-mno-cc-"].enabled {
-    opacity: 1;
-  }
-}
-
 #app-connect-modal {
 
   select {
@@ -3573,10 +3558,18 @@ theme-editor {
   }
 }
 
-.create-review-modal {
-  textarea.form-control {
-    max-width: 100%;
-    background-color: white;
+.dashboard-organization {
+  // credit card icons display modes
+  //---------------------------------
+
+  [class^="mnoe-icon-cc-icons-mno-cc-"].disabled,
+  [class*="mnoe-icon-cc-icons-mno-cc-"].disabled {
+    opacity: 0.4;
+  }
+
+  [class^="mnoe-icon-cc-icons-mno-cc-"].enabled,
+  [class*="mnoe-icon-cc-icons-mno-cc-"].enabled {
+    opacity: 1;
   }
 }
 
@@ -3720,6 +3713,13 @@ theme-editor {
   }
 }
 
+.create-review-modal {
+  textarea.form-control {
+    max-width: 100%;
+    background-color: white;
+  }
+}
+
 #app-info {
   ul {
     margin: 0;
@@ -3746,6 +3746,52 @@ theme-editor {
   src: url("@{font-path}/Lato-Light.ttf") format('truetype');
   font-weight: normal;
   font-style: normal
+}
+
+
+.mnoe-icon {
+  background-image: url('../images/sprites/mnoe-sprites.png');
+}
+
+.mnoe-icon-cc-icons-mno-cc-amex {
+  background-position: -0px -0px;
+  width: 46px;
+  height: 30px;
+}
+.mnoe-icon-cc-icons-mno-cc-jcb {
+  background-position: -0px -30px;
+  width: 46px;
+  height: 30px;
+}
+.mnoe-icon-cc-icons-mno-cc-mastercard {
+  background-position: -0px -60px;
+  width: 46px;
+  height: 30px;
+}
+.mnoe-icon-cc-icons-mno-cc-visa {
+  background-position: -0px -90px;
+  width: 46px;
+  height: 30px;
+}
+.mnoe-icon-cpy-logo-siteseal {
+  background-position: -0px -120px;
+  width: 131px;
+  height: 32px;
+}
+.mnoe-icon-cc-icons-mno-cc-lock {
+  background-position: -0px -152px;
+  width: 35px;
+  height: 46px;
+}
+.mnoe-icon-cpy-logo-cba {
+  background-position: -0px -198px;
+  width: 94px;
+  height: 70px;
+}
+.mnoe-icon-cpy-logo-eway {
+  background-position: -0px -268px;
+  width: 140px;
+  height: 70px;
 }
 
 // endinjector
