@@ -1807,6 +1807,23 @@ mno-app-onboarding-btn {
   }
 }
 
+mno-audit-events-list {
+  .table > thead > tr {
+    color: @table-cell-header-text-color;
+    background-color: @table-cell-header-bg-color;
+  }
+
+  .table-striped > tbody > tr {
+    &:nth-of-type(even) {
+      background-color: @table-cell-row-even-bg-color
+    }
+
+    &:nth-of-type(odd) {
+      background-color: @table-cell-row-odd-bg-color
+    }
+  }
+}
+
 mno-impersonation-bar {
   #impersonate-bar {
     color: @text-inverse-strong-color;
@@ -1827,23 +1844,6 @@ mno-inline-message {
 
   .mno-inline-unchecked {
     color: @dashboard-account-inline-text-color-unchecked;
-  }
-}
-
-mno-audit-events-list {
-  .table > thead > tr {
-    color: @table-cell-header-text-color;
-    background-color: @table-cell-header-bg-color;
-  }
-
-  .table-striped > tbody > tr {
-    &:nth-of-type(even) {
-      background-color: @table-cell-row-even-bg-color
-    }
-
-    &:nth-of-type(odd) {
-      background-color: @table-cell-row-odd-bg-color
-    }
   }
 }
 
@@ -1876,10 +1876,6 @@ mno-loader {
   position: relative;
 }
 
-mno-password {
-  display: block;
-}
-
 mno-pagination {
   display: block;
   overflow: auto;
@@ -1900,6 +1896,10 @@ mno-pagination {
       }
     }
   }
+}
+
+mno-password {
+  display: block;
 }
 
 mno-without-organisation {
@@ -2577,359 +2577,6 @@ form.editable-wrap .editable-controls input {
   }
 }
 
-
-#onboarding {
-  header.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: @onboarding-header-height;
-    background: @onboarding-header-background-color;
-    color: @onboarding-header-font-color;
-
-    @media (max-width: @screen-xs-max) {
-      .name {
-        display: none;
-      }
-    }
-    
-    .onboarding-menu {
-      padding-right: 10px;
-
-      .default-link {
-        color: @onboarding-header-menu-text;
-        background: @onboarding-header-bg-menu;
-        padding: 10px 20px;
-
-        i {
-          width: 20px;
-        }
-
-        &:hover {
-          text-decoration: none;
-          color: @onboarding-header-menu-text-hover;
-          background-color: @onboarding-header-bg-menu-hover;
-        }
-      }
-      
-      .box-content {
-        padding-top: 5px;
-        position: absolute;
-        margin-right: 10px;
-        width: 100%;
-        overflow: hidden;
-        border-bottom-left-radius: 1em;
-
-        a {
-          display: block;
-        }  
-      }
-    }
-
-    .logo {
-      height: 40px;
-      margin-left: 10px;
-    }
-
-    .avatar {
-      .img-circle;
-      margin-left: 10px;
-      margin-right: 10px;
-    }
-  }
-
-  .sub-header {
-    .z-depth(3);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: @onboarding-subheader-height;
-    background: @onboarding-subheader-background-color;
-    color: @onboarding-subheader-font-color;
-    margin-bottom: 20px;
-
-    .breadcrumb-item {
-      text-decoration: none;
-
-      // Deactivate the link
-      pointer-events: none;
-
-      .badge {
-        color: @onboarding-breadcrumb-badge-color;
-        background-color: @onboarding-breadcrumb-badge-bg;
-      }
-
-      &.active {
-        .badge {
-          color: @onboarding-breadcrumb-badge-color-active;
-          background: @onboarding-breadcrumb-badge-bg-active;
-        }
-      }
-
-      .title {
-        color: @onboarding-breadcrumb-link-color;
-
-        @media (max-width: @screen-xs-max) {
-          display: none;
-        }
-
-        &:hover, &:focus {
-          font-weight: 400;
-        }
-      }
-    }
-  }
-
-  .content-panel {
-    .z-depth(6);
-    border-radius: @onboarding-content-panel-border-radius;
-    padding: 20px;
-    margin-bottom: 30px;
-    background-color: @onboarding-content-panel-bg;
-    color: @onboarding-content-panel-color;
-
-    h1 {
-      margin-top: 0;
-    }
-  }
-
-  .next-button {
-    .top-buffer-2;
-    font-size: larger;
-  }
-}
-
-#step1 {
-
-}
-
-#step2 {
-  .apps-container {
-    display: flex;
-    flex-wrap: wrap;
-    text-align: center;
-    justify-content: flex-start;
-    padding: 1em;
-
-    #data-shared {
-      margin-left: 0.5em;
-      flex: 1;
-      padding: 0.5em;
-    }
-
-    #apps-widget {
-      flex: 1;
-      padding: 0.5em;
-    }
-
-    #apps-widget {
-      #widget-header-bar {
-        position: relative;
-        display: flex;
-        justify-content: space-around;
-
-        #app-search, #app-category {
-          width: 45%;
-          flex: 1;
-        }
-
-        #app-category {
-          margin-left: 5%;
-        }
-      }
-
-      .app-tile {
-        position: relative;
-        max-width: 108px;
-        margin: 10px;
-        float: left;
-
-        .app-info-modal {
-          position: absolute;
-          top: 0;
-          right: 3px;
-          z-index: 10;
-          width: 14px;
-          color: @onboarding-app-selector-info;
-        }
-
-        .app-icon {
-          outline: none;
-          position: relative;
-
-          .app-logo {
-            width: 100%;
-          }
-
-          .checked {
-            position: absolute;
-            border-radius: 6px;
-            background-color: @onboarding-app-selector-check-color;
-            left: 0;
-            right: 0;
-            top: 0;
-            bottom: 0;
-
-            // Center the tick
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
-        }
-
-        .app-title {
-          color: @onboarding-app-selector-title;
-          text-align: center;
-          margin-top: 5px;
-          .ellipsis;
-        }
-      }
-    }
-
-    #data-shared {
-      max-width: 50%;
-
-      @media (max-width: @screen-sm-max) {
-        display: none;
-      }
-
-      .table-data-shared {
-        table-layout: fixed;
-        text-align: center;
-        margin: 5px 5px 0 10px;
-
-        .fa-check {
-          color: @onboarding-app-entities-checked;
-        }
-
-        .fa-times {
-          color: @onboarding-app-entities-unchecked;
-        }
-
-        .th-app {
-          text-align: center;
-
-          .header-logo {
-            width: 60px;
-          }
-
-          .app-title {
-            margin-top: 5px;
-            .ellipsis;
-          }
-        }
-      }
-    }
-  }
-
-  .onboarding-footer {
-    margin-top: 15px;
-  }
-}
-
-#step3 {
-
-  .apps-loader {
-    color: @onboarding-fetching-apps-loader-color;
-  }
-
-  .apps-wrapper {
-    .top-buffer-1;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-
-    .app-card {
-      .top-buffer-1;
-      text-align: center;
-      background-color: @onboarding-app-card-bg-color;
-      color: @onboarding-app-card-text-color;
-      padding: @onboarding-app-card-padding;
-      .z-depth(3);
-      width: 220px;
-
-      h4 {
-        margin-top: 5px;
-      }
-
-      mno-app-install-btn {
-        display: block;
-        .top-buffer-1;
-      }
-    }
-  }
-
-  .next-button-wrapper {
-    width: 100%;
-    float: left;
-  }
-}
-
-#provisioning-confirm {
-
-}
-
-#provisioning-details {
-
-}
-
-#provisioning-layout {
-  nav {
-    display: flex;
-    justify-content: space-around;
-    .top-buffer-5;
-
-    .breadcrumb-item {
-      // Deactivate the link
-      pointer-events: none;
-      color: @provisioning-breadcrumb-item-color;
-
-      .badge {
-        background-color: @provisioning-breadcrumb-item-badge-bg;
-      }
-
-      &.active {
-        color: @provisioning-breadcrumb-item-active-color;
-
-        .badge {
-          background-color: @provisioning-breadcrumb-item-active-badge-bg;
-        }
-      }
-    }
-  }
-
-  h1 {
-    .top-buffer-3;
-  }
-
-  .well {
-    .top-buffer-1;
-    background-color: @provisioning-well-bg-color;
-  }
-}
-
-#provisioning-order {
-  .row {
-    display: flex;
-    align-items: center;
-  }
-
-  .radio-selector {
-    display: flex;
-    justify-content: center;
-  }
-}
-
-#provisioning-subscriptions {
-  .well {
-    background-color: @provisioning-well-bg-color;
-  }
-}
-
-#provisioning-summary {
-
-}
-
 //-------------------------------
 // Show View
 //-------------------------------
@@ -3351,6 +2998,359 @@ form.editable-wrap .editable-controls input {
   }
 }
 
+
+#onboarding {
+  header.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: @onboarding-header-height;
+    background: @onboarding-header-background-color;
+    color: @onboarding-header-font-color;
+
+    @media (max-width: @screen-xs-max) {
+      .name {
+        display: none;
+      }
+    }
+    
+    .onboarding-menu {
+      padding-right: 10px;
+
+      .default-link {
+        color: @onboarding-header-menu-text;
+        background: @onboarding-header-bg-menu;
+        padding: 10px 20px;
+
+        i {
+          width: 20px;
+        }
+
+        &:hover {
+          text-decoration: none;
+          color: @onboarding-header-menu-text-hover;
+          background-color: @onboarding-header-bg-menu-hover;
+        }
+      }
+      
+      .box-content {
+        padding-top: 5px;
+        position: absolute;
+        margin-right: 10px;
+        width: 100%;
+        overflow: hidden;
+        border-bottom-left-radius: 1em;
+
+        a {
+          display: block;
+        }  
+      }
+    }
+
+    .logo {
+      height: 40px;
+      margin-left: 10px;
+    }
+
+    .avatar {
+      .img-circle;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
+
+  .sub-header {
+    .z-depth(3);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: @onboarding-subheader-height;
+    background: @onboarding-subheader-background-color;
+    color: @onboarding-subheader-font-color;
+    margin-bottom: 20px;
+
+    .breadcrumb-item {
+      text-decoration: none;
+
+      // Deactivate the link
+      pointer-events: none;
+
+      .badge {
+        color: @onboarding-breadcrumb-badge-color;
+        background-color: @onboarding-breadcrumb-badge-bg;
+      }
+
+      &.active {
+        .badge {
+          color: @onboarding-breadcrumb-badge-color-active;
+          background: @onboarding-breadcrumb-badge-bg-active;
+        }
+      }
+
+      .title {
+        color: @onboarding-breadcrumb-link-color;
+
+        @media (max-width: @screen-xs-max) {
+          display: none;
+        }
+
+        &:hover, &:focus {
+          font-weight: 400;
+        }
+      }
+    }
+  }
+
+  .content-panel {
+    .z-depth(6);
+    border-radius: @onboarding-content-panel-border-radius;
+    padding: 20px;
+    margin-bottom: 30px;
+    background-color: @onboarding-content-panel-bg;
+    color: @onboarding-content-panel-color;
+
+    h1 {
+      margin-top: 0;
+    }
+  }
+
+  .next-button {
+    .top-buffer-2;
+    font-size: larger;
+  }
+}
+
+#step1 {
+
+}
+
+#step2 {
+  .apps-container {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: flex-start;
+    padding: 1em;
+
+    #data-shared {
+      margin-left: 0.5em;
+      flex: 1;
+      padding: 0.5em;
+    }
+
+    #apps-widget {
+      flex: 1;
+      padding: 0.5em;
+    }
+
+    #apps-widget {
+      #widget-header-bar {
+        position: relative;
+        display: flex;
+        justify-content: space-around;
+
+        #app-search, #app-category {
+          width: 45%;
+          flex: 1;
+        }
+
+        #app-category {
+          margin-left: 5%;
+        }
+      }
+
+      .app-tile {
+        position: relative;
+        max-width: 108px;
+        margin: 10px;
+        float: left;
+
+        .app-info-modal {
+          position: absolute;
+          top: 0;
+          right: 3px;
+          z-index: 10;
+          width: 14px;
+          color: @onboarding-app-selector-info;
+        }
+
+        .app-icon {
+          outline: none;
+          position: relative;
+
+          .app-logo {
+            width: 100%;
+          }
+
+          .checked {
+            position: absolute;
+            border-radius: 6px;
+            background-color: @onboarding-app-selector-check-color;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+
+            // Center the tick
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+
+        .app-title {
+          color: @onboarding-app-selector-title;
+          text-align: center;
+          margin-top: 5px;
+          .ellipsis;
+        }
+      }
+    }
+
+    #data-shared {
+      max-width: 50%;
+
+      @media (max-width: @screen-sm-max) {
+        display: none;
+      }
+
+      .table-data-shared {
+        table-layout: fixed;
+        text-align: center;
+        margin: 5px 5px 0 10px;
+
+        .fa-check {
+          color: @onboarding-app-entities-checked;
+        }
+
+        .fa-times {
+          color: @onboarding-app-entities-unchecked;
+        }
+
+        .th-app {
+          text-align: center;
+
+          .header-logo {
+            width: 60px;
+          }
+
+          .app-title {
+            margin-top: 5px;
+            .ellipsis;
+          }
+        }
+      }
+    }
+  }
+
+  .onboarding-footer {
+    margin-top: 15px;
+  }
+}
+
+#step3 {
+
+  .apps-loader {
+    color: @onboarding-fetching-apps-loader-color;
+  }
+
+  .apps-wrapper {
+    .top-buffer-1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    .app-card {
+      .top-buffer-1;
+      text-align: center;
+      background-color: @onboarding-app-card-bg-color;
+      color: @onboarding-app-card-text-color;
+      padding: @onboarding-app-card-padding;
+      .z-depth(3);
+      width: 220px;
+
+      h4 {
+        margin-top: 5px;
+      }
+
+      mno-app-install-btn {
+        display: block;
+        .top-buffer-1;
+      }
+    }
+  }
+
+  .next-button-wrapper {
+    width: 100%;
+    float: left;
+  }
+}
+
+#provisioning-confirm {
+
+}
+
+#provisioning-details {
+
+}
+
+#provisioning-layout {
+  nav {
+    display: flex;
+    justify-content: space-around;
+    .top-buffer-5;
+
+    .breadcrumb-item {
+      // Deactivate the link
+      pointer-events: none;
+      color: @provisioning-breadcrumb-item-color;
+
+      .badge {
+        background-color: @provisioning-breadcrumb-item-badge-bg;
+      }
+
+      &.active {
+        color: @provisioning-breadcrumb-item-active-color;
+
+        .badge {
+          background-color: @provisioning-breadcrumb-item-active-badge-bg;
+        }
+      }
+    }
+  }
+
+  h1 {
+    .top-buffer-3;
+  }
+
+  .well {
+    .top-buffer-1;
+    background-color: @provisioning-well-bg-color;
+  }
+}
+
+#provisioning-order {
+  .row {
+    display: flex;
+    align-items: center;
+  }
+
+  .radio-selector {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+#provisioning-subscriptions {
+  .well {
+    background-color: @provisioning-well-bg-color;
+  }
+}
+
+#provisioning-summary {
+
+}
+
 #public {
   background-color: @public-main-bg-color;
   top: 0;
@@ -3727,6 +3727,13 @@ form.editable-wrap .editable-controls input {
   }
 }
 
+.create-review-modal {
+  textarea.form-control {
+    max-width: 100%;
+    background-color: white;
+  }
+}
+
 #app-info {
   ul {
     margin: 0;
@@ -3743,13 +3750,6 @@ form.editable-wrap .editable-controls input {
   mno-app-features {
     float: right;
     width: 250px;
-  }
-}
-
-.create-review-modal {
-  textarea.form-control {
-    max-width: 100%;
-    background-color: white;
   }
 }
 
