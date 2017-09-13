@@ -3,7 +3,7 @@
 
 
 "bats@https://github.com/sstephenson/bats":
-  version "0.4.0"
+  version v0.4.0
   resolved "https://github.com/sstephenson/bats#03608115df2071fff4eaaff1605768c275e5f81f"
 
 "impac-angular@git+https://git@github.com/maestrano/impac-angular.git#1.5.x":
@@ -16,4 +16,4 @@
 
 "mnoe-admin-panel@git+https://git@github.com/maestrano/mnoe-admin-panel.git#2.0":
   version "2.0.0-dev"
-  resolved "git+https://git@github.com/maestrano/mnoe-admin-panel.git#ca379da0e9efbe06b0f57ba79b0793ea0743d534"
+  resolved "git+https://git@github.com/maestrano/mnoe-admin-panel.git#4bdafdd09c0515c2085de855e461fefcbb3b1b58"
