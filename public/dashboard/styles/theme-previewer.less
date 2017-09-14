@@ -1114,6 +1114,447 @@ body {
   }
 }
 
+// Base style
+.accordion {
+  .panel-group .panel {
+    margin: 25px 0px;
+  }
+
+  .panel-group .panel,
+  .panel-group .panel > .panel-heading {
+    background-color: @dashboard-account-panel-header-bg-color;
+    border: none;
+    box-shadow: none;
+  }
+
+  .panel-group .panel > .panel-heading {
+    color: @dashboard-account-panel-header-text-color;
+    padding: 0;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+
+    .panel-title > div,
+    .panel-title > a {
+      font-size: 90%;
+      display: block;
+      padding-left: 10px;
+      line-height: 54px;
+      height: 54px;
+      cursor: pointer;
+
+      &:hover, &:focus {
+        text-decoration: none;
+      }
+    }
+
+    .panel-title .fa.pull-right {
+      margin-right: 20px;
+      margin-top: 20px;
+    }
+  }
+
+  .panel-group .panel-collapse > .panel-body {
+    background-color: @dashboard-account-panel-body-bg-color;
+    border: none;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+
+    label {
+      color: @dashboard-account-panel-text-color;
+    }
+
+    p, ul > li {
+      font-weight: 300;
+    }
+  }
+}
+
+.btn {
+  &.btn-link {
+    padding: 0 6px;
+
+    &.btn-link-primary {
+      color: @brand-primary;
+
+      &:hover, &:focus {
+        color: darken(@brand-primary, 30%);
+      }
+    }
+
+    &.btn-link-info {
+      color: @brand-info;
+
+      &:hover, &:focus {
+        color: darken(@brand-info, 30%);
+      }
+    }
+
+    &.btn-link-warning {
+      color: @brand-warning;
+
+      &:hover, &:focus {
+        color: darken(@brand-warning, 30%);
+      }
+    }
+
+    &.btn-link-danger {
+      color: @brand-danger;
+
+      &:hover, &:focus {
+        color: darken(@brand-danger, 30%);
+      }
+    }
+  }
+}
+
+
+//------------------------------------
+// input-group-addon dropdown
+//------------------------------------
+// Put a dropdown inside an input-group-addon
+.input-group-addon.select {
+  padding:0px;
+  border-radius: 6px 0px 0px 6px;
+  background-color: @input-bg;
+
+  select {
+    height:100%;
+    border:0px;
+    background-color: @input-bg;
+  }
+}
+
+//------------------------------------
+// Invalid inputs (AngularJS)
+//------------------------------------
+input.ng-dirty.ng-invalid {
+  border-color: @brand-danger;
+}
+
+//-----------------------------------------
+// Responsive tables (using TWB grid)
+// see templates/dashboard/organization/invoices.html
+// for an example
+//-----------------------------------------
+.table-cell {
+  .th-row {
+    margin-top: @table-cell-header-row-spacing;
+    margin-left: 0;
+    margin-right: 0;
+    padding-top: @table-cell-header-row-padding;
+    padding-bottom: @table-cell-header-row-padding;
+    color: @table-cell-header-text-color;
+    background-color: @table-cell-header-bg-color;
+    font-size: @table-cell-header-text-size;
+    line-height: (@table-cell-header-text-size + @table-cell-row-padding)*2;
+    @table-cell-header-additional-rule();
+  }
+
+  .td-row {
+    margin-top: @table-cell-row-spacing;
+    margin-bottom: @table-cell-row-spacing;
+    margin-left: 0;
+    margin-right: 0;
+    padding-top: @table-cell-row-padding;
+    padding-bottom: @table-cell-row-padding;
+    font-size: @table-cell-row-text-size;
+    line-height: (@table-cell-row-text-size + @table-cell-row-padding)*2;
+
+    .cell {
+      // Add '...' at the end of text if too long for the cell
+      .ellipsis();
+    }
+
+    .cell > .cell-label {
+      font-weight: bold;
+    }
+
+    .cell > a > i {
+      font-size: 20px;
+    }
+
+    &:nth-child(odd) {
+      background-color: @table-cell-row-odd-bg-color;
+    }
+
+    &:nth-child(even) {
+      background-color: @table-cell-row-even-bg-color;
+    }
+  }
+}
+
+@media (max-width: @screen-sm) {
+  .table-cell .td-row .cell > a { padding-left: 0; }
+}
+
+// Inverse Style
+.table-cell.inverse {
+  .th-row {
+    color: @table-inverse-cell-header-text-color;
+    background-color: @table-inverse-cell-header-bg-color;
+  }
+
+  .td-row:nth-child(odd) {
+    background-color: @table-inverse-cell-row-odd-bg-color;
+  }
+
+  .td-row:nth-child(even) {
+    background-color: @table-inverse-cell-row-even-bg-color;
+  }
+}
+
+.ribbon-testimonial {
+
+  .body {
+    background-color: @bg-on-bg-inverse-color;
+    border-radius: 5px;
+    padding: 20px;
+    color: @text-strong-color;
+    font-weight: 300;
+    font-size: 16px;
+    font-style: italic;
+
+    .arrow {
+      .rotate(45deg);
+      width: 0;
+      height: 0;
+      border-top: 18px solid transparent;
+      border-bottom: 18px solid transparent;
+      border-right: 18px solid @decorator-main-color;
+      position: absolute;
+      right: 28px;
+      margin-top: 8px;
+    }
+  }
+
+  .from {
+    margin: 7px 0px 0px 30px;
+
+    .name {
+      display: inline;
+      font-size: 14px;
+      font-weight: 700;
+      color: @text-inverse-color;
+    }
+
+    .company {
+      display: inline;
+      font-size: 14px;
+      font-weight: 300;
+      color: @decorator-inverse-color;
+    }
+  }
+}
+
+
+/*-----------------------------------------------------------------------*/
+/*                       Dashboard Section Title                         */
+/*-----------------------------------------------------------------------*/
+.myspace .section-title {
+  color: @dashboard-section-title-color;
+  text-align: @dashboard-section-title-alignment;
+}
+
+.myspace .section-title:after when (@dashboard-section-title-alignment = center) and (@dashboard-section-title-display-subline = true){
+  display: block;
+  content: '';
+  margin-top: 10px;
+  border-bottom: solid 1px @dashboard-section-title-color;
+  max-width: 45%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.editable.editable-click,
+a.editable.editable-click {
+  color: @text-strong-color;
+  border: none;
+
+  &:hover {
+    border-bottom: dashed 1px fadeout(@text-strong-color,60%);
+  }
+}
+
+form.editable-wrap {
+  margin: 0 !important;
+}
+
+form.editable-wrap .editable-controls {
+  padding: 0;
+}
+
+form.editable-wrap .editable-controls input {
+  height: 30px;
+  padding: 0 5px;
+  border: dashed 1px @text-strong-color;
+  .box-shadow(none);
+}
+
+.editable-instructions {
+  display: inline;
+}
+
+.editable-instructions form.editable-wrap .editable-controls:after {
+  display: block;
+  content: "press enter to confirm";
+  font-style: italic;
+  font-size: 10px;
+  line-height: 12px;
+  color: @text-strong-color;
+  margin-top: -10px;
+  padding-left: 5px;
+}
+
+dashboard-company-selectbox {
+  /*-----------------------------------------------------------------------*/
+  /*                       Company Select Box                              */
+  /*-----------------------------------------------------------------------*/
+  .company-select-box {
+    position: absolute;
+    right: 0;
+    width: @dashboard-cpy-select-width;
+    background-color: @dashboard-cpy-select-bg-color;
+    font-size: @dashboard-cpy-select-header-text-size;
+    border-radius: @dashboard-cpy-select-border-radius;
+    border-left: 1px solid @dashboard-cpy-select-border-color;
+    border-bottom: 1px solid @dashboard-cpy-select-border-color;
+    z-index: 999;
+    overflow: hidden;
+
+    @media (max-width: @screen-sm) {
+      border-radius: 0;
+    }
+
+    // Section always visible
+    .box-header {
+      cursor: pointer;
+      text-align: right;
+      outline: none;
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+
+      img {
+        border-radius: 50%;
+        height: @dashboard-cpy-select-pic-width;
+        width: @dashboard-cpy-select-pic-width;
+      }
+
+      .title {
+        margin: 0 10px;
+        width: ~'calc(100% -' (2 * @dashboard-cpy-select-pic-width) ~')';
+        text-align: left;
+
+        .name {
+          font-weight: bold;
+          color: @dashboard-cpy-select-header-title-color;
+        }
+
+        .company {
+          width: 100%;
+          display: block;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          color: @dashboard-cpy-select-header-company-color;
+        }
+      }
+      .expand-menu {
+        margin-left: auto;
+      }
+    }
+
+    // Section visible when change company is clicked
+    .box-content {
+      border-top: solid 1px @dashboard-cpy-select-list-border-color;
+      overflow: hidden;
+
+      // General look of the links
+      a {
+        line-height: 17px;
+        display: block;
+        padding: 4px 0 4px 20px;
+        outline: none;
+      }
+
+      // List of companies
+      ul {
+        padding: 15px 20px 0 20px;
+        max-height: 400px;
+        min-width: 250px;
+        overflow-y: auto;
+
+        > li {
+
+          > a.company-link {
+            text-decoration: none;
+            padding: 4px;
+            display: flex;
+            color: @dashboard-cpy-select-link-text-color;
+
+            &:hover {
+              background-color: @dashboard-cpy-select-link-hover-bg-color;
+              border-bottom-left-radius: 0;
+            }
+
+            // Circle next to company name
+            // Indicate which company is currently viewed on dashboard
+            > i {
+              flex: 0 0 20px;
+              width: 13px;
+              padding: 2px 0;
+              display: inline-flex;
+              text-align: center;
+              color: @dashboard-cpy-select-link-icon-color;
+            }
+
+            > span {
+              text-align: left;
+              display: inline-flex;
+              flex: 1 1 auto;
+            }
+          }
+        }
+      }
+
+      .default-link {
+        color: @dashboard-cpy-select-link-color;
+        padding: 10px 20px;
+        text-align: left;
+        border-top: 1px solid @dashboard-cpy-select-list-border-color;
+
+        .btn {
+          width: 100%;
+          padding: 3px;
+        }
+
+        // Icon on the left side of the link
+        i {
+          width: 20px;
+          text-align: center;
+          font-size: 11pt;
+        }
+
+        &:hover {
+          text-decoration: none;
+          color: @dashboard-cpy-select-link-hover-color;
+          background-color: @dashboard-cpy-select-link-hover-bg-color;
+        }
+      }
+    }
+  }
+
+  @media (max-width: @screen-sm) {
+    .company-select-box {
+      width: 100%;
+      position: fixed;
+      border-left: none;
+      border-top: 1px solid @dashboard-cpy-select-border-color;
+      top: ~'calc(1px + ' @navbar-height ~')';  // Add top border
+    }
+  }
+}
+
 #app-dock-container {
   position: absolute;
   left: 0;
@@ -1394,156 +1835,6 @@ ul.dock > li.prev img.app-logo {
 
     .add-app {
       color: @mno-dock-mobile-add-app-color;
-    }
-  }
-}
-
-dashboard-company-selectbox {
-  /*-----------------------------------------------------------------------*/
-  /*                       Company Select Box                              */
-  /*-----------------------------------------------------------------------*/
-  .company-select-box {
-    position: absolute;
-    right: 0;
-    width: @dashboard-cpy-select-width;
-    background-color: @dashboard-cpy-select-bg-color;
-    font-size: @dashboard-cpy-select-header-text-size;
-    border-radius: @dashboard-cpy-select-border-radius;
-    border-left: 1px solid @dashboard-cpy-select-border-color;
-    border-bottom: 1px solid @dashboard-cpy-select-border-color;
-    z-index: 999;
-    overflow: hidden;
-
-    @media (max-width: @screen-sm) {
-      border-radius: 0;
-    }
-
-    // Section always visible
-    .box-header {
-      cursor: pointer;
-      text-align: right;
-      outline: none;
-      display: flex;
-      align-items: center;
-      padding: 10px 20px;
-
-      img {
-        border-radius: 50%;
-        height: @dashboard-cpy-select-pic-width;
-        width: @dashboard-cpy-select-pic-width;
-      }
-
-      .title {
-        margin: 0 10px;
-        width: ~'calc(100% -' (2 * @dashboard-cpy-select-pic-width) ~')';
-        text-align: left;
-
-        .name {
-          font-weight: bold;
-          color: @dashboard-cpy-select-header-title-color;
-        }
-
-        .company {
-          width: 100%;
-          display: block;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          color: @dashboard-cpy-select-header-company-color;
-        }
-      }
-      .expand-menu {
-        margin-left: auto;
-      }
-    }
-
-    // Section visible when change company is clicked
-    .box-content {
-      border-top: solid 1px @dashboard-cpy-select-list-border-color;
-      overflow: hidden;
-
-      // General look of the links
-      a {
-        line-height: 17px;
-        display: block;
-        padding: 4px 0 4px 20px;
-        outline: none;
-      }
-
-      // List of companies
-      ul {
-        padding: 15px 20px 0 20px;
-        max-height: 400px;
-        min-width: 250px;
-        overflow-y: auto;
-
-        > li {
-
-          > a.company-link {
-            text-decoration: none;
-            padding: 4px;
-            display: flex;
-            color: @dashboard-cpy-select-link-text-color;
-
-            &:hover {
-              background-color: @dashboard-cpy-select-link-hover-bg-color;
-              border-bottom-left-radius: 0;
-            }
-
-            // Circle next to company name
-            // Indicate which company is currently viewed on dashboard
-            > i {
-              flex: 0 0 20px;
-              width: 13px;
-              padding: 2px 0;
-              display: inline-flex;
-              text-align: center;
-              color: @dashboard-cpy-select-link-icon-color;
-            }
-
-            > span {
-              text-align: left;
-              display: inline-flex;
-              flex: 1 1 auto;
-            }
-          }
-        }
-      }
-
-      .default-link {
-        color: @dashboard-cpy-select-link-color;
-        padding: 10px 20px;
-        text-align: left;
-        border-top: 1px solid @dashboard-cpy-select-list-border-color;
-
-        .btn {
-          width: 100%;
-          padding: 3px;
-        }
-
-        // Icon on the left side of the link
-        i {
-          width: 20px;
-          text-align: center;
-          font-size: 11pt;
-        }
-
-        &:hover {
-          text-decoration: none;
-          color: @dashboard-cpy-select-link-hover-color;
-          background-color: @dashboard-cpy-select-link-hover-bg-color;
-        }
-      }
-    }
-  }
-
-  @media (max-width: @screen-sm) {
-    .company-select-box {
-      width: 100%;
-      position: fixed;
-      border-left: none;
-      border-top: 1px solid @dashboard-cpy-select-border-color;
-      top: ~'calc(1px + ' @navbar-height ~')';  // Add top border
     }
   }
 }
@@ -1887,10 +2178,6 @@ mno-pagination {
   }
 }
 
-mno-password {
-  display: block;
-}
-
 mno-without-organisation {
   .well {
     background-color: @without-organisation-well-bg;
@@ -1899,6 +2186,54 @@ mno-without-organisation {
     h2 {
       margin-top: 0;
     }
+  }
+}
+
+mno-password {
+  display: block;
+}
+
+theme-editor {
+  .theme-previewer-side-panel {
+    z-index: 9999;
+    width: 80%;
+    position: absolute;
+    right: -1px;
+    top: 5%;
+    height: 90%;
+    background-color: white;
+    border: solid 1px #c8d7d9;
+    border-radius: 6px 0 0 6px;
+    box-shadow: 0 1px 8px -4px;
+    transition: ease-out 0.5s;
+    overflow: hidden;
+
+    &.closed {
+      //right: 25px;
+      transform: translate3d(~'calc(100% - 30px)', 0, 0);
+    }
+
+    .collapse-switch-btn {
+      position: absolute;
+      left: 10px;
+      top: 3px;
+      font-size: 18px;
+    }
+
+    .content {
+      position: relative;
+      height: ~"calc(100% - 30px)";
+      margin-top: 30px;
+      padding-left: 15px;
+      padding-right: 15px;
+      overflow-y: auto;
+    }
+  }
+}
+
+#account {
+  .row:not(:first-child) {
+    margin-top: 15px;
   }
 }
 
@@ -1960,341 +2295,6 @@ average-star-rating, star-rating {
     position: absolute;
     top: 5px;
     right: 0;
-  }
-}
-
-theme-editor {
-  .theme-previewer-side-panel {
-    z-index: 9999;
-    width: 80%;
-    position: absolute;
-    right: -1px;
-    top: 5%;
-    height: 90%;
-    background-color: white;
-    border: solid 1px #c8d7d9;
-    border-radius: 6px 0 0 6px;
-    box-shadow: 0 1px 8px -4px;
-    transition: ease-out 0.5s;
-    overflow: hidden;
-
-    &.closed {
-      //right: 25px;
-      transform: translate3d(~'calc(100% - 30px)', 0, 0);
-    }
-
-    .collapse-switch-btn {
-      position: absolute;
-      left: 10px;
-      top: 3px;
-      font-size: 18px;
-    }
-
-    .content {
-      position: relative;
-      height: ~"calc(100% - 30px)";
-      margin-top: 30px;
-      padding-left: 15px;
-      padding-right: 15px;
-      overflow-y: auto;
-    }
-  }
-}
-
-// Base style
-.accordion {
-  .panel-group .panel {
-    margin: 25px 0px;
-  }
-
-  .panel-group .panel,
-  .panel-group .panel > .panel-heading {
-    background-color: @dashboard-account-panel-header-bg-color;
-    border: none;
-    box-shadow: none;
-  }
-
-  .panel-group .panel > .panel-heading {
-    color: @dashboard-account-panel-header-text-color;
-    padding: 0;
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
-
-    .panel-title > div,
-    .panel-title > a {
-      font-size: 90%;
-      display: block;
-      padding-left: 10px;
-      line-height: 54px;
-      height: 54px;
-      cursor: pointer;
-
-      &:hover, &:focus {
-        text-decoration: none;
-      }
-    }
-
-    .panel-title .fa.pull-right {
-      margin-right: 20px;
-      margin-top: 20px;
-    }
-  }
-
-  .panel-group .panel-collapse > .panel-body {
-    background-color: @dashboard-account-panel-body-bg-color;
-    border: none;
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
-
-    label {
-      color: @dashboard-account-panel-text-color;
-    }
-
-    p, ul > li {
-      font-weight: 300;
-    }
-  }
-}
-
-.btn {
-  &.btn-link {
-    padding: 0 6px;
-
-    &.btn-link-primary {
-      color: @brand-primary;
-
-      &:hover, &:focus {
-        color: darken(@brand-primary, 30%);
-      }
-    }
-
-    &.btn-link-info {
-      color: @brand-info;
-
-      &:hover, &:focus {
-        color: darken(@brand-info, 30%);
-      }
-    }
-
-    &.btn-link-warning {
-      color: @brand-warning;
-
-      &:hover, &:focus {
-        color: darken(@brand-warning, 30%);
-      }
-    }
-
-    &.btn-link-danger {
-      color: @brand-danger;
-
-      &:hover, &:focus {
-        color: darken(@brand-danger, 30%);
-      }
-    }
-  }
-}
-
-
-//------------------------------------
-// input-group-addon dropdown
-//------------------------------------
-// Put a dropdown inside an input-group-addon
-.input-group-addon.select {
-  padding:0px;
-  border-radius: 6px 0px 0px 6px;
-  background-color: @input-bg;
-
-  select {
-    height:100%;
-    border:0px;
-    background-color: @input-bg;
-  }
-}
-
-//------------------------------------
-// Invalid inputs (AngularJS)
-//------------------------------------
-input.ng-dirty.ng-invalid {
-  border-color: @brand-danger;
-}
-
-//-----------------------------------------
-// Responsive tables (using TWB grid)
-// see templates/dashboard/organization/invoices.html
-// for an example
-//-----------------------------------------
-.table-cell {
-  .th-row {
-    margin-top: @table-cell-header-row-spacing;
-    margin-left: 0;
-    margin-right: 0;
-    padding-top: @table-cell-header-row-padding;
-    padding-bottom: @table-cell-header-row-padding;
-    color: @table-cell-header-text-color;
-    background-color: @table-cell-header-bg-color;
-    font-size: @table-cell-header-text-size;
-    line-height: (@table-cell-header-text-size + @table-cell-row-padding)*2;
-    @table-cell-header-additional-rule();
-  }
-
-  .td-row {
-    margin-top: @table-cell-row-spacing;
-    margin-bottom: @table-cell-row-spacing;
-    margin-left: 0;
-    margin-right: 0;
-    padding-top: @table-cell-row-padding;
-    padding-bottom: @table-cell-row-padding;
-    font-size: @table-cell-row-text-size;
-    line-height: (@table-cell-row-text-size + @table-cell-row-padding)*2;
-
-    .cell {
-      // Add '...' at the end of text if too long for the cell
-      .ellipsis();
-    }
-
-    .cell > .cell-label {
-      font-weight: bold;
-    }
-
-    .cell > a > i {
-      font-size: 20px;
-    }
-
-    &:nth-child(odd) {
-      background-color: @table-cell-row-odd-bg-color;
-    }
-
-    &:nth-child(even) {
-      background-color: @table-cell-row-even-bg-color;
-    }
-  }
-}
-
-@media (max-width: @screen-sm) {
-  .table-cell .td-row .cell > a { padding-left: 0; }
-}
-
-// Inverse Style
-.table-cell.inverse {
-  .th-row {
-    color: @table-inverse-cell-header-text-color;
-    background-color: @table-inverse-cell-header-bg-color;
-  }
-
-  .td-row:nth-child(odd) {
-    background-color: @table-inverse-cell-row-odd-bg-color;
-  }
-
-  .td-row:nth-child(even) {
-    background-color: @table-inverse-cell-row-even-bg-color;
-  }
-}
-
-.ribbon-testimonial {
-
-  .body {
-    background-color: @bg-on-bg-inverse-color;
-    border-radius: 5px;
-    padding: 20px;
-    color: @text-strong-color;
-    font-weight: 300;
-    font-size: 16px;
-    font-style: italic;
-
-    .arrow {
-      .rotate(45deg);
-      width: 0;
-      height: 0;
-      border-top: 18px solid transparent;
-      border-bottom: 18px solid transparent;
-      border-right: 18px solid @decorator-main-color;
-      position: absolute;
-      right: 28px;
-      margin-top: 8px;
-    }
-  }
-
-  .from {
-    margin: 7px 0px 0px 30px;
-
-    .name {
-      display: inline;
-      font-size: 14px;
-      font-weight: 700;
-      color: @text-inverse-color;
-    }
-
-    .company {
-      display: inline;
-      font-size: 14px;
-      font-weight: 300;
-      color: @decorator-inverse-color;
-    }
-  }
-}
-
-
-/*-----------------------------------------------------------------------*/
-/*                       Dashboard Section Title                         */
-/*-----------------------------------------------------------------------*/
-.myspace .section-title {
-  color: @dashboard-section-title-color;
-  text-align: @dashboard-section-title-alignment;
-}
-
-.myspace .section-title:after when (@dashboard-section-title-alignment = center) and (@dashboard-section-title-display-subline = true){
-  display: block;
-  content: '';
-  margin-top: 10px;
-  border-bottom: solid 1px @dashboard-section-title-color;
-  max-width: 45%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.editable.editable-click,
-a.editable.editable-click {
-  color: @text-strong-color;
-  border: none;
-
-  &:hover {
-    border-bottom: dashed 1px fadeout(@text-strong-color,60%);
-  }
-}
-
-form.editable-wrap {
-  margin: 0 !important;
-}
-
-form.editable-wrap .editable-controls {
-  padding: 0;
-}
-
-form.editable-wrap .editable-controls input {
-  height: 30px;
-  padding: 0 5px;
-  border: dashed 1px @text-strong-color;
-  .box-shadow(none);
-}
-
-.editable-instructions {
-  display: inline;
-}
-
-.editable-instructions form.editable-wrap .editable-controls:after {
-  display: block;
-  content: "press enter to confirm";
-  font-style: italic;
-  font-size: 10px;
-  line-height: 12px;
-  color: @text-strong-color;
-  margin-top: -10px;
-  padding-left: 5px;
-}
-
-#account {
-  .row:not(:first-child) {
-    margin-top: 15px;
   }
 }
 
@@ -2388,173 +2388,6 @@ form.editable-wrap .editable-controls input {
       }
     }
   }
-}
-
-.dashboard-organization {
-
-  //-----------------------------------
-  // Tabs Styling
-  //-----------------------------------
-  ul.nav.nav-tabs {
-    border-bottom: none;
-  }
-
-  // Tab Header Wrapper Styling
-  ul.nav.nav-tabs > li {
-    margin-right: 5px;
-    padding-bottom: 5px;
-    background-color: transparent;
-    border-bottom: solid 5px transparent;
-    padding: 0px;
-    cursor: pointer;
-  }
-  ul.nav.nav-tabs > li.active when (@dashboard-cpy-tabs-subline-size > 0) {
-    border-bottom: solid 4px @dashboard-cpy-tabs-active-bg-color;
-  }
-
-  // Tab Header Styling
-  ul.nav.nav-tabs > li > a {
-    padding: 20px 40px;
-    border: none;
-    color: @dashboard-cpy-tabs-text-color;
-    background-color: @dashboard-cpy-tabs-bg-color;
-    .border-top-radius(@dashboard-cpy-tabs-border-radius);
-    .border-bottom-radius(@dashboard-cpy-tabs-border-radius);
-
-
-  }
-  ul.nav.nav-tabs > li > a:hover {
-    background-color: @dashboard-cpy-tabs-hover-bg-color;
-    color: @dashboard-cpy-tabs-hover-text-color;
-  }
-  ul.nav.nav-tabs > li.active > a,
-  ul.nav.nav-tabs > li.active > a:hover,
-  ul.nav.nav-tabs > li.active > a:focus {
-    padding-bottom: 20px;
-    background-color: @dashboard-cpy-tabs-active-bg-color;
-    color: @dashboard-cpy-tabs-active-text-color;
-
-    & when (@dashboard-cpy-tabs-subline-size = 0) {
-      .border-bottom-radius(@dashboard-cpy-tabs-border-radius);
-    }
-  }
-
-  // Tab Content Styling
-  .tab-content {
-    border-top: solid @dashboard-cpy-tabs-subline-size @dashboard-cpy-tabs-subline-color;
-    padding-top: 20px;
-  }
-
-  .tab-content .tab-pane {
-    background-color: transparent;
-  }
-
-  @media(max-width: 720px) {
-    ul.nav.nav-tabs > li {
-      width:100%;
-
-      &.active {
-        border-bottom: solid 5px transparent;
-        a {
-          background-color: @dashboard-cpy-tabs-active-bg-color;
-          color: white;
-        }
-      }
-    }
-  }
-
-  //-----------------------------------
-  // Well Styling
-  //-----------------------------------
-  .well {
-    border: none;
-    background-color: @dashboard-cpy-tabcontent-bg-color;
-
-    label, p {
-      color: @dashboard-cpy-tabcontent-text-color;
-    }
-  }
-
-  //-----------------------------------
-  // Accordion Styling
-  //-----------------------------------
-  .panel-group .panel {
-    margin: 0px 0px 25px 0px;
-
-    .cc-icons i {
-      display: inline-block;
-    }
-  }
-
-  //-----------------------------------
-  // CC Form
-  //-----------------------------------
-  .cc-header small div {
-    display: inline-block;
-    vertical-align: top;
-
-    i {
-      display: inline-block;
-      zoom: 0.40;
-      vertical-align: top;
-    }
-    img {
-      max-height: 30px;
-      vertical-align: top;
-    }
-  }
-
-  .cc-header-eft {
-    font-size: 13px;
-    line-height: 29px;
-    color: #777777;
-    float: right;
-  }
-}
-
-//-----------------------------------
-// Invite Members Modal
-//-----------------------------------
-#invite-members-modal {
-  ul.roles-list {
-    list-style-type: none;
-  }
-}
-
-//-----------------------------------
-// User Edition Modal
-//-----------------------------------
-.modal.member-edit .role-management {
-  text-align: center;
-}
-
-.modal.member-edit .role-management .fa {
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-.modal.member-edit .role-management p {
-  font-weight: 300;
-}
-
-//-----------------------------------
-// Team Member Add Modal
-//-----------------------------------
-.team-member-add-modal table {
-  margin: auto;
-  font-weight: 300;
-}
-.team-member-add-modal table td {
-  border: none;
-  padding: 8px;
-}
-
-.team-member-add-modal table tr td:first-child {
-  text-align: right;
-}
-
-.team-member-add-modal table tr td:last-child {
-  text-align: left;
 }
 
 #impac {
@@ -3477,6 +3310,173 @@ form.editable-wrap .editable-controls input {
   }
 }
 
+.dashboard-organization {
+
+  //-----------------------------------
+  // Tabs Styling
+  //-----------------------------------
+  ul.nav.nav-tabs {
+    border-bottom: none;
+  }
+
+  // Tab Header Wrapper Styling
+  ul.nav.nav-tabs > li {
+    margin-right: 5px;
+    padding-bottom: 5px;
+    background-color: transparent;
+    border-bottom: solid 5px transparent;
+    padding: 0px;
+    cursor: pointer;
+  }
+  ul.nav.nav-tabs > li.active when (@dashboard-cpy-tabs-subline-size > 0) {
+    border-bottom: solid 4px @dashboard-cpy-tabs-active-bg-color;
+  }
+
+  // Tab Header Styling
+  ul.nav.nav-tabs > li > a {
+    padding: 20px 40px;
+    border: none;
+    color: @dashboard-cpy-tabs-text-color;
+    background-color: @dashboard-cpy-tabs-bg-color;
+    .border-top-radius(@dashboard-cpy-tabs-border-radius);
+    .border-bottom-radius(@dashboard-cpy-tabs-border-radius);
+
+
+  }
+  ul.nav.nav-tabs > li > a:hover {
+    background-color: @dashboard-cpy-tabs-hover-bg-color;
+    color: @dashboard-cpy-tabs-hover-text-color;
+  }
+  ul.nav.nav-tabs > li.active > a,
+  ul.nav.nav-tabs > li.active > a:hover,
+  ul.nav.nav-tabs > li.active > a:focus {
+    padding-bottom: 20px;
+    background-color: @dashboard-cpy-tabs-active-bg-color;
+    color: @dashboard-cpy-tabs-active-text-color;
+
+    & when (@dashboard-cpy-tabs-subline-size = 0) {
+      .border-bottom-radius(@dashboard-cpy-tabs-border-radius);
+    }
+  }
+
+  // Tab Content Styling
+  .tab-content {
+    border-top: solid @dashboard-cpy-tabs-subline-size @dashboard-cpy-tabs-subline-color;
+    padding-top: 20px;
+  }
+
+  .tab-content .tab-pane {
+    background-color: transparent;
+  }
+
+  @media(max-width: 720px) {
+    ul.nav.nav-tabs > li {
+      width:100%;
+
+      &.active {
+        border-bottom: solid 5px transparent;
+        a {
+          background-color: @dashboard-cpy-tabs-active-bg-color;
+          color: white;
+        }
+      }
+    }
+  }
+
+  //-----------------------------------
+  // Well Styling
+  //-----------------------------------
+  .well {
+    border: none;
+    background-color: @dashboard-cpy-tabcontent-bg-color;
+
+    label, p {
+      color: @dashboard-cpy-tabcontent-text-color;
+    }
+  }
+
+  //-----------------------------------
+  // Accordion Styling
+  //-----------------------------------
+  .panel-group .panel {
+    margin: 0px 0px 25px 0px;
+
+    .cc-icons i {
+      display: inline-block;
+    }
+  }
+
+  //-----------------------------------
+  // CC Form
+  //-----------------------------------
+  .cc-header small div {
+    display: inline-block;
+    vertical-align: top;
+
+    i {
+      display: inline-block;
+      zoom: 0.40;
+      vertical-align: top;
+    }
+    img {
+      max-height: 30px;
+      vertical-align: top;
+    }
+  }
+
+  .cc-header-eft {
+    font-size: 13px;
+    line-height: 29px;
+    color: #777777;
+    float: right;
+  }
+}
+
+//-----------------------------------
+// Invite Members Modal
+//-----------------------------------
+#invite-members-modal {
+  ul.roles-list {
+    list-style-type: none;
+  }
+}
+
+//-----------------------------------
+// User Edition Modal
+//-----------------------------------
+.modal.member-edit .role-management {
+  text-align: center;
+}
+
+.modal.member-edit .role-management .fa {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.modal.member-edit .role-management p {
+  font-weight: 300;
+}
+
+//-----------------------------------
+// Team Member Add Modal
+//-----------------------------------
+.team-member-add-modal table {
+  margin: auto;
+  font-weight: 300;
+}
+.team-member-add-modal table td {
+  border: none;
+  padding: 8px;
+}
+
+.team-member-add-modal table tr td:first-child {
+  text-align: right;
+}
+
+.team-member-add-modal table tr td:last-child {
+  text-align: left;
+}
+
 #app-connect-modal {
 
   select {
@@ -3558,6 +3558,32 @@ form.editable-wrap .editable-controls input {
         color: @deletion-sentence-color;
       }
     }
+  }
+}
+
+.create-review-modal {
+  textarea.form-control {
+    max-width: 100%;
+    background-color: white;
+  }
+}
+
+#app-info {
+  ul {
+    margin: 0;
+
+    li:not(:first-child) {
+      margin-top: 10px;
+    }
+  }
+
+  .close {
+    margin: 10px;
+  }
+
+  mno-app-features {
+    float: right;
+    width: 250px;
   }
 }
 
@@ -3713,32 +3739,6 @@ form.editable-wrap .editable-controls input {
   .permission-matrix-wrapper .table-right thead > tr > th {
     font-size: 11px;
     font-weight: 400;
-  }
-}
-
-.create-review-modal {
-  textarea.form-control {
-    max-width: 100%;
-    background-color: white;
-  }
-}
-
-#app-info {
-  ul {
-    margin: 0;
-
-    li:not(:first-child) {
-      margin-top: 10px;
-    }
-  }
-
-  .close {
-    margin: 10px;
-  }
-
-  mno-app-features {
-    float: right;
-    width: 250px;
   }
 }
 
