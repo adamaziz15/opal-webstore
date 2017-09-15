@@ -672,7 +672,7 @@ body {
 
 // Loaders
 //--------------------------------------
-@dashboard-loader-color:                        @bg-inverse-color;
+@dashboard-loader-color:                        @text-strong-color;
 @dashboard-loader-icon:                         { .icon-fa(refresh); .fa-2x; .fa-spin; }; //pass a ruleset
 
 // User without organisation
@@ -720,32 +720,20 @@ body {
 @dashboard-cpy-select-width:                    280px;
 @dashboard-cpy-select-pic-width:                50px;
 @dashboard-cpy-select-bg-color:                 @decorator-inverse-color;
-@dashboard-cpy-select-border-radius:            0 0 0 10px;
+@dashboard-cpy-select-border-radius:            0 0 0 6px;
 @dashboard-cpy-select-border-color:             @text-inverse-color;
 @dashboard-cpy-select-list-border-color:        lighten(@bg-inverse-color, 10%);
 
-@dashboard-cpy-select-header-title-color:       #ffffff;
-@dashboard-cpy-select-header-company-color:     #ffffff;
+@dashboard-cpy-select-header-title-color:       @text-inverse-strong-color;
+@dashboard-cpy-select-header-company-color:     @text-inverse-strong-color;
 @dashboard-cpy-select-header-text-size:         13px;
 
-@dashboard-cpy-select-link-text-color:          @link-color;
-@dashboard-cpy-select-link-icon-color:          #ffffff;
+@dashboard-cpy-select-link-text-color:          @text-inverse-strong-color;
+@dashboard-cpy-select-link-icon-color:          @text-inverse-strong-color;
 
-@dashboard-cpy-select-link-color:               #ffffff;
-@dashboard-cpy-select-link-hover-color:         @dashboard-cpy-select-link-color;
-@dashboard-cpy-select-link-hover-bg-color:      lighten(@dashboard-cpy-select-bg-color,10%);
-
-@dashboard-cpy-select-link-create-text-color:   @text-inverse-strong-color;
-@dashboard-cpy-select-link-create-color:        @bg-inverse-color;
-@dashboard-cpy-select-link-admin-color:         #ffffff;
-
-@dashboard-cpy-select-switch-btn-color:         @dashboard-cpy-select-header-company-color;
-@dashboard-cpy-select-switch-btn-bg-color:      @dashboard-cpy-select-bg-color;
-@dashboard-cpy-select-switch-btn-icon:          { .icon-fa(caret-down); }; //pass a ruleset
-@dashboard-cpy-select-switch-btn-icon-active:   { .icon-fa(caret-up); }; //pass a ruleset
-@dashboard-cpy-select-list-border-color:        #5598bf;
-
-@dashboard-cpy-tabcontent-text-color:           @text-inverse-color;
+@dashboard-cpy-select-link-color:               @text-inverse-strong-color;
+@dashboard-cpy-select-link-hover-color:         @text-strong-color;
+@dashboard-cpy-select-link-hover-bg-color:      @text-inverse-strong-color;
 
 /*-----------------------------------------------------------------------*/
 /*                        Dashboard > Apps Section                       */
@@ -1114,6 +1102,894 @@ body {
   }
 }
 
+#app-dock-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  text-align: center;
+  
+  .top-right-corner {
+    line-height: 0;
+    margin-right: -10px;
+  }
+}
+
+ul.dock {
+  position: relative;
+  display: inline-block;
+  background-color: @mno-dock-bg-color;
+  opacity: 1;
+  padding: 5px;
+  z-index: 999;
+  .border-bottom-radius(5px);
+  height: 90px;
+  .transition(height 0.3s);
+
+  & > li {
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+
+    .loader-icon {
+      color: @mno-dock-app-loader-color;
+      font-size: 40px;
+      margin: 10px 8px 0 10px;
+    }
+
+    .title {
+      position: absolute;
+      top: 0;
+      color: @mno-dock-app-title-color;
+      display: none;
+      width: 100%;
+      text-align: center;
+    }
+
+    img.app-logo {
+      outline: none;
+      cursor: pointer;
+      margin: 5px;
+      .square(@mno-dock-app-logo-square-width);
+      .transition(all 0.3s);
+      .border-top-radius(5px);
+      .border-bottom-radius(5px);
+      .transform-origin(50% 0%); // Origin from top
+    }
+
+    .add-app {
+      cursor: pointer;
+      margin: 5px;
+      .square(@mno-dock-app-logo-square-width);
+      .transition(all 0.3s);
+      .transform-origin(50% 0%); // Origin from top
+      border: 1px solid @mno-dock-add-app-border-color;
+      .border-top-radius(5px);
+      .border-bottom-radius(5px);
+
+      display: table;
+
+      a {
+        display: table-cell;
+        vertical-align: middle;
+        color: @mno-dock-add-app-text-color;
+      }
+    }
+  }
+
+  // Expand button
+  li.expand-menu {
+    border-left: 1px solid @mno-dock-expand-left-border-color;
+    height: 100%;
+
+    & > div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+
+      a {
+        padding-left: 6px;
+        padding-right: 5px;
+        .transition(height 0.3s);
+        cursor: pointer;
+        color: @mno-dock-expand-arrow-color;
+
+        &:hover {
+          text-decoration: none;
+          color: @mno-dock-expand-arrow-color-hover;
+        }
+      }
+    }
+  }
+
+  //=======================================
+  // Submenu
+  //=======================================
+  .dock-menu {
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    z-index: 1000;
+    margin-top: 68px;
+    visibility:hidden;
+    opacity:0;
+    transition: visibility 0s linear 0.5s,opacity 0.5s linear;
+
+    div.dock-arrow {
+      position: relative;
+      right: 50%;
+    }
+
+    div.inner-dock-menu { // Inner div holding the menu
+      position: relative;
+      right: 50%;
+      padding: 5px 0px;
+      .border-top-radius(5px);
+      .border-bottom-radius(5px);
+      background-color: @mno-dock-sub-menu-bg-color;
+
+      .box-shadow(@mno-dock-sub-menu-box-shadow);
+      .menu-item {
+        cursor: pointer;
+
+        &:hover {
+          background-color: @mno-dock-sub-menu-hover;
+
+          a {
+            color: @mno-dock-sub-menu-text-hover-color;
+          }
+        }
+
+        a {
+          display: flex;
+          text-decoration: none;
+          color: @mno-dock-sub-menu-text-color;
+          padding: 5px 20px;
+
+          &.connect-btn-center, img.connect-btn-center {
+            margin: auto;
+          }
+
+          i.fa {
+            color: @mno-dock-sub-menu-icon;
+            margin-top: 3px;
+            margin-right: 6px;
+          }
+        }
+
+        .connector-logo {
+          margin-top:3px;
+          margin-bottom:3px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  & > li.active {
+    .dock-menu {
+      // display: block;
+      visibility: visible;
+      opacity: 1;
+      transition-delay: 0s;
+    }
+  }
+}
+
+ul.dock.minimized {
+  height: @mno-dock-app-logo-square-width;
+  .transition(height 0.3s);
+
+  img.app-logo, .add-app {
+    .square(@mno-dock-app-logo-minimized-square-width);
+  }
+
+  .add-app {
+    span {
+      .transition(all 0.3s);
+      display: none;
+    }
+  }
+
+  .dock-menu {
+    margin-top: @mno-dock-app-logo-minimized-square-width;
+  }
+}
+
+ul.dock.animated  > li:hover, ul.dock > li.active {
+  img.app-logo {
+    transform: scale(1.8) translate(0, 10px);
+    margin: 5px 1.6em 5px;
+    z-index: 9999;
+
+    border: @mno-dock-app-box-border;
+    .box-shadow(@mno-dock-app-box-shadow);
+  }
+
+  .title {
+    display: block;
+  }
+
+  /* one element after and element before (with JS)*/
+  & + li img.app-logo, ul.dock > li.prev img.app-logo {
+    .scale(1.4);
+    margin: 5px 1.6em 5px;
+  }
+}
+
+ul.dock > li.prev img.app-logo {
+  .scale(1.4);
+  margin: 5px 1.4em 5px;
+}
+
+// Mobile
+#app-dock-mobile-container {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 1030;
+
+  .mobile-dock-button {
+    width: 100%;
+    text-transform: uppercase;
+    padding: 10px;
+    color: @mno-dock-mobile-button-color;
+    background-color: @mno-dock-mobile-button-bg-color;
+  }
+
+  #mobile-dock {
+    z-index: 1030;
+
+    &.collapse.in {
+      overflow-y: auto;
+    }
+
+    .btn {
+      text-transform: uppercase;
+    }
+
+    ul {
+      margin-bottom: 0;
+      background-color: @mno-dock-mobile-bg-color;
+
+      & > li {
+        border-bottom: @mno-dock-mobile-app-border-bottom;
+        padding-top: 5px;
+        padding-bottom: 5px;
+
+        .app-line {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+
+          .title {
+            color: @mno-dock-mobile-app-name-color;
+            font-weight: bold;
+          }
+
+          img.app-logo {
+            .square(48px);
+          }
+        }
+
+        &:hover, &.active {
+          background-color: @mno-dock-mobile-app-active-color;
+        }
+      }
+    }
+
+    .add-app {
+      color: @mno-dock-mobile-add-app-color;
+    }
+  }
+}
+
+dashboard-company-selectbox {
+  /*-----------------------------------------------------------------------*/
+  /*                       Company Select Box                              */
+  /*-----------------------------------------------------------------------*/
+  .company-select-box {
+    position: absolute;
+    right: 0;
+    width: @dashboard-cpy-select-width;
+    background-color: @dashboard-cpy-select-bg-color;
+    font-size: @dashboard-cpy-select-header-text-size;
+    border-radius: @dashboard-cpy-select-border-radius;
+    border-left: 1px solid @dashboard-cpy-select-border-color;
+    border-bottom: 1px solid @dashboard-cpy-select-border-color;
+    z-index: 999;
+    overflow: hidden;
+
+    @media (max-width: @screen-sm) {
+      border-radius: 0;
+    }
+
+    // Section always visible
+    .box-header {
+      cursor: pointer;
+      text-align: right;
+      outline: none;
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+
+      img {
+        border-radius: 50%;
+        height: @dashboard-cpy-select-pic-width;
+        width: @dashboard-cpy-select-pic-width;
+      }
+
+      .title {
+        margin: 0 10px;
+        width: ~'calc(100% -' (2 * @dashboard-cpy-select-pic-width) ~')';
+        text-align: left;
+
+        .name {
+          font-weight: bold;
+          color: @dashboard-cpy-select-header-title-color;
+        }
+
+        .company {
+          width: 100%;
+          display: block;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          color: @dashboard-cpy-select-header-company-color;
+        }
+      }
+      .expand-menu {
+        margin-left: auto;
+      }
+    }
+
+    // Section visible when change company is clicked
+    .box-content {
+      border-top: solid 1px @dashboard-cpy-select-list-border-color;
+      overflow: hidden;
+
+      // General look of the links
+      a {
+        line-height: 17px;
+        display: block;
+        padding: 4px 0 4px 20px;
+        outline: none;
+      }
+
+      // List of companies
+      ul {
+        padding: 15px 20px 0 20px;
+        max-height: 400px;
+        min-width: 250px;
+        overflow-y: auto;
+
+        > li {
+
+          > a.company-link {
+            text-decoration: none;
+            padding: 4px;
+            display: flex;
+            color: @dashboard-cpy-select-link-text-color;
+
+            &:hover {
+              background-color: @dashboard-cpy-select-link-hover-bg-color;
+              color: @dashboard-cpy-select-link-hover-color;
+              border-bottom-left-radius: 0;
+            }
+
+            // Circle next to company name
+            // Indicate which company is currently viewed on dashboard
+            > i {
+              flex: 0 0 20px;
+              width: 13px;
+              padding: 2px 0;
+              display: inline-flex;
+              text-align: center;
+              color: @dashboard-cpy-select-link-icon-color;
+            }
+
+            > span {
+              text-align: left;
+              display: inline-flex;
+              flex: 1 1 auto;
+            }
+          }
+        }
+      }
+
+      .default-link {
+        color: @dashboard-cpy-select-link-color;
+        padding: 10px 20px;
+        text-align: left;
+        border-top: 1px solid @dashboard-cpy-select-list-border-color;
+
+        .btn {
+          width: 100%;
+          padding: 3px;
+        }
+
+        // Icon on the left side of the link
+        i {
+          width: 20px;
+          text-align: center;
+          font-size: 11pt;
+        }
+
+        &:hover {
+          text-decoration: none;
+          color: @dashboard-cpy-select-link-hover-color;
+          background-color: @dashboard-cpy-select-link-hover-bg-color;
+        }
+      }
+    }
+  }
+
+  @media (max-width: @screen-sm) {
+    .company-select-box {
+      width: 100%;
+      position: fixed;
+      border-left: none;
+      border-top: 1px solid @dashboard-cpy-select-border-color;
+      top: ~'calc(1px + ' @navbar-height ~')';  // Add top border
+    }
+  }
+}
+
+
+dashboard-language-selectbox {
+  display: block;
+
+  .selector-line {
+    display: inline-block;
+    margin: 5px auto;
+  }
+}
+
+dashboard-menu {
+  /*-----------------------------------------------------------------------*/
+  /*                         Mobile menu                                   */
+  /*-----------------------------------------------------------------------*/
+  .navbar {
+    &.navbar-inverse {
+      font-weight:300;
+      letter-spacing:1px;
+
+      .navbar-toggle {
+        background-color: #fff;
+        .icon-bar {
+          background-color: #333;
+        }
+
+        &:hover, &:focus {
+          background-color: #333;
+          .icon-bar {
+            background-color: #fff;
+          }
+        }
+      }
+
+      ul.nav.navbar-nav {
+        padding:0px;
+        text-transform:uppercase;
+        a {
+          font-size:@normal;
+          text-align:center;
+          background-color:#111c21;
+          border-bottom: solid 1px @bg-inverse-color;
+          padding:22px 0px;
+
+          &.active {
+            color: @dashboard-side-menu-link-active-color;
+          }
+        }
+
+        ul.dropdown-menu {
+          padding:0px;
+          a {
+            background-color:@bg-inverse-color;
+            border-bottom: solid 1px #111c21;
+            padding:13px 0px;
+          }
+        }
+      }
+    }
+  }
+
+  /*-----------------------------------------------------------------------*/
+  /*                         Dashboard Left Navbar                         */
+  /*-----------------------------------------------------------------------*/
+  .menu {
+
+    a:hover { text-decoration: none; }
+
+    // Dashboard Button > Active State
+    .dashboard-button.active, .dashboard-button.active:hover {
+      color: @dashboard-side-menu-link-active-color;
+      background-color: @dashboard-side-menu-link-active-bg-color;
+    }
+
+    // Dashboard Button Content > Active State
+    .dashboard-button.active .content, .dashboard-button.active:hover .content {
+      color: @dashboard-side-menu-link-active-color;
+      background-color: @dashboard-side-menu-link-active-bg-color;
+    }
+
+    // Dashboard Button Content > Normal State
+    .dashboard-button,
+    .dashboard-button .content {
+      color: @dashboard-side-menu-link-color;
+      background-color: @dashboard-side-menu-link-bg-color;
+    }
+
+    // Dashboard Button Content > Normal State Hover
+    .dashboard-button:hover, .dashboard-button:hover .content {
+      color: @dashboard-side-menu-link-hover-color;
+      background-color: @dashboard-side-menu-link-hover-bg-color;
+    }
+
+    // Vertical menu
+    &.vertical {
+      z-index:100;
+      position:fixed;
+      left:0px;
+      top:0px;
+      padding: @dashboard-side-menu-padding;
+      width:80px;
+      min-height:100%;
+      height:99%;
+
+      // Dashboard Button > Normal State
+      .dashboard-button {
+        display: block;
+        border-radius: 5px;
+        width: 51px;
+        height: 51px;
+        padding-top: 7px;
+        padding-left: 9px;
+      }
+
+      &:hover .dashboard-button {
+        width: 250px;
+      }
+
+      // Dashboard Button Content > Normal State
+      .dashboard-button .content {
+        display: none;
+      }
+
+      &:hover .dashboard-button .content {
+        display: block;
+        white-space: nowrap;
+        position: absolute;
+        margin: 8px 0px 0px 55px;
+        font-size: 15px;
+      }
+
+      // Side menu brand logo
+      .brand-logo {
+        height: 90px;
+        background-repeat: no-repeat;
+        background-image: url(@dashboard-side-menu-brand-logo-img);
+        background-size: 100%;
+        @dashboard-side-menu-brand-logo();
+      }
+      .brand-logo.expanded {
+        @dashboard-side-menu-brand-logo-expanded();
+      }
+    }
+
+    background-color: @dashboard-side-menu-bg-color;
+
+    hr {
+      border-top: 2px dashed darken(@dashboard-side-menu-bg-color, 5%);
+      margin-right: 11px;
+    }
+
+    // Icon configuration for each dashboard button
+    .dashboard-button i.dhb-icon-dashboard {
+      @dashboard-side-menu-btn-dashboard();
+    }
+    .dashboard-button:hover i.dhb-icon-dashboard,
+    .dashboard-button.active i.dhb-icon-dashboard {
+      @dashboard-side-menu-btn-dashboard-active();
+    }
+
+    .dashboard-button i.dhb-icon-impac {
+      @dashboard-side-menu-btn-impac();
+    }
+    .dashboard-button.active i.dhb-icon-impac,
+    .dashboard-button:hover i.dhb-icon-impac {
+      @dashboard-side-menu-btn-impac-active();
+    }
+
+    .dashboard-button i.dhb-icon-account {
+      @dashboard-side-menu-btn-account();
+    }
+    .dashboard-button:hover i.dhb-icon-account,
+    .dashboard-button.active i.dhb-icon-account {
+      @dashboard-side-menu-btn-account-active();
+    }
+
+    .dashboard-button i.dhb-icon-company {
+      @dashboard-side-menu-btn-company();
+    }
+    .dashboard-button:hover i.dhb-icon-company,
+    .dashboard-button.active i.dhb-icon-company {
+      @dashboard-side-menu-btn-company-active();
+    }
+
+    .dashboard-button i.dhb-icon-subscriptions {
+      @dashboard-side-menu-btn-subscriptions();
+    }
+    .dashboard-button:hover i.dhb-icon-subscriptions,
+    .dashboard-button.active i.dhb-icon-subscriptions {
+      @dashboard-side-menu-btn-subscriptions-active();
+    }
+
+    .dashboard-button i.dhb-icon-marketplace {
+      @dashboard-side-menu-btn-marketplace();
+    }
+    .dashboard-button:hover i.dhb-icon-marketplace,
+    .dashboard-button.active i.dhb-icon-marketplace {
+      @dashboard-side-menu-btn-marketplace-active();
+    }
+
+    .dashboard-button i.dhb-icon-logout {
+      @dashboard-side-menu-btn-logout();
+    }
+    .dashboard-button:hover i.dhb-icon-logout,
+    .dashboard-button.active i.dhb-icon-logout {
+      @dashboard-side-menu-btn-logout-active();
+    }
+  }
+}
+
+impersonification-notification {
+  .notifications {
+    padding-top: 70px;
+  }
+}
+
+#app-features {
+  border: @onboarding-app-features-border;
+  color: @onboarding-app-features-color;
+
+  .center-element {
+    margin-left: 10px;
+    margin-bottom: 12px;
+  }
+
+  .fa-check-square-o {
+    color: @onboarding-app-features-checked;
+  }
+  .fa-square-o {
+    color: @onboarding-app-features-unchecked;
+  }
+}
+
+mno-app-onboarding-btn {
+  display: block;
+
+  .button-check {
+    color: @onboarding-app-connect-check;
+  }
+
+  .button-loader {
+    color: @onboarding-app-connect-loader;
+  }
+
+  .btn {
+    margin-top: 5px;
+  }
+}
+
+mno-audit-events-list {
+  .table > thead > tr {
+    color: @table-cell-header-text-color;
+    background-color: @table-cell-header-bg-color;
+  }
+
+  .table-striped > tbody > tr {
+    &:nth-of-type(even) {
+      background-color: @table-cell-row-even-bg-color
+    }
+
+    &:nth-of-type(odd) {
+      background-color: @table-cell-row-odd-bg-color
+    }
+  }
+}
+
+mno-impersonation-bar {
+  #impersonate-bar {
+    color: @text-inverse-color;
+    background-color: @bg-inverse-color;
+    padding-top: 3px;
+    padding-bottom: 3px;
+
+    @media (max-width: @screen-xs-max) {
+      padding-top: 40px;
+    }
+  }
+}
+
+mno-inline-message {
+  .mno-inline-checked {
+    color: @dashboard-account-inline-text-color-checked;
+  }
+
+  .mno-inline-unchecked {
+    color: @dashboard-account-inline-text-color-unchecked;
+  }
+}
+
+mno-loader {
+  display: block;
+
+  .loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: @dashboard-loader-color;
+
+    .loader-icon {
+      @dashboard-loader-icon();
+    }
+
+    .background-layer {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: grey;
+      opacity: 0.6;
+    }
+  }
+}
+
+.loader-content {
+  position: relative;
+}
+
+mno-pagination {
+  display: block;
+  overflow: auto;
+
+  .pagination {
+    margin: 0;
+  }
+
+  .nb-items-col {
+    float: right;
+
+    .items-per-page-select {
+      display: inline;
+      width: 75px;
+
+      @media (max-width: @screen-xs-max) {
+        margin-top: 15px;
+      }
+    }
+  }
+}
+
+mno-password {
+  display: block;
+}
+
+mno-without-organisation {
+  .well {
+    background-color: @without-organisation-well-bg;
+    color: @without-organisation-text-color;
+
+    h2 {
+      margin-top: 0;
+    }
+  }
+}
+
+average-star-rating, star-rating {
+  position: relative;
+  display: block;
+
+  ul.rating {
+    margin: 0;
+    padding: 0 !important;
+    display: inline-block;
+
+    li {
+      padding: 1px;
+      color: #ddd;
+      font-size: 20px;
+      text-shadow: .05em .05em #aaa;
+      list-style-type: none;
+      display: inline-block;
+      cursor: pointer;
+      outline: none;
+
+      &.filled {
+        color: #fd0; //#21568b
+      }
+    }
+
+    &.readonly li.filled {
+      color: #666;
+    }
+  }
+
+  .average-rating-container {
+    display: inline-block;
+    position: relative;
+    height: 31px;
+    width: 103px;
+    overflow: hidden;
+
+    &.withrating {
+      margin-right: 37px;
+    }
+
+    .rating li {
+      cursor: inherit;
+    }
+
+    .background,
+    .foreground {
+      position: absolute;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+  }
+
+  .badge {
+    position: absolute;
+    top: 5px;
+    right: 0;
+  }
+}
+
+theme-editor {
+  .theme-previewer-side-panel {
+    z-index: 9999;
+    width: 80%;
+    position: absolute;
+    right: -1px;
+    top: 5%;
+    height: 90%;
+    background-color: white;
+    border: solid 1px #c8d7d9;
+    border-radius: 6px 0 0 6px;
+    box-shadow: 0 1px 8px -4px;
+    transition: ease-out 0.5s;
+    overflow: hidden;
+
+    &.closed {
+      //right: 25px;
+      transform: translate3d(~'calc(100% - 30px)', 0, 0);
+    }
+
+    .collapse-switch-btn {
+      position: absolute;
+      left: 10px;
+      top: 3px;
+      font-size: 18px;
+    }
+
+    .content {
+      position: relative;
+      height: ~"calc(100% - 30px)";
+      margin-top: 30px;
+      padding-left: 15px;
+      padding-right: 15px;
+      overflow-y: auto;
+    }
+  }
+}
+
 // Base style
 .accordion {
   .panel-group .panel {
@@ -1405,896 +2281,9 @@ form.editable-wrap .editable-controls input {
   padding-left: 5px;
 }
 
-dashboard-company-selectbox {
-  /*-----------------------------------------------------------------------*/
-  /*                       Company Select Box                              */
-  /*-----------------------------------------------------------------------*/
-  .company-select-box {
-    position: absolute;
-    right: 0;
-    width: @dashboard-cpy-select-width;
-    background-color: @dashboard-cpy-select-bg-color;
-    font-size: @dashboard-cpy-select-header-text-size;
-    border-radius: @dashboard-cpy-select-border-radius;
-    border-left: 1px solid @dashboard-cpy-select-border-color;
-    border-bottom: 1px solid @dashboard-cpy-select-border-color;
-    z-index: 999;
-    overflow: hidden;
-
-    @media (max-width: @screen-sm) {
-      border-radius: 0;
-    }
-
-    // Section always visible
-    .box-header {
-      cursor: pointer;
-      text-align: right;
-      outline: none;
-      display: flex;
-      align-items: center;
-      padding: 10px 20px;
-
-      img {
-        border-radius: 50%;
-        height: @dashboard-cpy-select-pic-width;
-        width: @dashboard-cpy-select-pic-width;
-      }
-
-      .title {
-        margin: 0 10px;
-        width: ~'calc(100% -' (2 * @dashboard-cpy-select-pic-width) ~')';
-        text-align: left;
-
-        .name {
-          font-weight: bold;
-          color: @dashboard-cpy-select-header-title-color;
-        }
-
-        .company {
-          width: 100%;
-          display: block;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          color: @dashboard-cpy-select-header-company-color;
-        }
-      }
-      .expand-menu {
-        margin-left: auto;
-      }
-    }
-
-    // Section visible when change company is clicked
-    .box-content {
-      border-top: solid 1px @dashboard-cpy-select-list-border-color;
-      overflow: hidden;
-
-      // General look of the links
-      a {
-        line-height: 17px;
-        display: block;
-        padding: 4px 0 4px 20px;
-        outline: none;
-      }
-
-      // List of companies
-      ul {
-        padding: 15px 20px 0 20px;
-        max-height: 400px;
-        min-width: 250px;
-        overflow-y: auto;
-
-        > li {
-
-          > a.company-link {
-            text-decoration: none;
-            padding: 4px;
-            display: flex;
-            color: @dashboard-cpy-select-link-text-color;
-
-            &:hover {
-              background-color: @dashboard-cpy-select-link-hover-bg-color;
-              border-bottom-left-radius: 0;
-            }
-
-            // Circle next to company name
-            // Indicate which company is currently viewed on dashboard
-            > i {
-              flex: 0 0 20px;
-              width: 13px;
-              padding: 2px 0;
-              display: inline-flex;
-              text-align: center;
-              color: @dashboard-cpy-select-link-icon-color;
-            }
-
-            > span {
-              text-align: left;
-              display: inline-flex;
-              flex: 1 1 auto;
-            }
-          }
-        }
-      }
-
-      .default-link {
-        color: @dashboard-cpy-select-link-color;
-        padding: 10px 20px;
-        text-align: left;
-        border-top: 1px solid @dashboard-cpy-select-list-border-color;
-
-        .btn {
-          width: 100%;
-          padding: 3px;
-        }
-
-        // Icon on the left side of the link
-        i {
-          width: 20px;
-          text-align: center;
-          font-size: 11pt;
-        }
-
-        &:hover {
-          text-decoration: none;
-          color: @dashboard-cpy-select-link-hover-color;
-          background-color: @dashboard-cpy-select-link-hover-bg-color;
-        }
-      }
-    }
-  }
-
-  @media (max-width: @screen-sm) {
-    .company-select-box {
-      width: 100%;
-      position: fixed;
-      border-left: none;
-      border-top: 1px solid @dashboard-cpy-select-border-color;
-      top: ~'calc(1px + ' @navbar-height ~')';  // Add top border
-    }
-  }
-}
-
-#app-dock-container {
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  text-align: center;
-  
-  .top-right-corner {
-    line-height: 0;
-    margin-right: -10px;
-  }
-}
-
-ul.dock {
-  position: relative;
-  display: inline-block;
-  background-color: @mno-dock-bg-color;
-  opacity: 1;
-  padding: 5px;
-  z-index: 999;
-  .border-bottom-radius(5px);
-  height: 90px;
-  .transition(height 0.3s);
-
-  & > li {
-    display: inline-block;
-    position: relative;
-    vertical-align: top;
-
-    .loader-icon {
-      color: @mno-dock-app-loader-color;
-      font-size: 40px;
-      margin: 10px 8px 0 10px;
-    }
-
-    .title {
-      position: absolute;
-      top: 0;
-      color: @mno-dock-app-title-color;
-      display: none;
-      width: 100%;
-      text-align: center;
-    }
-
-    img.app-logo {
-      outline: none;
-      cursor: pointer;
-      margin: 5px;
-      .square(@mno-dock-app-logo-square-width);
-      .transition(all 0.3s);
-      .border-top-radius(5px);
-      .border-bottom-radius(5px);
-      .transform-origin(50% 0%); // Origin from top
-    }
-
-    .add-app {
-      cursor: pointer;
-      margin: 5px;
-      .square(@mno-dock-app-logo-square-width);
-      .transition(all 0.3s);
-      .transform-origin(50% 0%); // Origin from top
-      border: 1px solid @mno-dock-add-app-border-color;
-      .border-top-radius(5px);
-      .border-bottom-radius(5px);
-
-      display: table;
-
-      a {
-        display: table-cell;
-        vertical-align: middle;
-        color: @mno-dock-add-app-text-color;
-      }
-    }
-  }
-
-  // Expand button
-  li.expand-menu {
-    border-left: 1px solid @mno-dock-expand-left-border-color;
-    height: 100%;
-
-    & > div {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
-
-      a {
-        padding-left: 6px;
-        padding-right: 5px;
-        .transition(height 0.3s);
-        cursor: pointer;
-        color: @mno-dock-expand-arrow-color;
-
-        &:hover {
-          text-decoration: none;
-          color: @mno-dock-expand-arrow-color-hover;
-        }
-      }
-    }
-  }
-
-  //=======================================
-  // Submenu
-  //=======================================
-  .dock-menu {
-    position: absolute;
-    left: 50%;
-    top: 100%;
-    z-index: 1000;
-    margin-top: 68px;
-    visibility:hidden;
-    opacity:0;
-    transition: visibility 0s linear 0.5s,opacity 0.5s linear;
-
-    div.dock-arrow {
-      position: relative;
-      right: 50%;
-    }
-
-    div.inner-dock-menu { // Inner div holding the menu
-      position: relative;
-      right: 50%;
-      padding: 5px 0px;
-      .border-top-radius(5px);
-      .border-bottom-radius(5px);
-      background-color: @mno-dock-sub-menu-bg-color;
-
-      .box-shadow(@mno-dock-sub-menu-box-shadow);
-      .menu-item {
-        cursor: pointer;
-
-        &:hover {
-          background-color: @mno-dock-sub-menu-hover;
-
-          a {
-            color: @mno-dock-sub-menu-text-hover-color;
-          }
-        }
-
-        a {
-          display: flex;
-          text-decoration: none;
-          color: @mno-dock-sub-menu-text-color;
-          padding: 5px 20px;
-
-          &.connect-btn-center, img.connect-btn-center {
-            margin: auto;
-          }
-
-          i.fa {
-            color: @mno-dock-sub-menu-icon;
-            margin-top: 3px;
-            margin-right: 6px;
-          }
-        }
-
-        .connector-logo {
-          margin-top:3px;
-          margin-bottom:3px;
-          cursor: pointer;
-        }
-      }
-    }
-  }
-
-  & > li.active {
-    .dock-menu {
-      // display: block;
-      visibility: visible;
-      opacity: 1;
-      transition-delay: 0s;
-    }
-  }
-}
-
-ul.dock.minimized {
-  height: @mno-dock-app-logo-square-width;
-  .transition(height 0.3s);
-
-  img.app-logo, .add-app {
-    .square(@mno-dock-app-logo-minimized-square-width);
-  }
-
-  .add-app {
-    span {
-      .transition(all 0.3s);
-      display: none;
-    }
-  }
-
-  .dock-menu {
-    margin-top: @mno-dock-app-logo-minimized-square-width;
-  }
-}
-
-ul.dock.animated  > li:hover, ul.dock > li.active {
-  img.app-logo {
-    transform: scale(1.8) translate(0, 10px);
-    margin: 5px 1.6em 5px;
-    z-index: 9999;
-
-    border: @mno-dock-app-box-border;
-    .box-shadow(@mno-dock-app-box-shadow);
-  }
-
-  .title {
-    display: block;
-  }
-
-  /* one element after and element before (with JS)*/
-  & + li img.app-logo, ul.dock > li.prev img.app-logo {
-    .scale(1.4);
-    margin: 5px 1.6em 5px;
-  }
-}
-
-ul.dock > li.prev img.app-logo {
-  .scale(1.4);
-  margin: 5px 1.4em 5px;
-}
-
-// Mobile
-#app-dock-mobile-container {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  z-index: 1030;
-
-  .mobile-dock-button {
-    width: 100%;
-    text-transform: uppercase;
-    padding: 10px;
-    color: @mno-dock-mobile-button-color;
-    background-color: @mno-dock-mobile-button-bg-color;
-  }
-
-  #mobile-dock {
-    z-index: 1030;
-
-    &.collapse.in {
-      overflow-y: auto;
-    }
-
-    .btn {
-      text-transform: uppercase;
-    }
-
-    ul {
-      margin-bottom: 0;
-      background-color: @mno-dock-mobile-bg-color;
-
-      & > li {
-        border-bottom: @mno-dock-mobile-app-border-bottom;
-        padding-top: 5px;
-        padding-bottom: 5px;
-
-        .app-line {
-          display: flex;
-          justify-content: space-around;
-          align-items: center;
-
-          .title {
-            color: @mno-dock-mobile-app-name-color;
-            font-weight: bold;
-          }
-
-          img.app-logo {
-            .square(48px);
-          }
-        }
-
-        &:hover, &.active {
-          background-color: @mno-dock-mobile-app-active-color;
-        }
-      }
-    }
-
-    .add-app {
-      color: @mno-dock-mobile-add-app-color;
-    }
-  }
-}
-
-
-dashboard-language-selectbox {
-  display: block;
-
-  .selector-line {
-    display: inline-block;
-    margin: 5px auto;
-  }
-}
-
-dashboard-menu {
-  /*-----------------------------------------------------------------------*/
-  /*                         Mobile menu                                   */
-  /*-----------------------------------------------------------------------*/
-  .navbar {
-    &.navbar-inverse {
-      font-weight:300;
-      letter-spacing:1px;
-
-      .navbar-toggle {
-        background-color: #fff;
-        .icon-bar {
-          background-color: #333;
-        }
-
-        &:hover, &:focus {
-          background-color: #333;
-          .icon-bar {
-            background-color: #fff;
-          }
-        }
-      }
-
-      ul.nav.navbar-nav {
-        padding:0px;
-        text-transform:uppercase;
-        a {
-          font-size:@normal;
-          text-align:center;
-          background-color:#111c21;
-          border-bottom: solid 1px @bg-inverse-color;
-          padding:22px 0px;
-
-          &.active {
-            color: @dashboard-side-menu-link-active-color;
-          }
-        }
-
-        ul.dropdown-menu {
-          padding:0px;
-          a {
-            background-color:@bg-inverse-color;
-            border-bottom: solid 1px #111c21;
-            padding:13px 0px;
-          }
-        }
-      }
-    }
-  }
-
-  /*-----------------------------------------------------------------------*/
-  /*                         Dashboard Left Navbar                         */
-  /*-----------------------------------------------------------------------*/
-  .menu {
-
-    a:hover { text-decoration: none; }
-
-    // Dashboard Button > Active State
-    .dashboard-button.active, .dashboard-button.active:hover {
-      color: @dashboard-side-menu-link-active-color;
-      background-color: @dashboard-side-menu-link-active-bg-color;
-    }
-
-    // Dashboard Button Content > Active State
-    .dashboard-button.active .content, .dashboard-button.active:hover .content {
-      color: @dashboard-side-menu-link-active-color;
-      background-color: @dashboard-side-menu-link-active-bg-color;
-    }
-
-    // Dashboard Button Content > Normal State
-    .dashboard-button,
-    .dashboard-button .content {
-      color: @dashboard-side-menu-link-color;
-      background-color: @dashboard-side-menu-link-bg-color;
-    }
-
-    // Dashboard Button Content > Normal State Hover
-    .dashboard-button:hover, .dashboard-button:hover .content {
-      color: @dashboard-side-menu-link-hover-color;
-      background-color: @dashboard-side-menu-link-hover-bg-color;
-    }
-
-    // Vertical menu
-    &.vertical {
-      z-index:100;
-      position:fixed;
-      left:0px;
-      top:0px;
-      padding: @dashboard-side-menu-padding;
-      width:80px;
-      min-height:100%;
-      height:99%;
-
-      // Dashboard Button > Normal State
-      .dashboard-button {
-        display: block;
-        border-radius: 5px;
-        width: 51px;
-        height: 51px;
-        padding-top: 7px;
-        padding-left: 9px;
-      }
-
-      &:hover .dashboard-button {
-        width: 250px;
-      }
-
-      // Dashboard Button Content > Normal State
-      .dashboard-button .content {
-        display: none;
-      }
-
-      &:hover .dashboard-button .content {
-        display: block;
-        white-space: nowrap;
-        position: absolute;
-        margin: 8px 0px 0px 55px;
-        font-size: 15px;
-      }
-
-      // Side menu brand logo
-      .brand-logo {
-        height: 90px;
-        background-repeat: no-repeat;
-        background-image: url(@dashboard-side-menu-brand-logo-img);
-        background-size: 100%;
-        @dashboard-side-menu-brand-logo();
-      }
-      .brand-logo.expanded {
-        @dashboard-side-menu-brand-logo-expanded();
-      }
-    }
-
-    background-color: @dashboard-side-menu-bg-color;
-
-    hr {
-      border-top: 2px dashed darken(@dashboard-side-menu-bg-color, 5%);
-      margin-right: 11px;
-    }
-
-    // Icon configuration for each dashboard button
-    .dashboard-button i.dhb-icon-dashboard {
-      @dashboard-side-menu-btn-dashboard();
-    }
-    .dashboard-button:hover i.dhb-icon-dashboard,
-    .dashboard-button.active i.dhb-icon-dashboard {
-      @dashboard-side-menu-btn-dashboard-active();
-    }
-
-    .dashboard-button i.dhb-icon-impac {
-      @dashboard-side-menu-btn-impac();
-    }
-    .dashboard-button.active i.dhb-icon-impac,
-    .dashboard-button:hover i.dhb-icon-impac {
-      @dashboard-side-menu-btn-impac-active();
-    }
-
-    .dashboard-button i.dhb-icon-account {
-      @dashboard-side-menu-btn-account();
-    }
-    .dashboard-button:hover i.dhb-icon-account,
-    .dashboard-button.active i.dhb-icon-account {
-      @dashboard-side-menu-btn-account-active();
-    }
-
-    .dashboard-button i.dhb-icon-company {
-      @dashboard-side-menu-btn-company();
-    }
-    .dashboard-button:hover i.dhb-icon-company,
-    .dashboard-button.active i.dhb-icon-company {
-      @dashboard-side-menu-btn-company-active();
-    }
-
-    .dashboard-button i.dhb-icon-subscriptions {
-      @dashboard-side-menu-btn-subscriptions();
-    }
-    .dashboard-button:hover i.dhb-icon-subscriptions,
-    .dashboard-button.active i.dhb-icon-subscriptions {
-      @dashboard-side-menu-btn-subscriptions-active();
-    }
-
-    .dashboard-button i.dhb-icon-marketplace {
-      @dashboard-side-menu-btn-marketplace();
-    }
-    .dashboard-button:hover i.dhb-icon-marketplace,
-    .dashboard-button.active i.dhb-icon-marketplace {
-      @dashboard-side-menu-btn-marketplace-active();
-    }
-
-    .dashboard-button i.dhb-icon-logout {
-      @dashboard-side-menu-btn-logout();
-    }
-    .dashboard-button:hover i.dhb-icon-logout,
-    .dashboard-button.active i.dhb-icon-logout {
-      @dashboard-side-menu-btn-logout-active();
-    }
-  }
-}
-
-impersonification-notification {
-  .notifications {
-    padding-top: 70px;
-  }
-}
-
-#app-features {
-  border: @onboarding-app-features-border;
-  color: @onboarding-app-features-color;
-
-  .center-element {
-    margin-left: 10px;
-    margin-bottom: 12px;
-  }
-
-  .fa-check-square-o {
-    color: @onboarding-app-features-checked;
-  }
-  .fa-square-o {
-    color: @onboarding-app-features-unchecked;
-  }
-}
-
-mno-app-onboarding-btn {
-  display: block;
-
-  .button-check {
-    color: @onboarding-app-connect-check;
-  }
-
-  .button-loader {
-    color: @onboarding-app-connect-loader;
-  }
-
-  .btn {
-    margin-top: 5px;
-  }
-}
-
-mno-audit-events-list {
-  .table > thead > tr {
-    color: @table-cell-header-text-color;
-    background-color: @table-cell-header-bg-color;
-  }
-
-  .table-striped > tbody > tr {
-    &:nth-of-type(even) {
-      background-color: @table-cell-row-even-bg-color
-    }
-
-    &:nth-of-type(odd) {
-      background-color: @table-cell-row-odd-bg-color
-    }
-  }
-}
-
-mno-impersonation-bar {
-  #impersonate-bar {
-    color: @text-inverse-strong-color;
-    background-color: @bg-inverse-color;
-    padding-top: 3px;
-    padding-bottom: 3px;
-
-    @media (max-width: @screen-xs-max) {
-      padding-top: 40px;
-    }
-  }
-}
-
-mno-inline-message {
-  .mno-inline-checked {
-    color: @dashboard-account-inline-text-color-checked;
-  }
-
-  .mno-inline-unchecked {
-    color: @dashboard-account-inline-text-color-unchecked;
-  }
-}
-
-mno-loader {
-  display: block;
-
-  .loading {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: @dashboard-loader-color;
-
-    .loader-icon {
-      @dashboard-loader-icon();
-    }
-
-    .background-layer {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background-color: grey;
-      opacity: 0.6;
-    }
-  }
-}
-
-.loader-content {
-  position: relative;
-}
-
-mno-pagination {
-  display: block;
-  overflow: auto;
-
-  .pagination {
-    margin: 0;
-  }
-
-  .nb-items-col {
-    float: right;
-
-    .items-per-page-select {
-      display: inline;
-      width: 75px;
-
-      @media (max-width: @screen-xs-max) {
-        margin-top: 15px;
-      }
-    }
-  }
-}
-
-mno-without-organisation {
-  .well {
-    background-color: @without-organisation-well-bg;
-    color: @without-organisation-text-color;
-
-    h2 {
-      margin-top: 0;
-    }
-  }
-}
-
-mno-password {
-  display: block;
-}
-
-theme-editor {
-  .theme-previewer-side-panel {
-    z-index: 9999;
-    width: 80%;
-    position: absolute;
-    right: -1px;
-    top: 5%;
-    height: 90%;
-    background-color: white;
-    border: solid 1px #c8d7d9;
-    border-radius: 6px 0 0 6px;
-    box-shadow: 0 1px 8px -4px;
-    transition: ease-out 0.5s;
-    overflow: hidden;
-
-    &.closed {
-      //right: 25px;
-      transform: translate3d(~'calc(100% - 30px)', 0, 0);
-    }
-
-    .collapse-switch-btn {
-      position: absolute;
-      left: 10px;
-      top: 3px;
-      font-size: 18px;
-    }
-
-    .content {
-      position: relative;
-      height: ~"calc(100% - 30px)";
-      margin-top: 30px;
-      padding-left: 15px;
-      padding-right: 15px;
-      overflow-y: auto;
-    }
-  }
-}
-
 #account {
   .row:not(:first-child) {
     margin-top: 15px;
-  }
-}
-
-average-star-rating, star-rating {
-  position: relative;
-  display: block;
-
-  ul.rating {
-    margin: 0;
-    padding: 0 !important;
-    display: inline-block;
-
-    li {
-      padding: 1px;
-      color: #ddd;
-      font-size: 20px;
-      text-shadow: .05em .05em #aaa;
-      list-style-type: none;
-      display: inline-block;
-      cursor: pointer;
-      outline: none;
-
-      &.filled {
-        color: #fd0; //#21568b
-      }
-    }
-
-    &.readonly li.filled {
-      color: #666;
-    }
-  }
-
-  .average-rating-container {
-    display: inline-block;
-    position: relative;
-    height: 31px;
-    width: 103px;
-    overflow: hidden;
-
-    &.withrating {
-      margin-right: 37px;
-    }
-
-    .rating li {
-      cursor: inherit;
-    }
-
-    .background,
-    .foreground {
-      position: absolute;
-      top: 0;
-      left: 0;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-  }
-
-  .badge {
-    position: absolute;
-    top: 5px;
-    right: 0;
   }
 }
 
@@ -2388,6 +2377,173 @@ average-star-rating, star-rating {
       }
     }
   }
+}
+
+.dashboard-organization {
+
+  //-----------------------------------
+  // Tabs Styling
+  //-----------------------------------
+  ul.nav.nav-tabs {
+    border-bottom: none;
+  }
+
+  // Tab Header Wrapper Styling
+  ul.nav.nav-tabs > li {
+    margin-right: 5px;
+    padding-bottom: 5px;
+    background-color: transparent;
+    border-bottom: solid 5px transparent;
+    padding: 0px;
+    cursor: pointer;
+  }
+  ul.nav.nav-tabs > li.active when (@dashboard-cpy-tabs-subline-size > 0) {
+    border-bottom: solid 4px @dashboard-cpy-tabs-active-bg-color;
+  }
+
+  // Tab Header Styling
+  ul.nav.nav-tabs > li > a {
+    padding: 20px 40px;
+    border: none;
+    color: @dashboard-cpy-tabs-text-color;
+    background-color: @dashboard-cpy-tabs-bg-color;
+    .border-top-radius(@dashboard-cpy-tabs-border-radius);
+    .border-bottom-radius(@dashboard-cpy-tabs-border-radius);
+
+
+  }
+  ul.nav.nav-tabs > li > a:hover {
+    background-color: @dashboard-cpy-tabs-hover-bg-color;
+    color: @dashboard-cpy-tabs-hover-text-color;
+  }
+  ul.nav.nav-tabs > li.active > a,
+  ul.nav.nav-tabs > li.active > a:hover,
+  ul.nav.nav-tabs > li.active > a:focus {
+    padding-bottom: 20px;
+    background-color: @dashboard-cpy-tabs-active-bg-color;
+    color: @dashboard-cpy-tabs-active-text-color;
+
+    & when (@dashboard-cpy-tabs-subline-size = 0) {
+      .border-bottom-radius(@dashboard-cpy-tabs-border-radius);
+    }
+  }
+
+  // Tab Content Styling
+  .tab-content {
+    border-top: solid @dashboard-cpy-tabs-subline-size @dashboard-cpy-tabs-subline-color;
+    padding-top: 20px;
+  }
+
+  .tab-content .tab-pane {
+    background-color: transparent;
+  }
+
+  @media(max-width: 720px) {
+    ul.nav.nav-tabs > li {
+      width:100%;
+
+      &.active {
+        border-bottom: solid 5px transparent;
+        a {
+          background-color: @dashboard-cpy-tabs-active-bg-color;
+          color: white;
+        }
+      }
+    }
+  }
+
+  //-----------------------------------
+  // Well Styling
+  //-----------------------------------
+  .well {
+    border: none;
+    background-color: @dashboard-cpy-tabcontent-bg-color;
+
+    label, p {
+      color: @dashboard-cpy-tabcontent-text-color;
+    }
+  }
+
+  //-----------------------------------
+  // Accordion Styling
+  //-----------------------------------
+  .panel-group .panel {
+    margin: 0px 0px 25px 0px;
+
+    .cc-icons i {
+      display: inline-block;
+    }
+  }
+
+  //-----------------------------------
+  // CC Form
+  //-----------------------------------
+  .cc-header small div {
+    display: inline-block;
+    vertical-align: top;
+
+    i {
+      display: inline-block;
+      zoom: 0.40;
+      vertical-align: top;
+    }
+    img {
+      max-height: 30px;
+      vertical-align: top;
+    }
+  }
+
+  .cc-header-eft {
+    font-size: 13px;
+    line-height: 29px;
+    color: #777777;
+    float: right;
+  }
+}
+
+//-----------------------------------
+// Invite Members Modal
+//-----------------------------------
+#invite-members-modal {
+  ul.roles-list {
+    list-style-type: none;
+  }
+}
+
+//-----------------------------------
+// User Edition Modal
+//-----------------------------------
+.modal.member-edit .role-management {
+  text-align: center;
+}
+
+.modal.member-edit .role-management .fa {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.modal.member-edit .role-management p {
+  font-weight: 300;
+}
+
+//-----------------------------------
+// Team Member Add Modal
+//-----------------------------------
+.team-member-add-modal table {
+  margin: auto;
+  font-weight: 300;
+}
+.team-member-add-modal table td {
+  border: none;
+  padding: 8px;
+}
+
+.team-member-add-modal table tr td:first-child {
+  text-align: right;
+}
+
+.team-member-add-modal table tr td:last-child {
+  text-align: left;
 }
 
 #impac {
@@ -3244,7 +3400,7 @@ average-star-rating, star-rating {
   }
 
   .product-content {
-    padding: 50px 50px 0 50px;
+    padding: 25px 50px 0 50px;
   }
 
   .marketplace-nav {
@@ -3308,173 +3464,6 @@ average-star-rating, star-rating {
       }
     }
   }
-}
-
-.dashboard-organization {
-
-  //-----------------------------------
-  // Tabs Styling
-  //-----------------------------------
-  ul.nav.nav-tabs {
-    border-bottom: none;
-  }
-
-  // Tab Header Wrapper Styling
-  ul.nav.nav-tabs > li {
-    margin-right: 5px;
-    padding-bottom: 5px;
-    background-color: transparent;
-    border-bottom: solid 5px transparent;
-    padding: 0px;
-    cursor: pointer;
-  }
-  ul.nav.nav-tabs > li.active when (@dashboard-cpy-tabs-subline-size > 0) {
-    border-bottom: solid 4px @dashboard-cpy-tabs-active-bg-color;
-  }
-
-  // Tab Header Styling
-  ul.nav.nav-tabs > li > a {
-    padding: 20px 40px;
-    border: none;
-    color: @dashboard-cpy-tabs-text-color;
-    background-color: @dashboard-cpy-tabs-bg-color;
-    .border-top-radius(@dashboard-cpy-tabs-border-radius);
-    .border-bottom-radius(@dashboard-cpy-tabs-border-radius);
-
-
-  }
-  ul.nav.nav-tabs > li > a:hover {
-    background-color: @dashboard-cpy-tabs-hover-bg-color;
-    color: @dashboard-cpy-tabs-hover-text-color;
-  }
-  ul.nav.nav-tabs > li.active > a,
-  ul.nav.nav-tabs > li.active > a:hover,
-  ul.nav.nav-tabs > li.active > a:focus {
-    padding-bottom: 20px;
-    background-color: @dashboard-cpy-tabs-active-bg-color;
-    color: @dashboard-cpy-tabs-active-text-color;
-
-    & when (@dashboard-cpy-tabs-subline-size = 0) {
-      .border-bottom-radius(@dashboard-cpy-tabs-border-radius);
-    }
-  }
-
-  // Tab Content Styling
-  .tab-content {
-    border-top: solid @dashboard-cpy-tabs-subline-size @dashboard-cpy-tabs-subline-color;
-    padding-top: 20px;
-  }
-
-  .tab-content .tab-pane {
-    background-color: transparent;
-  }
-
-  @media(max-width: 720px) {
-    ul.nav.nav-tabs > li {
-      width:100%;
-
-      &.active {
-        border-bottom: solid 5px transparent;
-        a {
-          background-color: @dashboard-cpy-tabs-active-bg-color;
-          color: white;
-        }
-      }
-    }
-  }
-
-  //-----------------------------------
-  // Well Styling
-  //-----------------------------------
-  .well {
-    border: none;
-    background-color: @dashboard-cpy-tabcontent-bg-color;
-
-    label, p {
-      color: @dashboard-cpy-tabcontent-text-color;
-    }
-  }
-
-  //-----------------------------------
-  // Accordion Styling
-  //-----------------------------------
-  .panel-group .panel {
-    margin: 0px 0px 25px 0px;
-
-    .cc-icons i {
-      display: inline-block;
-    }
-  }
-
-  //-----------------------------------
-  // CC Form
-  //-----------------------------------
-  .cc-header small div {
-    display: inline-block;
-    vertical-align: top;
-
-    i {
-      display: inline-block;
-      zoom: 0.40;
-      vertical-align: top;
-    }
-    img {
-      max-height: 30px;
-      vertical-align: top;
-    }
-  }
-
-  .cc-header-eft {
-    font-size: 13px;
-    line-height: 29px;
-    color: #777777;
-    float: right;
-  }
-}
-
-//-----------------------------------
-// Invite Members Modal
-//-----------------------------------
-#invite-members-modal {
-  ul.roles-list {
-    list-style-type: none;
-  }
-}
-
-//-----------------------------------
-// User Edition Modal
-//-----------------------------------
-.modal.member-edit .role-management {
-  text-align: center;
-}
-
-.modal.member-edit .role-management .fa {
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-.modal.member-edit .role-management p {
-  font-weight: 300;
-}
-
-//-----------------------------------
-// Team Member Add Modal
-//-----------------------------------
-.team-member-add-modal table {
-  margin: auto;
-  font-weight: 300;
-}
-.team-member-add-modal table td {
-  border: none;
-  padding: 8px;
-}
-
-.team-member-add-modal table tr td:first-child {
-  text-align: right;
-}
-
-.team-member-add-modal table tr td:last-child {
-  text-align: left;
 }
 
 #app-connect-modal {
@@ -3558,32 +3547,6 @@ average-star-rating, star-rating {
         color: @deletion-sentence-color;
       }
     }
-  }
-}
-
-.create-review-modal {
-  textarea.form-control {
-    max-width: 100%;
-    background-color: white;
-  }
-}
-
-#app-info {
-  ul {
-    margin: 0;
-
-    li:not(:first-child) {
-      margin-top: 10px;
-    }
-  }
-
-  .close {
-    margin: 10px;
-  }
-
-  mno-app-features {
-    float: right;
-    width: 250px;
   }
 }
 
@@ -3739,6 +3702,32 @@ average-star-rating, star-rating {
   .permission-matrix-wrapper .table-right thead > tr > th {
     font-size: 11px;
     font-weight: 400;
+  }
+}
+
+.create-review-modal {
+  textarea.form-control {
+    max-width: 100%;
+    background-color: white;
+  }
+}
+
+#app-info {
+  ul {
+    margin: 0;
+
+    li:not(:first-child) {
+      margin-top: 10px;
+    }
+  }
+
+  .close {
+    margin: 10px;
+  }
+
+  mno-app-features {
+    float: right;
+    width: 250px;
   }
 }
 
