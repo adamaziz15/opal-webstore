@@ -1537,6 +1537,16 @@ dashboard-company-selectbox {
   }
 }
 
+
+dashboard-language-selectbox {
+  display: block;
+
+  .selector-line {
+    display: inline-block;
+    margin: 5px auto;
+  }
+}
+
 dashboard-menu {
   /*-----------------------------------------------------------------------*/
   /*                         Mobile menu                                   */
@@ -1736,13 +1746,9 @@ dashboard-menu {
   }
 }
 
-
-dashboard-language-selectbox {
-  display: block;
-
-  .selector-line {
-    display: inline-block;
-    margin: 5px auto;
+impersonification-notification {
+  .notifications {
+    padding-top: 70px;
   }
 }
 
@@ -1779,12 +1785,6 @@ mno-app-onboarding-btn {
   }
 }
 
-impersonification-notification {
-  .notifications {
-    padding-top: 70px;
-  }
-}
-
 mno-audit-events-list {
   .table > thead > tr {
     color: @table-cell-header-text-color;
@@ -1802,16 +1802,6 @@ mno-audit-events-list {
   }
 }
 
-mno-inline-message {
-  .mno-inline-checked {
-    color: @dashboard-account-inline-text-color-checked;
-  }
-
-  .mno-inline-unchecked {
-    color: @dashboard-account-inline-text-color-unchecked;
-  }
-}
-
 mno-impersonation-bar {
   #impersonate-bar {
     color: @text-inverse-color;
@@ -1822,6 +1812,16 @@ mno-impersonation-bar {
     @media (max-width: @screen-xs-max) {
       padding-top: 40px;
     }
+  }
+}
+
+mno-inline-message {
+  .mno-inline-checked {
+    color: @dashboard-account-inline-text-color-checked;
+  }
+
+  .mno-inline-unchecked {
+    color: @dashboard-account-inline-text-color-unchecked;
   }
 }
 
@@ -2595,7 +2595,15 @@ form.editable-wrap .editable-controls input {
       margin-top: 0;
     }
 
-    img {
+    ul.app-features {
+      img.feature-logo {
+        padding-right: 5px;
+        padding-left: 5px;
+        max-width: 26px;
+      }
+    }
+
+    img:not(.feature-logo) {
       .img-responsive;
     }
 
