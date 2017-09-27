@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/maestrano/mno-enterprise.git
-  revision: 57466fb62fb6405df2dbfe761b8df5521b3f3d2d
+  revision: eec283cdcf63044e5048efa4bb77da24c948c052
   branch: 4.0
   specs:
     mno-enterprise (3.3.1)
@@ -198,7 +198,8 @@ GEM
       sprockets (> 2, < 4)
       tilt
     libv8 (3.16.14.19)
-    loofah (2.0.3)
+    loofah (2.1.1)
+      crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     macaddr (1.7.1)
       systemu (~> 2.6.2)
