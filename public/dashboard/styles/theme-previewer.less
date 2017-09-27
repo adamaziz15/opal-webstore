@@ -28,6 +28,7 @@ body {
 
   &.translate-cloak {
     opacity: 0;
+    display: none !important;
   }
 }
 
@@ -75,6 +76,10 @@ body {
 
 #toast-container {
   z-index: 99999;
+}
+
+.content-template-wrapper.ng-hide {
+  display: none !important;
 }
 
 /**
@@ -161,8 +166,7 @@ body {
 
 @login-box-bg-color:                  @bg-inverse-color;
 @login-box-padding:                   20px;
-@login-box-brand-logo-img:            "mno_enterprise/main-logo.png";
-@login-box-brand-logo:                { min-height: 61px; max-width: 160px; max-height: 130px; margin: 17px auto 5px auto; };
+@login-box-brand-logo:                { max-width: 300px; max-height: 200px; margin: 16px auto 16px auto; };
 @login-box-btn-login:                 { width: 100%; };
 
 @login-box-sso-intuit-logo:           "mno_enterprise/logo-intuit.png";
@@ -281,9 +285,8 @@ body {
 @dashboard-side-menu-padding:                   30px 0px 0px 14px;
 @dashboard-side-menu-bg-color:                  @bg-inverse-color;
 
-@dashboard-side-menu-brand-logo-img:            "../images/main-logo.png";
-@dashboard-side-menu-brand-logo:                { background-size: 204px; width: 51px; margin-left: 5px; };
-@dashboard-side-menu-brand-logo-expanded:       { width: 201px; background-size: 100%; };
+@dashboard-side-menu-brand-logo:                { max-width: 50px; max-height: 50px; margin: 0 0 0 0; transition: max-width .25s ease, max-height .25s ease; };
+@dashboard-side-menu-brand-logo-expanded:       { max-width: 200px; max-height: 150px; };
 
 @dashboard-side-menu-link-color:                @text-inverse-color;
 @dashboard-side-menu-link-bg-color:             @dashboard-side-menu-bg-color;
@@ -650,8 +653,7 @@ body {
 
 @login-box-bg-color:                  @bg-inverse-color;
 @login-box-padding:                   20px;
-@login-box-brand-logo-img:            "mno_enterprise/main-logo.png";
-@login-box-brand-logo:                { min-height: 61px; max-width: 160px; max-height: 130px; margin: 17px auto 5px auto; };
+@login-box-brand-logo:                { max-width: 300px; max-height: 200px; margin: 16px auto 16px auto; };
 @login-box-btn-login:                 { width: 100%; };
 
 @login-box-sso-intuit-logo:           "mno_enterprise/logo-intuit.png";
@@ -685,9 +687,8 @@ body {
 @dashboard-side-menu-padding:                   30px 0px 0px 14px;
 @dashboard-side-menu-bg-color:                  @bg-inverse-color;
 
-@dashboard-side-menu-brand-logo-img:            "../images/main-logo.png";
-@dashboard-side-menu-brand-logo:                { background-size: 204px; width: 51px; margin-left: 5px; };
-@dashboard-side-menu-brand-logo-expanded:       { width: 201px; background-size: 100%; };
+@dashboard-side-menu-brand-logo:                { max-width: 50px; max-height: 50px; margin: 0; transition: max-width .25s ease, max-height .25s ease; };
+@dashboard-side-menu-brand-logo-expanded:       { max-width: 200px; max-height: 130px; };
 
 @dashboard-side-menu-link-color:                @decorator-inverse-color;
 @dashboard-side-menu-link-bg-color:             @dashboard-side-menu-bg-color;
@@ -1571,14 +1572,14 @@ dashboard-menu {
       }
 
       ul.nav.navbar-nav {
-        padding:0px;
-        text-transform:uppercase;
+        padding: 0;
+        text-transform: uppercase;
         a {
-          font-size:@normal;
-          text-align:center;
-          background-color:#111c21;
+          font-size: @normal;
+          text-align: center;
+          background-color: #111c21;
           border-bottom: solid 1px @bg-inverse-color;
-          padding:22px 0px;
+          padding: 22px 0;
 
           &.active {
             color: @dashboard-side-menu-link-active-color;
@@ -1586,11 +1587,11 @@ dashboard-menu {
         }
 
         ul.dropdown-menu {
-          padding:0px;
+          padding: 0;
           a {
-            background-color:@bg-inverse-color;
+            background-color: @bg-inverse-color;
             border-bottom: solid 1px #111c21;
-            padding:13px 0px;
+            padding: 13px 0;
           }
         }
       }
@@ -1601,8 +1602,14 @@ dashboard-menu {
   /*                         Dashboard Left Navbar                         */
   /*-----------------------------------------------------------------------*/
   .menu {
+    background-color: @dashboard-side-menu-bg-color;
 
     a:hover { text-decoration: none; }
+
+    .menu-buttons-wrapper {
+      position: absolute;
+      top: 160px;
+    }
 
     // Dashboard Button > Active State
     .dashboard-button.active, .dashboard-button.active:hover {
@@ -1631,14 +1638,14 @@ dashboard-menu {
 
     // Vertical menu
     &.vertical {
-      z-index:100;
-      position:fixed;
-      left:0px;
-      top:0px;
+      z-index: 100;
+      position: fixed;
+      left: 0;
+      top: 0;
       padding: @dashboard-side-menu-padding;
-      width:80px;
-      min-height:100%;
-      height:99%;
+      width: 80px;
+      min-height: 100%;
+      height: 99%;
 
       // Dashboard Button > Normal State
       .dashboard-button {
@@ -1663,24 +1670,19 @@ dashboard-menu {
         display: block;
         white-space: nowrap;
         position: absolute;
-        margin: 8px 0px 0px 55px;
+        margin: 8px 0 0 55px;
         font-size: 15px;
       }
 
       // Side menu brand logo
       .brand-logo {
-        height: 90px;
-        background-repeat: no-repeat;
-        background-image: url(@dashboard-side-menu-brand-logo-img);
-        background-size: 100%;
         @dashboard-side-menu-brand-logo();
-      }
-      .brand-logo.expanded {
-        @dashboard-side-menu-brand-logo-expanded();
+
+        &.expanded {
+          @dashboard-side-menu-brand-logo-expanded();
+        }
       }
     }
-
-    background-color: @dashboard-side-menu-bg-color;
 
     hr {
       border-top: 2px dashed darken(@dashboard-side-menu-bg-color, 5%);
@@ -1854,10 +1856,6 @@ mno-loader {
   position: relative;
 }
 
-mno-password {
-  display: block;
-}
-
 mno-pagination {
   display: block;
   overflow: auto;
@@ -1880,6 +1878,10 @@ mno-pagination {
   }
 }
 
+mno-password {
+  display: block;
+}
+
 mno-without-organisation {
   .well {
     background-color: @without-organisation-well-bg;
@@ -1887,44 +1889,6 @@ mno-without-organisation {
 
     h2 {
       margin-top: 0;
-    }
-  }
-}
-
-theme-editor {
-  .theme-previewer-side-panel {
-    z-index: 9999;
-    width: 80%;
-    position: absolute;
-    right: -1px;
-    top: 5%;
-    height: 90%;
-    background-color: white;
-    border: solid 1px #c8d7d9;
-    border-radius: 6px 0 0 6px;
-    box-shadow: 0 1px 8px -4px;
-    transition: ease-out 0.5s;
-    overflow: hidden;
-
-    &.closed {
-      //right: 25px;
-      transform: translate3d(~'calc(100% - 30px)', 0, 0);
-    }
-
-    .collapse-switch-btn {
-      position: absolute;
-      left: 10px;
-      top: 3px;
-      font-size: 18px;
-    }
-
-    .content {
-      position: relative;
-      height: ~"calc(100% - 30px)";
-      margin-top: 30px;
-      padding-left: 15px;
-      padding-right: 15px;
-      overflow-y: auto;
     }
   }
 }
@@ -1987,6 +1951,44 @@ average-star-rating, star-rating {
     position: absolute;
     top: 5px;
     right: 0;
+  }
+}
+
+theme-editor {
+  .theme-previewer-side-panel {
+    z-index: 9999;
+    width: 80%;
+    position: absolute;
+    right: -1px;
+    top: 5%;
+    height: 90%;
+    background-color: white;
+    border: solid 1px #c8d7d9;
+    border-radius: 6px 0 0 6px;
+    box-shadow: 0 1px 8px -4px;
+    transition: ease-out 0.5s;
+    overflow: hidden;
+
+    &.closed {
+      //right: 25px;
+      transform: translate3d(~'calc(100% - 30px)', 0, 0);
+    }
+
+    .collapse-switch-btn {
+      position: absolute;
+      left: 10px;
+      top: 3px;
+      font-size: 18px;
+    }
+
+    .content {
+      position: relative;
+      height: ~"calc(100% - 30px)";
+      margin-top: 30px;
+      padding-left: 15px;
+      padding-right: 15px;
+      overflow-y: auto;
+    }
   }
 }
 
@@ -2984,143 +2986,6 @@ form.editable-wrap .editable-controls input {
   }
 }
 
-#public {
-  background-color: @public-main-bg-color;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  position: relative;
-
-  .navbar {
-    padding-left: 10px;
-    max-height: 75px;
-    min-width: 405px;
-    background-color: @landing-nav-bg-color;
-    position: relative;
-  }
-
-  .highlight-products {
-    padding: 0 50px;
-
-    .well.carousel {
-      min-height: 400px;
-    }
-  }
-
-  .carousel-image-container {
-    height: 360px;
-    text-align: center;
-    position: relative;
-
-    .carousel-image {
-      background-size: cover;
-      height: 100%;
-      width: 100%;
-      filter: blur(5px);
-    }
-
-    .carousel-logo {
-      border-radius: 50%;
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      margin: auto;
-    }
-  }
-
-  .nav-logo {
-    background-image: url('images/main-logo.png');
-    background-size: cover;
-    @landing-nav-logo();
-  }
-
-  .navbar-brand {
-    @landing-nav-title();
-    color: @landing-nav-title-text-color;
-  }
-
-  .links {
-    overflow: hidden;
-    height: 55px;
-    padding-top: 20px;
-    padding-right: 20px;
-
-    a {
-      margin-left: 15px;
-      .z-depth(3);
-    }
-  }
-
-  .product-content {
-    padding: 25px 50px 0 50px;
-  }
-
-  .marketplace-nav {
-    input.form-control {
-      color: @landing-marketplace-search-text-color;
-      border: 1px solid @landing-marketplace-search-border-color;
-    }
-  }
-
-  .marketplace-app-card {
-    @landing-marketplace-app-card();
-    background-color: @landing-marketplace-tile-bg-color;
-
-    &:hover {
-      background-color: @landing-marketplace-tile-hover-bg-color;
-    }
-
-    .media {
-      .media-body {
-        color: @landing-marketplace-tile-text-color;
-
-        &:hover {
-          color: @landing-marketplace-tile-hover-text-color;
-        }
-      }
-      .media-heading {
-        color: @landing-marketplace-tile-name-color;
-
-        &:hover {
-          color: @landing-marketplace-tile-hover-name-color;
-        }
-      }
-
-      .arrow {
-        color: @landing-marketplace-tile-hover-arrow-color;
-      }
-
-      img.media-object {
-        border: 1px solid @landing-marketplace-tile-img-border-color;
-
-        &:hover {
-          border: 1px solid @landing-marketplace-tile-hover-img-border-color;
-        }
-      }
-    }
-  }
-
-  .product-content {
-    .media {
-      .media-body {
-        h2.media-heading {
-          color: @public-marketplace-show-header-text-color;
-        }
-      }
-    }
-
-    .show-content {
-      .well {
-        background-color: @public-marketplace-show-sections-bg-color;
-        color: @public-marketplace-show-sections-text-color;
-      }
-    }
-  }
-}
-
 
 #onboarding {
   header.header {
@@ -3472,6 +3337,143 @@ form.editable-wrap .editable-controls input {
 
 #provisioning-summary {
 
+}
+
+#public {
+  background-color: @public-main-bg-color;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: relative;
+
+  .navbar {
+    padding-left: 10px;
+    max-height: 75px;
+    min-width: 405px;
+    background-color: @landing-nav-bg-color;
+    position: relative;
+  }
+
+  .highlight-products {
+    padding: 0 50px;
+
+    .well.carousel {
+      min-height: 400px;
+    }
+  }
+
+  .carousel-image-container {
+    height: 360px;
+    text-align: center;
+    position: relative;
+
+    .carousel-image {
+      background-size: cover;
+      height: 100%;
+      width: 100%;
+      filter: blur(5px);
+    }
+
+    .carousel-logo {
+      border-radius: 50%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+    }
+  }
+
+  .nav-logo {
+    background-image: url('images/main-logo.png');
+    background-size: cover;
+    @landing-nav-logo();
+  }
+
+  .navbar-brand {
+    @landing-nav-title();
+    color: @landing-nav-title-text-color;
+  }
+
+  .links {
+    overflow: hidden;
+    height: 55px;
+    padding-top: 20px;
+    padding-right: 20px;
+
+    a {
+      margin-left: 15px;
+      .z-depth(3);
+    }
+  }
+
+  .product-content {
+    padding: 25px 50px 0 50px;
+  }
+
+  .marketplace-nav {
+    input.form-control {
+      color: @landing-marketplace-search-text-color;
+      border: 1px solid @landing-marketplace-search-border-color;
+    }
+  }
+
+  .marketplace-app-card {
+    @landing-marketplace-app-card();
+    background-color: @landing-marketplace-tile-bg-color;
+
+    &:hover {
+      background-color: @landing-marketplace-tile-hover-bg-color;
+    }
+
+    .media {
+      .media-body {
+        color: @landing-marketplace-tile-text-color;
+
+        &:hover {
+          color: @landing-marketplace-tile-hover-text-color;
+        }
+      }
+      .media-heading {
+        color: @landing-marketplace-tile-name-color;
+
+        &:hover {
+          color: @landing-marketplace-tile-hover-name-color;
+        }
+      }
+
+      .arrow {
+        color: @landing-marketplace-tile-hover-arrow-color;
+      }
+
+      img.media-object {
+        border: 1px solid @landing-marketplace-tile-img-border-color;
+
+        &:hover {
+          border: 1px solid @landing-marketplace-tile-hover-img-border-color;
+        }
+      }
+    }
+  }
+
+  .product-content {
+    .media {
+      .media-body {
+        h2.media-heading {
+          color: @public-marketplace-show-header-text-color;
+        }
+      }
+    }
+
+    .show-content {
+      .well {
+        background-color: @public-marketplace-show-sections-bg-color;
+        color: @public-marketplace-show-sections-text-color;
+      }
+    }
+  }
 }
 
 #app-connect-modal {
