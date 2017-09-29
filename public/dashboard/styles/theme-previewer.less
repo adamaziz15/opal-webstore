@@ -272,7 +272,7 @@ body {
 // Loaders
 //--------------------------------------
 @dashboard-loader-color:                        @text-strong-color;
-@dashboard-loader-icon:                         { .icon-fa(refresh); .fa-2x; .fa-spin; }; //pass a ruleset
+@dashboard-loader-icon:                         { .icon-fa(refresh); .fa-2x; .fa-spin; };
 
 // User without organisation
 //--------------------------------------
@@ -537,6 +537,12 @@ body {
 @dashboard-marketplace-show-product-price-tile-color:       @bg-on-bg-inverse-color;
 @dashboard-marketplace-show-product-price-icon-color:       @text-strong-color;
 @dashboard-marketplace-show-product-price-icon-color-hover: lighten(@text-strong-color, 10%);
+
+/*-----------------------------------------------------------------------*/
+/*                          Subscription                                 */
+/*-----------------------------------------------------------------------*/
+@subscription-txt-color: @text-strong-color;
+@subscription-box-color: white;
 
 /*-----------------------------------------------------------------------*/
 /*                          Reviews and comments                         */
@@ -1770,22 +1776,6 @@ impersonification-notification {
   }
 }
 
-mno-app-onboarding-btn {
-  display: block;
-
-  .button-check {
-    color: @onboarding-app-connect-check;
-  }
-
-  .button-loader {
-    color: @onboarding-app-connect-loader;
-  }
-
-  .btn {
-    margin-top: 5px;
-  }
-}
-
 mno-audit-events-list {
   .table > thead > tr {
     color: @table-cell-header-text-color;
@@ -1803,6 +1793,22 @@ mno-audit-events-list {
   }
 }
 
+mno-app-onboarding-btn {
+  display: block;
+
+  .button-check {
+    color: @onboarding-app-connect-check;
+  }
+
+  .button-loader {
+    color: @onboarding-app-connect-loader;
+  }
+
+  .btn {
+    margin-top: 5px;
+  }
+}
+
 mno-impersonation-bar {
   #impersonate-bar {
     color: @text-inverse-color;
@@ -1813,16 +1819,6 @@ mno-impersonation-bar {
     @media (max-width: @screen-xs-max) {
       padding-top: 40px;
     }
-  }
-}
-
-mno-inline-message {
-  .mno-inline-checked {
-    color: @dashboard-account-inline-text-color-checked;
-  }
-
-  .mno-inline-unchecked {
-    color: @dashboard-account-inline-text-color-unchecked;
   }
 }
 
@@ -1855,6 +1851,16 @@ mno-loader {
   position: relative;
 }
 
+mno-inline-message {
+  .mno-inline-checked {
+    color: @dashboard-account-inline-text-color-checked;
+  }
+
+  .mno-inline-unchecked {
+    color: @dashboard-account-inline-text-color-unchecked;
+  }
+}
+
 mno-pagination {
   display: block;
   overflow: auto;
@@ -1877,10 +1883,6 @@ mno-pagination {
   }
 }
 
-mno-password {
-  display: block;
-}
-
 mno-without-organisation {
   .well {
     background-color: @without-organisation-well-bg;
@@ -1890,6 +1892,10 @@ mno-without-organisation {
       margin-top: 0;
     }
   }
+}
+
+mno-password {
+  display: block;
 }
 
 average-star-rating, star-rating {
@@ -1995,303 +2001,6 @@ theme-editor {
   }
 }
 
-// Base style
-.accordion {
-  .panel-group .panel {
-    margin: 25px 0px;
-  }
-
-  .panel-group .panel,
-  .panel-group .panel > .panel-heading {
-    background-color: @dashboard-account-panel-header-bg-color;
-    border: none;
-    box-shadow: none;
-  }
-
-  .panel-group .panel > .panel-heading {
-    color: @dashboard-account-panel-header-text-color;
-    padding: 0;
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
-
-    .panel-title > div,
-    .panel-title > a {
-      font-size: 90%;
-      display: block;
-      padding-left: 10px;
-      line-height: 54px;
-      height: 54px;
-      cursor: pointer;
-
-      &:hover, &:focus {
-        text-decoration: none;
-      }
-    }
-
-    .panel-title .fa.pull-right {
-      margin-right: 20px;
-      margin-top: 20px;
-    }
-  }
-
-  .panel-group .panel-collapse > .panel-body {
-    background-color: @dashboard-account-panel-body-bg-color;
-    border: none;
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
-
-    label {
-      color: @dashboard-account-panel-text-color;
-    }
-
-    p, ul > li {
-      font-weight: 300;
-    }
-  }
-}
-
-.btn {
-  &.btn-link {
-    padding: 0 6px;
-
-    &.btn-link-primary {
-      color: @brand-primary;
-
-      &:hover, &:focus {
-        color: darken(@brand-primary, 30%);
-      }
-    }
-
-    &.btn-link-info {
-      color: @brand-info;
-
-      &:hover, &:focus {
-        color: darken(@brand-info, 30%);
-      }
-    }
-
-    &.btn-link-warning {
-      color: @brand-warning;
-
-      &:hover, &:focus {
-        color: darken(@brand-warning, 30%);
-      }
-    }
-
-    &.btn-link-danger {
-      color: @brand-danger;
-
-      &:hover, &:focus {
-        color: darken(@brand-danger, 30%);
-      }
-    }
-  }
-}
-
-
-//------------------------------------
-// input-group-addon dropdown
-//------------------------------------
-// Put a dropdown inside an input-group-addon
-.input-group-addon.select {
-  padding:0px;
-  border-radius: 6px 0px 0px 6px;
-  background-color: @input-bg;
-
-  select {
-    height:100%;
-    border:0px;
-    background-color: @input-bg;
-  }
-}
-
-//------------------------------------
-// Invalid inputs (AngularJS)
-//------------------------------------
-input.ng-dirty.ng-invalid {
-  border-color: @brand-danger;
-}
-
-//-----------------------------------------
-// Responsive tables (using TWB grid)
-// see templates/dashboard/organization/invoices.html
-// for an example
-//-----------------------------------------
-.table-cell {
-  .th-row {
-    margin-top: @table-cell-header-row-spacing;
-    margin-left: 0;
-    margin-right: 0;
-    padding-top: @table-cell-header-row-padding;
-    padding-bottom: @table-cell-header-row-padding;
-    color: @table-cell-header-text-color;
-    background-color: @table-cell-header-bg-color;
-    font-size: @table-cell-header-text-size;
-    line-height: (@table-cell-header-text-size + @table-cell-row-padding)*2;
-    @table-cell-header-additional-rule();
-  }
-
-  .td-row {
-    margin-top: @table-cell-row-spacing;
-    margin-bottom: @table-cell-row-spacing;
-    margin-left: 0;
-    margin-right: 0;
-    padding-top: @table-cell-row-padding;
-    padding-bottom: @table-cell-row-padding;
-    font-size: @table-cell-row-text-size;
-    line-height: (@table-cell-row-text-size + @table-cell-row-padding)*2;
-
-    .cell {
-      // Add '...' at the end of text if too long for the cell
-      .ellipsis();
-    }
-
-    .cell > .cell-label {
-      font-weight: bold;
-    }
-
-    .cell > a > i {
-      font-size: 20px;
-    }
-
-    &:nth-child(odd) {
-      background-color: @table-cell-row-odd-bg-color;
-    }
-
-    &:nth-child(even) {
-      background-color: @table-cell-row-even-bg-color;
-    }
-  }
-}
-
-@media (max-width: @screen-sm) {
-  .table-cell .td-row .cell > a { padding-left: 0; }
-}
-
-// Inverse Style
-.table-cell.inverse {
-  .th-row {
-    color: @table-inverse-cell-header-text-color;
-    background-color: @table-inverse-cell-header-bg-color;
-  }
-
-  .td-row:nth-child(odd) {
-    background-color: @table-inverse-cell-row-odd-bg-color;
-  }
-
-  .td-row:nth-child(even) {
-    background-color: @table-inverse-cell-row-even-bg-color;
-  }
-}
-
-.ribbon-testimonial {
-
-  .body {
-    background-color: @bg-on-bg-inverse-color;
-    border-radius: 5px;
-    padding: 20px;
-    color: @text-strong-color;
-    font-weight: 300;
-    font-size: 16px;
-    font-style: italic;
-
-    .arrow {
-      .rotate(45deg);
-      width: 0;
-      height: 0;
-      border-top: 18px solid transparent;
-      border-bottom: 18px solid transparent;
-      border-right: 18px solid @decorator-main-color;
-      position: absolute;
-      right: 28px;
-      margin-top: 8px;
-    }
-  }
-
-  .from {
-    margin: 7px 0px 0px 30px;
-
-    .name {
-      display: inline;
-      font-size: 14px;
-      font-weight: 700;
-      color: @text-inverse-color;
-    }
-
-    .company {
-      display: inline;
-      font-size: 14px;
-      font-weight: 300;
-      color: @decorator-inverse-color;
-    }
-  }
-}
-
-
-/*-----------------------------------------------------------------------*/
-/*                       Dashboard Section Title                         */
-/*-----------------------------------------------------------------------*/
-.myspace .section-title {
-  color: @dashboard-section-title-color;
-  text-align: @dashboard-section-title-alignment;
-}
-
-.myspace .section-title:after when (@dashboard-section-title-alignment = center) and (@dashboard-section-title-display-subline = true){
-  display: block;
-  content: '';
-  margin-top: 10px;
-  border-bottom: solid 1px @dashboard-section-title-color;
-  max-width: 45%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.editable.editable-click,
-a.editable.editable-click {
-  color: @text-strong-color;
-  border: none;
-
-  &:hover {
-    border-bottom: dashed 1px fadeout(@text-strong-color,60%);
-  }
-}
-
-form.editable-wrap {
-  margin: 0 !important;
-}
-
-form.editable-wrap .editable-controls {
-  padding: 0;
-}
-
-form.editable-wrap .editable-controls input {
-  height: 30px;
-  padding: 0 5px;
-  border: dashed 1px @text-strong-color;
-  .box-shadow(none);
-}
-
-.editable-instructions {
-  display: inline;
-}
-
-.editable-instructions form.editable-wrap .editable-controls:after {
-  display: block;
-  content: "press enter to confirm";
-  font-style: italic;
-  font-size: 10px;
-  line-height: 12px;
-  color: @text-strong-color;
-  margin-top: -10px;
-  padding-left: 5px;
-}
-
-#account {
-  .row:not(:first-child) {
-    margin-top: 15px;
-  }
-}
-
 #dashboard-apps-list {
   .app-dashboard {
     min-height: 280px;
@@ -2381,6 +2090,12 @@ form.editable-wrap .editable-controls input {
         color: @brand-warning;
       }
     }
+  }
+}
+
+#account {
+  .row:not(:first-child) {
+    margin-top: 15px;
   }
 }
 
@@ -2989,6 +2704,233 @@ form.editable-wrap .editable-controls input {
   }
 }
 
+#public {
+  background-color: @public-main-bg-color;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: relative;
+
+  .navbar {
+    position: relative;
+    height: 70px;
+    background-color: @landing-nav-bg-color;
+  }
+
+  .highlight-products {
+    padding: 0 50px;
+
+    .well.carousel {
+      min-height: 400px;
+    }
+  }
+
+  .carousel-image-container {
+    height: 360px;
+    text-align: center;
+    position: relative;
+
+    .carousel-image {
+      background-size: cover;
+      height: 100%;
+      width: 100%;
+      filter: blur(5px);
+    }
+
+    .carousel-logo {
+      border-radius: 50%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+    }
+  }
+
+  .nav-logo {
+    @landing-nav-logo();
+  }
+
+  .navbar-brand {
+    @landing-nav-title();
+    color: @landing-nav-title-text-color;
+  }
+
+  .links {
+    overflow: hidden;
+    margin: 18px 20px;
+
+    a {
+      margin-left: 15px;
+      .z-depth(3);
+    }
+  }
+
+  .product-content {
+    padding: 25px 50px 0 50px;
+  }
+
+  .marketplace-nav {
+    input.form-control {
+      color: @landing-marketplace-search-text-color;
+      border: 1px solid @landing-marketplace-search-border-color;
+    }
+  }
+
+  .marketplace-app-card {
+    @landing-marketplace-app-card();
+    background-color: @landing-marketplace-tile-bg-color;
+
+    &:hover {
+      background-color: @landing-marketplace-tile-hover-bg-color;
+    }
+
+    .media {
+      .media-body {
+        color: @landing-marketplace-tile-text-color;
+
+        &:hover {
+          color: @landing-marketplace-tile-hover-text-color;
+        }
+      }
+      .media-heading {
+        color: @landing-marketplace-tile-name-color;
+
+        &:hover {
+          color: @landing-marketplace-tile-hover-name-color;
+        }
+      }
+
+      .arrow {
+        color: @landing-marketplace-tile-hover-arrow-color;
+      }
+
+      img.media-object {
+        border: 1px solid @landing-marketplace-tile-img-border-color;
+
+        &:hover {
+          border: 1px solid @landing-marketplace-tile-hover-img-border-color;
+        }
+      }
+    }
+  }
+
+  .product-content {
+    .media {
+      .media-body {
+        h2.media-heading {
+          color: @public-marketplace-show-header-text-color;
+        }
+      }
+    }
+
+    .show-content {
+      .well {
+        background-color: @public-marketplace-show-sections-bg-color;
+        color: @public-marketplace-show-sections-text-color;
+      }
+    }
+  }
+}
+
+#provisioning-confirm {
+
+}
+
+#provisioning-details {
+
+}
+
+#provisioning-layout {
+  nav {
+    display: flex;
+    justify-content: space-around;
+    .top-buffer-5;
+
+    .breadcrumb-item {
+      // Deactivate the link
+      pointer-events: none;
+      color: @provisioning-breadcrumb-item-color;
+
+      .badge {
+        background-color: @provisioning-breadcrumb-item-badge-bg;
+      }
+
+      &.active {
+        color: @provisioning-breadcrumb-item-active-color;
+
+        .badge {
+          background-color: @provisioning-breadcrumb-item-active-badge-bg;
+        }
+      }
+    }
+  }
+
+  h1 {
+    .top-buffer-3;
+  }
+
+  .well {
+    .top-buffer-1;
+    background-color: @provisioning-well-bg-color;
+  }
+}
+
+#provisioning-order {
+  .row {
+    display: flex;
+    align-items: center;
+  }
+
+  .radio-selector {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+#subscription {
+  .well {
+    background-color: @subscription-box-color;
+  }
+
+  .text-color {
+    color: @subscription-txt-color;
+  }
+
+  form label.control-label {
+    color: @subscription-txt-color;
+  }
+
+  .form-control {
+    background-color: transparent;
+    box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
+  }
+
+  .has-success .form-control-feedback {
+    color: transparent;
+  }
+
+  .hide-border {
+    border: transparent;
+  }
+
+  .has-success .form-control {
+    border-color: transparent;
+  }
+}
+
+#provisioning-subscriptions {
+  .well {
+    background-color: @provisioning-well-bg-color;
+  }
+}
+
+#provisioning-summary {
+
+}
+
 
 #onboarding {
   header.header {
@@ -3277,200 +3219,295 @@ form.editable-wrap .editable-controls input {
   }
 }
 
-#provisioning-confirm {
+// Base style
+.accordion {
+  .panel-group .panel {
+    margin: 25px 0px;
+  }
 
-}
+  .panel-group .panel,
+  .panel-group .panel > .panel-heading {
+    background-color: @dashboard-account-panel-header-bg-color;
+    border: none;
+    box-shadow: none;
+  }
 
-#provisioning-details {
+  .panel-group .panel > .panel-heading {
+    color: @dashboard-account-panel-header-text-color;
+    padding: 0;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
 
-}
+    .panel-title > div,
+    .panel-title > a {
+      font-size: 90%;
+      display: block;
+      padding-left: 10px;
+      line-height: 54px;
+      height: 54px;
+      cursor: pointer;
 
-#provisioning-layout {
-  nav {
-    display: flex;
-    justify-content: space-around;
-    .top-buffer-5;
-
-    .breadcrumb-item {
-      // Deactivate the link
-      pointer-events: none;
-      color: @provisioning-breadcrumb-item-color;
-
-      .badge {
-        background-color: @provisioning-breadcrumb-item-badge-bg;
+      &:hover, &:focus {
+        text-decoration: none;
       }
+    }
 
-      &.active {
-        color: @provisioning-breadcrumb-item-active-color;
+    .panel-title .fa.pull-right {
+      margin-right: 20px;
+      margin-top: 20px;
+    }
+  }
 
-        .badge {
-          background-color: @provisioning-breadcrumb-item-active-badge-bg;
-        }
+  .panel-group .panel-collapse > .panel-body {
+    background-color: @dashboard-account-panel-body-bg-color;
+    border: none;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+
+    label {
+      color: @dashboard-account-panel-text-color;
+    }
+
+    p, ul > li {
+      font-weight: 300;
+    }
+  }
+}
+
+.btn {
+  &.btn-link {
+    padding: 0 6px;
+
+    &.btn-link-primary {
+      color: @brand-primary;
+
+      &:hover, &:focus {
+        color: darken(@brand-primary, 30%);
+      }
+    }
+
+    &.btn-link-info {
+      color: @brand-info;
+
+      &:hover, &:focus {
+        color: darken(@brand-info, 30%);
+      }
+    }
+
+    &.btn-link-warning {
+      color: @brand-warning;
+
+      &:hover, &:focus {
+        color: darken(@brand-warning, 30%);
+      }
+    }
+
+    &.btn-link-danger {
+      color: @brand-danger;
+
+      &:hover, &:focus {
+        color: darken(@brand-danger, 30%);
       }
     }
   }
+}
 
-  h1 {
-    .top-buffer-3;
-  }
 
-  .well {
-    .top-buffer-1;
-    background-color: @provisioning-well-bg-color;
+//------------------------------------
+// input-group-addon dropdown
+//------------------------------------
+// Put a dropdown inside an input-group-addon
+.input-group-addon.select {
+  padding:0px;
+  border-radius: 6px 0px 0px 6px;
+  background-color: @input-bg;
+
+  select {
+    height:100%;
+    border:0px;
+    background-color: @input-bg;
   }
 }
 
-#provisioning-order {
-  .row {
-    display: flex;
-    align-items: center;
-  }
-
-  .radio-selector {
-    display: flex;
-    justify-content: center;
-  }
+//------------------------------------
+// Invalid inputs (AngularJS)
+//------------------------------------
+input.ng-dirty.ng-invalid {
+  border-color: @brand-danger;
 }
 
-#provisioning-subscriptions {
-  .well {
-    background-color: @provisioning-well-bg-color;
-  }
-}
-
-#provisioning-summary {
-
-}
-
-#public {
-  background-color: @public-main-bg-color;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  position: relative;
-
-  .navbar {
-    position: relative;
-    height: 70px;
-    background-color: @landing-nav-bg-color;
+//-----------------------------------------
+// Responsive tables (using TWB grid)
+// see templates/dashboard/organization/invoices.html
+// for an example
+//-----------------------------------------
+.table-cell {
+  .th-row {
+    margin-top: @table-cell-header-row-spacing;
+    margin-left: 0;
+    margin-right: 0;
+    padding-top: @table-cell-header-row-padding;
+    padding-bottom: @table-cell-header-row-padding;
+    color: @table-cell-header-text-color;
+    background-color: @table-cell-header-bg-color;
+    font-size: @table-cell-header-text-size;
+    line-height: (@table-cell-header-text-size + @table-cell-row-padding)*2;
+    @table-cell-header-additional-rule();
   }
 
-  .highlight-products {
-    padding: 0 50px;
+  .td-row {
+    margin-top: @table-cell-row-spacing;
+    margin-bottom: @table-cell-row-spacing;
+    margin-left: 0;
+    margin-right: 0;
+    padding-top: @table-cell-row-padding;
+    padding-bottom: @table-cell-row-padding;
+    font-size: @table-cell-row-text-size;
+    line-height: (@table-cell-row-text-size + @table-cell-row-padding)*2;
 
-    .well.carousel {
-      min-height: 400px;
-    }
-  }
-
-  .carousel-image-container {
-    height: 360px;
-    text-align: center;
-    position: relative;
-
-    .carousel-image {
-      background-size: cover;
-      height: 100%;
-      width: 100%;
-      filter: blur(5px);
+    .cell {
+      // Add '...' at the end of text if too long for the cell
+      .ellipsis();
     }
 
-    .carousel-logo {
-      border-radius: 50%;
+    .cell > .cell-label {
+      font-weight: bold;
+    }
+
+    .cell > a > i {
+      font-size: 20px;
+    }
+
+    &:nth-child(odd) {
+      background-color: @table-cell-row-odd-bg-color;
+    }
+
+    &:nth-child(even) {
+      background-color: @table-cell-row-even-bg-color;
+    }
+  }
+}
+
+@media (max-width: @screen-sm) {
+  .table-cell .td-row .cell > a { padding-left: 0; }
+}
+
+// Inverse Style
+.table-cell.inverse {
+  .th-row {
+    color: @table-inverse-cell-header-text-color;
+    background-color: @table-inverse-cell-header-bg-color;
+  }
+
+  .td-row:nth-child(odd) {
+    background-color: @table-inverse-cell-row-odd-bg-color;
+  }
+
+  .td-row:nth-child(even) {
+    background-color: @table-inverse-cell-row-even-bg-color;
+  }
+}
+
+.ribbon-testimonial {
+
+  .body {
+    background-color: @bg-on-bg-inverse-color;
+    border-radius: 5px;
+    padding: 20px;
+    color: @text-strong-color;
+    font-weight: 300;
+    font-size: 16px;
+    font-style: italic;
+
+    .arrow {
+      .rotate(45deg);
+      width: 0;
+      height: 0;
+      border-top: 18px solid transparent;
+      border-bottom: 18px solid transparent;
+      border-right: 18px solid @decorator-main-color;
       position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      margin: auto;
+      right: 28px;
+      margin-top: 8px;
     }
   }
 
-  .nav-logo {
-    @landing-nav-logo();
-  }
+  .from {
+    margin: 7px 0px 0px 30px;
 
-  .navbar-brand {
-    @landing-nav-title();
-    color: @landing-nav-title-text-color;
-  }
-
-  .links {
-    overflow: hidden;
-    margin: 18px 20px;
-
-    a {
-      margin-left: 15px;
-      .z-depth(3);
-    }
-  }
-
-  .product-content {
-    padding: 25px 50px 0 50px;
-  }
-
-  .marketplace-nav {
-    input.form-control {
-      color: @landing-marketplace-search-text-color;
-      border: 1px solid @landing-marketplace-search-border-color;
-    }
-  }
-
-  .marketplace-app-card {
-    @landing-marketplace-app-card();
-    background-color: @landing-marketplace-tile-bg-color;
-
-    &:hover {
-      background-color: @landing-marketplace-tile-hover-bg-color;
+    .name {
+      display: inline;
+      font-size: 14px;
+      font-weight: 700;
+      color: @text-inverse-color;
     }
 
-    .media {
-      .media-body {
-        color: @landing-marketplace-tile-text-color;
-
-        &:hover {
-          color: @landing-marketplace-tile-hover-text-color;
-        }
-      }
-      .media-heading {
-        color: @landing-marketplace-tile-name-color;
-
-        &:hover {
-          color: @landing-marketplace-tile-hover-name-color;
-        }
-      }
-
-      .arrow {
-        color: @landing-marketplace-tile-hover-arrow-color;
-      }
-
-      img.media-object {
-        border: 1px solid @landing-marketplace-tile-img-border-color;
-
-        &:hover {
-          border: 1px solid @landing-marketplace-tile-hover-img-border-color;
-        }
-      }
+    .company {
+      display: inline;
+      font-size: 14px;
+      font-weight: 300;
+      color: @decorator-inverse-color;
     }
   }
+}
 
-  .product-content {
-    .media {
-      .media-body {
-        h2.media-heading {
-          color: @public-marketplace-show-header-text-color;
-        }
-      }
-    }
 
-    .show-content {
-      .well {
-        background-color: @public-marketplace-show-sections-bg-color;
-        color: @public-marketplace-show-sections-text-color;
-      }
-    }
+/*-----------------------------------------------------------------------*/
+/*                       Dashboard Section Title                         */
+/*-----------------------------------------------------------------------*/
+.myspace .section-title {
+  color: @dashboard-section-title-color;
+  text-align: @dashboard-section-title-alignment;
+}
+
+.myspace .section-title:after when (@dashboard-section-title-alignment = center) and (@dashboard-section-title-display-subline = true){
+  display: block;
+  content: '';
+  margin-top: 10px;
+  border-bottom: solid 1px @dashboard-section-title-color;
+  max-width: 45%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.editable.editable-click,
+a.editable.editable-click {
+  color: @text-strong-color;
+  border: none;
+
+  &:hover {
+    border-bottom: dashed 1px fadeout(@text-strong-color,60%);
   }
+}
+
+form.editable-wrap {
+  margin: 0 !important;
+}
+
+form.editable-wrap .editable-controls {
+  padding: 0;
+}
+
+form.editable-wrap .editable-controls input {
+  height: 30px;
+  padding: 0 5px;
+  border: dashed 1px @text-strong-color;
+  .box-shadow(none);
+}
+
+.editable-instructions {
+  display: inline;
+}
+
+.editable-instructions form.editable-wrap .editable-controls:after {
+  display: block;
+  content: "press enter to confirm";
+  font-style: italic;
+  font-size: 10px;
+  line-height: 12px;
+  color: @text-strong-color;
+  margin-top: -10px;
+  padding-left: 5px;
 }
 
 #app-connect-modal {
