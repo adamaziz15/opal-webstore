@@ -39,3 +39,22 @@ Once the build is finished, connect to the compute racks and:
 ```
 sudo docker pull maestrano/opal-webstore
 ```
+
+## Update the dummy locale
+
+For I18n testing, we use a "dummy" locale which contains randomly generated translations.
+To update this locale, follow these instructions:
+
+```ruby
+# Generate the YAML locale file
+$ bin/rails console
+> g = MnoEnterprise::Frontend::LocalesGenerator.new('./')
+> g.generate_dummy
+--> Generated ./dummy.zh.yaml
+$ mv ./dummy.zh.yaml config/locales/zh-ZH.yml
+
+# Regenerate the frontend locales
+$ bin/rake mnoe:locales:generate
+$ git add -u config/locales/ public/dashboard/locales/
+$ git commit -m "Refresh locales"
+```
