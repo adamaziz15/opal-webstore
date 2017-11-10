@@ -12,8 +12,8 @@
 
 "mno-enterprise-angular@git+https://git@github.com/maestrano/mno-enterprise-angular.git#2.0":
   version "2.0.0-dev"
-  resolved "git+https://git@github.com/maestrano/mno-enterprise-angular.git#58004361864156cca78a340ddf283e6b62609379"
+  resolved "git+https://git@github.com/maestrano/mno-enterprise-angular.git#b7bdcec3940c92539631f821b338916dc46ec8c5"
 
 "mnoe-admin-panel@git+https://git@github.com/maestrano/mnoe-admin-panel.git#2.0":
   version "2.0.0-dev"
-  resolved "git+https://git@github.com/maestrano/mnoe-admin-panel.git#49aa4ffc6c1d0582c85988d43a5bccd2e610f17d"
+  resolved "git+https://git@github.com/maestrano/mnoe-admin-panel.git#91ea5b49345b05fd762dd411746807f2c4bbc9a9"
