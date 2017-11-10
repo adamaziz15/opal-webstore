@@ -1543,6 +1543,16 @@ dashboard-company-selectbox {
   }
 }
 
+
+dashboard-language-selectbox {
+  display: block;
+
+  .selector-line {
+    display: inline-block;
+    margin: 5px auto;
+  }
+}
+
 dashboard-menu {
   /*-----------------------------------------------------------------------*/
   /*                         Mobile menu                                   */
@@ -1740,16 +1750,6 @@ dashboard-menu {
     .dashboard-button.active i.dhb-icon-logout {
       @dashboard-side-menu-btn-logout-active();
     }
-  }
-}
-
-
-dashboard-language-selectbox {
-  display: block;
-
-  .selector-line {
-    display: inline-block;
-    margin: 5px auto;
   }
 }
 
@@ -1998,6 +1998,10 @@ theme-editor {
     .alert.alert-info {
       display: inline-block;
     }
+  }
+
+  .sp-container {
+    z-index: 10000;
   }
 
   .sp-replacer {
