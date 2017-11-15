@@ -18,6 +18,8 @@ frontend_host:
 dashboard:
   dock:
     enabled: true
+  impac:
+    enabled: false
   marketplace:
     pricing:
       enabled: true
