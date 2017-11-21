@@ -3021,265 +3021,6 @@ form.editable-wrap .editable-controls input {
   }
 }
 
-#provisioning-confirm {
-
-}
-
-#provisioning-details {
-
-}
-
-#provisioning-layout {
-  nav {
-    display: flex;
-    justify-content: space-around;
-    .top-buffer-5;
-
-    .breadcrumb-item {
-      // Deactivate the link
-      pointer-events: none;
-      color: @provisioning-breadcrumb-item-color;
-
-      .badge {
-        background-color: @provisioning-breadcrumb-item-badge-bg;
-      }
-
-      &.active {
-        color: @provisioning-breadcrumb-item-active-color;
-
-        .badge {
-          background-color: @provisioning-breadcrumb-item-active-badge-bg;
-        }
-      }
-    }
-  }
-
-  h1 {
-    .top-buffer-3;
-  }
-
-  .well {
-    .top-buffer-1;
-    background-color: @provisioning-well-bg-color;
-  }
-}
-
-#provisioning-order {
-  .row {
-    display: flex;
-    align-items: center;
-  }
-
-  .radio-selector {
-    display: flex;
-    justify-content: center;
-  }
-}
-
-#subscription {
-  .well {
-    h3 {
-      margin-top: 0;
-      margin-bottom: 16px;
-      padding-bottom: 8px;
-      border-bottom: 1px dashed @subscription-txt-color;
-    }
-
-    background-color: @subscription-box-color;
-  }
-
-  .text-color {
-    color: @subscription-txt-color;
-  }
-
-  form label.control-label {
-    color: @subscription-txt-color;
-  }
-
-  .form-control {
-    background-color: transparent;
-    box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
-  }
-
-  .has-success .form-control-feedback {
-    color: transparent;
-  }
-
-  .hide-border {
-    border: transparent;
-  }
-
-  .has-success .form-control {
-    border-color: transparent;
-  }
-
-  .well.subscription-info {
-    .form-group {
-      display: flex;
-    }
-
-    div, ul {
-      width: 100%;
-      margin-left: 14px;
-    }
-
-    label {
-      width: 180px;
-      padding-top: 6px;
-    }
-  }
-
-  .subscription-events .subscription-event {
-    padding-top: 5px;
-  }
-
-  .subscription-events .subscription-event-provisioning-data {
-    padding-bottom: 5px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.075);
-  }
-}
-
-#provisioning-subscriptions {
-  .well {
-    background-color: @provisioning-well-bg-color;
-  }
-}
-
-#provisioning-summary {
-
-}
-
-#public {
-  background-color: @public-main-bg-color;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  position: relative;
-
-  .navbar {
-    position: relative;
-    height: 70px;
-    background-color: @landing-nav-bg-color;
-  }
-
-  .highlight-products {
-    padding: 0 50px;
-
-    .well.carousel {
-      min-height: 400px;
-    }
-  }
-
-  .carousel-image-container {
-    height: 360px;
-    text-align: center;
-    position: relative;
-
-    .carousel-image {
-      background-size: cover;
-      height: 100%;
-      width: 100%;
-      filter: blur(5px);
-    }
-
-    .carousel-logo {
-      border-radius: 50%;
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      margin: auto;
-    }
-  }
-
-  .nav-logo {
-    @landing-nav-logo();
-  }
-
-  .navbar-brand {
-    @landing-nav-title();
-    color: @landing-nav-title-text-color;
-  }
-
-  .links {
-    overflow: hidden;
-    margin: 18px 20px;
-
-    a {
-      margin-left: 15px;
-      .z-depth(3);
-    }
-  }
-
-  .product-content {
-    padding: 25px 50px 0 50px;
-  }
-
-  .marketplace-nav {
-    input.form-control {
-      color: @landing-marketplace-search-text-color;
-      border: 1px solid @landing-marketplace-search-border-color;
-    }
-  }
-
-  .marketplace-app-card {
-    @landing-marketplace-app-card();
-    background-color: @landing-marketplace-tile-bg-color;
-
-    &:hover {
-      background-color: @landing-marketplace-tile-hover-bg-color;
-    }
-
-    .media {
-      .media-body {
-        color: @landing-marketplace-tile-text-color;
-
-        &:hover {
-          color: @landing-marketplace-tile-hover-text-color;
-        }
-      }
-      .media-heading {
-        color: @landing-marketplace-tile-name-color;
-
-        &:hover {
-          color: @landing-marketplace-tile-hover-name-color;
-        }
-      }
-
-      .arrow {
-        color: @landing-marketplace-tile-hover-arrow-color;
-      }
-
-      img.media-object {
-        border: 1px solid @landing-marketplace-tile-img-border-color;
-
-        &:hover {
-          border: 1px solid @landing-marketplace-tile-hover-img-border-color;
-        }
-      }
-    }
-  }
-
-  .product-content {
-    .media {
-      .media-body {
-        h2.media-heading {
-          color: @public-marketplace-show-header-text-color;
-        }
-      }
-    }
-
-    .show-content {
-      .well {
-        background-color: @public-marketplace-show-sections-bg-color;
-        color: @public-marketplace-show-sections-text-color;
-      }
-    }
-  }
-}
-
 
 #onboarding {
   header.header {
@@ -3565,6 +3306,265 @@ form.editable-wrap .editable-controls input {
   .next-button-wrapper {
     width: 100%;
     float: left;
+  }
+}
+
+#provisioning-confirm {
+
+}
+
+#provisioning-details {
+
+}
+
+#provisioning-layout {
+  nav {
+    display: flex;
+    justify-content: space-around;
+    .top-buffer-5;
+
+    .breadcrumb-item {
+      // Deactivate the link
+      pointer-events: none;
+      color: @provisioning-breadcrumb-item-color;
+
+      .badge {
+        background-color: @provisioning-breadcrumb-item-badge-bg;
+      }
+
+      &.active {
+        color: @provisioning-breadcrumb-item-active-color;
+
+        .badge {
+          background-color: @provisioning-breadcrumb-item-active-badge-bg;
+        }
+      }
+    }
+  }
+
+  h1 {
+    .top-buffer-3;
+  }
+
+  .well {
+    .top-buffer-1;
+    background-color: @provisioning-well-bg-color;
+  }
+}
+
+#provisioning-order {
+  .row {
+    display: flex;
+    align-items: center;
+  }
+
+  .radio-selector {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+#subscription {
+  .well {
+    h3 {
+      margin-top: 0;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px dashed @subscription-txt-color;
+    }
+
+    background-color: @subscription-box-color;
+  }
+
+  .text-color {
+    color: @subscription-txt-color;
+  }
+
+  form label.control-label {
+    color: @subscription-txt-color;
+  }
+
+  .form-control {
+    background-color: transparent;
+    box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
+  }
+
+  .has-success .form-control-feedback {
+    color: transparent;
+  }
+
+  .hide-border {
+    border: transparent;
+  }
+
+  .has-success .form-control {
+    border-color: transparent;
+  }
+
+  .well.subscription-info {
+    .form-group {
+      display: flex;
+    }
+
+    div, ul {
+      width: 100%;
+      margin-left: 14px;
+    }
+
+    label {
+      width: 180px;
+      padding-top: 6px;
+    }
+  }
+
+  .subscription-events .subscription-event {
+    padding-top: 5px;
+  }
+
+  .subscription-events .subscription-event-provisioning-data {
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.075);
+  }
+}
+
+#provisioning-subscriptions {
+  .well {
+    background-color: @provisioning-well-bg-color;
+  }
+}
+
+#provisioning-summary {
+
+}
+
+#public {
+  background-color: @public-main-bg-color;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: relative;
+
+  .navbar {
+    position: relative;
+    height: 70px;
+    background-color: @landing-nav-bg-color;
+  }
+
+  .highlight-products {
+    padding: 0 50px;
+
+    .well.carousel {
+      min-height: 400px;
+    }
+  }
+
+  .carousel-image-container {
+    height: 360px;
+    text-align: center;
+    position: relative;
+
+    .carousel-image {
+      background-size: cover;
+      height: 100%;
+      width: 100%;
+      filter: blur(5px);
+    }
+
+    .carousel-logo {
+      border-radius: 50%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+    }
+  }
+
+  .nav-logo {
+    @landing-nav-logo();
+  }
+
+  .navbar-brand {
+    @landing-nav-title();
+    color: @landing-nav-title-text-color;
+  }
+
+  .links {
+    overflow: hidden;
+    margin: 18px 20px;
+
+    a {
+      margin-left: 15px;
+      .z-depth(3);
+    }
+  }
+
+  .product-content {
+    padding: 25px 50px 0 50px;
+  }
+
+  .marketplace-nav {
+    input.form-control {
+      color: @landing-marketplace-search-text-color;
+      border: 1px solid @landing-marketplace-search-border-color;
+    }
+  }
+
+  .marketplace-app-card {
+    @landing-marketplace-app-card();
+    background-color: @landing-marketplace-tile-bg-color;
+
+    &:hover {
+      background-color: @landing-marketplace-tile-hover-bg-color;
+    }
+
+    .media {
+      .media-body {
+        color: @landing-marketplace-tile-text-color;
+
+        &:hover {
+          color: @landing-marketplace-tile-hover-text-color;
+        }
+      }
+      .media-heading {
+        color: @landing-marketplace-tile-name-color;
+
+        &:hover {
+          color: @landing-marketplace-tile-hover-name-color;
+        }
+      }
+
+      .arrow {
+        color: @landing-marketplace-tile-hover-arrow-color;
+      }
+
+      img.media-object {
+        border: 1px solid @landing-marketplace-tile-img-border-color;
+
+        &:hover {
+          border: 1px solid @landing-marketplace-tile-hover-img-border-color;
+        }
+      }
+    }
+  }
+
+  .product-content {
+    .media {
+      .media-body {
+        h2.media-heading {
+          color: @public-marketplace-show-header-text-color;
+        }
+      }
+    }
+
+    .show-content {
+      .well {
+        background-color: @public-marketplace-show-sections-bg-color;
+        color: @public-marketplace-show-sections-text-color;
+      }
+    }
   }
 }
 
