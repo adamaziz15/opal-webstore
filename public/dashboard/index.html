@@ -2,7 +2,7 @@
 <html ng-app="mnoEnterpriseAngular" ng-strict-di="true">
   <head>
     <meta charset="utf-8">
-    <title state-title="Dashboard" pattern="{{::app_name}} - Dashboard - %s"></title>
+    <title ng-bind="app_name + ' - ' + ('mno_enterprise.templates.components.layout.title' | translate) + ' - ' + pageTitle"></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
 
@@ -40,7 +40,7 @@
 
     <script src="scripts/vendor-d58c594e27.js"></script>
 
-    <script src="scripts/app-fda99250f0.js"></script>
+    <script src="scripts/app-6eec128dca.js"></script>
 
     <script src="/mnoe/config.js"></script>
 

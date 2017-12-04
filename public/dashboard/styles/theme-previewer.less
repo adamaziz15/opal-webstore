@@ -1553,6 +1553,29 @@ dashboard-language-selectbox {
   }
 }
 
+impersonification-notification {
+  .notifications {
+    padding-top: 70px;
+  }
+}
+
+#app-features {
+  border: @onboarding-app-features-border;
+  color: @onboarding-app-features-color;
+
+  .center-element {
+    margin-left: 10px;
+    margin-bottom: 12px;
+  }
+
+  .fa-check-square-o {
+    color: @onboarding-app-features-checked;
+  }
+  .fa-square-o {
+    color: @onboarding-app-features-unchecked;
+  }
+}
+
 dashboard-menu {
   /*-----------------------------------------------------------------------*/
   /*                         Mobile menu                                   */
@@ -1750,29 +1773,6 @@ dashboard-menu {
     .dashboard-button.active i.dhb-icon-logout {
       @dashboard-side-menu-btn-logout-active();
     }
-  }
-}
-
-impersonification-notification {
-  .notifications {
-    padding-top: 70px;
-  }
-}
-
-#app-features {
-  border: @onboarding-app-features-border;
-  color: @onboarding-app-features-color;
-
-  .center-element {
-    margin-left: 10px;
-    margin-bottom: 12px;
-  }
-
-  .fa-check-square-o {
-    color: @onboarding-app-features-checked;
-  }
-  .fa-square-o {
-    color: @onboarding-app-features-unchecked;
   }
 }
 
@@ -3807,13 +3807,6 @@ form.editable-wrap .editable-controls input {
   }
 }
 
-.create-review-modal {
-  textarea.form-control {
-    max-width: 100%;
-    background-color: white;
-  }
-}
-
 #app-info {
   ul {
     margin: 0;
@@ -3830,6 +3823,13 @@ form.editable-wrap .editable-controls input {
   mno-app-features {
     float: right;
     width: 250px;
+  }
+}
+
+.create-review-modal {
+  textarea.form-control {
+    max-width: 100%;
+    background-color: white;
   }
 }
 
