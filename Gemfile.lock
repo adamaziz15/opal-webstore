@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/maestrano/mno-enterprise.git
-  revision: 7182acc034d8daf96e699da7da818c2c2085e829
+  revision: 85af8c6e64ddc35f7f2a48b1d266cb4349e4a0bf
   branch: 4.0
   specs:
     mno-enterprise (4.0.0.pre.dev)
@@ -163,7 +163,7 @@ GEM
     i18n (0.9.1)
       concurrent-ruby (~> 1.0)
     i18n_data (0.7.0)
-    intercom (3.5.22)
+    intercom (3.5.23)
       json (>= 1.8)
     jbuilder (2.2.16)
       activesupport (>= 3.0.0, < 5)
