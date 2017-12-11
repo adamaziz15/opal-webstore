@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module MnoEnterprise
   # Monkey patch method refresh_json_schema! to disable the ability to enable finance
 
@@ -7,8 +8,11 @@ module MnoEnterprise
     # Update the JSON schema with values available after initialization
     def self.refresh_json_schema!(frontend_config)
       # Start Monkey Patch
-      disable_finance = { admin_panel: { finance_readonly: true } }
-      frontend_config.deep_merge!(disable_finance)
+      disable_features = { admin_panel: { apps_management_readonly: true, finance_readonly: true },
+                           dashboard: { organization_management: { billing_readonly: true }, impac_readonly: true,
+                                        payment_readonly: true } }
+
+      frontend_config.deep_merge!(disable_features)
       # End Monkey Patch
       update_locales_list!
       update_application_list!
@@ -23,6 +27,10 @@ module MnoEnterprise
 
       # Start Monkey Patch
       frontend_config[:admin_panel][:finance][:enabled] = false
+      frontend_config[:admin_panel][:apps_management][:enabled] = false
+      frontend_config[:dashboard][:organization_management][:billing][:enabled] = false
+      frontend_config[:dashboard][:impac][:enabled] = false
+      frontend_config[:dashboard][:payment][:enabled] = false
       # End Monkey Patch
 
       # Merge the settings and reload
