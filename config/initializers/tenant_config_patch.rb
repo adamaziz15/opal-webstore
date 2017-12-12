@@ -8,7 +8,7 @@ module MnoEnterprise
     # Update the JSON schema with values available after initialization
     def self.refresh_json_schema!(frontend_config)
       # Start Monkey Patch
-      disable_features = { admin_panel: { apps_management_readonly: true, finance_readonly: true },
+      disable_features = { admin_panel: { apps_management_readonly: true, finance_readonly: true, dashboard_templates: { enabled_readonly: true } },
                            dashboard: { organization_management: { billing_readonly: true }, impac_readonly: true,
                                         payment_readonly: true } }
 
@@ -28,6 +28,7 @@ module MnoEnterprise
       # Start Monkey Patch
       frontend_config[:admin_panel][:finance][:enabled] = false
       frontend_config[:admin_panel][:apps_management][:enabled] = false
+      frontend_config[:admin_panel][:dashboard_templates][:enabled] = false
       frontend_config[:dashboard][:organization_management][:billing][:enabled] = false
       frontend_config[:dashboard][:impac][:enabled] = false
       frontend_config[:dashboard][:payment][:enabled] = false
