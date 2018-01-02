@@ -26,11 +26,20 @@ module MnoEnterprise
       return unless (frontend_config = fetch_tenant_config)
 
       # Start Monkey Patch
-      frontend_config[:admin_panel][:finance][:enabled] = false
-      frontend_config[:admin_panel][:dashboard_templates][:enabled] = false
-      frontend_config[:dashboard][:organization_management][:billing][:enabled] = false
-      frontend_config[:dashboard][:impac][:enabled] = false
-      frontend_config[:dashboard][:payment][:enabled] = false
+      override = {
+        admin_panel: {
+          finance: { enabled: false },
+          dashboard_templates: { enabled: false }
+        },
+        dashboard: {
+          organization_management: {
+            billing: { enabled: false }
+          },
+          impac: { enabled: false },
+          payment: { enabled: false }
+        }
+      }
+      frontend_config.deep_merge!(override)
       # End Monkey Patch
 
       # Merge the settings and reload

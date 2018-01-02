@@ -23,5 +23,11 @@ describe MnoEnterprise::TenantConfig do
       expect(described_class).to receive(:reconfigure_mnoe!)
       subject
     end
+
+    it 'override the settings' do
+      subject
+      expect(Settings.dashboard.impac.enabled).to eq(false)
+      expect(Settings.admin_panel.finance.enabled).to eq(false)
+    end
   end
 end
