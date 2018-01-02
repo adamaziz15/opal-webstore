@@ -7,7 +7,8 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'shoulda/matchers'
 
-
+# Require all factories from MNOE
+require 'mno_enterprise/testing_support/factories'
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
