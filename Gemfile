@@ -34,6 +34,14 @@ end
 
 group :development, :test do
   gem 'figaro'
+
+  # Security audits
+  gem 'brakeman', require: false
+  gem 'bundler-audit', require: false
+
+  # Style check
+  gem 'rubocop', '~> 0.46', require: false
+  gem 'rubocop-rspec', '~> 1.8.0', require: false
 end
 
 group :test do
