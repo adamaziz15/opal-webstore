@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/maestrano/mno-enterprise.git
-  revision: 5aca871597930d1df768a515833618b30bf8b9e2
+  revision: 542548a6a4985d73534ed17137da8f077bd0fbab
   branch: 4.0
   specs:
     mno-enterprise (4.0.0.pre.dev)
@@ -206,7 +206,7 @@ GEM
       mini_mime (>= 0.1.1)
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
-    minitest (5.10.3)
+    minitest (5.11.1)
     monetize (1.6.0)
       money (~> 6.8)
     money (6.10.1)
