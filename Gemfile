@@ -25,7 +25,6 @@ gem 'monetize'
 gem 'money'
 
 gem 'webmock', '~> 3.0.1'
-gem 'fakeweb', '~> 1.3'
 
 group :uat, :production do
   gem 'newrelic_rpm'
@@ -40,8 +39,8 @@ group :development, :test do
   gem 'bundler-audit', require: false
 
   # Style check
-  gem 'rubocop', '~> 0.46', require: false
-  gem 'rubocop-rspec', '~> 1.8.0', require: false
+  gem 'rubocop', '~> 0.52.0', require: false
+  gem 'rubocop-rspec', require: false
 end
 
 group :test do
