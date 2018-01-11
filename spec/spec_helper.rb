@@ -17,20 +17,9 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 require 'factory_girl_rails'
-require "fakeweb"
 require 'webmock/rspec'
 
 RSpec.configure do |config|
-
-  config.before(:suite) do
-    FakeWeb.allow_net_connect = false
-    FakeWeb.register_uri(:post, "https://my_tenant_id:my_tenant_access_key@api-enterprise.maestrano.test/api/mnoe/v1/audit_events", status: 200)
-  end
-
-  config.after(:suite) do
-    FakeWeb.allow_net_connect = true
-  end
-
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
