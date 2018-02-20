@@ -1,0 +1,7 @@
+.git*
+tmp/*
+log/*
+spec
+node_modules/*
+
+config/application.yml

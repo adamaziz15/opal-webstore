@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Turns on debugging
+set -x
+
+cd ..
+
+# $IMAGE_NAME var is injected into the build so the tag is correct.
+# $DOCKERFILE_PATH=docker/Dockerfile
+# $BUILD_PATH=/
+docker build \
+  --build-arg VCS_REF=$(git rev-parse --short $SOURCE_COMMIT) \
+  --build-arg VCS_BRANCH=$SOURCE_BRANCH \
+  --build-arg BUILD_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ") \
+  -f $DOCKERFILE_PATH \
+  -t $IMAGE_NAME .

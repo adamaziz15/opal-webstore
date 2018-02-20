@@ -1,0 +1,965 @@
+---
+:es:
+  :mno_enterprise:
+    :templates:
+      :modals:
+        :new_organization:
+          :title: Crear nueva empresa
+          :enter_new_company_name: Introduzca un nombre para su nueva empresa
+          :cancel: Cancelar
+          :create: Crear
+      :app_feature:
+        :single_sign_on: Single Sign-on
+        :single_billing: Facturación individual
+        :data_sharing: Intercambio de datos
+      :onboarding:
+        :menu:
+          :logout: Cerrar la sesión
+        :breadcrumb:
+          :step1: Bienvenida
+          :step2: Seleccione su aplicación
+          :step3: Conectar tus aplicaciones
+          :step4: Descubrir tu cuenta
+        :welcome:
+          :title: "¡Bienvenido, {name}!"
+          :intro: Configuración de la plataforma Maestrano por primera vez toma pocos
+            minutos.
+          :setup: Nuestra guía de configuración sencilla le llevará a través del proceso
+            de conectar sus primeras aplicaciones de negocio y ofrecer algunas ideas
+            sobre cómo sacar el máximo provecho de su nueva plataforma de cloud.
+          :choose_my_apps: Seleccione mis aplicaciones.
+          :connect_my_apps: "¡Conectar mis aplicaciones!"
+          :discover_your_account: "¡Descubre tu cuenta ahora!"
+        :select_your_app:
+          :title: Seleccione las aplicaciones que desea conectarse
+          :search: Búsqueda de
+          :categories: Categorías
+          :max_apps_selected: No se puede iniciar con más de 4 aplicaciones, podrás
+            añadir más en una etapa posterior.
+        :data_sync:
+          :what_data: Qué datos se sincronizarán
+          :start: Visualizar los datos que se sincronizarán de forma automática desde
+            las aplicaciones haciendo clic en sus iconos.
+          :learn_more: Aprender cómo Maestrano sincroniza datos entre las aplicaciones.
+          :no_entity_shared: Las entidades no son compartidas
+        :app_infos_modal:
+          :what_is: "¿Qué es {name}?"
+          :how_is_app_integrated:
+            :title: "¿Cómo está integrado a Maestrano {name}?"
+            :connector: '{name} es un complemento en Maestrano. Tampoco necesita
+              una cuenta existente o crear una cuenta.<br>Lo único que tienes que
+              hacer es autorizar Maestrano para sincronizar datos con tu cuenta haciendo
+              clic en "conectar mi cuenta de"'
+            :cloud: "{name} es una aplicación nube."
+            :cube: "{name} es una aplicación de cubo."
+          :what_is_shared: "¿Qué datos se comparten con el {name}?"
+          :free_trial: "{duration} días gratis de prueba"
+        :connect_apps:
+          :connect_applications: Conectar tus aplicaciones
+          :apps_to_connect_now: Conecte su solicitud ahora para empezar a compartir
+            datos inmediatamente.
+          :apps_to_connect_later: Se puede conectar en cualquier momento desde tu
+            panel de control.
+          :go_to_dashboard: "¡Ir a mi panel de control!"
+          :skip: "¡Ve a mi cuenta!"
+      :impac:
+        :widgets:
+          :settings:
+            :account:
+              :title: Cuenta para monitorear
+            :chart_filters:
+              :title: Filtros de tabla
+              :label_top: Arriba
+            :hist_mode:
+              :label_current: Corriente
+              :label_history: Historia
+            :organizations:
+              :select_companies: Empresas de selección
+            :time_range:
+              :title: Rango de tiempo
+              :show_last: Mostrar último
+          :accounts_accounting_values:
+            :widget_settings: Configuración del widget
+            :cancel: Cancelar
+            :save: Guardar
+            :data_being_retrieved: Sus datos se se recupera...
+          :accounts_assets_summary:
+            :widget_settings: Configuración del widget
+            :cancel: Cancelar
+            :save: Guardar
+            :data_being_retrieved: Sus datos se se recupera...
+          :accounts_balance:
+            :widget_settings: Configuración del widget
+            :cancel: Cancelar
+            :save: Guardar
+            :data_being_retrieved: Sus datos se se recupera...
+          :accounts_comparison:
+            :widget_settings: Configuración del widget
+            :select_accounts_to_compare: Seleccione qué cuentas que desea comparar.
+            :cancel: Cancelar
+            :save: Guardar
+            :add_account: "+ AÑADIR CUENTA"
+            :data_being_retrieved: Sus datos se se recupera...
+          :accounts_custom_calculation:
+            :data_being_retrieved: Sus datos se se recupera...
+          :accounts_expenses_revenue:
+            :widget_settings: Configuración del widget
+            :cancel: Cancelar
+            :save: Guardar
+            :label_expenses: Gastos
+            :label_revenue: Ingresos
+          :accounts_payable_receivable:
+            :widget_settings: Configuración del widget
+            :cancel: Cancelar
+            :save: Guardar
+            :label_payable: Por pagar
+            :label_receivable: Cuentas por cobrar
+            :label_accounts_receivable: Cuentas por cobrar
+            :label_accounts_payable: Cuentas por pagar
+            :data_being_retrieved: Sus datos se se recupera...
+          :invoices_list:
+            :widget_settings: Configuración del widget
+            :cancel: Cancelar
+            :save: Guardar
+            :data_being_retrieved: Sus datos se se recupera...
+            :label_paid: Pagado
+            :label_due: Debido
+            :label_invoiced: Factura
+            :no_invoices_found_for: Ninguna factura de % {orderby} encuentra su %
+              {entitytype}
+          :invoices_summary:
+            :widget_settings: Configuración del widget
+            :cancel: Cancelar
+            :save: Guardar
+            :data_being_retrieved: Sus datos se se recupera...
+          :common:
+            :data_not_found:
+              :data_not_found: Datos no encontrados
+              :are_you_missing_an_app: "¿Le falta una app?"
+        :dock:
+          :launch: Lanzamiento
+          :connect: Conectar
+          :settings:
+            :settings: Configuración
+            :status: Estado
+            :app_name: Nombre
+            :access_add-on_settings: Configuración de complemento de acceso
+            :manual_data_sharing: Intercambio de datos
+            :manual_data_sync: Sincronización de datos manual
+            :disconnect_link: Desconectar conexión
+            :delete: Eliminar
+            :confirm_app_deletion: Confirmar eliminación de la aplicación
+            :please_note_this_app: 'Nota: esta aplicación está en un plan mensual.
+              Su facturación para esta aplicación se calculará proporcionalmente.'
+            :delete_instructions: Con el fin de eliminar su aplicación, escriba lo
+              siguiente en el cuadro siguiente.
+            :deletion_sentence: Por favor proceda a la supresión de mi aplicación
+              y todos los datos que contiene
+            :cancel: Cancelar
+            :developer_details:
+              :show: Ver detalles del desarrollador
+              :hide: Ocultar detalles del desarrollador
+              :title: Detalles del desarrollador
+            :linked_to: Vinculados a
+            :organization_id: Identificación de la organización
+            :group_id: Id de grupo (uid)
+            :app_states:
+              :starting: A partir de
+              :restarting: Reiniciar
+              :running: Funcionamiento
+              :stopping: Parada
+              :stopped: Dejó de
+              :terminating: Terminación de
+              :terminated: Terminado
+              :updating: Actualización
+              :upgrading: Actualizar
+              :downgrading: Degradación
+          :add_more_apps: Añadir más aplicaciones
+          :cancel: Cancelar
+          :do_not_have_apps: Parece que no tienes ninguna apps
+          :click_here: Haga clic aquí para empezar
+        :modals:
+          :create:
+            :title: Crear nuevo tablero de instrumentos
+            :label_name: Nombre
+            :label_current_company: Empresa actual
+            :label_multi_company: Multi empresa
+            :unauthorized_to_access_company_reporting: "¡Uy! Sólo administradores
+              y administradores de Super pueden crear dashboards para empresa % {nombre
+              de la empresa}."
+            :please_select_multi_company: Por favor, seleccione un panel de "Multi
+              empresa" seleccionar datos de otras empresas.
+            :label_companies: Empresas
+            :cancel: Cancelar
+            :add: Añadir
+          :delete:
+            :title: Eliminar el tablero de instrumentos
+            :are_you_sure: "¿Está seguro que desea eliminar este panel de analytics?"
+            :cancel: Cancelar
+            :add: Eliminar
+          :formula_modal:
+            :title: Cálculo personalizado
+            :calculation_explanation: 'Hacer una ecuación personalizada con sus cuentas
+              y guardarlo como un widget. Para crear una ecuación, simplemente seleccione
+              sus cuentas en la lista y utilice los operadores clásicos (ejemplo:
+              ({1} + {2}) / {3})'
+            :data_being_retrieved: Sus datos se se recupera...
+            :type_formula_below: Escriba su fórmula justo debajo
+            :formula_result: Resultado
+            :formula_legend: Leyenda
+            :cancel: Cancelar
+            :save: Guardar
+        :index:
+          :dashboard: Tablero de instrumentos
+          :new_dashboard: Nuevo tablero de instrumentos
+          :source: Fuente
+          :add_widget: Añadir Widget
+          :delete_dashboard: Eliminar
+          :widget_added: "¡Widget añadido!"
+          :select_widgets_to_add: Seleccione los widgets que desee agregar a su tablero
+            de instrumentos.
+          :all_categories: Todas las categorías
+          :cat_accounting: Contabilidad
+          :cat_invoicing: Facturación
+          :cat_hr_payroll: Recursos humanos / nómina
+          :cat_sales: Ventas
+          :no_dashboard_warning: Parece aún no tiene cualquier dashboard!
+          :benefits_of_dashboards_html: Cuadros de mando son una gran manera de visualizar
+            sus datos y control de su negocio. Nuestros widgets inteligentes le dará
+            un conocimiento profundo sobre cómo su negocio realiza cada día en tiempo
+            real, todo esto gracias a nuestros datos del patend compartiendo plataforma
+            <span>Connec!™</span>
+          :create_dashboard: "¡Crear un Dashboard!"
+          :note_on_permissions: 'Nota: paneles que crear sólo será accesibles por
+            usted. Compartir entre los usuarios del tablero de instrumentos se añadirán
+            pronto.'
+          :no_widgets_warning: Correcto. Hagamos que este panel calienta!
+          :click_below_to_add_widgets: Haga clic en el botón de abajo para añadir
+            un nuevo widget para dashboard. Nuestros widgets actualmente se centran
+            en datos financieros sino más vendrá pronto!
+          :add_new_widget: Añadir un nuevo Widget
+        :impersonification_notification:
+          :title: Solicitudes de acceso
+          :message: "{name} ha solicitado acceso a su cuenta durante 24 horas."
+          :accept: Desea aceptar esta solicitud
+          :yes: Sí
+          :no: 'No'
+          :deny:
+            :success_toastr: Le niega la solicitud de acceso de {name}.
+            :error_toastr: Le niega la solicitud de acceso de {name}.
+          :approve:
+            :success_toastr: Se aprobó solicitud de acceso de {name}.
+            :error_toastr: Error al aprobar acceso.
+      :dashboard:
+        :teams:
+          :index:
+            :no_teams_warning: "¡No tienes ningún equipo! Los equipos son una gran
+              manera de controlar quién tiene acceso a las aplicaciones dentro de
+              su empresa."
+            :add_team: "¡Agregar un equipo ahora!"
+            :add_team_light: Añadir equipo
+            :admin_permission_warning: Super administradores y administradores siempre
+              tienen acceso a todas las apps. Miembros sin asignar a ningún equipo
+              tendrá acceso a todas las apps por defecto.
+            :all: Todos
+            :no_apps_warning: Parece que no tiene ninguna aplicación en el momento.
+            :add_app: "¡Agregar una aplicación ahora!"
+            :save: Guardar
+            :cancel: Cancelar
+          :member_add_modal:
+            :title: Agregar a miembros de equipo
+            :all_belong_to_team_warning: Todos los miembros de su empresa ya pertenecen
+              a este equipo
+            :select_company_members: Seleccionar a los miembros de la empresa su deseo
+              de añadir a este equipo
+            :close: Cerrar
+            :cancel: Cancelar
+            :add: Añadir
+          :member_removal_modal:
+            :title: Confirmar acción
+            :confirmation: "¿Está seguro que desea eliminar {fullname} de {teamname}?"
+            :cancel: Cancelar
+            :remove: Quitar
+          :team_add_modal:
+            :title: Crear nuevo equipo
+            :enter_team_name: Introduzca un nombre para su nuevo equipo
+            :cancel: Cancelar
+            :create: Crear
+          :team_delete_modal:
+            :title: Confirmar acción
+            :confirmation: "¿Está realmente seguro que desea quitar {teamname}?"
+            :cancel: Cancelar
+            :remove: Quitar
+          :team_list:
+            :no_team_member_warning: "{teamname} aún no tiene cualquier miembro del
+              equipo!"
+            :add_team_members: Agregar a miembros de equipo
+            :tbl_name: Nombre
+            :tbl_surname: Apellido
+            :tbl_email: Correo electrónico
+            :tbl_role: Papel
+            :remove: Quitar
+        :organization:
+          :arrears:
+            :title: Lo sentimos no pudimos procesar el pago
+            :explanation: Su cuenta está actualmente en mora ya pudimos cargar en
+              su tarjeta de crédito designada.
+            :recommendation: Por favor, asegúrese de que sus datos de tarjeta de crédito
+              son hasta la fecha, a continuación, haga clic en el botón de abajo.
+            :warning: Lamentablemente si somos capaces de cargar su tarjeta de crédito
+              por {fecha}, sus aplicaciones se cerrará automáticamente.
+            :retry: Reintentar el pago
+          :audit_log:
+            :export: De la exportación
+          :billing:
+            :current_billing_html: 'Su facturación para el período de facturación
+              actual es: <b>{amount}</b>'
+            :current_credit_html: Tener <b>{amount}</b> crédito en tu cuenta para
+              el próximo pago. Tenga en cuenta que esta cuenta de crédito también
+              se vinculará a ninguna organización que se crea.
+            :disclaimer: Tenga en cuenta que la cantidad para su período de facturación
+              actual es indicativa y puede no reflejar los últimos cambios en su factura
+              actual.
+            :about_title: Sobre nuestro ciclo de facturación
+            :about_body: Nuestro periodo de facturación va desde el día 25 del mes
+              anterior al 24 del mes actual. Cualquier cantidad adeudada (gasto corriente
+              menos el crédito) se cobra el 2 del mes siguiente.
+          :credit_card:
+            :title: Tarjeta de crédito
+            :subtitle: Esta es una forma de tarjeta de crédito asegurada, 128-bit
+              SSL encriptado
+            :cancel: Cancelar
+            :save: Guardar
+            :cc_form:
+              :title: Título
+              :title_select: "--SELECCIONE--"
+              :name: Nombre en tarjeta
+              :placeholder_name: Nombre
+              :placeholder_surname: Apellido
+              :number: Número de tarjeta de
+              :unaccepted_type: Este tipo de tarjeta no es aceptada
+              :cvv: CVV
+              :country: País
+              :country_select: "--SELECCIONE--"
+              :expiry: Caducidad
+              :month_select: "--MES--"
+              :year_select: "--AÑO--"
+            :billing_form:
+              :header: Dirección de facturación
+              :street: Dirección de la calle
+              :city: Ciudad
+              :postcode: Código postal
+              :country: País
+              :country_select: "--SELECCIONE--"
+          :index:
+            :title: Empresa
+            :audit_log:
+              :title: Registro de auditoría
+            :billing:
+              :title: De facturación
+              :current_billing: Facturación actual
+              :billing_details: Datos de facturación
+              :past_invoices: Más allá de las facturas
+              :account_statement: Estados de cuenta
+            :members:
+              :title: Miembros de
+            :teams:
+              :title: Equipos
+              :subtitle: Gestión de equipos
+              :control_access: Controlar el acceso a tus aplicaciones
+            :settings:
+              :title: Configuración
+          :invoices:
+            :disclaimer: Todas las cantidades se muestran en {currency}
+            :period: Período de
+            :amount: Cantidad
+            :paid: Pagado
+            :download: Descargar
+          :members:
+            :invite_users: Invitar a usuarios
+            :name: Nombre
+            :surname: Apellido
+            :email: Correo electrónico
+            :role: Papel
+            :team: Equipo
+            :team_select: "--Seleccione equipo--"
+            :edit: Editar
+            :remove: Quitar
+            :roles:
+              :member: Miembro
+              :power_user: Usuario avanzado
+              :admin: Admin
+              :super_admin: Super Admin
+              :invited:
+                :member: Invitados (miembros)
+                :power_user: Invitado (usuario avanzado)
+                :admin: Invitados (Admin)
+                :super_admin: Invitado (Super administrador)
+            :invite_modal:
+              :title_name: 'Editar miembros: {name} {Apellido}'
+              :title_email: 'Editar miembros: {email}'
+              :title_enter_emails: Introducir direcciones de correo electrónico
+              :title_select_roles: Seleccione rol para cada nuevo miembro
+              :description: Introducir las direcciones de correo electrónico de las
+                personas que desea invitar a su empresa
+              :example: 'Una dirección por línea, por ejemplo:'
+              :disclaimer: Tenga en cuenta que para la seguridad invita encuentre
+                razones caducará automáticamente después de 3 días.
+              :cancel: Cancelar
+              :next: Siguiente
+              :invite: Invitar a
+              :roles_info:
+                :member: Un <b>miembro</b> puede ver a otros miembros y acceder a
+                  las aplicaciones de empresa
+                :admin: Un <b>Administrador</b> puede gestionar a otros miembros (excepto
+                  los usuarios de Super Admin) y administrar las aplicaciones de empresa
+                :super_admin: Un <b>Super administrador</b> tiene todo el poder dentro
+                  de la empresa incluyendo el acceso a la gestión de facturación
+            :edition_modal:
+              :cancel: Cancelar
+              :change: Cambio
+              :roles:
+                :member: Un miembro puede ver a otros miembros y acceder a las aplicaciones
+                  de empresa
+                :admin: Un administrador puede gestionar a otros miembros (excepto
+                  los usuarios de Super Admin) y administrar las aplicaciones de empresa
+                :super_admin: Un Super administrador tiene todo el poder dentro de
+                  la empresa incluyendo el acceso a la gestión de facturación
+            :removal_modal:
+              :title: Confirmar acción
+              :body_name: "¿Es realmente seguro que desea eliminar {name} {Apellido}?"
+              :body_email: "¿Está realmente seguro que desea quitar {email}?"
+              :cancel: Cancelar
+              :remove: Quitar
+          :settings:
+            :company_name: Nombre de la empresa
+            :connec_data_sharing: CONNEC!™ uso compartido de datos
+            :enable: En
+            :disable: De
+            :cancel: Cancelar
+            :save: Guardar
+        :provisioning:
+          :breadcrumb:
+            :order: Orden
+            :additional_details: Detalles adicionales
+            :confirm: Confirmar
+            :order_summary: Resumen de la orden
+          :order:
+            :title: Elija su suscripción
+            :name: Nombre
+            :description: Descripción
+            :price: Precio
+            :next: Siguiente
+            :pricing_type:
+              :payg: Uso basado en
+          :details:
+            :title: Ingrese datos
+            :next: Siguiente
+          :confirm:
+            :title: Suscripción
+            :name: Nombre
+            :description: Descripción
+            :edit_order: Editar pedido
+            :validate: Validar
+            :price: Precio
+          :summary:
+            :title: Resumen de la orden
+            :order_being_processed: Su pedido se está procesando por el proveedor.
+            :manage_subscriptions: Puede administrar sus suscripciones y ver su estado
+              en <a href="#!/subscriptions">su página de suscripciones</a>.
+            :subscriptions: Suscripciones
+            :name: Nombre
+            :description: Descripción
+            :price: Precio
+            :go_to_my_app: Ir a mi app
+          :subscription:
+            :back: Atrás
+            :info: Información
+            :subscription_info: Información de suscripción
+            :product: Producto
+            :subscription: Suscripción
+            :description: Descripción
+            :date: Fecha
+            :end_date: Fecha de finalización
+            :status: Estado
+            :amount: Cantidad
+            :provisioning_data: Provisión de datos
+            :no_provisioning_data: No hay datos de aprovisionamiento
+            :custom_data: Información proporcionada por el cliente
+            :no_custom_data: Ninguna información proporcionada por el cliente
+          :subscriptions:
+            :title: Gestionar sus suscripciones
+            :currency_warning: Algunos precios están disponibles para su moneda corriente.
+              Póngase en contacto con su administrador para obtener más información.
+            :name: Nombre
+            :description: Descripción
+            :price: Precio
+            :product: Producto
+            :subscription: Suscripción
+            :amount: Cantidad
+            :start_date: Fecha de inicio
+            :end_date: Fecha de finalización
+            :status: Estado
+            :states:
+              :requested: solicitados
+              :approved: aprobado
+              :fulfilled: cumplido
+              :expired: caducado
+              :suspended: suspendido
+              :cancelled: cancelado
+              :aborted: abortado
+            :modify: Modificar suscripción
+            :empty_list: No tienes ninguna suscripción
+            :cancel: Cancelar suscripción
+            :cancel_modal.title: Cancelar suscripción
+            :cancel_modal.body: "¿Desea cancelar esta suscripción?"
+            :cancel_modal.yes: Sí
+            :cancel_modal.no: 'No'
+            :cancel_error: Error al cancelar esta suscripción. Por favor, póngase
+              en contacto con su administrador.
+        :marketplace:
+          :index:
+            :applications: Aplicaciones
+            :reseller_products: Productos de revendedores
+            :title: Mercado
+            :select_all: Todos
+            :search: Búsqueda de
+            :compare: Comparar la aplicación
+            :select_apps: Comparar hasta 4 aplicaciones
+            :toastr:
+              :error: Sólo puede comparar hasta 4 aplicaciones.
+            :cancel: Cancelar
+            :compare_apps: Comparar
+          :show:
+            :back: Atrás
+            :start_app: "¡Comience ahora!"
+            :launch_app: Lanzamiento de la aplicación
+            :connect_app: Conecte la aplicación
+            :price: Precio
+            :tag_responsive: Capacidad de respuesta
+            :tag_star: Estrella!™ tutoriales
+            :tag_connec: CONNEC!™ listo
+            :conflicting_app: 'No se puede instalar esta aplicación ya que es incompatible
+              con:'
+            :success_notification_title: "{name} se ha agregado a su cuenta"
+            :success_launch_notification_body: Para empezar a utilizar {name}, haga
+              clic en el icono {name}, haga clic en "Lanzamiento".
+            :success_connect_notification_body: Para empezar a utilizar {name},
+              haga clic en el icono {name}, haga clic en "Conectar".
+            :no_reviews: No hay comentarios sobre
+            :write_review: Escriba un comentario
+            :number_of_reviews: 'Comentarios por página:'
+            :success_toastr: "¡Su informe se ha tenido en cuenta!"
+            :error_toastr: Error al guardar tu opinión.
+            :from: De
+            :on: en
+            :platform_admin: Asesor de la plataforma
+            :edited_by_user: Editado por un usuario
+            :edited_by_user_tooltip: Editar historia
+            :edited_by_admin: Editado por Admin
+            :just_now: Ahora
+            :company_feedback: Información de la empresa
+            :review_title: Informe
+            :reviews: Comentarios
+            :no_app_no_review: Usted necesita tener la aplicación funcionando a fin
+              de dar su opinión.
+            :tell_others: Decirle a otros lo que piensas acerca de esta aplicación
+              (opcional)
+            :cancel: Cancelar
+            :submit: Enviar
+            :comment_title: 'Comentar esta información:'
+            :comment_placeholder: Ingrese su comentario aquí...
+            :question_title: Pregunta
+            :questions: Preguntas
+            :question_search: Búsqueda de...
+            :question_ask: Una pregunta
+            :question_ask_placeholder: Escriba su pregunta aquí...
+            :no_review: Hay no hay comentarios de {name}.
+            :answers: Respuestas
+            :answer_q: Responder a esta pregunta
+            :answer_placeholder: Escriba su respuesta a esta pregunta aquí...
+            :delete: Eliminar
+            :delete_q: Eliminar esta pregunta
+            :edit: Editar
+            :edit_review: Editar su informe
+            :edit_answer: Editar tu respuesta
+            :edit_question: Editar tu pregunta
+            :edit_comment: Edite tu comentario
+            :edit_q: Editar esta pregunta
+            :filter: 'Filtrar por:'
+            :filter_rating_desc: valorar alta a baja
+            :filter_rating_ask: valorar bajo a alto
+            :filter_date_desc: fecha de alta a baja
+            :filter_date_ask: fecha de baja a alta
+            :success_toastr_2: Éxito.
+            :success_toastr_answer: "¡Gracias por responder a esta pregunta!"
+            :success_toastr_question: "¡Su pregunta se ha enviado con éxito!"
+            :error_toastr_answer: Error al guardar tu respuesta
+            :error_toastr_question: Error al guardar tu pregunta
+            :review:
+              :delete_modal_header: Eliminar un informe
+              :delete_modal_body: "¿Quieres eliminar tu opinión?"
+              :delete_modal_cancel: Cancelar
+              :delete_modal_delete: Eliminar
+            :question:
+              :delete_modal_header: Borrar una pregunta
+              :delete_modal_body: "¿Quieres eliminar tu pregunta?"
+              :delete_modal_cancel: Cancelar
+              :delete_modal_delete: Eliminar
+              :no_question: No existen preguntas en {name}.
+            :comment:
+              :delete_modal_header: Eliminar un comentario
+              :delete_modal_body: "¿Desea realmente borrar tu comentario?"
+              :delete_modal_cancel: Cancelar
+              :delete_modal_delete: Eliminar
+              :hide_comments: Ocultar comentarios
+              :feedback_list_links: Comentario {cuenta, seleccionar, indefinido {otras}
+                {{COUNT, plural, uno {(#)} otros {s (#)}}}
+            :answer:
+              :delete_modal_header: Eliminar una respuesta
+              :delete_modal_body: "¿Realmente desea eliminar su respuesta?"
+              :delete_modal_cancel: Cancelar
+              :delete_modal_delete: Eliminar
+            :edited: Editado
+            :edited_tooltip: Editar historia
+            :modals:
+              :history:
+                :title: Editar historia
+                :close: Cerrar
+            :provision: Disposición
+            :pricing:
+              :payg: Uso basado en
+          :app_selection:
+            :next: Siguiente
+            :cancel: Cancelar
+            :select_orga: Seleccione una organización
+            :no_orga_authorized: Compra no válido
+            :unauthorized_to_add_app: 'Lamentablemente no tienes permiso para comprar
+              productos de esta organización. Por favor seleccione otra organización:'
+          :compare:
+            :title: Comparación
+            :application_provider: Proveedor de aplicaciones
+            :category: Categoría
+            :key_benefits: Beneficios clave
+            :short_description: Breve descripción
+            :rating: Valorar
+            :companies_number: Número de empresas mediante la aplicación
+            :pricing: Fijación de precios
+            :pricing_not_available: información no disponible precios
+        :account:
+          :my_account: Mi cuenta
+          :personal_information: Información personal
+          :user_form_name: Nombre
+          :user_form_surname: Apellido
+          :user_form_email: Correo electrónico
+          :user_form_phone: Teléfono
+          :user_form_save: Guardar
+          :user_form_cancel: Cancelar
+          :change_password: Cambiar contraseña
+          :passwd_form_current: Contraseña actual
+          :passwd_form_new: Nueva contraseña
+          :passwd_form_confirm: Confirmar contraseña
+          :passwd_form_save: Guardar
+          :passwd_form_cancel: Cancelar
+          :settings: Configuración
+          :developer: Desarrollador
+          :are_you_developer: "¿Eres un desarrollador que busca para contribuir a
+            la plataforma Maestrano?"
+          :register: "¡Registrate!"
+          :api_key: API Key
+          :secret_key: Clave secreta
+          :admin_access_to_your_account: Acceso de administrador a tu cuenta
+          :access_granted_until_expired: Autorización se ha concedido hasta el
+          :access_granted_until_revoked: Autorización se ha concedido hasta que usted
+            decida revocar acceso
+          :revoke:
+            :action: Revocar
+            :success_toastr: El acceso se ha revocado
+            :error_toastr: Se produjo un error que no puede revocarse el acceso
+          :authorize_admin_access: Autorizar el acceso de admin
+          :twenty_four_hours: Durante 24 horas
+          :until_revoke: Hasta revocación el acceso
+          :authorize:
+            :action: Autorizar
+            :success_toastr: El acceso ha sido autorizado
+            :error_toastr: Se produjo un error que no autorizado podría ser el acceso
+          :show: Mostrar
+          :hide: Ocultar
+          :name: Nombre
+          :uid: UID
+          :view_developer_docs: Ver la documentación de desarrollador
+          :here: aquí
+          :conceal: Ocultar
+          :organizations: Organizaciones
+        :app_deletion:
+          :title: Confirmar eliminación de la aplicación
+          :instructions: Con el fin de eliminar su aplicación, escriba lo siguiente
+            en el cuadro siguiente.
+          :cancel: Cancelar
+          :delete: Eliminar
+        :apps_list:
+          :title: Tablero de instrumentos
+          :manual_data_sync: Sincronización de datos manual
+          :manual_data_sync_tooltip: Desencadenar una sincronización manual entre
+            {appname} y Maestrano.
+          :disconnect_link: Desconectar conexión
+          :disconnect_link_tooltip: "¿Está seguro de que desea desconectar {appname}
+            y Maestrano?"
+          :restart: Reiniciar
+          :delete: Eliminar
+          :linked_to: Vinculados a
+          :connect: Conectar
+          :launch_app: Lanzamiento de la aplicación
+          :deleted: elimina
+          :tutorial: Tutoriales
+        :horizontal_menu:
+          :toggle_navigation: Navegación de la palanca
+          :dashboard: Tablero de instrumentos
+          :impac: "¡IMPAC!"
+          :my_account: Mi cuenta
+          :company: Empresa
+          :marketplace: Mercado
+          :logout: Cierre la sesión
+        :menu:
+          :toggle_navigation: Navegación de la palanca
+          :dashboard: Tablero de instrumentos
+          :impac: "¡IMPAC!"
+          :my_account: Mi cuenta
+          :company: Empresa
+          :marketplace: Mercado
+          :logout: Cierre de sesión
+          :new_company: Nueva empresa
+          :access_admin_panel: Panel de administración de acceso
+          :subscriptions: Suscripciones
+        :create_company:
+          :title: Crear nueva empresa
+          :enter_name: Introduzca un nombre para su nueva empresa
+          :cancel: Cancelar
+          :create: Crear
+      :components:
+        :loading_lounge:
+          :redirecting_to_app: Redirigiendo a % {appname}
+          :you_will_be_redirected_in: Usted será redirigido automáticamente en % {contador}
+            s (o haga clic en el enlace de más abajo)
+          :go_to_my_app: "¡Ir a mi aplicación ahora!"
+          :app_is_getting_configured: "% {appname} es conseguir configurado"
+          :app_should_be_available_soon: No te preocupes, debe estar disponible en
+            unos pocos segundos.
+          :app_is_loading: "% {appname} está cargando"
+          :app_has_been_idle_for_long: "% {appname} ha estado inactivo durante mucho
+            tiempo. Nosotros actualmente estamos cargando. ¡Debería estar disponible
+            pronto!"
+          :app_is_getting_setup: "% {appname} es conseguir configuración"
+          :app_is_preparing_for_first_use: "% {appname} está preparando para el primer
+            uso. ¡Debería estar disponible pronto!"
+          :app_has_been_deleted: "% {appname} se ha eliminado"
+          :app_has_been_removed_by_admin: "% {appname} se ha eliminado por el administrador
+            y es no más accesible."
+          :app_is_idle: "% {appname} está inactivo"
+          :cannot_start_app: Lamentablemente no podemos cambiar esta app ON para ti
+          :app_not_found: Aplicación que no se encuentra
+          :app_not_managed_by_us: La aplicación solicitada parece no ser administrados
+            por nosotros.
+          :did_you_type_the_right_url: "¿Está seguro de que ha escrito la url correcta?"
+        :layout:
+          :your_dashboard_is_loading: El salpicadero está cargando...
+        :without_organisation:
+          :hello: Hola {name}!
+          :text: Por desgracia, su cuenta no se une a una organización. Por favor,
+            póngase en contacto con su administrador.
+          :text_if_can_create: Por desgracia, su cuenta no se une a una organización.
+            Por favor, contacte con su administrador o crear uno nuevo utilizando
+            el botón de abajo.
+          :button: Crear una organización
+          :logout: Cierre de sesión
+        :app_install_btn:
+          :conflicting_app: 'No se puede instalar esta aplicación ya que es incompatible
+            con:'
+          :start_app: "¡Comience ahora!"
+          :launch_app: Lanzamiento de la aplicación
+          :create_account: Crear una cuenta
+          :create_account_tooltip: Se abrirá una nueva pestaña para que crear una
+            cuenta. Luego, volver aquí para conectarlo.
+          :connect_app: Conectar una cuenta existente
+          :access_addon: Módulo de acceso
+          :access_addon_tooltip: Esta aplicación requiere que configure la conexión
+            en una pantalla separada.
+          :insufficient_privilege: No tienes los suficientes privilegios. Póngase
+            en contacto con su administrador.
+          :success_notification_title: "{name} se ha agregado a su cuenta"
+          :success_launch_notification_body: Para empezar a utilizar {name}, haga
+            clic en el icono {name}, haga clic en "Lanzamiento".
+          :success_connect_notification_body: Para empezar a utilizar {name}, haga
+            clic en el icono {name}, haga clic en "Conectar".
+          :app_requires_no_set_up: Ninguna instalación necesaria.
+          :app_connects_on_launch: Esta aplicación se conecta cuando puso en marcha.
+          :app_connected: "(conectado)"
+        :audit_events_list:
+          :loading_events: Eventos de carga
+          :table:
+            :date: Fecha
+            :user: Usuario
+            :action: Acción
+            :description: Descripción
+        :mno_pagination:
+          :items_per_page: 'Elementos por página: '
+        :mno_password:
+          :current_password: Contraseña actual
+          :new_password: Nueva contraseña
+          :confirm_password: Confirmar contraseña
+          :eight_characters_minimum: Mínimos ocho caracteres
+          :one_uppercase_character: Un carácter en mayúscula
+          :one_number: Un número de
+          :one_lowercase_character: Un carácter minúsculo
+          :same_password: Misma contraseña
+          :save: Guardar
+          :cancel: Cancelar
+        :language_selectbox:
+          :language: Idioma
+          :cancel: Cancelar
+          :change_language: Cambiar idioma
+          :confirm_header: "¿Cambiar idioma a {name}?"
+          :confirm: "¿Está seguro que desea cambiar el idioma a {name}?"
+    :pages:
+      :app_access_unauthorized:
+        :title: Acceso a aplicación no concedido
+        :explanation: Parece que el administrador de esta aplicación no ha concedido
+          que acceso.
+        :recommendation: Debe pedir a su administrador para compartir esta aplicación
+          con usted.
+        :support_help_html: 'Si crees que esto es un error, por favor envíenos un
+          correo electrónico a #{email}'
+      :app_logout:
+        :title: Exitoso cierre de sesión
+        :explanation: Se haya registrado con éxito hacia fuera desde la aplicación
+        :support_help_html: 'Si crees que esto es un error, por favor envíenos un
+          correo electrónico a #{email}'
+      :billing_details_required:
+        :title: Datos necesarios de facturación
+        :explanation: "¡Uy! Parece que la versión de prueba gratuita ha terminado
+          para esta aplicación y se han introducido sin datos de facturación."
+        :recommendation: Por favor consulte a su administrador para entrar datos de
+          facturación válidos para su empresa.
+        :support_help_html: 'Si crees que esto es un error, por favor envíenos un
+          correo electrónico a #{email}'
+    :webhook:
+      :o_auth:
+        :providers:
+          :cancel: Cancelar
+          :myob:
+            :which_version_used: "¿Qué versión de MYOB utilizas?"
+            :my_version_is: 'Mi versión de MYOB es:'
+            :connect: Conectar
+            :connect_to: Conectar a {appname}
+          :xero:
+            :how_do_you_want_to_connect: "¿Cómo desea conectarse a su cuenta de Xero?"
+            :which_extra_modules: "¿Desea conectar a cualquiera de los siguientes
+              módulos adicionales?"
+            :payroll: Nómina de pago
+            :which_country_for_the_account: "¿Cuál es el país asociado con su cuenta
+              de Xero?"
+            :connect: Conectar
+            :connect_to: Conectar a {appname}
+        :authorize:
+          :you_are_redirected: Vas a conectar a través de nuestros socios de integración
+    :auth:
+      :shared:
+        :links:
+          :login: "¿Ya tienes una cuenta? Inicia sesión"
+          :signup: "¿No tienes una cuenta? Únete"
+          :recover_password: "¿Olvidó su contraseña?"
+          :resend_confirmation: "¿No recibir instrucciones de confirmación?"
+          :unlock: "¿No recibir instrucciones de desbloqueo?"
+          :or_sign_in_using: O firmar en el uso de
+      :sessions:
+        :new:
+          :title: Inicia sesión
+          :sign_in: Inicia sesión
+          :remember_me: Acuérdate de mí
+          :email: Correo electrónico
+          :password: Contraseña
+      :passwords:
+        :new:
+          :title: Recuperación de contraseña
+          :recover: Recuperar mi contraseña
+        :edit:
+          :title: Cambiar la contraseña
+          :change: Cambiar mi contraseña
+      :unlocks:
+        :new:
+          :title: Enviar instrucciones de desbloqueo
+          :unlock: Enviar instrucciones de desbloqueo
+      :confirmations:
+        :new:
+          :title: Confirmación
+          :resend: Enviar instrucciones de confirmación
+        :show:
+          :title: Casi allí
+          :confirm: Confirmar mi cuenta
+        :lounge:
+          :title: "¡Confirmación enviada!"
+          :subtitle: Has enviado un enlace de confirmación, por favor revise su bandeja
+            de entrada de correo electrónico.
+          :resend:
+            :description: Si no recibes el email por favor haga clic en enviar.
+            :button: "¡Volverlo a enviar!"
+          :support_tip_html: O si lo prefiere puede enviar un correo electrónico directamente
+            a nuestra % {email} y vamos a activar para usted.
+          :support_team: servicio de atención al cliente
+          :support_email_subject: Verificación de inscripción
+      :registrations:
+        :new:
+          :title: Únete
+          :create: "¡Crear mi cuenta!"
+          :user_accept: Acepto
+          :tos: los términos de uso
+    :provision:
+      :provision_apps:
+        :title: Su pedido está siendo preparado
+        :preparing: Preparación de pedido
+      :select_organization:
+        :title: Elija una organización
+        :explanation: Pertenece a varias organizaciones
+        :select: Por favor seleccione la organización que están haciendo este nuevo
+          orden para
+        :submit: Ir
+    :pdf:
+      :invoice_pdf:
+        :account_situation: Situación de la cuenta
+        :account_statement: Estado de cuenta
+        :charging_details:
+          :currency: Cargos se muestran en % {currency_name} (% {currency})
+          :no_payments: No hay pagos de tarjeta de crédito requeridos para la factura
+          :with_payment: Tarjeta de crédito designada se cargará en % {charge_date}
+            a medianoche UTC por Maestrano Pty Ltd como proveedor de servicios para
+            la plataforma de % {platform_name}.
+        :credit_remaining: Crédito restante
+        :details: Datos de
+        :details_section:
+          :price: Precio
+          :product: Producto
+          :type: Tipo
+          :usage: Uso
+        :excluding_tax: No incluido impuesto
+        :footer:
+          :author: Esta factura ha sido generada por Maestrano Pty Ltd en representación
+            de la plataforma de % {platform_name} (el "servicio").
+          :charges: Todos los cargos en esta factura son en % {currency_name} (% {currency}).
+            Pagos con tarjeta de crédito serán procesados por Maestrano Pty Ltd.
+          :address: 'Maestrano Pty Ltd | Suite 504, 46 mercado Street, Sydney, NSW
+            2000, Australia | ABN: 80 152 564 424'
+        :including_tax: incluido impuestos
+        :monthly_invoice: Factura mensual
+        :paging: Página <page>de <total></total> </page>
+        :period: Período de
+        :summary: Resumen
+        :summary_section:
+          :credit: Crédito
+          :due_last_month: Debido el mes pasado
+          :paid: Pago (gracias)
+          :this_month: Este mes
+          :total: Total
+        :tax: Impuesto
+        :total_including_tax: Total (incl. impuesto)
+        :total_payable: Total a pagar
+        :your_reference: Su referencia

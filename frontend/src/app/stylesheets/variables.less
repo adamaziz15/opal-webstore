@@ -10,8 +10,8 @@
 /*-----------------------------------------------------------------------*/
 /*                       Twitter Bootstrap colors                        */
 /*-----------------------------------------------------------------------*/
-@brand-success:                  @elem-positive-color;
-@brand-warning:                  @decorator-alt-color;
+@brand-success:                  @decorator-inverse-color;
+@brand-warning:                  @decorator-inverse-color;
 @brand-info:                     @text-inverse-color;
 @brand-danger:                   @text-inverse-color;
 @brand-primary:                  @text-inverse-color;
@@ -19,7 +19,6 @@
 /*-----------------------------------------------------------------------*/
 /*                          Fonts & Text                                 */
 /*-----------------------------------------------------------------------*/
-
 @font-family-sans-serif:             Lato-Light, "Helvetica Neue", Helvetica, sans-serif;
 @font-family-base:                   @font-family-sans-serif;
 @font-path:                          '/dashboard/fonts';
@@ -39,22 +38,26 @@
 /*-----------------------------------------------------------------------*/
 /*                              Login Page                               */
 /*-----------------------------------------------------------------------*/
-@login-bg-color:                     @bg-main-color;
-@login-box-grid-position:            { margin-top: 80px; .make-sm-column(4); .make-sm-column-offset(4); };
+@login-bg-img:                        false;
+@login-bg-color:                      @bg-main-color;
+@login-box-grid-position:             { margin-top: 80px; .make-sm-column(4); .make-sm-column-offset(4); };
 
-@login-box-corners:                  0px;
-@login-box-title-color:              @decorator-main-color;
-@login-box-title:                    { text-transform: uppercase; };
-@login-box-title-display-box-arrow:  false;
+@login-box-corners:                   0px;
+@login-box-title-color:               @decorator-main-color;
+@login-box-title:                     { text-transform: uppercase; };
+@login-box-title-display-box-arrow:   false;
 
 @login-box-bg-color:                  @bg-inverse-color;
 @login-box-padding:                   20px;
-@login-box-brand-logo-img:            "mno_enterprise/main-logo.png";
-@login-box-brand-logo:                { min-height: 61px; max-width: 160px; max-height: 130px; margin: 17px auto 5px auto; };
+@login-box-brand-logo:                { max-width: 300px; max-height: 200px; margin: 16px auto 16px auto; };
 @login-box-btn-login:                 { width: 100%; };
 
 @login-box-sso-intuit-logo:           "mno_enterprise/logo-intuit.png";
-
+@login-box-oauth-text-color:          #fff;
+@login-box-oauth-bg-color-facebook:   #3b5998;
+@login-box-oauth-bg-color-google:     #dd4b39;
+@login-box-oauth-bg-color-linkedin:   #0074C4;
+@login-box-oauth-bg-color-intuit:     #fff;
 
 /*-----------------------------------------------------------------------*/
 /*                           Dashboard Layout                            */
@@ -63,7 +66,12 @@
 
 @dashboard-section-title-color:                 @text-strong-color;
 @dashboard-section-title-alignment:             center;
-@dashboard-section-title-display-subline:       false;
+@dashboard-section-title-display-subline:       true;
+
+// Loaders
+//--------------------------------------
+@dashboard-loader-color:                        @text-strong-color;
+@dashboard-loader-icon:                         { .icon-fa(refresh); .fa-2x; .fa-spin; }; //pass a ruleset
 
 // User without organisation
 //--------------------------------------
@@ -74,23 +82,18 @@
 //--------------------------------------
 @dashboard-side-menu-padding:                   30px 0px 0px 14px;
 @dashboard-side-menu-bg-color:                  @bg-inverse-color;
-@dashboard-side-menu-horizontal:                { min-width:550px; };
 
-@dashboard-side-menu-brand-logo-img:            "/dashboard/images/small-logo.png";
-@dashboard-side-menu-brand-logo-img-expanded:   "/dashboard/images/main-logo.png";
-@dashboard-side-menu-brand-logo-expanded:       { width: 200px; background-size: 60%;};
+@dashboard-side-menu-brand-logo:                { max-width: 50px; max-height: 50px; margin: 0; transition: max-width .25s ease, max-height .25s ease; };
+@dashboard-side-menu-brand-logo-expanded:       { max-width: 200px; max-height: 130px; };
 
-@dashboard-side-menu-brand-logo:                { background-size: 100%; width: 51px; margin-left: 5px; };
-@dashboard-side-menu-brand-logo-expanded:       { width: 201px; background-size: 100%; background-image: url(@dashboard-side-menu-brand-logo-img-expanded);};
+@dashboard-side-menu-link-color:                @decorator-inverse-color;
+@dashboard-side-menu-link-bg-color:             @dashboard-side-menu-bg-color;
 
-@dashboard-side-menu-link-color: @elem-positive-color;
-@dashboard-side-menu-link-bg-color: @dashboard-side-menu-bg-color;
+@dashboard-side-menu-link-hover-color:          @text-strong-color;
+@dashboard-side-menu-link-hover-bg-color:       @bg-inverse-color;
 
-@dashboard-side-menu-link-hover-color: @elem-cozy-color;
-@dashboard-side-menu-link-hover-bg-color: @bg-inverse-color;
-
-@dashboard-side-menu-link-active-color: @elem-cozy-color;
-@dashboard-side-menu-link-active-bg-color: @bg-inverse-color;
+@dashboard-side-menu-link-active-color:         @text-strong-color;
+@dashboard-side-menu-link-active-bg-color:      @bg-inverse-color;
 
 @_default_style:                                { .fa-2x; margin-top: 6px; margin-left: 2px; color: @dashboard-side-menu-link-color; };
 @_default_style_active:                         { @_default_style(); color: @dashboard-side-menu-link-active-color; };
@@ -102,6 +105,8 @@
 @dashboard-side-menu-btn-account-active:        { .icon-fa(user); @_default_style_active(); margin-left: 5px; };
 @dashboard-side-menu-btn-company:               { .icon-fa(briefcase); @_default_style(); };
 @dashboard-side-menu-btn-company-active:        { .icon-fa(briefcase); @_default_style_active(); };
+@dashboard-side-menu-btn-subscriptions:         { .icon-fa(tasks); @_default_style(); margin-left: 5px; };
+@dashboard-side-menu-btn-subscriptions-active:  { .icon-fa(tasks); @_default_style_active(); margin-left: 5px; };
 @dashboard-side-menu-btn-marketplace:           { .icon-fa(plus-square-o); @_default_style(); margin-left: 5px; };
 @dashboard-side-menu-btn-marketplace-active:    { .icon-fa(plus-square-o); @_default_style_active(); margin-left: 5px; };
 @dashboard-side-menu-btn-logout:                { .icon-fa(lock); @_default_style(); margin-left: 6px; };
@@ -111,38 +116,21 @@
 //--------------------------------------
 @dashboard-cpy-select-width:                    280px;
 @dashboard-cpy-select-pic-width:                50px;
-@dashboard-cpy-select-bg-color:                 @bg-inverse-intense-color;
-@dashboard-cpy-select-border-radius:            0px;
-@dashboard-cpy-select-border-color:             @text-inverse-link-color;
-@dashboard-cpy-select-padding:                  15px 25px;
+@dashboard-cpy-select-bg-color:                 @decorator-inverse-color;
+@dashboard-cpy-select-border-radius:            0 0 0 6px;
+@dashboard-cpy-select-border-color:             @text-inverse-color;
+@dashboard-cpy-select-list-border-color:        lighten(@bg-inverse-color, 10%);
 
-@dashboard-cpy-select-header-title-color:       #ffffff;
-@dashboard-cpy-select-header-company-color:     #ffffff;
+@dashboard-cpy-select-header-title-color:       @text-inverse-strong-color;
+@dashboard-cpy-select-header-company-color:     @text-inverse-strong-color;
 @dashboard-cpy-select-header-text-size:         13px;
 
-@dashboard-cpy-select-link-text-color:          @link-color;
-@dashboard-cpy-select-link-icon-color:          #ffffff;
+@dashboard-cpy-select-link-text-color:          @text-inverse-strong-color;
+@dashboard-cpy-select-link-icon-color:          @text-inverse-strong-color;
 
-@dashboard-cpy-select-link-color:               #ffffff;
-@dashboard-cpy-select-link-hover-color:         @dashboard-cpy-select-link-color;
-@dashboard-cpy-select-link-hover-bg-color:      lighten(@dashboard-cpy-select-bg-color,10%);
-
-@dashboard-cpy-select-link-create-text-color:   @text-inverse-strong-color;
-@dashboard-cpy-select-link-create-color:        @bg-inverse-color;
-@dashboard-cpy-select-link-admin-color:         #ffffff;
-
-@dashboard-cpy-select-switch-btn-color:         @dashboard-cpy-select-header-company-color;
-@dashboard-cpy-select-switch-btn-bg-color:      @dashboard-cpy-select-bg-color;
-@dashboard-cpy-select-switch-btn-icon:          { .icon-fa(caret-down); }; //pass a ruleset
-@dashboard-cpy-select-switch-btn-icon-active:   { .icon-fa(caret-up); }; //pass a ruleset
-@dashboard-cpy-select-list-border-color:        #5598bf;
-
-@dashboard-cpy-tabcontent-text-color:           @text-inverse-link-color;
-
-// Loaders
-//--------------------------------------
-@dashboard-loader-color:                        @bg-inverse-color;
-@dashboard-loader-icon:                         { .icon-fa(refresh); .fa-2x; .fa-spin; }; //pass a ruleset
+@dashboard-cpy-select-link-color:               @text-inverse-strong-color;
+@dashboard-cpy-select-link-hover-color:         @text-strong-color;
+@dashboard-cpy-select-link-hover-bg-color:      @text-inverse-strong-color;
 
 /*-----------------------------------------------------------------------*/
 /*                        Dashboard > Apps Section                       */
@@ -156,46 +144,48 @@
 @dashboard-apps-tile-settings-color:            @dashboard-apps-tile-text-color;
 @dashboard-apps-tile-settings-bg-color:         @dashboard-apps-tile-bg-color;
 
-@dashboard-apps-tile-settings-hover-color:      @dashboard-apps-tile-bg-color;
-@dashboard-apps-tile-settings-hover-bg-color:   @dashboard-apps-tile-text-color;
+@dashboard-apps-tile-settings-hover-color:      @dashboard-apps-tile-text-color;
+@dashboard-apps-tile-settings-hover-bg-color:   @dashboard-apps-tile-bg-color;
 
 @dashboard-apps-tile-add-color:                 @dashboard-apps-tile-text-color;
-@dashboard-apps-tile-add-bg-color:              @dashboard-apps-tile-text-color;
+@dashboard-apps-tile-add-bg-color:              @dashboard-apps-tile-bg-color;
 
 /*-----------------------------------------------------------------------*/
 /*                      Dashboard > My account Section                   */
 /*-----------------------------------------------------------------------*/
-@dashboard-account-tabs-bg-color:                    @bg-inverse-color;
-@dashboard-account-tabs-text-color:                  @text-strong-color;
-@dashboard-account-panel-header-text-color:          @text-inverse-color;
+@dashboard-account-tabs-bg-color:                    @bg-on-bg-inverse-color;
+@dashboard-account-tabs-text-color:                  @text-inverse-color;
 @dashboard-account-panel-header-bg-color:            @bg-inverse-color;
+@dashboard-account-panel-header-text-color:          @text-inverse-color;
 @dashboard-account-panel-body-bg-color:              @bg-inverse-color;
-@dashboard-account-panel-bg-color:                   @bg-inverse-color;
 @dashboard-account-panel-text-color:                 @text-strong-color;
-@dashboard-account-inline-text-color-checked:        #33d375;
-@dashboard-account-inline-text-color-unchecked:      @decorator-alt-color;
+@dashboard-account-inline-text-color-checked:        @brand-success;
+@dashboard-account-inline-text-color-unchecked:      @decorator-inverse-color;
 
 /*-----------------------------------------------------------------------*/
 /*                      Dashboard > Company Section                      */
 /*-----------------------------------------------------------------------*/
 // Tab Heading
 //--------------------------------------
-@dashboard-cpy-tabs-bg-color:                    @bg-inverse-color;
+@dashboard-cpy-tabs-bg-color:                    @decorator-main-color;
 @dashboard-cpy-tabs-text-color:                  @text-strong-color;
 @dashboard-cpy-tabs-border-radius:               2px;
 
 @dashboard-cpy-tabs-subline-size:                0px;
 @dashboard-cpy-tabs-subline-color:               transparent;
 
-@dashboard-cpy-tabs-active-text-color:           @bg-inverse-color;
-@dashboard-cpy-tabs-active-bg-color:             @text-strong-color;
+@dashboard-cpy-tabs-active-text-color:           @decorator-main-color;
+@dashboard-cpy-tabs-active-bg-color:             @bg-inverse-color;
 
 @dashboard-cpy-tabs-hover-text-color:            @bg-inverse-color;
-@dashboard-cpy-tabs-hover-bg-color:              @decorator-alt-color;
+@dashboard-cpy-tabs-hover-bg-color:              @decorator-inverse-color;
 
 // Tab Content
 //--------------------------------------
+@dashboard-cpy-tabcontent-header-bg-color:       @bg-inverse-color;
+@dashboard-cpy-tabcontent-body-bg-color:         @bg-on-bg-inverse-color;
 @dashboard-cpy-tabcontent-bg-color:              @bg-inverse-color;
+@dashboard-cpy-tabcontent-text-color:            @text-strong-color;
 
 // Teams section
 //--------------------------------------
@@ -209,12 +199,12 @@
 /*                              Dock                                     */
 /*-----------------------------------------------------------------------*/
 @mno-dock-bg-color:                             @decorator-main-color;
-
 @mno-dock-add-app-border-color:                 @text-inverse-strong-color;
 @mno-dock-add-app-text-color:                   @text-inverse-strong-color;
-@mno-dock-expand-arrow-color:                   @elem-positive-flash-color;
+@mno-dock-expand-arrow-color:                   @decorator-inverse-color;
 @mno-dock-expand-arrow-color-hover:             darken(@mno-dock-expand-arrow-color, 5%);
 @mno-dock-expand-left-border-color:             @text-inverse-strong-color;
+@mno-dock-app-loader-color:                     @mno-dock-expand-arrow-color;
 @mno-dock-app-title-color:                      @text-inverse-strong-color;
 @mno-dock-app-logo-square-width:                70px;
 @mno-dock-app-logo-minimized-square-width:      50px;
@@ -222,17 +212,17 @@
 @mno-dock-app-box-border:                       1px solid rgba(0, 0, 0, 0.15);
 
 @mno-dock-sub-menu-box-shadow:                  0 6px 12px rgba(0, 0, 0, 0.175);
-@mno-dock-sub-menu-bg-color:                    @bg-main-color;
+@mno-dock-sub-menu-bg-color:                    @bg-inverse-color;
 @mno-dock-sub-menu-hover:                       @decorator-main-color;
-@mno-dock-sub-menu-icon:                        @elem-positive-color;
-@mno-dock-sub-menu-text-color:                  @text-inverse-link-color;
-@mno-dock-sub-menu-text-hover-color:            darken(@text-inverse-strong-color, 10%);
+@mno-dock-sub-menu-icon:                        @decorator-touch-color;
+@mno-dock-sub-menu-text-color:                  @text-inverse-color;
+@mno-dock-sub-menu-text-hover-color:            darken(@mno-dock-sub-menu-text-color, 10%);
 
 // Mobile dock
 @mno-dock-mobile-bg-color:                      @bg-on-bg-inverse-color;
-@mno-dock-mobile-button-color:                  @text-strong-color;
+@mno-dock-mobile-button-color:                  @text-inverse-strong-color;
 @mno-dock-mobile-button-bg-color:               @decorator-inverse-color;
-@mno-dock-mobile-app-active-color:              lighten(@mno-dock-bg-color, 20%);
+@mno-dock-mobile-app-active-color:              lighten(@mno-dock-mobile-button-bg-color, 20%);
 @mno-dock-mobile-app-border-bottom:             1px solid darken(@mno-dock-bg-color, 10%);
 @mno-dock-mobile-add-app-color:                 @text-strong-color;
 @mno-dock-mobile-app-name-color:                @text-strong-color;
@@ -255,7 +245,7 @@
 
 // Title
 @impac-dashboard-title-label-color:             @text-strong-color;
-@impac-dashboard-title-color:                   @elem-cozy-color;
+@impac-dashboard-title-color:                   @text-strong-color;
 @impac-dashboard-source-color:                  @impac-dashboard-title-label-color;
 @impac-dashboard-buttons-border-radius:         4px;
 
@@ -272,7 +262,8 @@
 @impac-widget-text-color-light:                 lighten(@impac-widget-text-color,20%);
 @impac-widget-borders-color:                    lighten(@impac-widget-text-color-light,10%);
 @impac-widget-link-color:                       @decorator-inverse-color;
-@impac-widget-top-buttons-color:                @decorator-alt-color;
+@impac-widget-top-buttons-color:                lighten(@impac-widget-text-color, 70%);
+
 // Title
 @impac-widget-title-text-color:                 darken(@impac-widget-text-color,5%);
 @impac-widget-title-bg:                         @impac-widget-background-color;
@@ -283,7 +274,7 @@
 
 // Content
 @impac-widget-content-border-radius:            0px 0px 5px 5px;
-@impac-widget-lines-container-max-height: 			210px;
+@impac-widget-lines-container-max-height:       210px;
 
 // Hist Mode Choser
 @impac-widget-hist-text-transform:              uppercase;
@@ -292,8 +283,8 @@
 
 // Price
 @impac-widget-price-color:                      @impac-widget-text-color;
-@impac-widget-price-positive-color:             @elem-positive-color;
-@impac-widget-price-negative-color:             @elem-cozy-color;
+@impac-widget-price-positive-color:             @brand-success;
+@impac-widget-price-negative-color:             @brand-danger;
 @impac-widget-currency-color:                   @impac-widget-text-color-light;
 @impac-widget-legend-color:                     lighten(@impac-widget-text-color,30%);
 
@@ -311,16 +302,17 @@
 @impac-widget-accounts-comparison-lines-container-max-height: 250px;
 
 /*-----------------------------------------------------------------------*/
-/*                 Mno Enterprise > Marketplace Section                  */
+/*                       Marketplace Section                             */
 /*-----------------------------------------------------------------------*/
-@dashboard-marketplace-search-text-color:             @bg-inverse-intense-color;
-@dashboard-marketplace-search-border-color:           @bg-inverse-intense-color;
+@dashboard-marketplace-search-text-color:             @text-strong-color;
+@dashboard-marketplace-search-border-color:           @text-strong-color;
 
 @dashboard-marketplace-tile-bg-color:                 @bg-inverse-color;
 @dashboard-marketplace-tile-text-color:               @text-strong-color;
+@dashboard-marketplace-tile-name-color:               @bg-inverse-color;
 @dashboard-marketplace-tile-img-border-color:         @dashboard-marketplace-tile-bg-color;
 
-@dashboard-marketplace-tile-hover-bg-color:           @decorator-main-color;
+@dashboard-marketplace-tile-hover-bg-color:           light-grey;
 @dashboard-marketplace-tile-hover-text-color:         @dashboard-marketplace-tile-text-color;
 @dashboard-marketplace-tile-hover-img-border-color:   darken(@decorator-main-color,10%);
 @dashboard-marketplace-tile-hover-arrow-color:        @text-strong-color;
@@ -331,12 +323,34 @@
 
 @dashboard-marketplace-app-card:                      { display: block; padding: 10px; height: 120px; margin-bottom: 10px; font-weight: 300; };
 
+@provisioning-breadcrumb-item-color:                  @text-strong-color;
+@provisioning-breadcrumb-item-badge-bg:               @decorator-main-color;
+@provisioning-breadcrumb-item-active-color:           @text-strong-color;
+@provisioning-breadcrumb-item-active-badge-bg:        @decorator-touch-color;
+@provisioning-well-bg-color:                          @bg-on-bg-inverse-color;
+
+/*-----------------------------------------------------------------------*/
+/*                          Reviews and comments                         */
+/*-----------------------------------------------------------------------*/
+@no-review-bg-panel-color:       darken(@bg-on-bg-inverse-color, 5%);
+
+@comment-bg:                     @bg-main-color;
+@comment-text-color:             @text-strong-color;
+@comment-attributes-color:       @bg-inverse-color;
+
+@no-question-bg-panel-color:     darken(@bg-on-bg-inverse-color, 5%);
+@question-search-btn-bg:         @bg-inverse-color;
+@question-search-btn-color:      @text-inverse-color;
+@question-search-border:         1px solid @bg-inverse-color;
+@question-bg:                    @bg-on-bg-inverse-color;
+@question-ribbon-bg:             @bg-on-bg-inverse-color;
+
 /*-----------------------------------------------------------------------*/
 /*                     Responsive Table (cell table)                     */
 /*-----------------------------------------------------------------------*/
 @table-cell-header-row-spacing:        10px;
 @table-cell-header-row-padding:        3px;
-@table-cell-row-spacing:               10px;
+@table-cell-row-spacing:               0;
 @table-cell-row-padding:               3px;
 
 @table-cell-header-text-size:          12px;
@@ -367,37 +381,13 @@
 /*-----------------------------------------------------------------------*/
 /*                          Form Customization                           */
 /*-----------------------------------------------------------------------*/
-@input-bg:                      @bg-on-bg-inverse-color;
-@input-color:                   @text-strong-color;
-@input-color-placeholder:       @input-color;
-@input-label-color:             @text-inverse-color;
-@deletion-sentence-color:       @brand-danger;
+@input-bg:                       white;
+@input-color:                    @text-strong-color;
+@input-color-placeholder:        @input-color;
+@input-label-color:              @text-inverse-color;
+@deletion-sentence-color:        @brand-danger;
 
 /*-----------------------------------------------------------------------*/
-/*                         Buttons Customization                         */
+/*                                 Buttons                               */
 /*-----------------------------------------------------------------------*/
-
-// General
-@btn-font-weight:                500;
-
-// Warning
-@btn-warning-color:              #fff;
-
-// Success
-@btn-success-color:              #fff;
-
-/*-----------------------------------------------------------------------*/
-/*                          Reviews and comments                         */
-/*-----------------------------------------------------------------------*/
-@no-review-bg-panel-color:       darken(@bg-on-bg-inverse-color, 5%);
-
-@comment-bg:                     @bg-main-color;
-@comment-text-color:             @text-strong-color;
-@comment-attributes-color:       @bg-inverse-color;
-
-@no-question-bg-panel-color:     darken(@bg-on-bg-inverse-color, 5%);
-@question-search-btn-bg:         @bg-inverse-color;
-@question-search-btn-color:      @text-inverse-color;
-@question-search-border:         1px solid @bg-inverse-color;
-@question-bg:                    @bg-on-bg-inverse-color;
-@question-ribbon-bg:             @bg-on-bg-inverse-color;
+@btn-danger-background:          @brand-danger;

@@ -4,8 +4,13 @@ Rails.application.routes.draw do
   #
   # We ask that you don't use the :as option here, as Mnoe relies on it being the default of "mno_enterprise"
 
-  mount MnoEnterprise::Engine, at: '/mnoe', as: :mno_enterprise
+  scope '(:locale)' do
+    mount MnoEnterprise::Engine, at: '/mnoe', as: :mno_enterprise
+  end
 
-  root to: redirect('mnoe/auth/users/sign_in')
-
+  if Settings.dashboard.public_pages.enabled
+    root to: redirect('dashboard/')
+  else
+    root to: redirect('mnoe/auth/users/sign_in')
+  end
 end

@@ -2,7 +2,7 @@
 <html ng-app="mnoEnterpriseAngular" ng-strict-di="true">
   <head>
     <meta charset="utf-8">
-    <title state-title="Dashboard" pattern="{{::app_name}} - Dashboard - %s"></title>
+    <title ng-bind="app_name + ' - ' + ('mno_enterprise.templates.components.layout.title' | translate) + ' - ' + pageTitle"></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
 
@@ -22,25 +22,25 @@
     <link rel="manifest" href="images/favicons/manifest.json">
     <meta name="msapplication-TileImage" content="images/favicons/ms-icon-144x144.png">
 
-    <link rel="stylesheet" href="styles/vendor-54a207d071.css">
+    <link rel="stylesheet" href="styles/vendor-8f1636f7fa.css">
 
-    <link rel="stylesheet" href="styles/app-f9141229d5.css">
+    <link rel="stylesheet" href="styles/app-df0fa990b3.css">
   </head>
-  <body>
+  <body translate-cloak>
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div ng-if="!isLoggedIn" class="layout-loading text-center">
+    <div ng-if="!isLoggedIn && !publicPage" class="layout-loading text-center">
       <mno-loader></mno-loader>
       <span class="layout-loading-text" translate="mno_enterprise.templates.components.layout.your_dashboard_is_loading"></span>
     </div>
 
     <div ui-view class="myspace"></div>
 
-    <script src="scripts/vendor-b01bb0dda9.js"></script>
+    <script src="scripts/vendor-4323a60865.js"></script>
 
-    <script src="scripts/app-62d8f24334.js"></script>
+    <script src="scripts/app-3cf8a39c3b.js"></script>
 
     <script src="/mnoe/config.js"></script>
 

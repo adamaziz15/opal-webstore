@@ -3,6 +3,8 @@ impac:
   host: api-impac.maestrano.com
   paths:
     mnohub_api: /mnoe/jpi/v1
+  pusher:
+    key: <%= ENV['impac_pusher_key'] %>
 mno:
   protocol: https
   host: api-hub.maestrano.com
@@ -13,29 +15,47 @@ frontend_host:
 #===============================================
 # Feature Flags
 #===============================================
-pricing:
-  enabled: true
-  currency: USD
+dashboard:
+  dock:
+    enabled: true
+  impac:
+    enabled: false
+  marketplace:
+    pricing:
+      enabled: true
+      currency: USD
+  organization_management:
+    billing:
+      enabled: false
+  payment:
+    enabled: false
+  provisioning:
+    enabled: true
+  registration:
+     enabled: false
 api:
   events:
     currency: USD
-dock:
-  enabled: true
-payment:
-  disabled: true
-organization_management:
-  billing:
-    enabled: false
-# Disable user registration
-devise:
-  registration:
-    disabled: true
-
 # Admin Panel Config
 admin_panel:
   audit_log:
     enabled: false
   impersonation:
-    disabled: true
+    enabled: true
+    consent_required: true
   finance:
     enabled: false
+# Allow for a default SMTP server to be set via MnoHub
+system:
+  smtp:
+    address: <%= ENV['SMTP_HOST'] %>
+    port: <%= ENV['SMTP_PORT'] %>
+<% if ENV['SMTP_DOMAIN']&.present? %>
+    domain: <%= ENV['SMTP_DOMAIN'] %>
+<% end %>
+<% if ENV['SMTP_USERNAME']&.present? %>
+    user_name: <%= ENV['SMTP_USERNAME'] %>
+<% end %>
+<% if ENV['SMTP_PASSWORD']&.present? %>
+    password: <%= ENV['SMTP_PASSWORD'] %>
+<% end %>
