@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"bats@https://github.com/sstephenson/bats":
-  version "0.4.0"
-  resolved "https://github.com/sstephenson/bats#03608115df2071fff4eaaff1605768c275e5f81f"
+bats@^0.4.2:
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/bats/-/bats-0.4.2.tgz#81f222bbcbb083d1528b3e8830a6e8f314876ec6"
 
 "impac-angular@git+https://git@github.com/maestrano/impac-angular.git#1.5.x":
   version "1.5.8"
@@ -12,8 +12,8 @@
 
 "mno-enterprise-angular@git+https://git@github.com/maestrano/mno-enterprise-angular.git#2.0":
   version "2.0.0-dev"
-  resolved "git+https://git@github.com/maestrano/mno-enterprise-angular.git#a379a71f050cd3aa9e233c4abd1c74577f5a759f"
+  resolved "git+https://git@github.com/maestrano/mno-enterprise-angular.git#c040d2fe89b13ecdbedb7743a3b645f0f66879ae"
 
 "mnoe-admin-panel@git+https://git@github.com/maestrano/mnoe-admin-panel.git#2.0":
   version "2.0.0-dev"
-  resolved "git+https://git@github.com/maestrano/mnoe-admin-panel.git#e5014447d2eab2ef1aafde9133173e3647c8c4d4"
+  resolved "git+https://git@github.com/maestrano/mnoe-admin-panel.git#190f8d35ca0580ced91bfb57af43fad07a6e93f7"

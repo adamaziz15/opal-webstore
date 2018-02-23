@@ -10,6 +10,6 @@
     "node": ">= 6.9.0"
   },
   "devDependencies": {
-    "bats": "https://github.com/sstephenson/bats"
+    "bats": "^0.4.2"
   }
 }
