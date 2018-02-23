@@ -13,6 +13,14 @@ yarn
 test/*.bats
 ```
 
+## Branches & Tags
+
+| branch                     | docker tag         |
+|----------------------------|--------------------|
+| master                     | latest             |
+| tag: v{X.X.X}              | {X.X.X}            |
+| branch: uat/{feature-name} | uat-{feature-name} |
+
 ## Rebuid the docker image
 
 First update the build locally:
