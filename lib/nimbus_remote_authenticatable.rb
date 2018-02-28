@@ -38,7 +38,7 @@ module NimbusRemoteAuthenticatable
         ENV.fetch('REMOTE_AUTH_URL'),
         query: {username: auth_params['email'], password: auth_params['password']}
       )
-    rescue
+    rescue StandardError
       fail!
       nil
     end
