@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/maestrano/mno-enterprise.git
-  revision: 44323f44b9eea5358c56e11fe186e4db05ba2d8b
+  revision: 583a08bd2553f9c2482fc02bc92ad3b38ec51b51
   branch: 4.0
   specs:
     mno-enterprise (4.0.0.pre.dev)
@@ -247,7 +247,7 @@ GEM
       prawn (>= 1.3.0, < 3.0.0)
     public_suffix (3.0.2)
     puma (3.11.0)
-    rack (1.6.8)
+    rack (1.6.9)
     rack-protection (1.5.3)
       rack
     rack-rewrite (1.5.1)
