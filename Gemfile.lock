@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/maestrano/mno-enterprise.git
-  revision: 570ad35a0ea1bbfac870e6324c3190b93889716f
+  revision: 95e131605d17b068741426e40e58394a860c92f7
   branch: 4.0
   specs:
     mno-enterprise (4.0.0.pre.dev)
@@ -156,8 +156,8 @@ GEM
       railties (>= 4.0.1)
     hashdiff (0.3.4)
     hashie (3.5.7)
-    health_check (2.7.0)
-      rails (>= 4.0)
+    health_check (2.8.0)
+      railties (~> 4.0)
     highline (1.7.10)
     html2haml (2.2.0)
       erubis (~> 2.7.0)
