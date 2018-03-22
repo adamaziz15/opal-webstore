@@ -7,8 +7,6 @@ gem 'sqlite3'
 gem 'turbolinks'
 gem 'jquery-rails'
 gem 'puma'
-gem 'sinatra'
-gem 'httparty'
 gem 'uglifier', '>= 1.3.0'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
@@ -18,7 +16,10 @@ gem 'uuid'
 gem 'mno-enterprise', git: 'https://github.com/maestrano/mno-enterprise.git', branch: '4.0'
 # gem 'mno-enterprise', path: '../mno-enterprise'
 
-# Background jobs		  # Background jobs
+# For Nimbus Authentication Strategy
+gem 'httparty'
+
+# Background jobs
 gem 'sucker_punch', '~> 2.0'
 
 gem 'monetize'
