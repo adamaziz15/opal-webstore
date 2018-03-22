@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/maestrano/mno-enterprise.git
-  revision: 95e131605d17b068741426e40e58394a860c92f7
+  revision: abb775e8423089dd488b144f4ae67511625bf922
   branch: 4.0
   specs:
     mno-enterprise (4.0.0.pre.dev)
@@ -276,7 +276,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rainbow (3.0.0)
-    rake (12.3.0)
+    rake (12.3.1)
     redcarpet (3.4.0)
     ref (2.0.0)
     responders (2.4.0)
