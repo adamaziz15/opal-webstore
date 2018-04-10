@@ -21,3 +21,9 @@
 
 en:
   hello: "Hello world"
+  mno_enterprise:
+    templates:
+      dashboard:
+        marketplace:
+          index:
+            applications: "Applications and Infrastructure"
