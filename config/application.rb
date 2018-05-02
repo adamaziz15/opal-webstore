@@ -34,6 +34,13 @@ module OpalEnterprise
         password: ENV['SMTP_PASSWORD']
     }
 
+    # Cache Store
+    config.cache_store = if ENV['REDIS_URL'].present?
+                           [:redis_store, File.join(ENV['REDIS_URL'], 'cache')]
+                         else
+                           :memory_store
+                         end
+
     # Use Sucker Punch for ActiveJob
     config.active_job.queue_adapter = :sucker_punch
 
