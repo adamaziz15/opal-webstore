@@ -19,6 +19,9 @@ gem 'mno-enterprise', git: 'https://github.com/maestrano/mno-enterprise.git', br
 # For Nimbus Authentication Strategy
 gem 'httparty'
 
+# Redis cache
+gem 'redis-rails'
+
 # Background jobs
 gem 'sucker_punch', '~> 2.0'
 
