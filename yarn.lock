@@ -16,4 +16,4 @@ bats@^0.4.2:
 
 "mnoe-admin-panel@git+https://git@github.com/maestrano/mnoe-admin-panel.git#2.0":
   version "2.0.0-dev"
-  resolved "git+https://git@github.com/maestrano/mnoe-admin-panel.git#ee8842c5f5512248e962e95e1bde4a18815495ef"
+  resolved "git+https://git@github.com/maestrano/mnoe-admin-panel.git#5be357f1f0e5730469a956885dc096785c43c264"
