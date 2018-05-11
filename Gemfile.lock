@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/maestrano/mno-enterprise.git
-  revision: 169abb75b526a83c465089195d25a4e6f2a0e076
+  revision: 343207079557f3d3cd5caa3d2f947459cbdf411c
   branch: 4.0
   specs:
     mno-enterprise (4.0.0.pre.dev)
@@ -137,7 +137,7 @@ GEM
     factory_girl_rails (4.8.0)
       factory_girl (~> 4.8.0)
       railties (>= 3.0.0)
-    faraday (0.15.0)
+    faraday (0.15.1)
       multipart-post (>= 1.2, < 3)
     faraday_middleware (0.12.2)
       faraday (>= 0.7.4, < 1.0)
@@ -170,7 +170,7 @@ GEM
     i18n (0.9.1)
       concurrent-ruby (~> 1.0)
     i18n_data (0.7.0)
-    intercom (3.5.23)
+    intercom (3.5.25)
       json (>= 1.8)
     jbuilder (2.2.16)
       activesupport (>= 3.0.0, < 5)
@@ -211,7 +211,7 @@ GEM
     minitest (5.11.3)
     monetize (1.6.0)
       money (~> 6.8)
-    money (6.11.2)
+    money (6.11.3)
       i18n (>= 0.6.4, < 1.1)
     multi_json (1.13.1)
     multi_xml (0.6.0)
