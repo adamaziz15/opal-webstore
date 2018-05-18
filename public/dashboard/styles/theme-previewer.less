@@ -1146,16 +1146,6 @@ body {
   }
 }
 
-
-dashboard-language-selectbox {
-  display: block;
-
-  .selector-line {
-    display: inline-block;
-    margin: 5px auto;
-  }
-}
-
 #app-dock-container {
   position: absolute;
   left: 0;
@@ -1591,6 +1581,16 @@ dashboard-company-selectbox {
   }
 }
 
+
+dashboard-language-selectbox {
+  display: block;
+
+  .selector-line {
+    display: inline-block;
+    margin: 5px auto;
+  }
+}
+
 dashboard-menu {
   /*-----------------------------------------------------------------------*/
   /*                         Mobile menu                                   */
@@ -1791,9 +1791,15 @@ dashboard-menu {
   }
 }
 
-impersonification-notification {
-  .notifications {
-    padding-top: 70px;
+#address {
+  .address-sub-label {
+    font-size: x-small;
+    font-weight: lighter;
+    font-style: italic;
+    opacity: 0.6;
+  }
+  .country-select {
+    display:none;
   }
 }
 
@@ -3750,6 +3756,12 @@ form.editable-wrap .editable-controls input {
   }
 }
 
+impersonification-notification {
+  .notifications {
+    padding-top: 70px;
+  }
+}
+
 #app-connect-modal {
 
   select {
@@ -3846,6 +3858,17 @@ form.editable-wrap .editable-controls input {
   [class^="mnoe-icon-cc-icons-mno-cc-"].enabled,
   [class*="mnoe-icon-cc-icons-mno-cc-"].enabled {
     opacity: 1;
+  }
+}
+
+.settings-address {
+  .address-sub-label {
+    margin-bottom: -15px;
+  }
+
+  .address-field {
+    margin-left: 25%;
+    margin-top: -12px;
   }
 }
 

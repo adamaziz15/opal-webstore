@@ -24,7 +24,7 @@
 
     <link rel="stylesheet" href="styles/vendor-8670ee958d.css">
 
-    <link rel="stylesheet" href="styles/app-0cd21e8cab.css">
+    <link rel="stylesheet" href="styles/app-112846aa6e.css">
   </head>
   <body translate-cloak>
     <!--[if lt IE 10]>
@@ -33,14 +33,14 @@
 
     <div ng-if="!isLoggedIn && !publicPage" class="layout-loading text-center">
       <mno-loader></mno-loader>
-      <span class="layout-loading-text" translate="mno_enterprise.templates.components.layout.your_dashboard_is_loading"></span>
+      <span class="layout-loading-text" translate ng-cloak>{{ 'mno_enterprise.templates.components.layout.your_dashboard_is_loading' | translate }}</span>
     </div>
 
     <div ui-view class="myspace"></div>
 
     <script src="scripts/vendor-b81b01f089.js"></script>
 
-    <script src="scripts/app-ba0e4fbb5b.js"></script>
+    <script src="scripts/app-9d59ff8c34.js"></script>
 
     <script src="/mnoe/config.js"></script>
 
