@@ -50,6 +50,8 @@ admin_panel:
     enabled: false
 # Allow for a default SMTP server to be set via MnoHub
 system:
+  organization_requirements:
+    - main_address
   smtp:
     address: <%= ENV['SMTP_HOST'] %>
     port: <%= ENV['SMTP_PORT'] %>
