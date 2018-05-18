@@ -12,6 +12,9 @@ mno:
     root: /api/mnoe/v1
 frontend_host:
 
+url_config:
+  developer_onboarding_url: <%= ENV['DEVELOPER_ONBOARDING_URL'] %>
+
 #===============================================
 # Feature Flags
 #===============================================
