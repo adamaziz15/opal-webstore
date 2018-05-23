@@ -1872,6 +1872,16 @@ mno-impersonation-bar {
   }
 }
 
+mno-inline-message {
+  .mno-inline-checked {
+    color: @dashboard-account-inline-text-color-checked;
+  }
+
+  .mno-inline-unchecked {
+    color: @dashboard-account-inline-text-color-unchecked;
+  }
+}
+
 mno-loader {
   display: block;
 
@@ -3752,31 +3762,6 @@ form.editable-wrap .editable-controls input {
   }
 }
 
-mno-inline-message {
-  .mno-inline-checked {
-    color: @dashboard-account-inline-text-color-checked;
-  }
-
-  .mno-inline-unchecked {
-    color: @dashboard-account-inline-text-color-unchecked;
-  }
-}
-
-.dashboard-organization {
-  // credit card icons display modes
-  //---------------------------------
-
-  [class^="mnoe-icon-cc-icons-mno-cc-"].disabled,
-  [class*="mnoe-icon-cc-icons-mno-cc-"].disabled {
-    opacity: 0.4;
-  }
-
-  [class^="mnoe-icon-cc-icons-mno-cc-"].enabled,
-  [class*="mnoe-icon-cc-icons-mno-cc-"].enabled {
-    opacity: 1;
-  }
-}
-
 #app-connect-modal {
 
   select {
@@ -3858,6 +3843,21 @@ mno-inline-message {
         color: @deletion-sentence-color;
       }
     }
+  }
+}
+
+.dashboard-organization {
+  // credit card icons display modes
+  //---------------------------------
+
+  [class^="mnoe-icon-cc-icons-mno-cc-"].disabled,
+  [class*="mnoe-icon-cc-icons-mno-cc-"].disabled {
+    opacity: 0.4;
+  }
+
+  [class^="mnoe-icon-cc-icons-mno-cc-"].enabled,
+  [class*="mnoe-icon-cc-icons-mno-cc-"].enabled {
+    opacity: 1;
   }
 }
 
