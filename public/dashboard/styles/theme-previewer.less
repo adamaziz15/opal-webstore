@@ -309,6 +309,8 @@ body {
 @dashboard-side-menu-btn-dashboard-active:      { .icon-fa(th); @_default_style_active(); };
 @dashboard-side-menu-btn-impac:                 { .icon-fa(pie-chart); @_default_style(); };
 @dashboard-side-menu-btn-impac-active:          { .icon-fa(pie-chart); @_default_style_active(); };
+@dashboard-side-menu-btn-app-management:        { .icon-fa(th-large); @_default_style(); };
+@dashboard-side-menu-btn-app-management-active: { .icon-fa(th-large); @_default_style_active(); };
 @dashboard-side-menu-btn-account:               { .icon-fa(user); @_default_style(); margin-left: 5px; };
 @dashboard-side-menu-btn-account-active:        { .icon-fa(user); @_default_style_active(); margin-left: 5px; };
 @dashboard-side-menu-btn-company:               { .icon-fa(briefcase); @_default_style(); };
@@ -319,6 +321,15 @@ body {
 @dashboard-side-menu-btn-marketplace-active:    { .icon-fa(plus-square-o); @_default_style_active(); margin-left: 5px; };
 @dashboard-side-menu-btn-logout:                { .icon-fa(lock); @_default_style(); margin-left: 6px; };
 @dashboard-side-menu-btn-logout-active:         { .icon-fa(lock); @_default_style_active(); margin-left: 6px; };
+
+// Company Cart (top right)
+//--------------------------------------
+@dashboard-cart-width:             100px;
+@dashboard-cart-height:            70px;
+@dashboard-cart-bg-color:          @bg-inverse-color;
+@dashboard-cart-text-size:         25px;
+@dashboard-cart-border-radius:     0 0 0 6px;
+@dashboard-cart-border-color:      @text-inverse-color;
 
 // Company select box (top right)
 //--------------------------------------
@@ -357,6 +368,11 @@ body {
 
 @dashboard-apps-tile-add-color:                 @dashboard-apps-tile-text-color;
 @dashboard-apps-tile-add-bg-color:              @dashboard-apps-tile-bg-color;
+
+/*-----------------------------------------------------------------------*/
+/*                        Dashboard > App Management Section                       */
+/*-----------------------------------------------------------------------*/
+@dashboard-app-management-border-color:         #000;
 
 /*-----------------------------------------------------------------------*/
 /*                      Dashboard > My account Section                   */
@@ -1430,6 +1446,34 @@ ul.dock > li.prev img.app-logo {
   }
 }
 
+dashboard-company-cart {
+  .company-cart {
+    position: absolute;
+    right: 300px;
+    width: @dashboard-cart-width;
+    height: @dashboard-cart-height;
+    background-color: @dashboard-cart-bg-color;
+    font-size: @dashboard-cart-text-size;
+    border-left: 1px solid @dashboard-cart-border-color;
+    border-bottom: 1px solid @dashboard-cart-border-color;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    a {
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    i {
+      font-size: 37px;
+      vertical-align: bottom;
+    }
+  }
+}
+
 dashboard-company-selectbox {
   /*-----------------------------------------------------------------------*/
   /*                       Company Select Box                              */
@@ -1749,6 +1793,14 @@ dashboard-menu {
       @dashboard-side-menu-btn-impac-active();
     }
 
+    .dashboard-button i.dhb-icon-app-management {
+      @dashboard-side-menu-btn-app-management();
+    }
+    .dashboard-button.active i.dhb-icon-app-management,
+    .dashboard-button:hover i.dhb-icon-app-management {
+      @dashboard-side-menu-btn-app-management-active();
+    }
+
     .dashboard-button i.dhb-icon-account {
       @dashboard-side-menu-btn-account();
     }
@@ -2006,70 +2058,6 @@ average-star-rating, star-rating {
     position: absolute;
     top: 5px;
     right: 0;
-  }
-}
-
-theme-editor {
-  .theme-previewer-side-panel {
-    z-index: 9999;
-    width: 80%;
-    position: absolute;
-    right: -1px;
-    top: 5%;
-    height: 90%;
-    background-color: white;
-    border: solid 1px #c8d7d9;
-    border-radius: 6px 0 0 6px;
-    box-shadow: 0 1px 8px -4px;
-    transition: ease-out 0.5s;
-    overflow: hidden;
-
-    &.closed {
-      //right: 25px;
-      transform: translate3d(95%, 0, 0);
-    }
-
-    .collapse-switch-btn {
-      position: absolute;
-      left: 10px;
-      top: 3px;
-      font-size: 18px;
-    }
-
-    .content {
-      position: relative;
-      height: ~"calc(100% - 30px)";
-      margin-top: 30px;
-      padding-left: 15px;
-      padding-right: 15px;
-      overflow-y: auto;
-    }
-
-    .alert.alert-info {
-      display: inline-block;
-    }
-  }
-
-  .sp-replacer {
-    width: 100%;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-  }
-
-  .sp-preview {
-    margin: 2px;
-    width: ~"calc(100% - 18px)";
-    border-radius: 4px;
-    border-color: #ccc;
-    z-index:150;
-  }
-
-  .sp-preview-inner {
-    border-radius: 4px;
-  }
-
-  .sp-dd {
-    margin: 2px 2px 2px;
   }
 }
 
@@ -2364,6 +2352,70 @@ form.editable-wrap .editable-controls input {
   padding-left: 5px;
 }
 
+theme-editor {
+  .theme-previewer-side-panel {
+    z-index: 9999;
+    width: 80%;
+    position: absolute;
+    right: -1px;
+    top: 5%;
+    height: 90%;
+    background-color: white;
+    border: solid 1px #c8d7d9;
+    border-radius: 6px 0 0 6px;
+    box-shadow: 0 1px 8px -4px;
+    transition: ease-out 0.5s;
+    overflow: hidden;
+
+    &.closed {
+      //right: 25px;
+      transform: translate3d(95%, 0, 0);
+    }
+
+    .collapse-switch-btn {
+      position: absolute;
+      left: 10px;
+      top: 3px;
+      font-size: 18px;
+    }
+
+    .content {
+      position: relative;
+      height: ~"calc(100% - 30px)";
+      margin-top: 30px;
+      padding-left: 15px;
+      padding-right: 15px;
+      overflow-y: auto;
+    }
+
+    .alert.alert-info {
+      display: inline-block;
+    }
+  }
+
+  .sp-replacer {
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+
+  .sp-preview {
+    margin: 2px;
+    width: ~"calc(100% - 18px)";
+    border-radius: 4px;
+    border-color: #ccc;
+    z-index:150;
+  }
+
+  .sp-preview-inner {
+    border-radius: 4px;
+  }
+
+  .sp-dd {
+    margin: 2px 2px 2px;
+  }
+}
+
 #account {
   .row:not(:first-child) {
     margin-top: 15px;
@@ -2458,6 +2510,42 @@ form.editable-wrap .editable-controls input {
       &:hover {
         color: @brand-warning;
       }
+    }
+  }
+}
+
+.dashboard-apps-management {
+  .apps-wrapper {
+    border: 1px solid @dashboard-app-management-border-color;
+    border-radius: 3px;
+    padding: 20px;
+  }
+  .app-section {
+    border-bottom: 1px solid @dashboard-app-management-border-color;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:last-child {
+      border-bottom: 1px solid transparent;
+    }
+  }
+
+  .app-logo-wrapper,
+  .app-btn-events,
+  .app-info {
+    flex: 1;
+  }
+
+  .app-btn-events {
+    a {
+      margin-left: 10px;
+    }
+  }
+
+  .app-info {
+    span, strong {
+      display: block;
     }
   }
 }
@@ -3356,7 +3444,13 @@ form.editable-wrap .editable-controls input {
 }
 
 #provisioning-confirm {
+  .add-to-cart {
+    padding: 3px 9px 3px 7px;
 
+    i {
+      font-size: 25px;
+    }
+  }
 }
 
 #provisioning-details {
@@ -3413,6 +3507,10 @@ form.editable-wrap .editable-controls input {
 }
 
 #subscription {
+  a {
+    cursor: pointer;
+  }
+
   .well {
     h3 {
       margin-top: 0;
@@ -3843,6 +3941,16 @@ form.editable-wrap .editable-controls input {
         color: @deletion-sentence-color;
       }
     }
+  }
+}
+
+.dashboard-app-management {
+  .margin-left-20 {
+    margin-left: 20px;
+  }
+
+  .order-histroy {
+    background-color: white;
   }
 }
 
