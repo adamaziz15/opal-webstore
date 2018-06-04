@@ -2061,6 +2061,70 @@ average-star-rating, star-rating {
   }
 }
 
+theme-editor {
+  .theme-previewer-side-panel {
+    z-index: 9999;
+    width: 80%;
+    position: absolute;
+    right: -1px;
+    top: 5%;
+    height: 90%;
+    background-color: white;
+    border: solid 1px #c8d7d9;
+    border-radius: 6px 0 0 6px;
+    box-shadow: 0 1px 8px -4px;
+    transition: ease-out 0.5s;
+    overflow: hidden;
+
+    &.closed {
+      //right: 25px;
+      transform: translate3d(95%, 0, 0);
+    }
+
+    .collapse-switch-btn {
+      position: absolute;
+      left: 10px;
+      top: 3px;
+      font-size: 18px;
+    }
+
+    .content {
+      position: relative;
+      height: ~"calc(100% - 30px)";
+      margin-top: 30px;
+      padding-left: 15px;
+      padding-right: 15px;
+      overflow-y: auto;
+    }
+
+    .alert.alert-info {
+      display: inline-block;
+    }
+  }
+
+  .sp-replacer {
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+
+  .sp-preview {
+    margin: 2px;
+    width: ~"calc(100% - 18px)";
+    border-radius: 4px;
+    border-color: #ccc;
+    z-index:150;
+  }
+
+  .sp-preview-inner {
+    border-radius: 4px;
+  }
+
+  .sp-dd {
+    margin: 2px 2px 2px;
+  }
+}
+
 // Base style
 .accordion {
   .panel-group .panel {
@@ -2350,70 +2414,6 @@ form.editable-wrap .editable-controls input {
   color: @text-strong-color;
   margin-top: -10px;
   padding-left: 5px;
-}
-
-theme-editor {
-  .theme-previewer-side-panel {
-    z-index: 9999;
-    width: 80%;
-    position: absolute;
-    right: -1px;
-    top: 5%;
-    height: 90%;
-    background-color: white;
-    border: solid 1px #c8d7d9;
-    border-radius: 6px 0 0 6px;
-    box-shadow: 0 1px 8px -4px;
-    transition: ease-out 0.5s;
-    overflow: hidden;
-
-    &.closed {
-      //right: 25px;
-      transform: translate3d(95%, 0, 0);
-    }
-
-    .collapse-switch-btn {
-      position: absolute;
-      left: 10px;
-      top: 3px;
-      font-size: 18px;
-    }
-
-    .content {
-      position: relative;
-      height: ~"calc(100% - 30px)";
-      margin-top: 30px;
-      padding-left: 15px;
-      padding-right: 15px;
-      overflow-y: auto;
-    }
-
-    .alert.alert-info {
-      display: inline-block;
-    }
-  }
-
-  .sp-replacer {
-    width: 100%;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-  }
-
-  .sp-preview {
-    margin: 2px;
-    width: ~"calc(100% - 18px)";
-    border-radius: 4px;
-    border-color: #ccc;
-    z-index:150;
-  }
-
-  .sp-preview-inner {
-    border-radius: 4px;
-  }
-
-  .sp-dd {
-    margin: 2px 2px 2px;
-  }
 }
 
 #account {

@@ -1167,6 +1167,7 @@
   "mno_enterprise.templates.dashboard.provisioning.confirm.description": "Description",
   "mno_enterprise.templates.dashboard.provisioning.confirm.order_type": "Order type",
   "mno_enterprise.templates.dashboard.provisioning.confirm.edit_order": "Edit Order",
+  "mno_enterprise.templates.dashboard.provisioning.confirm.update_cart": "Update Cart",
   "mno_enterprise.templates.dashboard.provisioning.confirm.validate": "Validate",
   "mno_enterprise.templates.dashboard.provisioning.confirm.price": "Price",
   "mno_enterprise.templates.dashboard.provisioning.confirm.licenses": "Licenses",
