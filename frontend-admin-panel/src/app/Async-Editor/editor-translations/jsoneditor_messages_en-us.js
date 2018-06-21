@@ -44,4 +44,4 @@ var errorTranslations = {
   "error_inValid_federal_dpas":"Pattern should start with DX- or DO- followed by upto 12 alpha-numeric characters",
   "error_inValidUSPhoneNumber":"Telephone numbers must have the following format: xxx-xxx-xxxx",
   "error_twoDecimalDigits" : "Value can have up to two decimal digits"
-}
+};
