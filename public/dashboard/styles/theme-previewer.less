@@ -2726,6 +2726,435 @@ form.editable-wrap .editable-controls input {
   }
 }
 
+//-------------------------------
+// Show View
+//-------------------------------
+.dashboard-marketplace-app, .dashboard-marketplace-product {
+
+  //-------------------------------
+  // Header
+  //-------------------------------
+  .show-header .media-object {
+    max-width: 80px;
+    border-radius: 5px;
+    border: solid 1px darken(@bg-main-color, 5%);
+  }
+
+  .show-header .media-body h2 {
+    line-height: 80px;
+    color: @dashboard-marketplace-show-header-text-color;
+  }
+
+  .show-header .links {
+    padding-top: 5px;
+  }
+
+  blockquote {
+    overflow-wrap: break-word;
+  }
+
+  //-------------------------------
+  // Content - General
+  //-------------------------------
+  .show-content .well {
+    color: @dashboard-marketplace-show-sections-text-color;
+    background-color: @dashboard-marketplace-show-sections-bg-color;
+    border: none;
+    border-radius: 2px;
+
+    h2, h3 {
+      margin-top: 0;
+    }
+
+    ul.app-features {
+      img.feature-logo {
+        padding-right: 5px;
+        padding-left: 5px;
+        max-width: 26px;
+      }
+    }
+
+    img:not(.feature-logo) {
+      .img-responsive;
+    }
+
+    .loading-icon {
+      font-size: 40px;
+      color: @dashboard-marketplace-show-header-text-color;
+      text-align: center;
+    }
+  }
+
+  //-------------------------------
+  // Content - Carousel
+  //-------------------------------
+  .show-content .carousel img {
+    max-height: 300px;
+    margin: auto;
+  }
+
+  .show-content .carousel .carousel-inner {
+    text-align: center;
+  }
+
+  .show-content .carousel .carousel-control {
+    background: transparent;
+    cursor: pointer;
+    max-height: 300px;
+  }
+
+  .show-content .carousel .carousel-indicators {
+    visibility: hidden;
+  }
+
+  .show-content .carousel .carousel-control .glyphicon-chevron-left, .carousel-control .icon-prev {
+    margin-left: 0px;
+  }
+
+  //-------------------------------
+  // Content
+  // Height of columns in desktop
+  //-------------------------------
+  @media (min-width: @screen-md-min) {
+    .show-content .carousel { height: 340px; }
+    .show-content .well-details { height: 340px; }
+  }
+
+  .show-content .message {
+    text-align: left;
+    background-color: rgb(244, 248, 249);
+    padding: 10px 10px;
+    border-radius: 4px;
+    border: solid 1px #e9f0f3;
+  }
+
+  //-------------------------------
+  // Content - Features
+  //-------------------------------
+  .show-content ul.app-features {
+    list-style: none;
+    padding-left: 0px;
+    text-align: left;
+    margin-top: 20px;
+  }
+
+  .show-content ul.app-features li {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  .show-content ul.app-features li > img {
+    margin-right: 5px;
+  }
+
+  //-------------------------------
+  // Content - Benefits
+  //-------------------------------
+  .show-content ul.key-benefits {
+    list-style: none;
+    padding-left: 0;
+    text-align: left;
+    margin-top: 20px;
+  }
+
+  .show-content ul.key-benefits > li {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  .show-content ul.key-benefits > li > .fa.fa-check {
+    color: @brand-success;
+    margin-right: 5px;
+  }
+
+  //-------------------------------
+  // Content - Testimonials
+  //-------------------------------
+  .show-content .ribbon-testimonial .body {
+    color: @dashboard-marketplace-show-sections-text-color;
+    background-color: @dashboard-marketplace-show-sections-bg-color;
+  }
+
+  .show-content .ribbon-testimonial .from .name {
+    color: @dashboard-marketplace-show-sections-text-color;
+  }
+
+  .nav.nav-tabs {
+    margin-bottom: 15px;
+  }
+
+  .filter-reviews {
+    width:auto;
+    display: inline;
+  }
+
+  .no-question-container {
+    padding: 20px 15px;
+    font-size: 16px;
+    background: @no-question-bg-panel-color;
+    text-align: center;
+    display: block;
+    margin-top: 30px;
+  }
+
+  .no-review-container {
+    padding: 20px 15px;
+    font-size: 16px;
+    background: @no-review-bg-panel-color;
+    text-align: center;
+    display: block;
+    margin-top: 30px;
+  }
+
+  #comments {
+    .add-review {
+      text-align: left;
+      margin-bottom: 15px;
+    }
+
+    blockquote {
+      margin-bottom: 15px;
+    }
+
+    mno-pagination {
+      margin-bottom: 15px;
+    }
+
+    .comments-show {
+      margin-left: 5px;
+    }
+
+    .comment {
+      float: right;
+      width: 85%;
+      background-color: @comment-bg;
+      padding: 5px 15px;
+    }
+
+    .clearfix:last-child {
+      margin-bottom: 5px;
+    }
+  }
+
+  .questions {
+    margin-bottom: 15px;
+
+    .ribbon-question {
+      margin-top: 15px;
+      background-color: @question-ribbon-bg;
+      border-radius: 5px;
+      padding: 20px;
+
+      .question-body {
+        margin-bottom: 10px;
+      }
+
+      .question-title {
+        font-weight: bold;
+      }
+
+      .question-actions {
+        display: flex;
+        flex-flow: column;
+        align-items: flex-end;
+
+        @media (max-width: @screen-xs-max) {
+          flex-flow: row;
+        }
+
+        button:not(:last-child) {
+          margin-bottom: 5px;
+        }
+      }
+
+      .question-answer {
+        margin-bottom: 10px;
+      }
+
+      .question-attribute {
+        font-size: 1rem;
+        font-style: italic;
+      }
+    }
+
+    .questions-panel {
+      display: flex;
+      flex-flow: row wrap;
+      align-items: center;
+
+      input {
+        border-radius: 3px;
+        padding-left: 7px;
+        padding-right: 30px;
+        border: @question-search-border;
+        width: 250px;
+      }
+
+      form {
+        position: relative;
+      }
+
+      button.fa {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        background-color: @question-search-btn-bg;
+        color: @question-search-btn-color;
+        border: none;
+        width: 30px;
+      }
+
+      button {
+        margin-left: 20px;
+      }
+    }
+  }
+}
+
+.dashboard-marketplace-compare {
+
+  .marketplace-compare-table {
+    overflow-x: scroll;
+
+    th, td {
+      min-width: 200px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    img.media-object {
+      max-width: 120px;
+      height: auto;
+      margin: 0 auto;
+    }
+  }
+
+  .marketplace-compare-wrap {
+    margin-top: 20px;
+  }
+
+  .marketplace-compare-info {
+    overflow: auto;
+  }
+}
+
+.dashboard-marketplace {
+
+  .marketplace-nav input, select {
+    color: @dashboard-marketplace-search-text-color;
+    border: solid 1px @dashboard-marketplace-search-border-color;
+    background: transparent;
+    box-shadow: none;
+    height: 35px;
+
+    // Placeholder
+    .placeholder(@dashboard-marketplace-search-text-color);
+  }
+
+  // Fix Windows (Chrome/FF/IE) bug on dropdown options colors
+  // when parent "select" color is set to white
+  .marketplace-nav select option {
+    color: black;
+  }
+
+  .marketplace-nav {
+    min-height: 65px;
+  }
+
+  .marketplace-compare-action {
+    position: relative;
+    top: -15px;
+  }
+
+  //-------------------------------
+  // Marketplace list
+  //-------------------------------
+  .marketplace-list {
+    margin-top: 20px;
+  }
+
+  //-------------------------------
+  // App Card
+  //-------------------------------
+  .marketplace-app-card {
+    position: relative;
+    background-color: @dashboard-marketplace-tile-bg-color;
+    color: @dashboard-marketplace-tile-text-color;
+    cursor: pointer;
+    @dashboard-marketplace-app-card();
+
+    img.media-object {
+      max-width: 100px;
+      border: solid 1px @dashboard-marketplace-tile-img-border-color;
+      border-radius: 5px;
+    }
+
+    &:hover {
+      text-decoration: none;
+      color: @dashboard-marketplace-tile-hover-text-color;
+      background-color: @dashboard-marketplace-tile-hover-bg-color;
+
+      img.media-object {
+        border: solid 1px @dashboard-marketplace-tile-hover-img-border-color;
+      }
+    }
+
+    .media {
+      margin-top: 0;
+    }
+  }
+
+  .marketplace-app-card-checkbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+
+    label {
+      width: 100%;
+      height: 100%;
+      //padding-left: 20px;
+      cursor: pointer;
+    }
+  }
+
+  // Application logo
+  .marketplace-app-card img.media-object {
+    max-width: 100px;
+    border: solid 1px @dashboard-marketplace-tile-img-border-color;
+    border-radius: 5px;
+  }
+  .marketplace-app-card:hover img.media-object {
+    border: solid 1px darken(@dashboard-marketplace-tile-hover-img-border-color,5%);
+  }
+
+  // Application Description
+  .marketplace-app-card .media-body {
+    padding-right: 10px;
+    color: @dashboard-marketplace-tile-text-color;
+  }
+  .marketplace-app-card:hover .media-body {
+    color: @dashboard-marketplace-tile-hover-text-color;
+  }
+
+  // App tile arrow right
+  .marketplace-app-card .arrow {
+    position: absolute;
+    right: 20px;
+    top: 50px;
+    color: @dashboard-marketplace-tile-hover-arrow-color;
+    visibility: hidden;
+  }
+  .marketplace-app-card:hover .arrow {
+    visibility: visible;
+  }
+}
+
 
 #onboarding {
   header.header {
@@ -3431,435 +3860,6 @@ form.editable-wrap .editable-controls input {
   }
 }
 
-//-------------------------------
-// Show View
-//-------------------------------
-.dashboard-marketplace-app, .dashboard-marketplace-product {
-
-  //-------------------------------
-  // Header
-  //-------------------------------
-  .show-header .media-object {
-    max-width: 80px;
-    border-radius: 5px;
-    border: solid 1px darken(@bg-main-color, 5%);
-  }
-
-  .show-header .media-body h2 {
-    line-height: 80px;
-    color: @dashboard-marketplace-show-header-text-color;
-  }
-
-  .show-header .links {
-    padding-top: 5px;
-  }
-
-  blockquote {
-    overflow-wrap: break-word;
-  }
-
-  //-------------------------------
-  // Content - General
-  //-------------------------------
-  .show-content .well {
-    color: @dashboard-marketplace-show-sections-text-color;
-    background-color: @dashboard-marketplace-show-sections-bg-color;
-    border: none;
-    border-radius: 2px;
-
-    h2, h3 {
-      margin-top: 0;
-    }
-
-    ul.app-features {
-      img.feature-logo {
-        padding-right: 5px;
-        padding-left: 5px;
-        max-width: 26px;
-      }
-    }
-
-    img:not(.feature-logo) {
-      .img-responsive;
-    }
-
-    .loading-icon {
-      font-size: 40px;
-      color: @dashboard-marketplace-show-header-text-color;
-      text-align: center;
-    }
-  }
-
-  //-------------------------------
-  // Content - Carousel
-  //-------------------------------
-  .show-content .carousel img {
-    max-height: 300px;
-    margin: auto;
-  }
-
-  .show-content .carousel .carousel-inner {
-    text-align: center;
-  }
-
-  .show-content .carousel .carousel-control {
-    background: transparent;
-    cursor: pointer;
-    max-height: 300px;
-  }
-
-  .show-content .carousel .carousel-indicators {
-    visibility: hidden;
-  }
-
-  .show-content .carousel .carousel-control .glyphicon-chevron-left, .carousel-control .icon-prev {
-    margin-left: 0px;
-  }
-
-  //-------------------------------
-  // Content
-  // Height of columns in desktop
-  //-------------------------------
-  @media (min-width: @screen-md-min) {
-    .show-content .carousel { height: 340px; }
-    .show-content .well-details { height: 340px; }
-  }
-
-  .show-content .message {
-    text-align: left;
-    background-color: rgb(244, 248, 249);
-    padding: 10px 10px;
-    border-radius: 4px;
-    border: solid 1px #e9f0f3;
-  }
-
-  //-------------------------------
-  // Content - Features
-  //-------------------------------
-  .show-content ul.app-features {
-    list-style: none;
-    padding-left: 0px;
-    text-align: left;
-    margin-top: 20px;
-  }
-
-  .show-content ul.app-features li {
-    margin-top: 5px;
-    margin-bottom: 5px;
-  }
-
-  .show-content ul.app-features li > img {
-    margin-right: 5px;
-  }
-
-  //-------------------------------
-  // Content - Benefits
-  //-------------------------------
-  .show-content ul.key-benefits {
-    list-style: none;
-    padding-left: 0;
-    text-align: left;
-    margin-top: 20px;
-  }
-
-  .show-content ul.key-benefits > li {
-    margin-top: 5px;
-    margin-bottom: 5px;
-  }
-
-  .show-content ul.key-benefits > li > .fa.fa-check {
-    color: @brand-success;
-    margin-right: 5px;
-  }
-
-  //-------------------------------
-  // Content - Testimonials
-  //-------------------------------
-  .show-content .ribbon-testimonial .body {
-    color: @dashboard-marketplace-show-sections-text-color;
-    background-color: @dashboard-marketplace-show-sections-bg-color;
-  }
-
-  .show-content .ribbon-testimonial .from .name {
-    color: @dashboard-marketplace-show-sections-text-color;
-  }
-
-  .nav.nav-tabs {
-    margin-bottom: 15px;
-  }
-
-  .filter-reviews {
-    width:auto;
-    display: inline;
-  }
-
-  .no-question-container {
-    padding: 20px 15px;
-    font-size: 16px;
-    background: @no-question-bg-panel-color;
-    text-align: center;
-    display: block;
-    margin-top: 30px;
-  }
-
-  .no-review-container {
-    padding: 20px 15px;
-    font-size: 16px;
-    background: @no-review-bg-panel-color;
-    text-align: center;
-    display: block;
-    margin-top: 30px;
-  }
-
-  #comments {
-    .add-review {
-      text-align: left;
-      margin-bottom: 15px;
-    }
-
-    blockquote {
-      margin-bottom: 15px;
-    }
-
-    mno-pagination {
-      margin-bottom: 15px;
-    }
-
-    .comments-show {
-      margin-left: 5px;
-    }
-
-    .comment {
-      float: right;
-      width: 85%;
-      background-color: @comment-bg;
-      padding: 5px 15px;
-    }
-
-    .clearfix:last-child {
-      margin-bottom: 5px;
-    }
-  }
-
-  .questions {
-    margin-bottom: 15px;
-
-    .ribbon-question {
-      margin-top: 15px;
-      background-color: @question-ribbon-bg;
-      border-radius: 5px;
-      padding: 20px;
-
-      .question-body {
-        margin-bottom: 10px;
-      }
-
-      .question-title {
-        font-weight: bold;
-      }
-
-      .question-actions {
-        display: flex;
-        flex-flow: column;
-        align-items: flex-end;
-
-        @media (max-width: @screen-xs-max) {
-          flex-flow: row;
-        }
-
-        button:not(:last-child) {
-          margin-bottom: 5px;
-        }
-      }
-
-      .question-answer {
-        margin-bottom: 10px;
-      }
-
-      .question-attribute {
-        font-size: 1rem;
-        font-style: italic;
-      }
-    }
-
-    .questions-panel {
-      display: flex;
-      flex-flow: row wrap;
-      align-items: center;
-
-      input {
-        border-radius: 3px;
-        padding-left: 7px;
-        padding-right: 30px;
-        border: @question-search-border;
-        width: 250px;
-      }
-
-      form {
-        position: relative;
-      }
-
-      button.fa {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        background-color: @question-search-btn-bg;
-        color: @question-search-btn-color;
-        border: none;
-        width: 30px;
-      }
-
-      button {
-        margin-left: 20px;
-      }
-    }
-  }
-}
-
-.dashboard-marketplace-compare {
-
-  .marketplace-compare-table {
-    overflow-x: scroll;
-
-    th, td {
-      min-width: 200px;
-    }
-
-    ul {
-      padding-left: 20px;
-    }
-
-    img.media-object {
-      max-width: 120px;
-      height: auto;
-      margin: 0 auto;
-    }
-  }
-
-  .marketplace-compare-wrap {
-    margin-top: 20px;
-  }
-
-  .marketplace-compare-info {
-    overflow: auto;
-  }
-}
-
-.dashboard-marketplace {
-
-  .marketplace-nav input, select {
-    color: @dashboard-marketplace-search-text-color;
-    border: solid 1px @dashboard-marketplace-search-border-color;
-    background: transparent;
-    box-shadow: none;
-    height: 35px;
-
-    // Placeholder
-    .placeholder(@dashboard-marketplace-search-text-color);
-  }
-
-  // Fix Windows (Chrome/FF/IE) bug on dropdown options colors
-  // when parent "select" color is set to white
-  .marketplace-nav select option {
-    color: black;
-  }
-
-  .marketplace-nav {
-    min-height: 65px;
-  }
-
-  .marketplace-compare-action {
-    position: relative;
-    top: -15px;
-  }
-
-  //-------------------------------
-  // Marketplace list
-  //-------------------------------
-  .marketplace-list {
-    margin-top: 20px;
-  }
-
-  //-------------------------------
-  // App Card
-  //-------------------------------
-  .marketplace-app-card {
-    position: relative;
-    background-color: @dashboard-marketplace-tile-bg-color;
-    color: @dashboard-marketplace-tile-text-color;
-    cursor: pointer;
-    @dashboard-marketplace-app-card();
-
-    img.media-object {
-      max-width: 100px;
-      border: solid 1px @dashboard-marketplace-tile-img-border-color;
-      border-radius: 5px;
-    }
-
-    &:hover {
-      text-decoration: none;
-      color: @dashboard-marketplace-tile-hover-text-color;
-      background-color: @dashboard-marketplace-tile-hover-bg-color;
-
-      img.media-object {
-        border: solid 1px @dashboard-marketplace-tile-hover-img-border-color;
-      }
-    }
-
-    .media {
-      margin-top: 0;
-    }
-  }
-
-  .marketplace-app-card-checkbox {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 3;
-
-    label {
-      width: 100%;
-      height: 100%;
-      //padding-left: 20px;
-      cursor: pointer;
-    }
-  }
-
-  // Application logo
-  .marketplace-app-card img.media-object {
-    max-width: 100px;
-    border: solid 1px @dashboard-marketplace-tile-img-border-color;
-    border-radius: 5px;
-  }
-  .marketplace-app-card:hover img.media-object {
-    border: solid 1px darken(@dashboard-marketplace-tile-hover-img-border-color,5%);
-  }
-
-  // Application Description
-  .marketplace-app-card .media-body {
-    padding-right: 10px;
-    color: @dashboard-marketplace-tile-text-color;
-  }
-  .marketplace-app-card:hover .media-body {
-    color: @dashboard-marketplace-tile-hover-text-color;
-  }
-
-  // App tile arrow right
-  .marketplace-app-card .arrow {
-    position: absolute;
-    right: 20px;
-    top: 50px;
-    color: @dashboard-marketplace-tile-hover-arrow-color;
-    visibility: hidden;
-  }
-  .marketplace-app-card:hover .arrow {
-    visibility: visible;
-  }
-}
-
 #app-connect-modal {
 
   select {
@@ -4120,6 +4120,13 @@ form.editable-wrap .editable-controls input {
   }
 }
 
+.create-review-modal {
+  textarea.form-control {
+    max-width: 100%;
+    background-color: white;
+  }
+}
+
 #app-info {
   ul {
     margin: 0;
@@ -4136,13 +4143,6 @@ form.editable-wrap .editable-controls input {
   mno-app-features {
     float: right;
     width: 250px;
-  }
-}
-
-.create-review-modal {
-  textarea.form-control {
-    max-width: 100%;
-    background-color: white;
   }
 }
 
