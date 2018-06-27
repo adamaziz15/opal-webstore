@@ -298,9 +298,26 @@ namespace :mnoe do
       # Copy bower_components to public (used by live previewer)
       cp_r("#{frontend_tmp_folder}/bower_components","#{frontend_dist_folder}/")
 
+      # Copy webworker file
       rm_rf("#{frontend_dist_folder}/webworker")
       mkdir("#{frontend_dist_folder}/webworker")
-      cp_r("#{frontend_project_folder}/src/app/Async-Editor/dist/webworker.js", "#{frontend_dist_folder}/webworker/webworker.js" )
+      cp_r("Async-Editor/dist/webworker.js", "#{frontend_dist_folder}/webworker/webworker.js" )
+
+      # Copy DomWorker file
+      rm_rf("#{frontend_dist_folder}/editor")
+      mkdir("#{frontend_dist_folder}/editor")
+      cp_r("Async-Editor/domWorker.library.js", "#{frontend_dist_folder}/editor/domWorker.library.js" )
+      cp_r("Async-Editor/editor-translations/jsoneditor_messages_en-us.js", "#{frontend_dist_folder}/editor/jsoneditor_messages_en-us.js" )
+      cp_r("Async-Editor/editor-translations/product_schema_en-us.js", "#{frontend_dist_folder}/editor/product_schema_en-us.js" )
+
+      # Copy bluesky-editor dependencies
+      sh 'browserify node_modules/mathjs/index.js --standalone math > node_modules/mathjs/bundle.js'
+      cp_r("node_modules/mathjs", "#{frontend_dist_folder}/editor/mathjs" )
+      cp_r("node_modules/moment-jdateformatparser", "#{frontend_dist_folder}/editor/moment-jdateformatparser" )
+
+      # For development, copy editor and webworker folders to tmp directory
+      cp_r("#{frontend_dist_folder}/editor", "#{frontend_tmp_folder}/src/editor")
+      cp_r("#{frontend_dist_folder}/webworker", "#{frontend_tmp_folder}/src/webworker")
 
       # Generates locales
       Rake::Task['mnoe:locales:generate'].invoke

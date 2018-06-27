@@ -1242,13 +1242,9 @@
 
   return {
     $GetWebWorkerFile: function(callback) {
-      // development mode using: foreman start -f Procfile.dev
-      var devHost = 'app/Async-Editor/dist/webworker.js'
+      var devHost = 'webworker/webworker.js'
 
-      // start server normally using: foreman start
-      // var devHost = 'webworker/webworker.js'
-
-      var url = location.hostname === "localhost" ? devHost : 'webworker/webworker.js',
+      var url = location.origin === "http://localhost:7001" ? devHost : 'webworker/webworker.js',
         that = this;
 
       var webworkerURL = location.origin + location.pathname + url;

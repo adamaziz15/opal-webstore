@@ -3,13 +3,16 @@
   "private": true,
   "dependencies": {
     "impac-angular": "git+https://git@github.com/maestrano/impac-angular.git#1.6.x",
+    "mathjs": "^5.0.0",
     "mno-enterprise-angular": "git+https://git@github.com/maestrano/mno-enterprise-angular.git#2.0",
-    "mnoe-admin-panel": "git+https://git@github.com/maestrano/mnoe-admin-panel.git#2.0"
+    "mnoe-admin-panel": "git+https://git@github.com/maestrano/mnoe-admin-panel.git#2.0",
+    "moment-jdateformatparser": "^1.2.1"
   },
   "engines": {
     "node": ">= 6.9.0"
   },
   "devDependencies": {
-    "bats": "^0.4.2"
+    "bats": "^0.4.2",
+    "browserify": "^16.2.2"
   }
 }
