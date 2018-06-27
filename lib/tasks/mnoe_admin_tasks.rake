@@ -100,8 +100,7 @@ namespace :mnoe do
       cp_r("Async-Editor/editor-translations/product_schema_en-us.js", "#{admin_panel_dist_folder}/editor/product_schema_en-us.js" )
 
       # Copy bluesky-editor dependencies
-      sh 'browserify node_modules/mathjs/index.js --standalone math > node_modules/mathjs/bundle.js'
-      cp_r("node_modules/mathjs", "#{admin_panel_dist_folder}/editor/mathjs" )
+      cp_r("Async-Editor/mathjs", "#{admin_panel_dist_folder}/editor/mathjs" )
       cp_r("node_modules/moment-jdateformatparser", "#{admin_panel_dist_folder}/editor/moment-jdateformatparser" )
 
       # For development, copy editor and webworker folders to tmp directory
