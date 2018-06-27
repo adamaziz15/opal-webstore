@@ -1,0 +1,77 @@
+<!doctype html>
+<html ng-app="mnoEnterpriseAngular" ng-strict-di="true">
+  <head>
+    <meta charset="utf-8">
+    <title ng-bind="app_name + ' - ' + ('mno_enterprise.templates.components.layout.title' | translate) + ' - ' + pageTitle"></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="images/favicons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="images/favicons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/favicons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="images/favicons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/favicons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="images/favicons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="images/favicons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="images/favicons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/favicons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="images/favicons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicons/favicon-16x16.png">
+    <link rel="manifest" href="images/favicons/manifest.json">
+    <meta name="msapplication-TileImage" content="images/favicons/ms-icon-144x144.png">
+
+    <!-- build:css({.tmp,src}) styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- run `gulp inject` to automatically populate bower styles dependencies -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css({.tmp,src}) styles/app.css -->
+    <link rel="stylesheet" href="index.css"/>
+    <!-- endbuild -->
+  </head>
+  <body translate-cloak>
+    <!--[if lt IE 10]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div ng-if="!isLoggedIn && !publicPage" class="layout-loading text-center">
+      <mno-loader></mno-loader>
+      <span class="layout-loading-text" translate ng-cloak>{{ 'mno_enterprise.templates.components.layout.your_dashboard_is_loading' | translate }}</span>
+    </div>
+
+    <div ui-view class="myspace"></div>
+
+    <script src="editor/mathjs/bundle.js"></script>
+    <script src="editor/moment-jdateformatparser/moment-jdateformatparser.min.js"></script>
+    <script src="editor/product_schema_en-us.js"></script>
+    <script src="editor/jsoneditor_messages_en-us.js"></script>
+    <script src="editor/domWorker.library.js"></script>
+
+    <!-- build:js({.tmp,src}) scripts/vendor.js -->
+    <!-- bower:js -->
+    <!-- run `gulp inject` to automatically populate bower script dependencies -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp,src}) scripts/app.js -->
+    <!-- inject:js -->
+    <!-- js files will be automatically insert here -->
+    <!-- endinject -->
+
+    <!-- inject:partials -->
+    <!-- angular templates will be automatically converted in js and inserted here -->
+    <!-- endinject -->
+    <!-- endbuild -->
+
+    <script src="/mnoe/config.js"></script>
+
+    <!-- Google Tag Manager -->
+    <div ng-controller="IndexController" ng-bind-html="google_tag_scripts"></div>
+    <!-- End Google Tag Manager -->
+    <div ng-controller="IndexController" ng-bind-html="intercom"></div>
+
+  </body>
+</html>

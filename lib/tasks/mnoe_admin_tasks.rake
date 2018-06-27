@@ -87,9 +87,26 @@ namespace :mnoe do
       # Copy assets to public
       cp_r("#{admin_panel_tmp_folder}/dist/.", "#{admin_panel_dist_folder}/")
 
+      # Copy webworker file
       rm_rf("#{admin_panel_dist_folder}/webworker")
       mkdir("#{admin_panel_dist_folder}/webworker")
-      cp_r("#{admin_panel_project_folder}/src/app/Async-Editor/dist/webworker.js", "#{admin_panel_dist_folder}/webworker/webworker.js" )
+      cp_r("Async-Editor/dist/webworker.js", "#{admin_panel_dist_folder}/webworker/webworker.js" )
+
+      # Copy DomWorker file
+      rm_rf("#{admin_panel_dist_folder}/editor")
+      mkdir("#{admin_panel_dist_folder}/editor")
+      cp_r("Async-Editor/domWorker.library.js", "#{admin_panel_dist_folder}/editor/domWorker.library.js" )
+      cp_r("Async-Editor/editor-translations/jsoneditor_messages_en-us.js", "#{admin_panel_dist_folder}/editor/jsoneditor_messages_en-us.js" )
+      cp_r("Async-Editor/editor-translations/product_schema_en-us.js", "#{admin_panel_dist_folder}/editor/product_schema_en-us.js" )
+
+      # Copy bluesky-editor dependencies
+      sh 'browserify node_modules/mathjs/index.js --standalone math > node_modules/mathjs/bundle.js'
+      cp_r("node_modules/mathjs", "#{admin_panel_dist_folder}/editor/mathjs" )
+      cp_r("node_modules/moment-jdateformatparser", "#{admin_panel_dist_folder}/editor/moment-jdateformatparser" )
+
+      # For development, copy editor and webworker folders to tmp directory
+      cp_r("#{admin_panel_dist_folder}/editor", "#{admin_panel_tmp_folder}/src/editor")
+      cp_r("#{admin_panel_dist_folder}/webworker", "#{admin_panel_tmp_folder}/src/webworker")
 
       # Clear tmp cache in development - recompile assets otherwise
       if Rails.env.development? || Rails.env.test?
