@@ -103,8 +103,7 @@ namespace :mnoe do
       cp_r("Async-Editor/mathjs", "#{admin_panel_dist_folder}/editor/mathjs" )
       cp_r("node_modules/moment-jdateformatparser", "#{admin_panel_dist_folder}/editor/moment-jdateformatparser" )
       cp("#{admin_panel_tmp_folder}/bower_components/jquery-ui/themes/cupertino/jquery-ui.min.css", "#{admin_panel_dist_folder}/editor/jquery-ui.min.css")
-      mkdir("#{admin_panel_dist_folder}/editor/images")
-      cp_r("#{admin_panel_tmp_folder}/bower_components/jquery-ui/themes/cupertino/images", "#{admin_panel_dist_folder}/editor/images")
+      cp_r("#{admin_panel_tmp_folder}/bower_components/jquery-ui/themes/cupertino/images", "#{admin_panel_dist_folder}/editor")
 
       # For development, copy editor and webworker folders to tmp directory
       cp_r("#{admin_panel_dist_folder}/editor", "#{admin_panel_tmp_folder}/src/editor")
