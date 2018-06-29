@@ -313,6 +313,7 @@ namespace :mnoe do
       # Copy bluesky-editor dependencies
       cp_r("Async-Editor/mathjs", "#{frontend_dist_folder}/editor/mathjs" )
       cp_r("node_modules/moment-jdateformatparser", "#{frontend_dist_folder}/editor/moment-jdateformatparser" )
+      cp("#{frontend_tmp_folder}/bower_components/jquery-ui/themes/cupertino/jquery-ui.min.css", "#{frontend_dist_folder}/editor/jquery-ui.min.css")
 
       # For development, copy editor and webworker folders to tmp directory
       cp_r("#{frontend_dist_folder}/editor", "#{frontend_tmp_folder}/src/editor")
