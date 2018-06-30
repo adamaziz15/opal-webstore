@@ -6,14 +6,63 @@ bats@^0.4.2:
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/bats/-/bats-0.4.2.tgz#81f222bbcbb083d1528b3e8830a6e8f314876ec6"
 
+complex.js@2.0.10:
+  version "2.0.10"
+  resolved "https://registry.yarnpkg.com/complex.js/-/complex.js-2.0.10.tgz#afac74e4fb9131e8709f9c300420ce58fa36f18d"
+
+decimal.js@10.0.1:
+  version "10.0.1"
+  resolved "https://registry.yarnpkg.com/decimal.js/-/decimal.js-10.0.1.tgz#d04b16b277f0f9af09671cee225c4882e8857c58"
+
+escape-latex@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/escape-latex/-/escape-latex-1.1.0.tgz#c0a94a51eb8c73c3a67a95cc90fbb626cef54539"
+
+fraction.js@4.0.8:
+  version "4.0.8"
+  resolved "https://registry.yarnpkg.com/fraction.js/-/fraction.js-4.0.8.tgz#e53618112e3b36b348c61a81323173bceb01e418"
+
 "impac-angular@git+https://git@github.com/maestrano/impac-angular.git#1.6.x":
   version "1.6.10"
   resolved "git+https://git@github.com/maestrano/impac-angular.git#79df9fca8bcf4b5b09ab2edb4b18c461c5700bd1"
 
+javascript-natural-sort@0.7.1:
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/javascript-natural-sort/-/javascript-natural-sort-0.7.1.tgz#f9e2303d4507f6d74355a73664d1440fb5a0ef59"
+
+mathjs@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/mathjs/-/mathjs-5.0.0.tgz#e0ec6ff5d81c56427d111c0c9a73f7ba5c28617d"
+  dependencies:
+    complex.js "2.0.10"
+    decimal.js "10.0.1"
+    escape-latex "1.1.0"
+    fraction.js "4.0.8"
+    javascript-natural-sort "0.7.1"
+    seed-random "2.2.0"
+    tiny-emitter "2.0.2"
+    typed-function "1.0.3"
+
 "mno-enterprise-angular@git+https://git@github.com/maestrano/mno-enterprise-angular.git#2.0":
   version "2.0.0-dev"
-  resolved "git+https://git@github.com/maestrano/mno-enterprise-angular.git#33559e6a0377875c16bb3df9ca1ec0ba4619867b"
+  resolved "git+https://git@github.com/maestrano/mno-enterprise-angular.git#0177a95ce45b5109298433fd012dafc1d0a8fc0e"
 
 "mnoe-admin-panel@git+https://git@github.com/maestrano/mnoe-admin-panel.git#2.0":
   version "2.0.0-dev"
-  resolved "git+https://git@github.com/maestrano/mnoe-admin-panel.git#b008f7dd1e9782ccb98eb17d4e060bc8f136c87f"
+  resolved "git+https://git@github.com/maestrano/mnoe-admin-panel.git#0f0fa1272421cc48490d4e3d34b16b85b2e9d018"
+
+moment-jdateformatparser@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/moment-jdateformatparser/-/moment-jdateformatparser-1.2.1.tgz#336c41ef7a6db8021d7ca086385a35fb8a648456"
+
+seed-random@2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/seed-random/-/seed-random-2.2.0.tgz#2a9b19e250a817099231a5b99a4daf80b7fbed54"
+
+tiny-emitter@2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/tiny-emitter/-/tiny-emitter-2.0.2.tgz#82d27468aca5ade8e5fd1e6d22b57dd43ebdfb7c"
+
+typed-function@1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/typed-function/-/typed-function-1.0.3.tgz#57026246214b664a5af45ef0a06679f4453bd090"
