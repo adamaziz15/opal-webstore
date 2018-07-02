@@ -769,7 +769,7 @@ var translation = (function() {
         }
 
         function $StringTranslation(translationKey, keyToTranslate) {
-            if(self.Translations.productSchemaTranlations[translationKey].length != 0) {
+            if(self.Translations.productSchemaTranlations[translationKey]) {
               return self.Translations.productSchemaTranlations[translationKey][keyToTranslate] || keyToTranslate;
             } else {
               return keyToTranslate;
