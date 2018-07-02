@@ -8,13 +8,11 @@ module MnoEnterprise
       error_data = fetch_data(ERROR_URL.dup)
 
       if product_data.blank? && !default_locale
-        set_default_locale
         product_data = fetch_data(PRODUCT_URL.dup, get_default_locale)
       end
 
       if error_data.blank? && !default_locale
-        set_default_locale
-        product_data = fetch_data(ERROR_URL.dup, get_default_locale)
+        error_data = fetch_data(ERROR_URL.dup, get_default_locale)
       end
 
       return render json: { product_translations: product_data, error_translations: error_data }
@@ -28,7 +26,7 @@ module MnoEnterprise
       params[:locale] == get_default_locale
     end
 
-    def fetch_data(url, locale = params[:locale])
+    def fetch_data(url, locale = params[:locale].downcase)
       set_url_params(url, locale)
 
       resp = HTTParty.get(url)

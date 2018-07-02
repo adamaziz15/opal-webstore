@@ -769,13 +769,21 @@ var translation = (function() {
         }
 
         function $StringTranslation(translationKey, keyToTranslate) {
-            return self.Translations.productSchemaTranlations[translationKey][keyToTranslate] || keyToTranslate;
+            if(self.Translations.productSchemaTranlations[translationKey].length != 0) {
+              return self.Translations.productSchemaTranlations[translationKey][keyToTranslate] || keyToTranslate;
+            } else {
+              return keyToTranslate;
+            }
         }
 
         function $ArrayTranslation(translationKey, enum_array) {
             if (enum_array && enum_array.length) {
                 enum_array.forEach(function(item, index) {
-                    enum_array[index] = self.Translations.productSchemaTranlations[translationKey][item] || item
+                    if(self.Translations.productSchemaTranlations[translationKey]) {
+                      enum_array[index] = self.Translations.productSchemaTranlations[translationKey][item] || item
+                    } else {
+                      enum_array[index] = self.Translations.productSchemaTranlations[translationKey][item] || item
+                    }
                 })
             }
         }
