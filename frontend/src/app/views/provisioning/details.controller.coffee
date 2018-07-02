@@ -112,7 +112,7 @@ angular.module 'mnoEnterpriseAngular'
           defer.resolve(false)
           return defer.promise
 
-        MnoeBlueSky.getSchemaTranslation($locale.id).then(
+        MnoeBlueSky.getSchemaTranslation().then(
           (response) ->
             vm.errorTranslations = JSON.parse(response.error_translations)
             vm.productTranslations = JSON.parse(response.product_translations)
