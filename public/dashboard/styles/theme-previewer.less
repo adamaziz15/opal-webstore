@@ -2000,67 +2000,6 @@ mno-without-organisation {
   }
 }
 
-average-star-rating, star-rating {
-  position: relative;
-  display: block;
-
-  ul.rating {
-    margin: 0;
-    padding: 0 !important;
-    display: inline-block;
-
-    li {
-      padding: 1px;
-      color: #ddd;
-      font-size: 20px;
-      text-shadow: .05em .05em #aaa;
-      list-style-type: none;
-      display: inline-block;
-      cursor: pointer;
-      outline: none;
-
-      &.filled {
-        color: #fd0; //#21568b
-      }
-    }
-
-    &.readonly li.filled {
-      color: #666;
-    }
-  }
-
-  .average-rating-container {
-    display: inline-block;
-    position: relative;
-    height: 31px;
-    width: 103px;
-    overflow: hidden;
-
-    &.withrating {
-      margin-right: 37px;
-    }
-
-    .rating li {
-      cursor: inherit;
-    }
-
-    .background,
-    .foreground {
-      position: absolute;
-      top: 0;
-      left: 0;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-  }
-
-  .badge {
-    position: absolute;
-    top: 5px;
-    right: 0;
-  }
-}
-
 theme-editor {
   .theme-previewer-side-panel {
     z-index: 9999;
@@ -2122,6 +2061,67 @@ theme-editor {
 
   .sp-dd {
     margin: 2px 2px 2px;
+  }
+}
+
+average-star-rating, star-rating {
+  position: relative;
+  display: block;
+
+  ul.rating {
+    margin: 0;
+    padding: 0 !important;
+    display: inline-block;
+
+    li {
+      padding: 1px;
+      color: #ddd;
+      font-size: 20px;
+      text-shadow: .05em .05em #aaa;
+      list-style-type: none;
+      display: inline-block;
+      cursor: pointer;
+      outline: none;
+
+      &.filled {
+        color: #fd0; //#21568b
+      }
+    }
+
+    &.readonly li.filled {
+      color: #666;
+    }
+  }
+
+  .average-rating-container {
+    display: inline-block;
+    position: relative;
+    height: 31px;
+    width: 103px;
+    overflow: hidden;
+
+    &.withrating {
+      margin-right: 37px;
+    }
+
+    .rating li {
+      cursor: inherit;
+    }
+
+    .background,
+    .foreground {
+      position: absolute;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+  }
+
+  .badge {
+    position: absolute;
+    top: 5px;
+    right: 0;
   }
 }
 
@@ -2416,6 +2416,12 @@ form.editable-wrap .editable-controls input {
   padding-left: 5px;
 }
 
+#account {
+  .row:not(:first-child) {
+    margin-top: 15px;
+  }
+}
+
 #dashboard-apps-list {
   .app-dashboard {
     min-height: 280px;
@@ -2505,12 +2511,6 @@ form.editable-wrap .editable-controls input {
         color: @brand-warning;
       }
     }
-  }
-}
-
-#account {
-  .row:not(:first-child) {
-    margin-top: 15px;
   }
 }
 
@@ -3155,146 +3155,6 @@ form.editable-wrap .editable-controls input {
   }
 }
 
-#provisioning-confirm {
-  .add-to-cart {
-    padding: 3px 9px 3px 7px;
-
-    i {
-      font-size: 25px;
-    }
-  }
-}
-
-#provisioning-details {
-  .form-control[readonly] {
-    background-color: inherit;
-  }
-}
-
-#provisioning-layout {
-  nav {
-    display: flex;
-    justify-content: space-around;
-    .top-buffer-5;
-
-    .breadcrumb-item {
-      // Deactivate the link
-      pointer-events: none;
-      color: @provisioning-breadcrumb-item-color;
-
-      .badge {
-        background-color: @provisioning-breadcrumb-item-badge-bg;
-      }
-
-      &.active {
-        color: @provisioning-breadcrumb-item-active-color;
-
-        .badge {
-          background-color: @provisioning-breadcrumb-item-active-badge-bg;
-        }
-      }
-    }
-  }
-
-  h1 {
-    .top-buffer-3;
-  }
-
-  .well {
-    .top-buffer-1;
-    background-color: @provisioning-well-bg-color;
-  }
-}
-
-#provisioning-order {
-  .row {
-    display: flex;
-    align-items: center;
-  }
-
-  .radio-selector {
-    display: flex;
-    justify-content: center;
-  }
-}
-
-#subscription {
-  a {
-    cursor: pointer;
-  }
-
-  .well {
-    h3 {
-      margin-top: 0;
-      margin-bottom: 16px;
-      padding-bottom: 8px;
-      border-bottom: 1px dashed @subscription-txt-color;
-    }
-
-    background-color: @subscription-box-color;
-  }
-
-  .text-color {
-    color: @subscription-txt-color;
-  }
-
-  form label.control-label {
-    color: @subscription-txt-color;
-  }
-
-  .form-control {
-    background-color: transparent;
-    box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
-  }
-
-  .has-success .form-control-feedback {
-    color: transparent;
-  }
-
-  .hide-border {
-    border: transparent;
-  }
-
-  .has-success .form-control {
-    border-color: transparent;
-  }
-
-  .well.subscription-info {
-    .form-group {
-      display: flex;
-    }
-
-    div, ul {
-      width: 100%;
-      margin-left: 14px;
-    }
-
-    label {
-      width: 180px;
-      padding-top: 6px;
-    }
-  }
-
-  .subscription-events .subscription-event {
-    padding-top: 5px;
-  }
-
-  .subscription-events .subscription-event-provisioning-data {
-    padding-bottom: 5px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.075);
-  }
-}
-
-#provisioning-subscriptions {
-  .well {
-    background-color: @provisioning-well-bg-color;
-  }
-}
-
-#provisioning-summary {
-
-}
-
 
 #onboarding {
   header.header {
@@ -3581,6 +3441,146 @@ form.editable-wrap .editable-controls input {
     width: 100%;
     float: left;
   }
+}
+
+#provisioning-confirm {
+  .add-to-cart {
+    padding: 3px 9px 3px 7px;
+
+    i {
+      font-size: 25px;
+    }
+  }
+}
+
+#provisioning-details {
+  .form-control[readonly] {
+    background-color: inherit;
+  }
+}
+
+#provisioning-layout {
+  nav {
+    display: flex;
+    justify-content: space-around;
+    .top-buffer-5;
+
+    .breadcrumb-item {
+      // Deactivate the link
+      pointer-events: none;
+      color: @provisioning-breadcrumb-item-color;
+
+      .badge {
+        background-color: @provisioning-breadcrumb-item-badge-bg;
+      }
+
+      &.active {
+        color: @provisioning-breadcrumb-item-active-color;
+
+        .badge {
+          background-color: @provisioning-breadcrumb-item-active-badge-bg;
+        }
+      }
+    }
+  }
+
+  h1 {
+    .top-buffer-3;
+  }
+
+  .well {
+    .top-buffer-1;
+    background-color: @provisioning-well-bg-color;
+  }
+}
+
+#provisioning-order {
+  .row {
+    display: flex;
+    align-items: center;
+  }
+
+  .radio-selector {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+#subscription {
+  a {
+    cursor: pointer;
+  }
+
+  .well {
+    h3 {
+      margin-top: 0;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px dashed @subscription-txt-color;
+    }
+
+    background-color: @subscription-box-color;
+  }
+
+  .text-color {
+    color: @subscription-txt-color;
+  }
+
+  form label.control-label {
+    color: @subscription-txt-color;
+  }
+
+  .form-control {
+    background-color: transparent;
+    box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
+  }
+
+  .has-success .form-control-feedback {
+    color: transparent;
+  }
+
+  .hide-border {
+    border: transparent;
+  }
+
+  .has-success .form-control {
+    border-color: transparent;
+  }
+
+  .well.subscription-info {
+    .form-group {
+      display: flex;
+    }
+
+    div, ul {
+      width: 100%;
+      margin-left: 14px;
+    }
+
+    label {
+      width: 180px;
+      padding-top: 6px;
+    }
+  }
+
+  .subscription-events .subscription-event {
+    padding-top: 5px;
+  }
+
+  .subscription-events .subscription-event-provisioning-data {
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.075);
+  }
+}
+
+#provisioning-subscriptions {
+  .well {
+    background-color: @provisioning-well-bg-color;
+  }
+}
+
+#provisioning-summary {
+
 }
 
 #public {
