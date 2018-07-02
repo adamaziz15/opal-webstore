@@ -1474,16 +1474,6 @@ dashboard-company-cart {
   }
 }
 
-
-dashboard-language-selectbox {
-  display: block;
-
-  .selector-line {
-    display: inline-block;
-    margin: 5px auto;
-  }
-}
-
 dashboard-company-selectbox {
   /*-----------------------------------------------------------------------*/
   /*                       Company Select Box                              */
@@ -1632,6 +1622,16 @@ dashboard-company-selectbox {
       border-top: 1px solid @dashboard-cpy-select-border-color;
       top: ~'calc(1px + ' @navbar-height ~')';  // Add top border
     }
+  }
+}
+
+
+dashboard-language-selectbox {
+  display: block;
+
+  .selector-line {
+    display: inline-block;
+    margin: 5px auto;
   }
 }
 
@@ -4145,6 +4145,13 @@ form.editable-wrap .editable-controls input {
   }
 }
 
+.create-review-modal {
+  textarea.form-control {
+    max-width: 100%;
+    background-color: white;
+  }
+}
+
 #app-info {
   ul {
     margin: 0;
@@ -4161,13 +4168,6 @@ form.editable-wrap .editable-controls input {
   mno-app-features {
     float: right;
     width: 250px;
-  }
-}
-
-.create-review-modal {
-  textarea.form-control {
-    max-width: 100%;
-    background-color: white;
   }
 }
 
