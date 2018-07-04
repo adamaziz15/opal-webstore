@@ -211,7 +211,8 @@
     if (!currentDictionary)
       return;
 
-    var datepickerFormat = (moment().toMomentFormatString(this.options.$locale.DATETIME_FORMATS.shortDate)).replace('YY', 'YYYY') || 'MM/DD/YYYY';
+    // Note: Hard-coded date format to be same when passed to moment() library
+    var datepickerFormat = 'YYYY-MM-DD';
     date = moment().utc().format(datepickerFormat);
     currentDictionary.value = date;
   }
@@ -237,7 +238,8 @@
       return;
     }
 
-    var datepickerFormat = (moment().toMomentFormatString(this.options.$locale.DATETIME_FORMATS.shortDate)).replace('YY', 'YYYY') || 'MM/DD/YYYY';
+    // Note: Hard-coded date format to be same when passed to moment() library
+    var datepickerFormat = 'YYYY-MM-DD';
 
     var quantity, unit;
 
@@ -296,7 +298,8 @@
     dayNames = JSON.parse(sessionStorage.getItem('dayNames'));
     dayNamesShort = JSON.parse(sessionStorage.getItem('dayNamesShort'));
 
-    datepickerFormat = (moment().toMomentFormatString(this.options.$locale.DATETIME_FORMATS.shortDate)).toLowerCase();
+    // Note: Hard-coded date format to be same when passed to datepicker
+    datepickerFormat = 'yy-mm-dd';
 
     window.jQuery.datepicker.setDefaults(window.jQuery.datepicker.regional[this.options.language]);
     window.jQuery.datepicker.setDefaults({
@@ -343,7 +346,8 @@
   }
 
   function getUTCDate(selectedDate, dateFormat) {
-    var dateFormat = (moment().toMomentFormatString(this.options.$locale.DATETIME_FORMATS.shortDate)).replace('YY', 'YYYY') || 'MM/DD/YYYY';
+    // Note: Hard-coded date format to be same when passed to moment() library
+    var dateFormat = 'YYYY-MM-DD';
     var localDate = new Date().getDate(),
       calendarDate = moment(selectedDate, dateFormat).date(),
       utcDate;
