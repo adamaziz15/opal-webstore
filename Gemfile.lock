@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/MAhsenArif/mno-enterprise.git
-  revision: bb7a20427951e6f74a247192bff3efbe08191552
+  revision: f95b6229cb04dd716a83f70a95e8162d94754f50
   branch: expose_bluesky_flagged_products
   specs:
     mno-enterprise (4.0.0.pre.dev)
@@ -227,7 +227,7 @@ GEM
     ngannotate-rails (1.2.2)
       execjs
       rails (>= 3.1)
-    nokogiri (1.8.3)
+    nokogiri (1.8.4)
       mini_portile2 (~> 2.3.0)
     nokogumbo (1.5.0)
       nokogiri
