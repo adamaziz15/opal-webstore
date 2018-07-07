@@ -13,7 +13,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'uuid'
 
 # Maestrano Enterprise Engine
-gem 'mno-enterprise', git: 'https://github.com/MAhsenArif/mno-enterprise.git', branch: 'expose_bluesky_flagged_products'
+gem 'mno-enterprise', git: 'https://github.com/iseessel/mno-enterprise.git', branch: 'bug/mnoe-1110-custom-data-being-copied-over'
 # gem 'mno-enterprise', path: '../mno-enterprise'
 
 # For Nimbus Authentication Strategy
