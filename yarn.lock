@@ -6,9 +6,9 @@ bats@^0.4.2:
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/bats/-/bats-0.4.2.tgz#81f222bbcbb083d1528b3e8830a6e8f314876ec6"
 
-complex.js@2.0.10:
-  version "2.0.10"
-  resolved "https://registry.yarnpkg.com/complex.js/-/complex.js-2.0.10.tgz#afac74e4fb9131e8709f9c300420ce58fa36f18d"
+complex.js@2.0.11:
+  version "2.0.11"
+  resolved "https://registry.yarnpkg.com/complex.js/-/complex.js-2.0.11.tgz#09a873fbf15ffd8c18c9c2201ccef425c32b8bf1"
 
 decimal.js@10.0.1:
   version "10.0.1"
@@ -31,25 +31,25 @@ javascript-natural-sort@0.7.1:
   resolved "https://registry.yarnpkg.com/javascript-natural-sort/-/javascript-natural-sort-0.7.1.tgz#f9e2303d4507f6d74355a73664d1440fb5a0ef59"
 
 mathjs@^5.0.0:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/mathjs/-/mathjs-5.0.1.tgz#d4a8f47ed44a9c08aae00712e70464265ebcd6d0"
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/mathjs/-/mathjs-5.0.2.tgz#ed23dcfb40e886697447bcfe43e5dc5d92dd8eb0"
   dependencies:
-    complex.js "2.0.10"
+    complex.js "2.0.11"
     decimal.js "10.0.1"
     escape-latex "1.1.0"
     fraction.js "4.0.8"
     javascript-natural-sort "0.7.1"
     seed-random "2.2.0"
     tiny-emitter "2.0.2"
-    typed-function "1.0.3"
+    typed-function "1.0.4"
 
-"mno-enterprise-angular@git+https://git@github.com/maestrano/mno-enterprise-angular.git#2.0":
+"mno-enterprise-angular@git+https://git@github.com/iseessel/mno-enterprise-angular.git#bug/1110-order-details-copying-over":
   version "2.0.0-dev"
-  resolved "git+https://git@github.com/maestrano/mno-enterprise-angular.git#6a424101c91fc6358fb4487aef0df44cd2df5dd3"
+  resolved "git+https://git@github.com/iseessel/mno-enterprise-angular.git#2c1b45aa6d8d81383e95a60c1c09c9e337c1cd1c"
 
-"mnoe-admin-panel@git+https://git@github.com/maestrano/mnoe-admin-panel.git#2.0":
+"mnoe-admin-panel@git+https://git@github.com/iseessel/mnoe-admin-panel.git#bug/mnoe-1110-custom-data-being-copied-over":
   version "2.0.0-dev"
-  resolved "git+https://git@github.com/maestrano/mnoe-admin-panel.git#27b1ebcf02f8270263ab5745bfaa93c4931570d2"
+  resolved "git+https://git@github.com/iseessel/mnoe-admin-panel.git#e7ed48cdca60592e46f4ef7adb5aa265170eb42c"
 
 moment-jdateformatparser@^1.2.1:
   version "1.2.1"
@@ -63,6 +63,6 @@ tiny-emitter@2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/tiny-emitter/-/tiny-emitter-2.0.2.tgz#82d27468aca5ade8e5fd1e6d22b57dd43ebdfb7c"
 
-typed-function@1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/typed-function/-/typed-function-1.0.3.tgz#57026246214b664a5af45ef0a06679f4453bd090"
+typed-function@1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/typed-function/-/typed-function-1.0.4.tgz#6b25993b8587b0a5c3356585d6ef99aa63f6d317"
