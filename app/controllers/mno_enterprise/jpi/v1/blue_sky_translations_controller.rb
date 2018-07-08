@@ -1,7 +1,7 @@
 module MnoEnterprise
   class Jpi::V1::BlueSkyTranslationsController < Jpi::V1::AppReviewsController
-    PRODUCT_URL = "https://awg-capability4.verecloud.com/language/:locale/productSchemas/product_schema_:locale.json".freeze
-    ERROR_URL = "https://awg-capability4.verecloud.com/language/:locale/jsoneditor_messages_:locale.json".freeze
+    PRODUCT_URL = "#{ENV['BS_LOCALE_HOST']}/language/:locale/productSchemas/product_schema_:locale.json".freeze
+    ERROR_URL = "#{ENV['BS_LOCALE_HOST']}/language/:locale/jsoneditor_messages_:locale.json".freeze
 
     def schema_translations
       set_locale
