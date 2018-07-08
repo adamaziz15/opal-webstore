@@ -8,6 +8,16 @@ Rails.application.routes.draw do
     mount MnoEnterprise::Engine, at: '/mnoe', as: :mno_enterprise
   end
 
+  scope '(:locale)' do
+    namespace :mnoe, module: :mno_enterprise do
+      namespace :jpi do
+        namespace :v1 do
+          get :schema_translations, to: 'blue_sky_translations#schema_translations'
+        end
+      end
+    end
+  end
+
   if Settings.dashboard.public_pages.enabled
     root to: redirect('dashboard/')
   else

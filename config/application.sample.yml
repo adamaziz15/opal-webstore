@@ -19,3 +19,6 @@ SMTP_PASSWORD:
 
 #Opal endpoint for authentication
 REMOTE_AUTH_URL: https://awg-capability4.verecloud.com//nimbus4-api/auth
+
+#Opal translations host
+BS_LOCALE_HOST: https://awg-capability4.verecloud.com
