@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/maestrano/mno-enterprise.git
-  revision: 6f90eef6e1145ee68e6b2390bd8e26020825ce5f
+  revision: 0edd5fd03cfb3322321ad267d36815ebda4a42c9
   branch: 4.0
   specs:
     mno-enterprise (4.0.0.pre.dev)
@@ -227,7 +227,7 @@ GEM
     ngannotate-rails (1.2.2)
       execjs
       rails (>= 3.1)
-    nokogiri (1.8.3)
+    nokogiri (1.8.4)
       mini_portile2 (~> 2.3.0)
     nokogumbo (1.5.0)
       nokogiri

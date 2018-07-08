@@ -1474,6 +1474,16 @@ dashboard-company-cart {
   }
 }
 
+
+dashboard-language-selectbox {
+  display: block;
+
+  .selector-line {
+    display: inline-block;
+    margin: 5px auto;
+  }
+}
+
 dashboard-company-selectbox {
   /*-----------------------------------------------------------------------*/
   /*                       Company Select Box                              */
@@ -1622,16 +1632,6 @@ dashboard-company-selectbox {
       border-top: 1px solid @dashboard-cpy-select-border-color;
       top: ~'calc(1px + ' @navbar-height ~')';  // Add top border
     }
-  }
-}
-
-
-dashboard-language-selectbox {
-  display: block;
-
-  .selector-line {
-    display: inline-block;
-    margin: 5px auto;
   }
 }
 
@@ -2000,6 +2000,67 @@ mno-without-organisation {
   }
 }
 
+average-star-rating, star-rating {
+  position: relative;
+  display: block;
+
+  ul.rating {
+    margin: 0;
+    padding: 0 !important;
+    display: inline-block;
+
+    li {
+      padding: 1px;
+      color: #ddd;
+      font-size: 20px;
+      text-shadow: .05em .05em #aaa;
+      list-style-type: none;
+      display: inline-block;
+      cursor: pointer;
+      outline: none;
+
+      &.filled {
+        color: #fd0; //#21568b
+      }
+    }
+
+    &.readonly li.filled {
+      color: #666;
+    }
+  }
+
+  .average-rating-container {
+    display: inline-block;
+    position: relative;
+    height: 31px;
+    width: 103px;
+    overflow: hidden;
+
+    &.withrating {
+      margin-right: 37px;
+    }
+
+    .rating li {
+      cursor: inherit;
+    }
+
+    .background,
+    .foreground {
+      position: absolute;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+  }
+
+  .badge {
+    position: absolute;
+    top: 5px;
+    right: 0;
+  }
+}
+
 theme-editor {
   .theme-previewer-side-panel {
     z-index: 9999;
@@ -2061,67 +2122,6 @@ theme-editor {
 
   .sp-dd {
     margin: 2px 2px 2px;
-  }
-}
-
-average-star-rating, star-rating {
-  position: relative;
-  display: block;
-
-  ul.rating {
-    margin: 0;
-    padding: 0 !important;
-    display: inline-block;
-
-    li {
-      padding: 1px;
-      color: #ddd;
-      font-size: 20px;
-      text-shadow: .05em .05em #aaa;
-      list-style-type: none;
-      display: inline-block;
-      cursor: pointer;
-      outline: none;
-
-      &.filled {
-        color: #fd0; //#21568b
-      }
-    }
-
-    &.readonly li.filled {
-      color: #666;
-    }
-  }
-
-  .average-rating-container {
-    display: inline-block;
-    position: relative;
-    height: 31px;
-    width: 103px;
-    overflow: hidden;
-
-    &.withrating {
-      margin-right: 37px;
-    }
-
-    .rating li {
-      cursor: inherit;
-    }
-
-    .background,
-    .foreground {
-      position: absolute;
-      top: 0;
-      left: 0;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-  }
-
-  .badge {
-    position: absolute;
-    top: 5px;
-    right: 0;
   }
 }
 
@@ -3457,6 +3457,31 @@ form.editable-wrap .editable-controls input {
   .form-control[readonly] {
     background-color: inherit;
   }
+
+  #bs-editor-flow {
+    #editorjsonform button {
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+    }
+
+    .editor-wrapper {
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    .padding-5 {
+      padding-top: 5px !important;
+      padding-right: 5px !important;
+      padding-bottom: 5px !important;
+      padding-left: 5px !important;
+    }
+
+    center h3 {
+      width: 80%;
+      margin-bottom: 20px;
+    }
+  }
 }
 
 #provisioning-layout {
@@ -3860,6 +3885,16 @@ form.editable-wrap .editable-controls input {
   }
 }
 
+.dashboard-app-management {
+  .margin-left-20 {
+    margin-left: 20px;
+  }
+
+  .order-histroy {
+    background-color: white;
+  }
+}
+
 #app-connect-modal {
 
   select {
@@ -3941,16 +3976,6 @@ form.editable-wrap .editable-controls input {
         color: @deletion-sentence-color;
       }
     }
-  }
-}
-
-.dashboard-app-management {
-  .margin-left-20 {
-    margin-left: 20px;
-  }
-
-  .order-histroy {
-    background-color: white;
   }
 }
 
