@@ -1,7 +1,7 @@
 GIT
-  remote: https://github.com/MAhsenArif/mno-enterprise.git
-  revision: f95b6229cb04dd716a83f70a95e8162d94754f50
-  branch: expose_bluesky_flagged_products
+  remote: https://github.com/maestrano/mno-enterprise.git
+  revision: 0edd5fd03cfb3322321ad267d36815ebda4a42c9
+  branch: 4.0
   specs:
     mno-enterprise (4.0.0.pre.dev)
       mno-enterprise-api (= 4.0.0.pre.dev)
