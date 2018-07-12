@@ -26,7 +26,7 @@ angular.module 'mnoEnterpriseAngular'
       # Workaround. You can only specify defaults in the schema, and not the vm.form section.
       # Since we are getting the schemas remotely, we must find a way to set defaults using vm.form.
       vm.model.defaultContractLength = () ->
-        'monthly'
+        'Monthly'
 
       urlParams =
         productId: $stateParams.productId,
@@ -140,7 +140,7 @@ angular.module 'mnoEnterpriseAngular'
         # Set BS Editor flag
         if product.js_editor_enabled
           vm.enableBSEditor = true
-          vm.schemaCopy = angular.copy vm.subscription.custom_data if urlParams.editAction != 'new' && _.isEmpty(vm.schemaCopy)
+          vm.schemaCopy = angular.copy vm.subscription.custom_data if urlParams.editAction != 'provision' && _.isEmpty(vm.schemaCopy)
         vm.model = vm.subscription.custom_data || {}
         parsedSchema = JSON.parse(product.custom_schema)
         schema = parsedSchema.json_schema || parsedSchema
@@ -192,7 +192,7 @@ angular.module 'mnoEnterpriseAngular'
         fetchSubscription().then(fetchProduct).then(fetchCustomSchema)
           .then(() -> setCustomSchema(vm.subscription.product))
           .catch((error) ->
-            toastr.error('mno_enterprise.dashboard.provisioning.subscriptions.product_error')
+            toastr.error('mno_enterprise.templates.dashboard.provisioning.subscriptions.product_error')
             $state.go('home.subscriptions', {subType: if urlParams.cart then 'cart' else 'active'})
           )
           .finally(() ->
@@ -201,7 +201,8 @@ angular.module 'mnoEnterpriseAngular'
       else
         setCustomSchema(vm.subscription.product)
           .catch((error) ->
-            toastr.error('mno_enterprise.dashboard.provisioning.subscriptions.product_error')
+            toastr.error('mno_enterprise.templates.dashboard.provisioning.subscriptions.product_error')
+            $state.go('home.subscriptions', {subType: if urlParams.cart then 'cart' else 'active'})
           )
           .finally(() ->
             fetchTranslations().then(-> vm.isLoading = false)

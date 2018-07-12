@@ -21,7 +21,7 @@
   # Workaround. You can only specify defaults in the schema, and not the vm.form section.
   # Since we are getting the schemas remotely, we must find a way to set defaults using vm.form.
   vm.model.defaultContractLength = () ->
-    'monthly'
+    'Monthly'
 
   urlParams =
     orgId: $stateParams.orgId,
@@ -137,7 +137,7 @@
     # Set BS Editor flag
     if product.js_editor_enabled
       vm.enableBSEditor = true
-      vm.schemaCopy = angular.copy vm.subscription.custom_data if urlParams.editAction != 'new' && _.isEmpty(vm.schemaCopy)
+      vm.schemaCopy = angular.copy vm.subscription.custom_data if urlParams.editAction != 'provision' && _.isEmpty(vm.schemaCopy)
     vm.model = vm.subscription.custom_data || {}
     parsedSchema = JSON.parse(product.custom_schema)
     schema = parsedSchema.json_schema || parsedSchema
@@ -169,7 +169,7 @@
     # When in edit mode, we will be getting the product ID from the subscription, otherwise from the url.
     vm.productId = vm.subscription.product?.id || urlParams.productId
 
-    MnoeProvisioning.getProduct(vm.productId, { editAction: urlParams.editAction }).then(
+    MnoeProvisioning.getProduct(vm.productId, urlParams.orgId, { editAction: urlParams.editAction }).then(
       (response) ->
         vm.subscription.product = response
         # Filters the pricing plans not containing current currency
