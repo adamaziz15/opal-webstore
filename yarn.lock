@@ -49,7 +49,7 @@ mathjs@^5.0.0:
 
 "mnoe-admin-panel@git+https://git@github.com/MAhsenArif/mnoe-admin-panel.git#prevent_negative_tax_rate_invoice":
   version "2.0.0-dev"
-  resolved "git+https://git@github.com/MAhsenArif/mnoe-admin-panel.git#f5be9d471c2c73e00c3ba47143ea0c657853fcaf"
+  resolved "git+https://git@github.com/MAhsenArif/mnoe-admin-panel.git#233ae03105042170f71fc5947215b72ac3fc88e0"
 
 moment-jdateformatparser@^1.2.1:
   version "1.2.1"
