@@ -84,6 +84,8 @@ angular.module 'mnoEnterpriseAngular'
     handleRedirect = () ->
       # If bsEditor is enabled, set plan to the first plan returned and skip plan selection
       if vm.bsEditorEnabled
+        populateCurrencies()
+        selectDefaultCurrency()
         vm.filterPricingPlans()
         vm.selectPlan(vm.filteredPricingPlans[0])
         vm.next(vm.subscription, vm.selectedCurrency)
@@ -102,9 +104,10 @@ angular.module 'mnoEnterpriseAngular'
         )
         .finally(() -> vm.isLoading = false)
     else
+      vm.bsEditorEnabled = vm.subscription.product.js_editor_enabled
       # Skip this view when subscription plan is not editable
-      vm.next(vm.subscription, vm.subscription.currency) if ProvisioningHelper.skipPriceSelection(vm.subscription.product)
-
+      if ProvisioningHelper.skipPriceSelection(vm.subscription.product) || vm.bsEditorEnabled
+        vm.next(vm.subscription, vm.subscription.currency)
       # Grab subscription's selected pricing plan's currency, then filter currencies.
       vm.orgCurrency = MnoeProvisioning.getSelectedCurrency()
       populateCurrencies()

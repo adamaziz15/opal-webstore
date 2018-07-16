@@ -8,21 +8,23 @@ angular.module 'mnoEnterpriseAngular'
     vm.selectedCurrency = MnoeProvisioning.getSelectedCurrency()
     vm.subType = if $stateParams.cart == 'true' then 'cart' else 'active'
     vm.subscription = MnoeProvisioning.getCachedSubscription()
-    vm.quoteBased = vm.subscription.product_pricing.quote_based
-    vm.quote = MnoeProvisioning.getCachedQuote() if vm.quoteBased
-    vm.bsEditorEnabled = vm.subscription.product.js_editor_enabled
+
+    initSummary = () ->
+      vm.singleBilling = vm.subscription.product.single_billing_enabled
+      vm.billedLocally = vm.subscription.product.billed_locally
+      vm.quoteBased = vm.subscription.product_pricing?.quote_based
+      vm.quote = MnoeProvisioning.getCachedQuote() if vm.quoteBased
+      vm.bsEditorEnabled = vm.subscription.product.js_editor_enabled
 
     if !_.isEmpty(vm.subscription)
+      initSummary()
       vm.isLoading = false
     else
       MnoeProvisioning.initSubscription({subscriptionId: $stateParams.subscriptionId})
         .then((response) ->
           vm.subscription = response
-          vm.singleBilling = vm.subscription.product.single_billing_enabled
-          vm.billedLocally = vm.subscription.product.billed_locally
-          vm.quoteBased = vm.subscription.product_pricing.quote_based
-          )
-        .finally(() -> vm.isLoading = false)
+          initSummary()
+        ).finally(() -> vm.isLoading = false)
 
     vm.orderTypeText = 'mno_enterprise.templates.dashboard.provisioning.subscriptions.' + $stateParams.editAction.toLowerCase()
 

@@ -84,11 +84,14 @@
 
   handleRedirect = () ->
     if vm.bsEditorEnabled
+      vm.orgCurrency = MnoeProvisioning.getSelectedCurrency()
+      populateCurrencies()
+      selectDefaultCurrency()
       vm.filterCurrencies()
       vm.selectPlan(vm.filteredPricingPlans[0])
-      vm.next(vm.subscription, vm.subscription.currency)
+      vm.next(vm.subscription, vm.selectedCurrency)
     else if ProvisioningHelper.skipPriceSelection(vm.subscription.product)
-      vm.next(vm.subscription, vm.subscription.currency)
+      vm.next(vm.subscription)
 
   vm.isLoading = true
   if _.isEmpty(vm.subscription)
@@ -102,9 +105,10 @@
         )
       .finally(() -> vm.isLoading = false)
   else
+    vm.bsEditorEnabled = vm.subscription.product.js_editor_enabled
     # Skip this view when subscription plan is not editable
-    handleRedirect()
-
+    if ProvisioningHelper.skipPriceSelection(vm.subscription.product) || vm.bsEditorEnabled
+      vm.next(vm.subscription, vm.subscription.currency)
     # Grab subscription's selected pricing plan's currency, then filter currencies.
     vm.orgCurrency = MnoeProvisioning.getSelectedCurrency()
     populateCurrencies()
