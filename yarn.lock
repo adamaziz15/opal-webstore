@@ -43,13 +43,13 @@ mathjs@^5.0.0:
     tiny-emitter "2.0.2"
     typed-function "1.0.4"
 
-"mno-enterprise-angular@git+https://git@github.com/maestrano/mno-enterprise-angular.git#2.0":
+"mno-enterprise-angular@git+https://git@github.com/iseessel/mno-enterprise-angular.git#defect/1260-subscription-page-500":
   version "2.0.0-dev"
-  resolved "git+https://git@github.com/maestrano/mno-enterprise-angular.git#6aab28693959d2ac03cf6050e04dcbcf301f9ea2"
+  resolved "git+https://git@github.com/iseessel/mno-enterprise-angular.git#270b7ad3034401d24c872ce46de886da72e8fdb5"
 
-"mnoe-admin-panel@git+https://git@github.com/maestrano/mnoe-admin-panel.git#2.0":
+"mnoe-admin-panel@git+https://git@github.com/iseessel/mnoe-admin-panel.git#defect/1260-subscription-page-500":
   version "2.0.0-dev"
-  resolved "git+https://git@github.com/maestrano/mnoe-admin-panel.git#df700cc41fd2326f9ec04cddc44a8694d1fa37c7"
+  resolved "git+https://git@github.com/iseessel/mnoe-admin-panel.git#6b8e49eaedbc84f34bfd95c84bde194d482983b4"
 
 moment-jdateformatparser@^1.2.1:
   version "1.2.1"
