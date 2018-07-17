@@ -1,4 +1,4 @@
-@App.controller('ProvisioningDetailsCtrl', ($scope, $q, $state, $stateParams, $filter, MnoeProvisioning, MnoeOrganizations, schemaForm, ProvisioningHelper, MnoeProducts, MnoeBlueSky, toastr) ->
+@App.controller('ProvisioningDetailsCtrl', ($scope, $q, $state, $stateParams, $filter, $log, MnoeProvisioning, MnoeOrganizations, schemaForm, ProvisioningHelper, MnoeProducts, MnoeBlueSky, toastr) ->
   vm = this
   vm.subscription = MnoeProvisioning.getCachedSubscription()
   vm.schemaCopy = angular.copy vm.subscription.custom_data unless _.isEmpty(vm.subscription)
@@ -202,16 +202,42 @@
         fetchTranslations().then(-> vm.isLoading = false)
       )
 
+  fetchQuote = ->
+    vm.selectedCurrency = MnoeProvisioning.getSelectedCurrency()
+    MnoeProvisioning.getQuote(vm.subscription, vm.selectedCurrency).then(
+      (response) ->
+        vm.quotedPrice = response.totalContractValue?.quote
+        vm.quotedCurrency = response.totalContractValue?.currency
+        # To be passed to the order confirm screen.
+        MnoeProvisioning.setQuote(response.totalContractValue)
+        confirmOrder()
+      (error) ->
+        $log.error(error)
+        _.map(error.data.quote,
+          (quote) ->
+            _.map(JSON.parse(quote).errors,
+              (error_data) ->
+                vm.quoteErrors = _.merge(vm.quoteErrors, error_data.title)
+              )
+          )
+        toastr.error('mno_enterprise.templates.dashboard.marketplace.show.quote_error')
+    ).finally(vm.quoteLoading = false)
+
+  confirmOrder = ->
+    MnoeProvisioning.setSubscription(vm.subscription)
+    $state.go('home.provisioning.confirm', urlParams)
+
   vm.submit = (form) ->
+    vm.quoteLoading = true
     if vm.enableBSEditor
+      vm.quoteErrors = []
       vm.subscription.custom_data = form
+      fetchQuote()
     else
       $scope.$broadcast('schemaFormValidate')
       return unless form.$valid
       vm.subscription.custom_data = vm.model
-
-    MnoeProvisioning.setSubscription(vm.subscription)
-    $state.go('dashboard.provisioning.confirm', urlParams)
+      confirmOrder()
 
   vm.editPlanText = 'mnoe_admin_panel.dashboard.provisioning.details.' + urlParams.editAction.toLowerCase() + '_title'
 

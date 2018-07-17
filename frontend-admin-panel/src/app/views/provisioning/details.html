@@ -25,6 +25,12 @@
           product-translations="vm.productTranslations">
         </blue-sky-json-editor>
       </section>
+
+      <div ng-if="vm.quoteErrors" class='text-right quote-errors'>
+        <span class='red bottom-buffer-1' ng-repeat="error in vm.quoteErrors">
+          {{error}}
+        </span>
+      </div>
     </mno-widget-body>
   </mno-widget>
 
