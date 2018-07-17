@@ -1,12 +1,13 @@
 angular.module 'mnoEnterpriseAngular'
   .controller('ProvisioningDetailsCtrl',
-    ($scope, $q, $stateParams, $state, $locale, $filter,MnoeMarketplace, MnoeProvisioning, MnoeOrganizations, schemaForm, ProvisioningHelper, MnoeBlueSky, toastr) ->
+    ($scope, $q, $stateParams, $state, $log, $locale, $filter,MnoeMarketplace, MnoeProvisioning, MnoeOrganizations, schemaForm, ProvisioningHelper, MnoeBlueSky, toastr) ->
       vm = this
 
       vm.form = [ "*" ]
       vm.subscription = MnoeProvisioning.getCachedSubscription()
       vm.schemaCopy = angular.copy vm.subscription.custom_data unless _.isEmpty(vm.subscription)
       vm.enableBSEditor = false
+      vm.quoteLoading = false
 
       # We must use model schemaForm's sf-model, as #json_schema_opts are namespaced under model
       vm.model = vm.subscription.custom_data || {}
@@ -210,16 +211,42 @@ angular.module 'mnoEnterpriseAngular'
 
       vm.editPlanText = "mno_enterprise.templates.dashboard.provisioning.details." + urlParams.editAction.toLowerCase() + "_title"
 
+      fetchQuote = ->
+        vm.selectedCurrency = MnoeProvisioning.getSelectedCurrency()
+        MnoeProvisioning.getQuote(vm.subscription, vm.selectedCurrency).then(
+          (response) ->
+            vm.quotedPrice = response.totalContractValue?.quote
+            vm.quotedCurrency = response.totalContractValue?.currency
+            # To be passed to the order confirm screen.
+            MnoeProvisioning.setQuote(response.totalContractValue)
+            confirmOrder()
+          (error) ->
+            $log.error(error)
+            _.map(error.data.quote,
+              (quote) ->
+                _.map(JSON.parse(quote).errors,
+                  (error_data) ->
+                    vm.quoteErrors = _.merge(vm.quoteErrors, error_data.title)
+                  )
+              )
+            toastr.error('mno_enterprise.templates.dashboard.marketplace.show.quote_error')
+        ).finally(vm.quoteLoading = false)
+
+      confirmOrder = ->
+        MnoeProvisioning.setSubscription(vm.subscription)
+        $state.go('home.provisioning.confirm', urlParams)
+
       vm.submit = (form) ->
+        vm.quoteLoading = true
         if vm.enableBSEditor
+          vm.quoteErrors = []
           vm.subscription.custom_data = form
+          fetchQuote()
         else
           $scope.$broadcast('schemaFormValidate')
           return unless form.$valid
           vm.subscription.custom_data = vm.model
-
-        MnoeProvisioning.setSubscription(vm.subscription)
-        $state.go('home.provisioning.confirm', urlParams)
+          confirmOrder()
 
       # Delete the cached subscription when we are leaving the subscription workflow.
       $scope.$on('$stateChangeStart', (event, toState) ->
