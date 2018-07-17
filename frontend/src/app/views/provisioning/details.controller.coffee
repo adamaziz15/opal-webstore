@@ -7,6 +7,7 @@ angular.module 'mnoEnterpriseAngular'
       vm.subscription = MnoeProvisioning.getCachedSubscription()
       vm.schemaCopy = angular.copy vm.subscription.custom_data unless _.isEmpty(vm.subscription)
       vm.enableBSEditor = false
+      vm.quoteLoading = false
 
       # We must use model schemaForm's sf-model, as #json_schema_opts are namespaced under model
       vm.model = vm.subscription.custom_data || {}
@@ -211,7 +212,6 @@ angular.module 'mnoEnterpriseAngular'
       vm.editPlanText = "mno_enterprise.templates.dashboard.provisioning.details." + urlParams.editAction.toLowerCase() + "_title"
 
       fetchQuote = ->
-        vm.quoteLoading = true
         vm.selectedCurrency = MnoeProvisioning.getSelectedCurrency()
         MnoeProvisioning.getQuote(vm.subscription, vm.selectedCurrency).then(
           (response) ->
@@ -222,12 +222,11 @@ angular.module 'mnoEnterpriseAngular'
             confirmOrder()
           (error) ->
             $log.error(error)
-            vm.quoteErrors = []
             _.map(error.data.quote,
               (quote) ->
                 _.map(JSON.parse(quote).errors,
                   (error_data) ->
-                    vm.quoteErrors.push error_data.title
+                    vm.quoteErrors = _.merge(vm.quoteErrors, error_data.title)
                   )
               )
             toastr.error('mno_enterprise.templates.dashboard.marketplace.show.quote_error')
@@ -238,7 +237,9 @@ angular.module 'mnoEnterpriseAngular'
         $state.go('home.provisioning.confirm', urlParams)
 
       vm.submit = (form) ->
+        vm.quoteLoading = true
         if vm.enableBSEditor
+          vm.quoteErrors = []
           vm.subscription.custom_data = form
           fetchQuote()
         else
