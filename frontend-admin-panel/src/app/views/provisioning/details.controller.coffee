@@ -202,7 +202,7 @@
         fetchTranslations().then(-> vm.isLoading = false)
       )
 
-  showToastr = ->
+  handleQuoteErrors = ->
     return if vm.quoteErrors.length > 0
 
     toastr.error('mnoe_admin_panel.dashboard.provisioning.subscriptions.quote_error')
@@ -220,6 +220,7 @@
       (error) ->
         $log.error(error)
         try
+          # Format validation errors
           _.map(error.data.quote,
             (quote) ->
               _.map(JSON.parse(quote).errors,
@@ -228,9 +229,12 @@
                 )
             )
         catch e
+          # If the above formatting fails it indicates that
+          # the error was not due to form validation and
+          # should be handled differently.
           vm.quoteErrors = []
-          showToastr()
-        showToastr()
+
+        handleQuoteErrors()
     ).finally(vm.quoteLoading = false)
 
   confirmOrder = ->
