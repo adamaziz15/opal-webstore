@@ -244,7 +244,7 @@ angular.module 'mnoEnterpriseAngular'
               vm.quoteErrors = []
 
             handleQuoteErrors()
-        ).finally(vm.quoteLoading = false)
+        ).finally(-> vm.quoteLoading = false)
 
       confirmOrder = ->
         MnoeProvisioning.setSubscription(vm.subscription)
