@@ -211,6 +211,12 @@ angular.module 'mnoEnterpriseAngular'
 
       vm.editPlanText = "mno_enterprise.templates.dashboard.provisioning.details." + urlParams.editAction.toLowerCase() + "_title"
 
+      handleQuoteErrors = ->
+        return if vm.quoteErrors.length > 0
+
+        toastr.error('mno_enterprise.templates.dashboard.marketplace.show.quote_error')
+        $state.go('home.marketplace')
+
       fetchQuote = ->
         vm.selectedCurrency = MnoeProvisioning.getSelectedCurrency()
         MnoeProvisioning.getQuote(vm.subscription, vm.selectedCurrency).then(
@@ -222,14 +228,22 @@ angular.module 'mnoEnterpriseAngular'
             confirmOrder()
           (error) ->
             $log.error(error)
-            _.map(error.data.quote,
-              (quote) ->
-                _.map(JSON.parse(quote).errors,
-                  (error_data) ->
-                    vm.quoteErrors = _.merge(vm.quoteErrors, error_data.title)
-                  )
-              )
-            toastr.error('mno_enterprise.templates.dashboard.marketplace.show.quote_error')
+            try
+              # Format validation errors
+              _.map(error.data.quote,
+                (quote) ->
+                  _.map(JSON.parse(quote).errors,
+                    (error_data) ->
+                      vm.quoteErrors = _.merge(vm.quoteErrors, error_data.title)
+                    )
+                )
+            catch e
+              # Catch any errors during the formatting above
+              # This indicates that the errors were not
+              # form validation errors and should be handled differently.
+              vm.quoteErrors = []
+
+            handleQuoteErrors()
         ).finally(vm.quoteLoading = false)
 
       confirmOrder = ->

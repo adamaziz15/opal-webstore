@@ -35,20 +35,16 @@
             product-translations="vm.productTranslations">
           </blue-sky-json-editor>
 
-          <div ng-if="vm.quoteErrors" class='text-right quote-errors'>
-            <span class='red bottom-buffer-1' ng-repeat="error in vm.quoteErrors">
+          <div ng-if="vm.quoteErrors.length > 0" class='text-right alert alert-danger'>
+            <div class='bottom-buffer-1' ng-repeat="error in vm.quoteErrors">
               {{error}}
-            </span>
+            </div>
           </div>
 
-          <button type="submit" ng-click="vm.submit(vm.schemaDetails.editor.getValue())" ng-disabled="vm.isLoading || !vm.editorValid" class='btn btn-primary pull-right top-buffer-1'>
-            <span ng-show="vm.quoteLoading">
-              <i class='fa fa-spinner fa-pulse fa-fw'></i>
-            </span>
-            <span translate>
-              mno_enterprise.templates.dashboard.provisioning.details.next
-            </span>
-          </button>
+          <div class='btn btn-primary pull-right top-buffer-1' ng-click="vm.submit(vm.schemaDetails.editor.getValue())" ng-disabled="vm.isLoading || !vm.editorValid">
+            <span ng-show="vm.quoteLoading"><i class='fa fa-spinner fa-pulse fa-fw'></i></span>
+            <span translate>mno_enterprise.templates.dashboard.provisioning.details.next</span>
+          </div>
         </section>
       </div>
     </div>

@@ -26,10 +26,10 @@
         </blue-sky-json-editor>
       </section>
 
-      <div ng-if="vm.quoteErrors" class='text-right quote-errors'>
-        <span class='red bottom-buffer-1' ng-repeat="error in vm.quoteErrors">
+      <div ng-if="vm.quoteErrors.length > 0" class='text-right alert alert-danger'>
+        <div class='bottom-buffer-1' ng-repeat="error in vm.quoteErrors">
           {{error}}
-        </span>
+        </div>
       </div>
     </mno-widget-body>
   </mno-widget>

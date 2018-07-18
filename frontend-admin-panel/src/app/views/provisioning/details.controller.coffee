@@ -202,6 +202,12 @@
         fetchTranslations().then(-> vm.isLoading = false)
       )
 
+  handleQuoteErrors = ->
+    return if vm.quoteErrors.length > 0
+
+    toastr.error('mnoe_admin_panel.dashboard.provisioning.subscriptions.quote_error')
+    $state.go('dashboard.customers.organization', { orgId: urlParams.orgId })
+
   fetchQuote = ->
     vm.selectedCurrency = MnoeProvisioning.getSelectedCurrency()
     MnoeProvisioning.getQuote(vm.subscription, vm.selectedCurrency).then(
@@ -213,19 +219,27 @@
         confirmOrder()
       (error) ->
         $log.error(error)
-        _.map(error.data.quote,
-          (quote) ->
-            _.map(JSON.parse(quote).errors,
-              (error_data) ->
-                vm.quoteErrors = _.merge(vm.quoteErrors, error_data.title)
-              )
-          )
-        toastr.error('mno_enterprise.templates.dashboard.marketplace.show.quote_error')
+        try
+          # Format validation errors
+          _.map(error.data.quote,
+            (quote) ->
+              _.map(JSON.parse(quote).errors,
+                (error_data) ->
+                  vm.quoteErrors = _.merge(vm.quoteErrors, error_data.title)
+                )
+            )
+        catch e
+          # If the above formatting fails it indicates that
+          # the error was not due to form validation and
+          # should be handled differently.
+          vm.quoteErrors = []
+
+        handleQuoteErrors()
     ).finally(vm.quoteLoading = false)
 
   confirmOrder = ->
     MnoeProvisioning.setSubscription(vm.subscription)
-    $state.go('home.provisioning.confirm', urlParams)
+    $state.go('dashboard.provisioning.confirm', urlParams)
 
   vm.submit = (form) ->
     vm.quoteLoading = true
