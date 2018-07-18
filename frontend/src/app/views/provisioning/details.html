@@ -41,10 +41,10 @@
             </div>
           </div>
 
-          <div class='btn btn-primary pull-right top-buffer-1' ng-click="vm.submit(vm.schemaDetails.editor.getValue())" ng-disabled="vm.isLoading || !vm.editorValid">
+          <button class='btn btn-warning pull-right top-buffer-1' ng-click="vm.submit(vm.schemaDetails.editor.getValue())" ng-disabled="vm.isLoading || !vm.editorValid || vm.quoteLoading">
             <span ng-show="vm.quoteLoading"><i class='fa fa-spinner fa-pulse fa-fw'></i></span>
             <span translate>mno_enterprise.templates.dashboard.provisioning.details.next</span>
-          </div>
+          </button>
         </section>
       </div>
     </div>

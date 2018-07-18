@@ -205,7 +205,7 @@
   handleQuoteErrors = ->
     return if vm.quoteErrors.length > 0
 
-    toastr.error('mnoe_admin_panel.dashboard.provisioning.subscriptions.quote_error')
+    toastr.error('mnoe_admin_panel.dashboard.provisioning.order.quote_error')
     $state.go('dashboard.customers.organization', { orgId: urlParams.orgId })
 
   fetchQuote = ->
@@ -235,7 +235,7 @@
           vm.quoteErrors = []
 
         handleQuoteErrors()
-    ).finally(vm.quoteLoading = false)
+    ).finally(-> vm.quoteLoading = false)
 
   confirmOrder = ->
     MnoeProvisioning.setSubscription(vm.subscription)
