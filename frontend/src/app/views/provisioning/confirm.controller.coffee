@@ -1,11 +1,12 @@
 angular.module 'mnoEnterpriseAngular'
-  .controller('ProvisioningConfirmCtrl', ($scope, $state, $stateParams, $log, MnoeOrganizations, MnoeProvisioning, MnoeAppInstances, MnoeConfig, ProvisioningHelper, schemaForm, toastr) ->
+  .controller('ProvisioningConfirmCtrl', ($scope, $state, $stateParams, $log, MnoeOrganizations, MnoeProvisioning, MnoeAppInstances, MnoeConfig, ProvisioningHelper, MnoeBlueSky, schemaForm, toastr) ->
 
     vm = this
 
     vm.isLoading = false
+    vm.dataLoading = true
     vm.subscription = MnoeProvisioning.getCachedSubscription()
-    vm.bsEditorEnabled = vm.subscription.product.js_editor_enabled
+    vm.bsEditorEnabled = vm.subscription?.product?.js_editor_enabled
     vm.selectedCurrency = MnoeProvisioning.getSelectedCurrency()
     vm.cartItem = $stateParams.cart == 'true'
     vm.quoteFetched = true
@@ -19,6 +20,9 @@ angular.module 'mnoEnterpriseAngular'
       editAction: $stateParams.editAction,
       cart: $stateParams.cart
 
+    setupNewForm = ->
+      vm.editor = MnoeBlueSky.getCachedBSEditor()
+
     setCustomSchema = () ->
       parsedSchema = JSON.parse(vm.subscription.product.custom_schema)
       schema = parsedSchema.json_schema || parsedSchema
@@ -28,7 +32,8 @@ angular.module 'mnoEnterpriseAngular'
         .then((schema) -> schemaForm.jsonref(schema))
         .then((schema) ->
           vm.schema = schema
-        )
+          setupNewForm() if vm.bsEditorEnabled
+        ).finally(-> vm.dataLoading = false)
 
     vm.editOrder = (reload = true) ->
       switch $stateParams.editAction.toLowerCase()

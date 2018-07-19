@@ -1,7 +1,8 @@
 angular.module 'mnoEnterpriseAngular'
-  .controller('ProvisioningSummaryCtrl', ($scope, $state, $stateParams, MnoeOrganizations, MnoeProvisioning, MnoeConfig) ->
+  .controller('ProvisioningSummaryCtrl', ($scope, $state, $stateParams, MnoeOrganizations, MnoeProvisioning, MnoeConfig, MnoeBlueSky) ->
 
     vm = this
+    vm.dataLoading = true
     vm.isLoading = true
     vm.quoteBased = false
     vm.quote = {}
@@ -9,22 +10,23 @@ angular.module 'mnoEnterpriseAngular'
     vm.subType = if $stateParams.cart == 'true' then 'cart' else 'active'
     vm.subscription = MnoeProvisioning.getCachedSubscription()
 
+    setSchemaReadOnlyData = ->
+      vm.editor = MnoeBlueSky.getCachedBSEditor()
+      vm.dataLoading = false
+
     initSummary = () ->
       vm.singleBilling = vm.subscription.product.single_billing_enabled
       vm.billedLocally = vm.subscription.product.billed_locally
       vm.quoteBased = vm.subscription.product_pricing?.quote_based
       vm.quote = MnoeProvisioning.getCachedQuote() if vm.quoteBased
       vm.bsEditorEnabled = vm.subscription.product.js_editor_enabled
+      setSchemaReadOnlyData() if vm.bsEditorEnabled
 
     if !_.isEmpty(vm.subscription)
       initSummary()
       vm.isLoading = false
     else
-      MnoeProvisioning.initSubscription({subscriptionId: $stateParams.subscriptionId})
-        .then((response) ->
-          vm.subscription = response
-          initSummary()
-        ).finally(() -> vm.isLoading = false)
+      $state.go("home.subscriptions", { subType: 'active' })
 
     vm.orderTypeText = 'mno_enterprise.templates.dashboard.provisioning.subscriptions.' + $stateParams.editAction.toLowerCase()
 
