@@ -29,7 +29,7 @@
       )($locale.locate)
 
       options =
-        schemaName: scope.schemaName or attrs.schemaName
+        schemaName: 'asd'#scope.schemaName or attrs.schemaName
         schema: scope.schema
         initialValues: scope.initialValues
         scrollable: scope.scrollable

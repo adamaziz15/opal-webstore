@@ -1,6 +1,6 @@
 angular.module 'mnoEnterpriseAngular'
   .controller('ProvisioningDetailsCtrl',
-    ($scope, $q, $stateParams, $state, $locale, $filter,MnoeMarketplace, MnoeProvisioning, MnoeOrganizations, schemaForm, ProvisioningHelper, MnoeBlueSky, toastr) ->
+    ($scope, $q, $stateParams, $state, $filter, MnoeMarketplace, MnoeProvisioning, MnoeOrganizations, schemaForm, ProvisioningHelper, MnoeBlueSky, toastr) ->
       vm = this
 
       vm.form = [ "*" ]
@@ -212,6 +212,8 @@ angular.module 'mnoEnterpriseAngular'
 
       vm.submit = (form) ->
         if vm.enableBSEditor
+          # Cache the editor instance
+          MnoeBlueSky.setBSEditor(vm.schemaDetails.editor)
           vm.subscription.custom_data = form
         else
           $scope.$broadcast('schemaFormValidate')
