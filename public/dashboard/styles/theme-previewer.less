@@ -2125,297 +2125,6 @@ theme-editor {
   }
 }
 
-// Base style
-.accordion {
-  .panel-group .panel {
-    margin: 25px 0px;
-  }
-
-  .panel-group .panel,
-  .panel-group .panel > .panel-heading {
-    background-color: @dashboard-account-panel-header-bg-color;
-    border: none;
-    box-shadow: none;
-  }
-
-  .panel-group .panel > .panel-heading {
-    color: @dashboard-account-panel-header-text-color;
-    padding: 0;
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
-
-    .panel-title > div,
-    .panel-title > a {
-      font-size: 90%;
-      display: block;
-      padding-left: 10px;
-      line-height: 54px;
-      height: 54px;
-      cursor: pointer;
-
-      &:hover, &:focus {
-        text-decoration: none;
-      }
-    }
-
-    .panel-title .fa.pull-right {
-      margin-right: 20px;
-      margin-top: 20px;
-    }
-  }
-
-  .panel-group .panel-collapse > .panel-body {
-    background-color: @dashboard-account-panel-body-bg-color;
-    border: none;
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
-
-    label {
-      color: @dashboard-account-panel-text-color;
-    }
-
-    p, ul > li {
-      font-weight: 300;
-    }
-  }
-}
-
-.btn {
-  &.btn-link {
-    padding: 0 6px;
-
-    &.btn-link-primary {
-      color: @brand-primary;
-
-      &:hover, &:focus {
-        color: darken(@brand-primary, 30%);
-      }
-    }
-
-    &.btn-link-info {
-      color: @brand-info;
-
-      &:hover, &:focus {
-        color: darken(@brand-info, 30%);
-      }
-    }
-
-    &.btn-link-warning {
-      color: @brand-warning;
-
-      &:hover, &:focus {
-        color: darken(@brand-warning, 30%);
-      }
-    }
-
-    &.btn-link-danger {
-      color: @brand-danger;
-
-      &:hover, &:focus {
-        color: darken(@brand-danger, 30%);
-      }
-    }
-  }
-}
-
-
-//------------------------------------
-// input-group-addon dropdown
-//------------------------------------
-// Put a dropdown inside an input-group-addon
-.input-group-addon.select {
-  padding:0px;
-  border-radius: 6px 0px 0px 6px;
-  background-color: @input-bg;
-
-  select {
-    height:100%;
-    border:0px;
-    background-color: @input-bg;
-  }
-}
-
-//------------------------------------
-// Invalid inputs (AngularJS)
-//------------------------------------
-input.ng-dirty.ng-invalid {
-  border-color: @brand-danger;
-}
-
-//-----------------------------------------
-// Responsive tables (using TWB grid)
-// see templates/dashboard/organization/invoices.html
-// for an example
-//-----------------------------------------
-.table-cell {
-  .th-row {
-    margin-top: @table-cell-header-row-spacing;
-    margin-left: 0;
-    margin-right: 0;
-    padding-top: @table-cell-header-row-padding;
-    padding-bottom: @table-cell-header-row-padding;
-    color: @table-cell-header-text-color;
-    background-color: @table-cell-header-bg-color;
-    font-size: @table-cell-header-text-size;
-    line-height: (@table-cell-header-text-size + @table-cell-row-padding)*2;
-    @table-cell-header-additional-rule();
-  }
-
-  .td-row {
-    margin-top: @table-cell-row-spacing;
-    margin-bottom: @table-cell-row-spacing;
-    margin-left: 0;
-    margin-right: 0;
-    padding-top: @table-cell-row-padding;
-    padding-bottom: @table-cell-row-padding;
-    font-size: @table-cell-row-text-size;
-    line-height: (@table-cell-row-text-size + @table-cell-row-padding)*2;
-
-    .cell {
-      // Add '...' at the end of text if too long for the cell
-      .ellipsis();
-    }
-
-    .cell > .cell-label {
-      font-weight: bold;
-    }
-
-    .cell > a > i {
-      font-size: 20px;
-    }
-
-    &:nth-child(odd) {
-      background-color: @table-cell-row-odd-bg-color;
-    }
-
-    &:nth-child(even) {
-      background-color: @table-cell-row-even-bg-color;
-    }
-  }
-}
-
-@media (max-width: @screen-sm) {
-  .table-cell .td-row .cell > a { padding-left: 0; }
-}
-
-// Inverse Style
-.table-cell.inverse {
-  .th-row {
-    color: @table-inverse-cell-header-text-color;
-    background-color: @table-inverse-cell-header-bg-color;
-  }
-
-  .td-row:nth-child(odd) {
-    background-color: @table-inverse-cell-row-odd-bg-color;
-  }
-
-  .td-row:nth-child(even) {
-    background-color: @table-inverse-cell-row-even-bg-color;
-  }
-}
-
-.ribbon-testimonial {
-
-  .body {
-    background-color: @bg-on-bg-inverse-color;
-    border-radius: 5px;
-    padding: 20px;
-    color: @text-strong-color;
-    font-weight: 300;
-    font-size: 16px;
-    font-style: italic;
-
-    .arrow {
-      .rotate(45deg);
-      width: 0;
-      height: 0;
-      border-top: 18px solid transparent;
-      border-bottom: 18px solid transparent;
-      border-right: 18px solid @decorator-main-color;
-      position: absolute;
-      right: 28px;
-      margin-top: 8px;
-    }
-  }
-
-  .from {
-    margin: 7px 0px 0px 30px;
-
-    .name {
-      display: inline;
-      font-size: 14px;
-      font-weight: 700;
-      color: @text-inverse-color;
-    }
-
-    .company {
-      display: inline;
-      font-size: 14px;
-      font-weight: 300;
-      color: @decorator-inverse-color;
-    }
-  }
-}
-
-
-/*-----------------------------------------------------------------------*/
-/*                       Dashboard Section Title                         */
-/*-----------------------------------------------------------------------*/
-.myspace .section-title {
-  color: @dashboard-section-title-color;
-  text-align: @dashboard-section-title-alignment;
-}
-
-.myspace .section-title:after when (@dashboard-section-title-alignment = center) and (@dashboard-section-title-display-subline = true){
-  display: block;
-  content: '';
-  margin-top: 10px;
-  border-bottom: solid 1px @dashboard-section-title-color;
-  max-width: 45%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.editable.editable-click,
-a.editable.editable-click {
-  color: @text-strong-color;
-  border: none;
-
-  &:hover {
-    border-bottom: dashed 1px fadeout(@text-strong-color,60%);
-  }
-}
-
-form.editable-wrap {
-  margin: 0 !important;
-}
-
-form.editable-wrap .editable-controls {
-  padding: 0;
-}
-
-form.editable-wrap .editable-controls input {
-  height: 30px;
-  padding: 0 5px;
-  border: dashed 1px @text-strong-color;
-  .box-shadow(none);
-}
-
-.editable-instructions {
-  display: inline;
-}
-
-.editable-instructions form.editable-wrap .editable-controls:after {
-  display: block;
-  content: "press enter to confirm";
-  font-style: italic;
-  font-size: 10px;
-  line-height: 12px;
-  color: @text-strong-color;
-  margin-top: -10px;
-  padding-left: 5px;
-}
-
 #account {
   .row:not(:first-child) {
     margin-top: 15px;
@@ -3443,171 +3152,6 @@ form.editable-wrap .editable-controls input {
   }
 }
 
-#provisioning-confirm {
-  .add-to-cart {
-    padding: 3px 9px 3px 7px;
-
-    i {
-      font-size: 25px;
-    }
-  }
-}
-
-#provisioning-details {
-  .form-control[readonly] {
-    background-color: inherit;
-  }
-
-  #bs-editor-flow {
-    #editorjsonform button {
-      background: transparent;
-      border: 0;
-      box-shadow: none;
-    }
-
-    .editor-wrapper {
-      width: 80%;
-      margin: 0 auto;
-    }
-
-    .padding-5 {
-      padding-top: 5px !important;
-      padding-right: 5px !important;
-      padding-bottom: 5px !important;
-      padding-left: 5px !important;
-    }
-
-    center h3 {
-      width: 80%;
-      margin-bottom: 20px;
-    }
-  }
-}
-
-#provisioning-layout {
-  nav {
-    display: flex;
-    justify-content: space-around;
-    .top-buffer-5;
-
-    .breadcrumb-item {
-      // Deactivate the link
-      pointer-events: none;
-      color: @provisioning-breadcrumb-item-color;
-
-      .badge {
-        background-color: @provisioning-breadcrumb-item-badge-bg;
-      }
-
-      &.active {
-        color: @provisioning-breadcrumb-item-active-color;
-
-        .badge {
-          background-color: @provisioning-breadcrumb-item-active-badge-bg;
-        }
-      }
-    }
-  }
-
-  h1 {
-    .top-buffer-3;
-  }
-
-  .well {
-    .top-buffer-1;
-    background-color: @provisioning-well-bg-color;
-  }
-}
-
-#provisioning-order {
-  .row {
-    display: flex;
-    align-items: center;
-  }
-
-  .radio-selector {
-    display: flex;
-    justify-content: center;
-  }
-}
-
-#subscription {
-  a {
-    cursor: pointer;
-  }
-
-  .well {
-    h3 {
-      margin-top: 0;
-      margin-bottom: 16px;
-      padding-bottom: 8px;
-      border-bottom: 1px dashed @subscription-txt-color;
-    }
-
-    background-color: @subscription-box-color;
-  }
-
-  .text-color {
-    color: @subscription-txt-color;
-  }
-
-  form label.control-label {
-    color: @subscription-txt-color;
-  }
-
-  .form-control {
-    background-color: transparent;
-    box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
-  }
-
-  .has-success .form-control-feedback {
-    color: transparent;
-  }
-
-  .hide-border {
-    border: transparent;
-  }
-
-  .has-success .form-control {
-    border-color: transparent;
-  }
-
-  .well.subscription-info {
-    .form-group {
-      display: flex;
-    }
-
-    div, ul {
-      width: 100%;
-      margin-left: 14px;
-    }
-
-    label {
-      width: 180px;
-      padding-top: 6px;
-    }
-  }
-
-  .subscription-events .subscription-event {
-    padding-top: 5px;
-  }
-
-  .subscription-events .subscription-event-provisioning-data {
-    padding-bottom: 5px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.075);
-  }
-}
-
-#provisioning-subscriptions {
-  .well {
-    background-color: @provisioning-well-bg-color;
-  }
-}
-
-#provisioning-summary {
-
-}
-
 #public {
   background-color: @public-main-bg-color;
   top: 0;
@@ -3885,6 +3429,462 @@ form.editable-wrap .editable-controls input {
   }
 }
 
+#provisioning-confirm {
+  .add-to-cart {
+    padding: 3px 9px 3px 7px;
+
+    i {
+      font-size: 25px;
+    }
+  }
+}
+
+#provisioning-details {
+  .form-control[readonly] {
+    background-color: inherit;
+  }
+
+  #bs-editor-flow {
+    #editorjsonform button {
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+    }
+
+    .editor-wrapper {
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    .padding-5 {
+      padding-top: 5px !important;
+      padding-right: 5px !important;
+      padding-bottom: 5px !important;
+      padding-left: 5px !important;
+    }
+
+    center h3 {
+      width: 80%;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+#provisioning-layout {
+  nav {
+    display: flex;
+    justify-content: space-around;
+    .top-buffer-5;
+
+    .breadcrumb-item {
+      // Deactivate the link
+      pointer-events: none;
+      color: @provisioning-breadcrumb-item-color;
+
+      .badge {
+        background-color: @provisioning-breadcrumb-item-badge-bg;
+      }
+
+      &.active {
+        color: @provisioning-breadcrumb-item-active-color;
+
+        .badge {
+          background-color: @provisioning-breadcrumb-item-active-badge-bg;
+        }
+      }
+    }
+  }
+
+  h1 {
+    .top-buffer-3;
+  }
+
+  .well {
+    .top-buffer-1;
+    background-color: @provisioning-well-bg-color;
+  }
+}
+
+#provisioning-order {
+  .row {
+    display: flex;
+    align-items: center;
+  }
+
+  .radio-selector {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+#subscription {
+  a {
+    cursor: pointer;
+  }
+
+  .well {
+    h3 {
+      margin-top: 0;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px dashed @subscription-txt-color;
+    }
+
+    background-color: @subscription-box-color;
+  }
+
+  .text-color {
+    color: @subscription-txt-color;
+  }
+
+  form label.control-label {
+    color: @subscription-txt-color;
+  }
+
+  .form-control {
+    background-color: transparent;
+    box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
+  }
+
+  .has-success .form-control-feedback {
+    color: transparent;
+  }
+
+  .hide-border {
+    border: transparent;
+  }
+
+  .has-success .form-control {
+    border-color: transparent;
+  }
+
+  .well.subscription-info {
+    .form-group {
+      display: flex;
+    }
+
+    div, ul {
+      width: 100%;
+      margin-left: 14px;
+    }
+
+    label {
+      width: 180px;
+      padding-top: 6px;
+    }
+  }
+
+  .subscription-events .subscription-event {
+    padding-top: 5px;
+  }
+
+  .subscription-events .subscription-event-provisioning-data {
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.075);
+  }
+}
+
+#provisioning-subscriptions {
+  .well {
+    background-color: @provisioning-well-bg-color;
+  }
+}
+
+#provisioning-summary {
+
+}
+
+// Base style
+.accordion {
+  .panel-group .panel {
+    margin: 25px 0px;
+  }
+
+  .panel-group .panel,
+  .panel-group .panel > .panel-heading {
+    background-color: @dashboard-account-panel-header-bg-color;
+    border: none;
+    box-shadow: none;
+  }
+
+  .panel-group .panel > .panel-heading {
+    color: @dashboard-account-panel-header-text-color;
+    padding: 0;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+
+    .panel-title > div,
+    .panel-title > a {
+      font-size: 90%;
+      display: block;
+      padding-left: 10px;
+      line-height: 54px;
+      height: 54px;
+      cursor: pointer;
+
+      &:hover, &:focus {
+        text-decoration: none;
+      }
+    }
+
+    .panel-title .fa.pull-right {
+      margin-right: 20px;
+      margin-top: 20px;
+    }
+  }
+
+  .panel-group .panel-collapse > .panel-body {
+    background-color: @dashboard-account-panel-body-bg-color;
+    border: none;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+
+    label {
+      color: @dashboard-account-panel-text-color;
+    }
+
+    p, ul > li {
+      font-weight: 300;
+    }
+  }
+}
+
+.btn {
+  &.btn-link {
+    padding: 0 6px;
+
+    &.btn-link-primary {
+      color: @brand-primary;
+
+      &:hover, &:focus {
+        color: darken(@brand-primary, 30%);
+      }
+    }
+
+    &.btn-link-info {
+      color: @brand-info;
+
+      &:hover, &:focus {
+        color: darken(@brand-info, 30%);
+      }
+    }
+
+    &.btn-link-warning {
+      color: @brand-warning;
+
+      &:hover, &:focus {
+        color: darken(@brand-warning, 30%);
+      }
+    }
+
+    &.btn-link-danger {
+      color: @brand-danger;
+
+      &:hover, &:focus {
+        color: darken(@brand-danger, 30%);
+      }
+    }
+  }
+}
+
+
+//------------------------------------
+// input-group-addon dropdown
+//------------------------------------
+// Put a dropdown inside an input-group-addon
+.input-group-addon.select {
+  padding:0px;
+  border-radius: 6px 0px 0px 6px;
+  background-color: @input-bg;
+
+  select {
+    height:100%;
+    border:0px;
+    background-color: @input-bg;
+  }
+}
+
+//------------------------------------
+// Invalid inputs (AngularJS)
+//------------------------------------
+input.ng-dirty.ng-invalid {
+  border-color: @brand-danger;
+}
+
+//-----------------------------------------
+// Responsive tables (using TWB grid)
+// see templates/dashboard/organization/invoices.html
+// for an example
+//-----------------------------------------
+.table-cell {
+  .th-row {
+    margin-top: @table-cell-header-row-spacing;
+    margin-left: 0;
+    margin-right: 0;
+    padding-top: @table-cell-header-row-padding;
+    padding-bottom: @table-cell-header-row-padding;
+    color: @table-cell-header-text-color;
+    background-color: @table-cell-header-bg-color;
+    font-size: @table-cell-header-text-size;
+    line-height: (@table-cell-header-text-size + @table-cell-row-padding)*2;
+    @table-cell-header-additional-rule();
+  }
+
+  .td-row {
+    margin-top: @table-cell-row-spacing;
+    margin-bottom: @table-cell-row-spacing;
+    margin-left: 0;
+    margin-right: 0;
+    padding-top: @table-cell-row-padding;
+    padding-bottom: @table-cell-row-padding;
+    font-size: @table-cell-row-text-size;
+    line-height: (@table-cell-row-text-size + @table-cell-row-padding)*2;
+
+    .cell {
+      // Add '...' at the end of text if too long for the cell
+      .ellipsis();
+    }
+
+    .cell > .cell-label {
+      font-weight: bold;
+    }
+
+    .cell > a > i {
+      font-size: 20px;
+    }
+
+    &:nth-child(odd) {
+      background-color: @table-cell-row-odd-bg-color;
+    }
+
+    &:nth-child(even) {
+      background-color: @table-cell-row-even-bg-color;
+    }
+  }
+}
+
+@media (max-width: @screen-sm) {
+  .table-cell .td-row .cell > a { padding-left: 0; }
+}
+
+// Inverse Style
+.table-cell.inverse {
+  .th-row {
+    color: @table-inverse-cell-header-text-color;
+    background-color: @table-inverse-cell-header-bg-color;
+  }
+
+  .td-row:nth-child(odd) {
+    background-color: @table-inverse-cell-row-odd-bg-color;
+  }
+
+  .td-row:nth-child(even) {
+    background-color: @table-inverse-cell-row-even-bg-color;
+  }
+}
+
+.ribbon-testimonial {
+
+  .body {
+    background-color: @bg-on-bg-inverse-color;
+    border-radius: 5px;
+    padding: 20px;
+    color: @text-strong-color;
+    font-weight: 300;
+    font-size: 16px;
+    font-style: italic;
+
+    .arrow {
+      .rotate(45deg);
+      width: 0;
+      height: 0;
+      border-top: 18px solid transparent;
+      border-bottom: 18px solid transparent;
+      border-right: 18px solid @decorator-main-color;
+      position: absolute;
+      right: 28px;
+      margin-top: 8px;
+    }
+  }
+
+  .from {
+    margin: 7px 0px 0px 30px;
+
+    .name {
+      display: inline;
+      font-size: 14px;
+      font-weight: 700;
+      color: @text-inverse-color;
+    }
+
+    .company {
+      display: inline;
+      font-size: 14px;
+      font-weight: 300;
+      color: @decorator-inverse-color;
+    }
+  }
+}
+
+
+/*-----------------------------------------------------------------------*/
+/*                       Dashboard Section Title                         */
+/*-----------------------------------------------------------------------*/
+.myspace .section-title {
+  color: @dashboard-section-title-color;
+  text-align: @dashboard-section-title-alignment;
+}
+
+.myspace .section-title:after when (@dashboard-section-title-alignment = center) and (@dashboard-section-title-display-subline = true){
+  display: block;
+  content: '';
+  margin-top: 10px;
+  border-bottom: solid 1px @dashboard-section-title-color;
+  max-width: 45%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.editable.editable-click,
+a.editable.editable-click {
+  color: @text-strong-color;
+  border: none;
+
+  &:hover {
+    border-bottom: dashed 1px fadeout(@text-strong-color,60%);
+  }
+}
+
+form.editable-wrap {
+  margin: 0 !important;
+}
+
+form.editable-wrap .editable-controls {
+  padding: 0;
+}
+
+form.editable-wrap .editable-controls input {
+  height: 30px;
+  padding: 0 5px;
+  border: dashed 1px @text-strong-color;
+  .box-shadow(none);
+}
+
+.editable-instructions {
+  display: inline;
+}
+
+.editable-instructions form.editable-wrap .editable-controls:after {
+  display: block;
+  content: "press enter to confirm";
+  font-style: italic;
+  font-size: 10px;
+  line-height: 12px;
+  color: @text-strong-color;
+  margin-top: -10px;
+  padding-left: 5px;
+}
+
 #app-connect-modal {
 
   select {
@@ -4145,13 +4145,6 @@ form.editable-wrap .editable-controls input {
   }
 }
 
-.create-review-modal {
-  textarea.form-control {
-    max-width: 100%;
-    background-color: white;
-  }
-}
-
 #app-info {
   ul {
     margin: 0;
@@ -4168,6 +4161,13 @@ form.editable-wrap .editable-controls input {
   mno-app-features {
     float: right;
     width: 250px;
+  }
+}
+
+.create-review-modal {
+  textarea.form-control {
+    max-width: 100%;
+    background-color: white;
   }
 }
 
