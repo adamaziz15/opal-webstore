@@ -25,13 +25,20 @@
           product-translations="vm.productTranslations">
         </blue-sky-json-editor>
       </section>
+
+      <div ng-if="vm.quoteErrors.length > 0" class='text-right alert alert-danger'>
+        <div class='bottom-buffer-1' ng-repeat="error in vm.quoteErrors">
+          {{error}}
+        </div>
+      </div>
     </mno-widget-body>
   </mno-widget>
 
   <button ng-if="!vm.enableBSEditor" ng-click="vm.submit(vm.detailsForm)" ng-disabled="vm.isLoading || vm.detailsForm.$invalid" class="btn btn-primary pull-right top-buffer-1 bottom-buffer-1" translate>
     mnoe_admin_panel.dashboard.provisioning.details.next
   </button>
-  <button ng-if="vm.enableBSEditor" ng-click="vm.submit(vm.schemaDetails.editor.getValue())" ng-disabled="vm.isLoading || !vm.editorValid" class='btn btn-primary pull-right top-buffer-1'  translate>
-    mnoe_admin_panel.dashboard.provisioning.details.next
+  <button ng-if="vm.enableBSEditor" ng-click="vm.submit(vm.schemaDetails.editor.getValue())" ng-disabled="vm.isLoading || !vm.editorValid || vm.quoteLoading" class='btn btn-primary pull-right top-buffer-1'>
+    <span translate>mnoe_admin_panel.dashboard.provisioning.details.next</span>
+    <span ng-show="vm.quoteLoading"><i class='fa fa-spinner fa-pulse fa-fw'></i></span>
   </button>
 </div>
