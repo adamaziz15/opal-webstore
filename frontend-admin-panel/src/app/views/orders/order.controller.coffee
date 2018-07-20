@@ -173,6 +173,9 @@
           subscription: subscription
       )
 
+    filledCurrentSubscription = ->
+      !_.isEmpty(vm.curSubEditor) && !_.isEmpty(vm.curSubConfig) || vm.showNoDetailsProvied(vm.subscription.custom_data)
+
     vm.setReadOnlyFormVars = (requestType) ->
       return unless vm.dataLoading
 
@@ -183,7 +186,7 @@
         when 'requestedOrder'
           vm.reqSubEditor = vm.requestedSchemaDetails.editor if _.isEmpty(vm.reqSubEditor)
           vm.reqOrderConfig = vm.requestedSchemaDetails.editor.getValue() if _.isEmpty(vm.reqOrderConfig)
-      if !_.isEmpty(vm.curSubEditor) && !_.isEmpty(vm.curSubConfig) && !_.isEmpty(vm.reqSubEditor) && !_.isEmpty(vm.reqOrderConfig)
+      if filledCurrentSubscription() && !_.isEmpty(vm.reqSubEditor) && !_.isEmpty(vm.reqOrderConfig)
         vm.dataLoading = false
 
     return vm
