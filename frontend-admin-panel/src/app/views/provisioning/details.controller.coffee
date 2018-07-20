@@ -204,6 +204,8 @@
 
   vm.submit = (form) ->
     if vm.enableBSEditor
+      # Cache the editor instance
+      MnoeBlueSky.setBSEditor(vm.schemaDetails.editor)
       vm.subscription.custom_data = form
     else
       $scope.$broadcast('schemaFormValidate')
