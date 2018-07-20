@@ -1,4 +1,4 @@
-@App.controller('ProvisioningConfirmCtrl', ($scope, $q, $state, $stateParams, MnoeOrganizations, MnoeProvisioning, MnoeAdminConfig, ProvisioningHelper, MnoeBlueSky, schemaForm) ->
+@App.controller('ProvisioningConfirmCtrl', ($scope, $q, $log, $state, $stateParams, MnoeOrganizations, MnoeProvisioning, MnoeAdminConfig, ProvisioningHelper, MnoeBlueSky, schemaForm) ->
   vm = this
 
   vm.isLoading = true
