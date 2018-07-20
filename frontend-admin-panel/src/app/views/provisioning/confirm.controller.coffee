@@ -1,11 +1,12 @@
-@App.controller('ProvisioningConfirmCtrl', ($scope, $q, $state, $stateParams, MnoeOrganizations, MnoeProvisioning, MnoeAdminConfig, ProvisioningHelper, schemaForm) ->
+@App.controller('ProvisioningConfirmCtrl', ($scope, $q, $state, $stateParams, MnoeOrganizations, MnoeProvisioning, MnoeAdminConfig, ProvisioningHelper, MnoeBlueSky, schemaForm) ->
   vm = this
 
   vm.isLoading = true
+  vm.dataLoading = true
   orgPromise = MnoeOrganizations.get($stateParams.orgId)
   vm.subscription = MnoeProvisioning.getCachedSubscription()
   vm.selectedCurrency = MnoeProvisioning.getSelectedCurrency()
-  vm.bsEditorEnabled = vm.subscription.product.js_editor_enabled
+  vm.bsEditorEnabled = vm.subscription?.product?.js_editor_enabled
   vm.cartItem = $stateParams.cart == 'true'
   vm.quoteFetched = true
   vm.quoteBased = false
@@ -25,6 +26,9 @@
       else
         $state.go('dashboard.provisioning.additional_details', params, {reload: reload})
 
+  setupNewForm = ->
+    vm.editor = MnoeBlueSky.getCachedBSEditor()
+
   setCustomSchema = () ->
     parsedSchema = JSON.parse(vm.subscription.product.custom_schema)
     schema = parsedSchema.json_schema || parsedSchema
@@ -34,7 +38,8 @@
       .then((schema) -> schemaForm.jsonref(schema))
       .then((schema) ->
         vm.schema = schema
-      )
+        setupNewForm() if vm.bsEditorEnabled
+      ).finally(-> vm.dataLoading = false)
 
   if vm.subscription.product_pricing?.quote_based
     vm.quoteBased = true
