@@ -1,7 +1,7 @@
 GIT
-  remote: https://github.com/maestrano/mno-enterprise.git
-  revision: 5e8569dc7297ff3938b957e57edc762c9f7610ae
-  branch: 4.0
+  remote: https://github.com/MAhsenArif/mno-enterprise.git
+  revision: 2d32d6744f46478e8e4021433bdafb2146f5aae4
+  branch: expose_bs_products_on_subscription
   specs:
     mno-enterprise (4.0.0.pre.dev)
       mno-enterprise-api (= 4.0.0.pre.dev)
