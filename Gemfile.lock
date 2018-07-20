@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/MAhsenArif/mno-enterprise.git
-  revision: 2d32d6744f46478e8e4021433bdafb2146f5aae4
+  revision: 8e5a9d5b99c53adad1bb7e33e7b7abd5a5e1820e
   branch: expose_bs_products_on_subscription
   specs:
     mno-enterprise (4.0.0.pre.dev)
