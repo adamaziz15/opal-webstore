@@ -254,6 +254,8 @@ angular.module 'mnoEnterpriseAngular'
         vm.quoteLoading = true
         if vm.enableBSEditor
           vm.quoteErrors = []
+          # Cache the editor instance
+          MnoeBlueSky.setBSEditor(vm.schemaDetails.editor)
           vm.subscription.custom_data = form
           fetchQuote()
         else

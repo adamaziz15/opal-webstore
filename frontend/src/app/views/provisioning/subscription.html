@@ -1,0 +1,129 @@
+<div id="subscription" class="top-buffer-1">
+  <a ng-click="vm.subscriptionBackLink()" class="text-muted">
+    <i class="fa fa-chevron-left"></i>&nbsp;<span translate>mno_enterprise.templates.dashboard.provisioning.subscription.back</span>
+  </a>
+
+  <h2 class="text-color" translate>mno_enterprise.templates.dashboard.provisioning.subscription.subscription_info</h2>
+
+  <mno-loader ng-show="vm.isLoading" class="top-buffer-4"></mno-loader>
+  <div ng-if="!vm.isLoading">
+    <div class="row top-buffer-2">
+      <!-- Left column -->
+      <div class="col-sm-6">
+        <div class="well subscription-info">
+          <h3 class="text-color" translate>mno_enterprise.templates.dashboard.provisioning.subscription.info</h3>
+          <div class="form-group">
+            <label class="control-label text-color" translate>mno_enterprise.templates.dashboard.provisioning.subscription.product</label>
+            <input class="form-control hide-border" ng-model="vm.subscription.product.name" readonly/>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label text-color" translate>mno_enterprise.templates.dashboard.provisioning.subscription.subscription_info</label>
+            <input class="form-control hide-border" ng-if="vm.subscription.product_pricing" ng-model="vm.subscription.product_pricing.name" readonly/>
+            <div class="form-control hide-border" ng-hide="vm.subscription.product_pricing">
+              <span>{{ 'mno_enterprise.templates.dashboard.provisioning.subscription.not_available' | translate }}</span>&nbsp;<i class="fa fa-question-circle" uib-tooltip="{{'mno_enterprise.templates.dashboard.provisioning.subscriptions.tooltip.external_billing' | translate}}" tooltip-append-to-body="true"></i>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label text-color" translate>mno_enterprise.templates.dashboard.provisioning.subscription.description</label>
+            <input class="form-control hide-border" ng-model="vm.subscription.product_pricing.description" readonly/>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label text-color" translate>mno_enterprise.templates.dashboard.provisioning.subscription.start_date</label>
+            <div class="push-right">{{ vm.subscription.start_date | amDateFormat: 'L' }}</div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label text-color" translate>mno_enterprise.templates.dashboard.provisioning.subscription.end_date</label>
+            <div class="push-right">{{ vm.subscription.end_date | amDateFormat: 'L' }}</div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label text-color" translate>mno_enterprise.templates.dashboard.provisioning.subscription.status</label>
+            <div class="push-right">{{vm.subscription.status}}</div>
+            <a href="" ng-hide="!vm.displayInfoTooltip()" ng-click="vm.displayStatusInfo()"><i class="fa fa-info-circle"></i></a>
+          </div>
+
+          <div class="form-group" ng-show="vm.subscription.max_licenses">
+            <label class="control-label text-color" translate>mno_enterprise.templates.dashboard.provisioning.subscription.licenses</label>
+            <input class="form-control hide-border" ng-model="vm.subscription.max_licenses" readonly/>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label text-color" translate>mno_enterprise.templates.dashboard.provisioning.subscription.amount</label>
+            <ul>
+              <li ng-show="vm.pricedPlan(vm.subscription.product_pricing)" ng-repeat="price in vm.subscription.product_pricing.prices | filterBy: ['currency']: vm.subscription.currency">
+                <span class="badge">{{ price.currency }} {{ price.price_cents / 100 }}</span>
+                <span ng-show="vm.subscription.product_pricing.pricing_type == 'recurring'">
+                  / {{ vm.subscription.product_pricing.per_unit }} / {{ vm.subscription.product_pricing.per_duration }}
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="well subscription-events">
+          <h3 class="text-color" translate>mno_enterprise.templates.dashboard.provisioning.subscription.events</h3>
+          <span ng-show="vm.subscriptionEvents.length == 0" translate>mno_enterprise.templates.dashboard.provisioning.subscription.no_provisioning_events</span>
+          <div ng-repeat="subscriptionEvent in vm.subscriptionEvents">
+            <div class="row subscription-event">
+              <div class="col-sm-2">{{ subscriptionEvent.created_at | amDateFormat: 'L' }}</div>
+              <div class="col-sm-2">{{ subscriptionEvent.event_type }}</div>
+              <div class="col-sm-2">{{ subscriptionEvent.status }}</div>
+              <div class="col-sm-6">{{ subscriptionEvent.message }}</div>
+            </div>
+
+            <div class="row subscription-event-provisioning-data" ng-if="subscriptionEvent.provisioning_data">
+              <div class="col-sm-10 col-sm-offset-2">
+                <user-friendly-json-tree start-expanded="false" object="subscriptionEvent.provisioning_data" options="vm.jsonTreeSettings" root-name="vm.rootName"></user-friendly-json-tree>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right column -->
+      <div class="col-sm-6">
+        <div class="well">
+          <h3 class="text-color" translate>mno_enterprise.templates.dashboard.provisioning.subscription.provisioning_data</h3>
+          <span ng-hide="vm.subscription.provisioning_data" translate>mno_enterprise.templates.dashboard.provisioning.subscription.no_provisioning_data</span>
+          <json-formatter ng-show="vm.subscription.provisioning_data" open="2" json="vm.subscription.provisioning_data"></json-formatter>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="well">
+          <h3 class="text-color" translate>mno_enterprise.templates.dashboard.provisioning.subscription.custom_data</h3>
+          <span ng-hide="vm.schema" translate>mno_enterprise.templates.dashboard.provisioning.subscription.no_custom_data</span>
+          <form name="vm.detailsForm" ng-if="vm.schema && !vm.enableBSEditor" sf-schema="vm.schema" sf-form="vm.form" sf-model="vm.model" sf-options="{ formDefaults: { readonly: { true } }}"></form>
+
+          <section ng-if="vm.enableBSEditor && !vm.dataLoading" class='editor-json-form'>
+            <blue-sky-json-summary
+              editor="vm.editor"
+              target-object="vm.config">
+            </blue-sky-json-summary>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id='bs-editor-flow' ng-if="vm.loadHiddenEditor" class='hidden'>
+  <section class="editor-wrapper">
+    <blue-sky-json-editor
+      schema-name="vm.subscription.product.external_id"
+      schema="vm.schemaDetails.schema"
+      heading="true"
+      scrollable="true"
+      editor="vm.schemaDetails.editor"
+      initial-values="vm.subscription.custom_data"
+      error-translations="vm.errorTranslations"
+      product-translations="vm.productTranslations">
+    </blue-sky-json-editor>
+  </section>
+  <div ng-if="vm.schemaDetails.editor">
+    {{vm.setReadOnlyFormVars()}}
+  </div>
+</div>

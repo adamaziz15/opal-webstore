@@ -302,6 +302,7 @@ namespace :mnoe do
       rm_rf("#{frontend_dist_folder}/webworker")
       mkdir("#{frontend_dist_folder}/webworker")
       cp_r("Async-Editor/dist/webworker.js", "#{frontend_dist_folder}/webworker/webworker.js" )
+      cp_r("render-summary/renderSummary.webWoker.js", "#{frontend_dist_folder}/webworker/renderSummary.webWoker.js")
 
       # Copy DomWorker file
       rm_rf("#{frontend_dist_folder}/editor")
@@ -309,6 +310,7 @@ namespace :mnoe do
       cp_r("Async-Editor/domWorker.library.js", "#{frontend_dist_folder}/editor/domWorker.library.js" )
       cp_r("Async-Editor/editor-translations/jsoneditor_messages_en-us.js", "#{frontend_dist_folder}/editor/jsoneditor_messages_en-us.js" )
       cp_r("Async-Editor/editor-translations/product_schema_en-us.js", "#{frontend_dist_folder}/editor/product_schema_en-us.js" )
+      cp_r("render-summary/renderSummary.css", "#{frontend_dist_folder}/editor/renderSummary.css")
 
       # Copy bluesky-editor dependencies
       cp_r("Async-Editor/mathjs", "#{frontend_dist_folder}/editor/mathjs" )

@@ -128,7 +128,14 @@
       <mno-widget is-loading="vm.isLoading">
         <mno-widget-header></mno-widget-header>
         <mno-widget-body>
-          <form name="vm.detailsForm" sf-schema="vm.schema" sf-form="vm.form" sf-model="vm.subscription.custom_data" sf-options="{ formDefaults: { readonly: { true } } }"></form>
+          <form ng-if="!vm.bsEditorEnabled" name="vm.detailsForm" sf-schema="vm.schema" sf-form="vm.form" sf-model="vm.subscription.custom_data" sf-options="{ formDefaults: { readonly: { true } } }"></form>
+
+          <section ng-if="vm.bsEditorEnabled && !vm.dataLoading" class='editor-json-form'>
+            <blue-sky-json-summary
+              editor="vm.editor"
+              target-object="vm.subscription.custom_data">
+            </blue-sky-json-summary>
+          </section>
         </mno-widget-body>
       </mno-widget>
     </div>

@@ -76,6 +76,15 @@
         </tr>
         </tbody>
       </table>
+
+      <div ng-if="vm.bsEditorEnabled && !vm.dataLoading">
+        <section class='editor-json-form'>
+          <blue-sky-json-summary
+            editor="vm.editor"
+            target-object="vm.subscription.custom_data">
+          </blue-sky-json-summary>
+        </section>
+      </div>
     </mno-widget-body>
   </mno-widget>
 

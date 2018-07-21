@@ -1,10 +1,11 @@
-@App.controller('ProvisioningSummaryCtrl', ($q, $scope, $stateParams, MnoeOrganizations, MnoeProvisioning, MnoeAdminConfig, ProvisioningHelper) ->
+@App.controller('ProvisioningSummaryCtrl', ($q, $scope, $stateParams, MnoeOrganizations, MnoeProvisioning, MnoeAdminConfig, ProvisioningHelper, MnoeBlueSky) ->
   vm = this
 
   orgPromise = MnoeOrganizations.get($stateParams.orgId)
   vm.subscription = MnoeProvisioning.getCachedSubscription()
   vm.selectedCurrency = MnoeProvisioning.getSelectedCurrency()
   vm.quoteBased = false
+  vm.dataLoading = true
   subPromise = if _.isEmpty(vm.subscription)
     MnoeProvisioning.initSubscription({productId: $stateParams.productId, orgId: $stateParams.orgId, subscriptionId: $stateParams.subscriptionId})
   else
@@ -12,6 +13,11 @@
 
   vm.pricedPlan = ProvisioningHelper.pricedPlan
   vm.orderTypeText = 'mnoe_admin_panel.dashboard.provisioning.subscriptions.' + $stateParams.editAction.toLowerCase()
+
+  setSchemaReadOnlyData = ->
+    vm.editor = MnoeBlueSky.getCachedBSEditor()
+    return if _.isEmpty(vm.editor)
+    vm.dataLoading = false
 
   vm.isLoading = true
   $q.all({organization: orgPromise, subscription: subPromise}).then(
@@ -23,6 +29,7 @@
       vm.quoteBased = vm.subscription.product_pricing?.quote_based
       vm.quote = MnoeProvisioning.getCachedQuote() if vm.quoteBased
       vm.bsEditorEnabled = vm.subscription.product.js_editor_enabled
+      setSchemaReadOnlyData() if vm.bsEditorEnabled
   ).finally(-> vm.isLoading = false)
 
   vm.pricingText = () ->
