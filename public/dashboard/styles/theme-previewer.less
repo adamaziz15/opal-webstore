@@ -1446,34 +1446,6 @@ ul.dock > li.prev img.app-logo {
   }
 }
 
-dashboard-company-cart {
-  .company-cart {
-    position: absolute;
-    right: 300px;
-    width: @dashboard-cart-width;
-    height: @dashboard-cart-height;
-    background-color: @dashboard-cart-bg-color;
-    font-size: @dashboard-cart-text-size;
-    border-left: 1px solid @dashboard-cart-border-color;
-    border-bottom: 1px solid @dashboard-cart-border-color;
-    z-index: 999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    a {
-      &:hover {
-        text-decoration: none;
-      }
-    }
-
-    i {
-      font-size: 37px;
-      vertical-align: bottom;
-    }
-  }
-}
-
 
 dashboard-language-selectbox {
   display: block;
@@ -1481,157 +1453,6 @@ dashboard-language-selectbox {
   .selector-line {
     display: inline-block;
     margin: 5px auto;
-  }
-}
-
-dashboard-company-selectbox {
-  /*-----------------------------------------------------------------------*/
-  /*                       Company Select Box                              */
-  /*-----------------------------------------------------------------------*/
-  .company-select-box {
-    position: absolute;
-    right: 0;
-    width: @dashboard-cpy-select-width;
-    background-color: @dashboard-cpy-select-bg-color;
-    font-size: @dashboard-cpy-select-header-text-size;
-    border-radius: @dashboard-cpy-select-border-radius;
-    border-left: 1px solid @dashboard-cpy-select-border-color;
-    border-bottom: 1px solid @dashboard-cpy-select-border-color;
-    z-index: 999;
-    overflow: hidden;
-
-    @media (max-width: @screen-sm) {
-      border-radius: 0;
-    }
-
-    // Section always visible
-    .box-header {
-      cursor: pointer;
-      text-align: right;
-      outline: none;
-      display: flex;
-      align-items: center;
-      padding: 10px 20px;
-
-      img {
-        border-radius: 50%;
-        height: @dashboard-cpy-select-pic-width;
-        width: @dashboard-cpy-select-pic-width;
-      }
-
-      .title {
-        margin: 0 10px;
-        width: ~'calc(100% -' (2 * @dashboard-cpy-select-pic-width) ~')';
-        text-align: left;
-
-        .name {
-          font-weight: bold;
-          color: @dashboard-cpy-select-header-title-color;
-        }
-
-        .company {
-          width: 100%;
-          display: block;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          color: @dashboard-cpy-select-header-company-color;
-        }
-      }
-      .expand-menu {
-        margin-left: auto;
-      }
-    }
-
-    // Section visible when change company is clicked
-    .box-content {
-      border-top: solid 1px @dashboard-cpy-select-list-border-color;
-      overflow: hidden;
-
-      // General look of the links
-      a {
-        line-height: 17px;
-        display: block;
-        padding: 4px 0 4px 20px;
-        outline: none;
-      }
-
-      // List of companies
-      ul {
-        padding: 15px 20px 0 20px;
-        max-height: 400px;
-        min-width: 250px;
-        overflow-y: auto;
-
-        > li {
-
-          > a.company-link {
-            text-decoration: none;
-            padding: 4px;
-            display: flex;
-            color: @dashboard-cpy-select-link-text-color;
-
-            &:hover {
-              background-color: @dashboard-cpy-select-link-hover-bg-color;
-              color: @dashboard-cpy-select-link-hover-color;
-              border-bottom-left-radius: 0;
-            }
-
-            // Circle next to company name
-            // Indicate which company is currently viewed on dashboard
-            > i {
-              flex: 0 0 20px;
-              width: 13px;
-              padding: 2px 0;
-              display: inline-flex;
-              text-align: center;
-              color: @dashboard-cpy-select-link-icon-color;
-            }
-
-            > span {
-              text-align: left;
-              display: inline-flex;
-              flex: 1 1 auto;
-            }
-          }
-        }
-      }
-
-      .default-link {
-        color: @dashboard-cpy-select-link-color;
-        padding: 10px 20px;
-        text-align: left;
-        border-top: 1px solid @dashboard-cpy-select-list-border-color;
-
-        .btn {
-          width: 100%;
-          padding: 3px;
-        }
-
-        // Icon on the left side of the link
-        i {
-          width: 20px;
-          text-align: center;
-          font-size: 11pt;
-        }
-
-        &:hover {
-          text-decoration: none;
-          color: @dashboard-cpy-select-link-hover-color;
-          background-color: @dashboard-cpy-select-link-hover-bg-color;
-        }
-      }
-    }
-  }
-
-  @media (max-width: @screen-sm) {
-    .company-select-box {
-      width: 100%;
-      position: fixed;
-      border-left: none;
-      border-top: 1px solid @dashboard-cpy-select-border-color;
-      top: ~'calc(1px + ' @navbar-height ~')';  // Add top border
-    }
   }
 }
 
@@ -2550,6 +2371,15 @@ form.editable-wrap .editable-controls input {
   }
 }
 
+#impac {
+  impac-dashboard.with-dock {
+    @media(min-width: @screen-md-min) {
+      display: block;
+      .top-buffer-4;
+    }
+  }
+}
+
 .dashboard-organization {
 
   //-----------------------------------
@@ -2715,15 +2545,6 @@ form.editable-wrap .editable-controls input {
 
 .team-member-add-modal table tr td:last-child {
   text-align: left;
-}
-
-#impac {
-  impac-dashboard.with-dock {
-    @media(min-width: @screen-md-min) {
-      display: block;
-      .top-buffer-4;
-    }
-  }
 }
 
 //-------------------------------
@@ -3443,171 +3264,6 @@ form.editable-wrap .editable-controls input {
   }
 }
 
-#provisioning-confirm {
-  .add-to-cart {
-    padding: 3px 9px 3px 7px;
-
-    i {
-      font-size: 25px;
-    }
-  }
-}
-
-#provisioning-details {
-  .form-control[readonly] {
-    background-color: inherit;
-  }
-
-  #bs-editor-flow {
-    #editorjsonform button {
-      background: transparent;
-      border: 0;
-      box-shadow: none;
-    }
-
-    .editor-wrapper {
-      width: 80%;
-      margin: 0 auto;
-    }
-
-    .padding-5 {
-      padding-top: 5px !important;
-      padding-right: 5px !important;
-      padding-bottom: 5px !important;
-      padding-left: 5px !important;
-    }
-
-    center h3 {
-      width: 80%;
-      margin-bottom: 20px;
-    }
-  }
-}
-
-#provisioning-layout {
-  nav {
-    display: flex;
-    justify-content: space-around;
-    .top-buffer-5;
-
-    .breadcrumb-item {
-      // Deactivate the link
-      pointer-events: none;
-      color: @provisioning-breadcrumb-item-color;
-
-      .badge {
-        background-color: @provisioning-breadcrumb-item-badge-bg;
-      }
-
-      &.active {
-        color: @provisioning-breadcrumb-item-active-color;
-
-        .badge {
-          background-color: @provisioning-breadcrumb-item-active-badge-bg;
-        }
-      }
-    }
-  }
-
-  h1 {
-    .top-buffer-3;
-  }
-
-  .well {
-    .top-buffer-1;
-    background-color: @provisioning-well-bg-color;
-  }
-}
-
-#provisioning-order {
-  .row {
-    display: flex;
-    align-items: center;
-  }
-
-  .radio-selector {
-    display: flex;
-    justify-content: center;
-  }
-}
-
-#subscription {
-  a {
-    cursor: pointer;
-  }
-
-  .well {
-    h3 {
-      margin-top: 0;
-      margin-bottom: 16px;
-      padding-bottom: 8px;
-      border-bottom: 1px dashed @subscription-txt-color;
-    }
-
-    background-color: @subscription-box-color;
-  }
-
-  .text-color {
-    color: @subscription-txt-color;
-  }
-
-  form label.control-label {
-    color: @subscription-txt-color;
-  }
-
-  .form-control {
-    background-color: transparent;
-    box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
-  }
-
-  .has-success .form-control-feedback {
-    color: transparent;
-  }
-
-  .hide-border {
-    border: transparent;
-  }
-
-  .has-success .form-control {
-    border-color: transparent;
-  }
-
-  .well.subscription-info {
-    .form-group {
-      display: flex;
-    }
-
-    div, ul {
-      width: 100%;
-      margin-left: 14px;
-    }
-
-    label {
-      width: 180px;
-      padding-top: 6px;
-    }
-  }
-
-  .subscription-events .subscription-event {
-    padding-top: 5px;
-  }
-
-  .subscription-events .subscription-event-provisioning-data {
-    padding-bottom: 5px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.075);
-  }
-}
-
-#provisioning-subscriptions {
-  .well {
-    background-color: @provisioning-well-bg-color;
-  }
-}
-
-#provisioning-summary {
-
-}
-
 #public {
   background-color: @public-main-bg-color;
   top: 0;
@@ -3885,6 +3541,350 @@ form.editable-wrap .editable-controls input {
   }
 }
 
+#provisioning-confirm {
+  .add-to-cart {
+    padding: 3px 9px 3px 7px;
+
+    i {
+      font-size: 25px;
+    }
+  }
+}
+
+#provisioning-details {
+  .form-control[readonly] {
+    background-color: inherit;
+  }
+
+  #bs-editor-flow {
+    #editorjsonform button {
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+    }
+
+    .editor-wrapper {
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    .padding-5 {
+      padding-top: 5px !important;
+      padding-right: 5px !important;
+      padding-bottom: 5px !important;
+      padding-left: 5px !important;
+    }
+
+    center h3 {
+      width: 80%;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+#provisioning-layout {
+  nav {
+    display: flex;
+    justify-content: space-around;
+    .top-buffer-5;
+
+    .breadcrumb-item {
+      // Deactivate the link
+      pointer-events: none;
+      color: @provisioning-breadcrumb-item-color;
+
+      .badge {
+        background-color: @provisioning-breadcrumb-item-badge-bg;
+      }
+
+      &.active {
+        color: @provisioning-breadcrumb-item-active-color;
+
+        .badge {
+          background-color: @provisioning-breadcrumb-item-active-badge-bg;
+        }
+      }
+    }
+  }
+
+  h1 {
+    .top-buffer-3;
+  }
+
+  .well {
+    .top-buffer-1;
+    background-color: @provisioning-well-bg-color;
+  }
+}
+
+#provisioning-order {
+  .row {
+    display: flex;
+    align-items: center;
+  }
+
+  .radio-selector {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+#subscription {
+  a {
+    cursor: pointer;
+  }
+
+  .well {
+    h3 {
+      margin-top: 0;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px dashed @subscription-txt-color;
+    }
+
+    background-color: @subscription-box-color;
+  }
+
+  .text-color {
+    color: @subscription-txt-color;
+  }
+
+  form label.control-label {
+    color: @subscription-txt-color;
+  }
+
+  .form-control {
+    background-color: transparent;
+    box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
+  }
+
+  .has-success .form-control-feedback {
+    color: transparent;
+  }
+
+  .hide-border {
+    border: transparent;
+  }
+
+  .has-success .form-control {
+    border-color: transparent;
+  }
+
+  .well.subscription-info {
+    .form-group {
+      display: flex;
+    }
+
+    div, ul {
+      width: 100%;
+      margin-left: 14px;
+    }
+
+    label {
+      width: 180px;
+      padding-top: 6px;
+    }
+  }
+
+  .subscription-events .subscription-event {
+    padding-top: 5px;
+  }
+
+  .subscription-events .subscription-event-provisioning-data {
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.075);
+  }
+}
+
+#provisioning-subscriptions {
+  .well {
+    background-color: @provisioning-well-bg-color;
+  }
+}
+
+#provisioning-summary {
+
+}
+
+dashboard-company-cart {
+  .company-cart {
+    position: absolute;
+    right: 300px;
+    width: @dashboard-cart-width;
+    height: @dashboard-cart-height;
+    background-color: @dashboard-cart-bg-color;
+    font-size: @dashboard-cart-text-size;
+    border-left: 1px solid @dashboard-cart-border-color;
+    border-bottom: 1px solid @dashboard-cart-border-color;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    a {
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    i {
+      font-size: 37px;
+      vertical-align: bottom;
+    }
+  }
+}
+
+dashboard-company-selectbox {
+  /*-----------------------------------------------------------------------*/
+  /*                       Company Select Box                              */
+  /*-----------------------------------------------------------------------*/
+  .company-select-box {
+    position: absolute;
+    right: 0;
+    width: @dashboard-cpy-select-width;
+    background-color: @dashboard-cpy-select-bg-color;
+    font-size: @dashboard-cpy-select-header-text-size;
+    border-radius: @dashboard-cpy-select-border-radius;
+    border-left: 1px solid @dashboard-cpy-select-border-color;
+    border-bottom: 1px solid @dashboard-cpy-select-border-color;
+    z-index: 999;
+    overflow: hidden;
+
+    @media (max-width: @screen-sm) {
+      border-radius: 0;
+    }
+
+    // Section always visible
+    .box-header {
+      cursor: pointer;
+      text-align: right;
+      outline: none;
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+
+      img {
+        border-radius: 50%;
+        height: @dashboard-cpy-select-pic-width;
+        width: @dashboard-cpy-select-pic-width;
+      }
+
+      .title {
+        margin: 0 10px;
+        width: ~'calc(100% -' (2 * @dashboard-cpy-select-pic-width) ~')';
+        text-align: left;
+
+        .name {
+          font-weight: bold;
+          color: @dashboard-cpy-select-header-title-color;
+        }
+
+        .company {
+          width: 100%;
+          display: block;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          color: @dashboard-cpy-select-header-company-color;
+        }
+      }
+      .expand-menu {
+        margin-left: auto;
+      }
+    }
+
+    // Section visible when change company is clicked
+    .box-content {
+      border-top: solid 1px @dashboard-cpy-select-list-border-color;
+      overflow: hidden;
+
+      // General look of the links
+      a {
+        line-height: 17px;
+        display: block;
+        padding: 4px 0 4px 20px;
+        outline: none;
+      }
+
+      // List of companies
+      ul {
+        padding: 15px 20px 0 20px;
+        max-height: 400px;
+        min-width: 250px;
+        overflow-y: auto;
+
+        > li {
+
+          > a.company-link {
+            text-decoration: none;
+            padding: 4px;
+            display: flex;
+            color: @dashboard-cpy-select-link-text-color;
+
+            &:hover {
+              background-color: @dashboard-cpy-select-link-hover-bg-color;
+              color: @dashboard-cpy-select-link-hover-color;
+              border-bottom-left-radius: 0;
+            }
+
+            // Circle next to company name
+            // Indicate which company is currently viewed on dashboard
+            > i {
+              flex: 0 0 20px;
+              width: 13px;
+              padding: 2px 0;
+              display: inline-flex;
+              text-align: center;
+              color: @dashboard-cpy-select-link-icon-color;
+            }
+
+            > span {
+              text-align: left;
+              display: inline-flex;
+              flex: 1 1 auto;
+            }
+          }
+        }
+      }
+
+      .default-link {
+        color: @dashboard-cpy-select-link-color;
+        padding: 10px 20px;
+        text-align: left;
+        border-top: 1px solid @dashboard-cpy-select-list-border-color;
+
+        .btn {
+          width: 100%;
+          padding: 3px;
+        }
+
+        // Icon on the left side of the link
+        i {
+          width: 20px;
+          text-align: center;
+          font-size: 11pt;
+        }
+
+        &:hover {
+          text-decoration: none;
+          color: @dashboard-cpy-select-link-hover-color;
+          background-color: @dashboard-cpy-select-link-hover-bg-color;
+        }
+      }
+    }
+  }
+
+  @media (max-width: @screen-sm) {
+    .company-select-box {
+      width: 100%;
+      position: fixed;
+      border-left: none;
+      border-top: 1px solid @dashboard-cpy-select-border-color;
+      top: ~'calc(1px + ' @navbar-height ~')';  // Add top border
+    }
+  }
+}
+
 #app-connect-modal {
 
   select {
@@ -4145,6 +4145,13 @@ form.editable-wrap .editable-controls input {
   }
 }
 
+.create-review-modal {
+  textarea.form-control {
+    max-width: 100%;
+    background-color: white;
+  }
+}
+
 #app-info {
   ul {
     margin: 0;
@@ -4161,13 +4168,6 @@ form.editable-wrap .editable-controls input {
   mno-app-features {
     float: right;
     width: 250px;
-  }
-}
-
-.create-review-modal {
-  textarea.form-control {
-    max-width: 100%;
-    background-color: white;
   }
 }
 
