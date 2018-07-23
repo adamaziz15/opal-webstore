@@ -42,7 +42,7 @@ angular.module 'mnoEnterpriseAngular'
         else
           $state.go('home.provisioning.additional_details', urlParams, {reload: reload})
 
-    if vm.subscription.product_pricing?.quote_based
+    if vm.subscription.product_pricing?.quote_based || vm.subscription.product.js_editor_enabled
       vm.quoteBased = true
       vm.quoteFetched = false
       MnoeProvisioning.getQuote(vm.subscription, vm.selectedCurrency).then(
@@ -117,7 +117,7 @@ angular.module 'mnoEnterpriseAngular'
     )
 
     vm.pricingText = () ->
-      if !vm.singleBilling
+      if !vm.singleBilling || vm.subscription.product.js_editor_enabled
         'mno_enterprise.templates.dashboard.provisioning.confirm.pricing_info.single_billing_disabled'
       else if vm.billedLocally
         'mno_enterprise.templates.dashboard.provisioning.confirm.pricing_info.billed_locally'
