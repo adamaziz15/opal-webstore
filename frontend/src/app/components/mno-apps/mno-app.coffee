@@ -75,6 +75,7 @@ angular.module 'mnoEnterpriseAngular'
       MnoeMarketplace.fetchCustomSchema(product.id, {}).then(
         (response) ->
           vm.currenciesList = JSON.parse(response)?.currencies_list || []
+          vm.pricing_plans = null unless (vm.currency in vm.currenciesList)
       ).finally(-> vm.dataLoading = false)
 
     vm.initialize = (app, appInstance, product) ->
