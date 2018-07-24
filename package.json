@@ -5,7 +5,7 @@
     "impac-angular": "git+https://git@github.com/maestrano/impac-angular.git#1.6.x",
     "mathjs": "^5.0.0",
     "mno-enterprise-angular": "git+https://git@github.com/maestrano/mno-enterprise-angular.git#2.0",
-    "mnoe-admin-panel": "git+https://git@github.com/maestrano/mnoe-admin-panel.git#2.0",
+    "mnoe-admin-panel": "git+https://git@github.com/RidaAhmad/mnoe-admin-panel.git#mnoe-1265-admin-panel-does-not-respect-currency-selection-setting",
     "moment-jdateformatparser": "^1.2.1"
   },
   "engines": {
