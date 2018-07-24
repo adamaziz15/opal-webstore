@@ -1,0 +1,340 @@
+<div class="dashboard-marketplace-app">
+  <mno-loader ng-show="vm.isLoading" class="top-buffer-4"></mno-loader>
+  <!-- Header -->
+  <div class="row show-header top-buffer-4">
+    <div class="col-md-12">
+      <a ui-sref="{{vm.parentState}}" class="text-muted">
+        <i class="fa fa-chevron-left"></i> {{ 'mno_enterprise.templates.dashboard.marketplace.show.back' | translate }}
+      </a>
+      <div class="media" ng-show="!vm.isLoading">
+        <div class="pull-left">
+          <img class="media-object" ng-src="{{vm.app.logo}}" ng-alt="{{vm.app.name}}">
+        </div>
+        <div class="media-body">
+          <h2 class="media-heading">{{vm.app.name}}</h2>
+        </div>
+        <div class="app-rating pull-left">
+          <div ng-show="vm.isRateDisplayed">
+            <average-star-rating ng-model="vm.averageRating" display-rating="true" max="5"></average-star-rating>
+          </div>
+        </div>
+        <div ng-if="!vm.isPublic" class="pull-left links">
+          <a ng-show="vm.anyReviews" ng-click="vm.scrollToReviews()" href="">{{vm.reviews.list.length}} {{'mno_enterprise.templates.dashboard.marketplace.show.reviews' | translate}}</a>
+          <span ng-if="vm.anyReviews && vm.anyQuestions">&nbsp;|&nbsp;</span>
+          <a ng-show="vm.anyQuestions" ng-click="vm.scrollToQuestions()" href="">{{vm.questions.list.length}} {{'mno_enterprise.templates.dashboard.marketplace.show.questions' | translate}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="show-content top-buffer-1" ng-show="!vm.isLoading">
+
+    <!-- Pics/details row -->
+    <div class="row">
+      <div class="col-md-8">
+        <div class="well carousel">
+          <div uib-carousel interval="3000" active="0">
+            <div uib-slide ng-repeat="picture in vm.app.pictures" class="screenshot" index="$index">
+              <img ng-src={{picture}} alt="screenshot">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="well text-center well-details">
+          <div ng-if="!vm.isPublic" class="row">
+            <div class="col-xs-12 col-sm-4 col-sm-offset-4 col-md-8 col-md-offset-2">
+              <span ng-if="vm.dataLoading">
+                <i class='fa fa-refresh fa-spin fa-3x fa-fw'></i>
+              </span>
+              <mno-app-install-btn
+                ng-if="!vm.dataLoading"
+                app="vm.app"
+                blue-sky-flag="vm.enableBSEditor"
+                currencies-list="vm.currenciesList">
+              </mno-app-install-btn>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+              <ul class="app-features">
+                <li ng-show="vm.app.is_responsive">
+                  <img class="feature-logo" src="images/icons/mobile-responsive-logo.png" alt="Responsive"> {{ 'mno_enterprise.templates.dashboard.marketplace.show.tag_responsive' | translate }}
+                </li>
+                <li ng-show="vm.app.is_star_ready" uib-tooltip="Your live tutorials directly inside your app">
+                  <img class="feature-logo" src="images/icons/star-enabled-logo.png" alt="Star! enabled"> {{ 'mno_enterprise.templates.dashboard.marketplace.show.tag_star' | translate }}
+                </li>
+                <li ng-show="vm.app.is_connec_ready" uib-tooltip="Your Data automatically shared between your applications">
+                  <img class="feature-logo" src="images/icons/connec-enabled-logo.png" alt="Connec! enabled"> {{ 'mno_enterprise.templates.dashboard.marketplace.show.tag_connec' | translate }}
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-12 col-md-offset-0">
+              <ul class="key-benefits">
+                <li ng-repeat="benefit in vm.app.key_benefits track by $index">
+                  <i class="fa fa-check"></i>
+                  {{benefit}}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End pics/details row -->
+
+    <!-- Testimonials row -->
+    <div class="row">
+      <div class="col-md-6" ng-repeat="testimonial in vm.app.testimonials | limitTo:2" ng-show="vm.isTestimonialShown(testimonial)">
+        <div class="ribbon-testimonial">
+          <div class="body">
+            {{testimonial.text}}
+            <div class="arrow"></div>
+          </div>
+          <div class="from">
+            <div class="name">{{testimonial.author}}</div>
+            <div class="company">{{testimonial.company}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Description row -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="well top-buffer-1" ta-bind="text" ng-model="vm.app.description" ta-readonly="disabled"> </div>
+      </div>
+    </div>
+
+    <!-- Pricing -->
+    <div ng-if="vm.isPriceShown" class="row top-buffer-1">
+      <div class="col-md-12">
+        <div class="well">
+          <h2>{{ 'mno_enterprise.templates.dashboard.marketplace.show.price' | translate }}</h2>
+          <div translate ng-if="!vm.pricing_plans && !vm.skipPriceSelection">
+            {{ 'mno_enterprise.templates.dashboard.marketplace.show.no_pricing_plans_found' | translate }}
+          </div>
+          <ul ng-if="vm.pricing_plans">
+            <li ng-if="vm.app.free_trial_duration > 0">
+              <b>{{ 'mno_enterprise.templates.dashboard.marketplace.show.free_trial_duration' | translate }}</b>: {{vm.app.free_trial_duration}} {{vm.app.free_trial_unit}}
+            </li>
+            <li ng-repeat="plan in vm.pricing_plans">
+              <b>{{plan.name}}</b>: {{plan.description}}&nbsp;<i ng-show="plan.quote_based" class="fa fa-question-circle" uib-tooltip="{{ 'mno_enterprise.templates.dashboard.marketplace.show.quote_based' | translate }}"></i>
+              <br>
+              <div ng-show="vm.pricedPlan(plan)">
+                <span>{{plan.currency}}</span>
+                <span ng-show="plan.price.value">{{plan.price.value}}</span>
+                <span ng-hide="plan.price.value">{{plan.price}}</span>
+                <span ng-show="plan.pricing_type == 'recurring'">{{plan.factor}}</span>
+              </div>
+              <div ng-show="plan.pricing_type == 'payg'">
+                <span>{{ 'mno_enterprise.templates.dashboard.marketplace.show.pricing.payg' | translate }}</span>
+              </div>
+            </li>
+          </ul>
+          <div ng-bind-html="vm.app.pricing_text"></div>
+        </div>
+      </div>
+    </div>
+
+    <uib-tabset ng-if="!vm.isPublic" id="review-tabs" active="active" class="bottom-buffer-10">
+      <uib-tab ng-if="vm.isReviewingEnabled" index="0" heading="Feedback">
+        <!-- Comments & Ratings -->
+        <div id="comments">
+          <div class="add-review">
+            <span ng-show="vm.appInstance">
+              {{ 'mno_enterprise.templates.dashboard.marketplace.show.company_feedback' | translate }}:
+              <button type="button" class="btn btn-warning" ng-click="vm.openCreateReviewModal()">
+                {{ 'mno_enterprise.templates.dashboard.marketplace.show.write_review' | translate }}
+              </button>
+            </span>
+            <span ng-if="!vm.appInstance" class="add-review">
+              {{ 'mno_enterprise.templates.dashboard.marketplace.show.no_app_no_review' | translate }}
+            </span>
+            <span class="pull-right" ng-if="vm.reviews.list.length != 0">
+              <label>{{ 'mno_enterprise.templates.dashboard.marketplace.show.filter' | translate }}</label>
+              <select class="filter-reviews form-control" ng-model="vm.sortReviewsBy" ng-change="vm.orderFeedbacks()">
+                <option value="rating.asc">{{ 'mno_enterprise.templates.dashboard.marketplace.show.filter_rating_ask' | translate }}</option>
+                <option value="rating.desc">{{ 'mno_enterprise.templates.dashboard.marketplace.show.filter_rating_desc' | translate }}</option>
+                <option value="created_at.asc">{{ 'mno_enterprise.templates.dashboard.marketplace.show.filter_date_ask' | translate }}</option>
+                <option value="created_at.desc" selected="selected">{{ 'mno_enterprise.templates.dashboard.marketplace.show.filter_date_desc' | translate }}</option>
+              </select>
+            </span>
+          </div>
+          <div class='loading-icon'>
+            <span ng-show="vm.reviews.loading">
+              <i class="fa fa-refresh fa-spin fa-3x fa-fw"></i>
+            </span>
+          </div>
+          <div ng-if="vm.reviews.list.length == 0 && !vm.reviews.loading">
+            <span class='pages-selector no-review-container' translate translate-value-name="{{vm.app.name}}">
+              mno_enterprise.templates.dashboard.marketplace.show.no_review
+            </span>
+          </div>
+          <div class="well" ng-hide='vm.reviews.loading'>
+            <div ng-repeat="(key, review) in vm.reviews.list">
+              <!-- Review -->
+              <div class="row">
+                <div class="col-md-8">
+                  <blockquote>
+                    <average-star-rating ng-model="review.rating" readonly="true"></average-star-rating>
+                    <span>{{review.description}}</span>
+                    <footer class="top-buffer-1">
+                      <span>{{review.user_name}} {{ 'mno_enterprise.templates.dashboard.marketplace.show.from' | translate }} </span>
+                      <cite title="{{review.organization_name}}">{{review.organization_name}}</cite> {{ 'mno_enterprise.templates.dashboard.marketplace.show.on' | translate
+                      }}
+                      <span ng-if="review.created_at"> {{review.created_at | date: "dd/MM/yyyy" }}</span>
+                      <span ng-if="!review.created_at"> {{ 'mno_enterprise.templates.dashboard.marketplace.show.just_now' | translate }}</span>
+                      <span ng-if="review.edited"> -
+                        <span ng-if="review.edited_by_id == review.user_id" uib-tooltip="{{ 'mno_enterprise.templates.dashboard.marketplace.show.edited_by_user_tooltip' | translate }}"
+                          ng-click="vm.showHistory(review)">
+                          {{ 'mno_enterprise.templates.dashboard.marketplace.show.edited_by_user' | translate }}
+                        </span>
+                        <span ng-if="review.edited_by_id != review.user_id">
+                          {{ 'mno_enterprise.templates.dashboard.marketplace.show.edited_by_admin' | translate }}
+                        </span>
+                      </span>
+                      <a class="comments-show" ng-hide="review.showComments || review.comments.length == 0" ng-click="review.showComments = true"
+                        href="">{{'mno_enterprise.templates.dashboard.marketplace.show.comment.feedback_list_links' | translate:{COUNT:
+                        review.comments.length} }}</a>
+                      <a class="comments-show" ng-show="review.showComments" ng-click="review.showComments = false" href="">{{'mno_enterprise.templates.dashboard.marketplace.show.comment.hide_comments' | translate}}</a>
+                    </footer>
+                  </blockquote>
+                </div>
+                <div class="col-md-4 text-right">
+                  <a class="btn btn-link btn-link-warning" href="" ng-if="vm.canUserEditReview(review)" ng-click="vm.openEditReviewModal(review, key)">
+                    <i class="fa fa-edit"></i> {{'mno_enterprise.templates.dashboard.marketplace.show.edit' | translate}}</a>
+                  <a class="btn btn-link btn-link-danger" href="" ng-if="vm.canUserEditReview(review)" ng-click="vm.openDeleteReviewModal(review, key)">
+                    <i class="fa fa-trash"></i> {{'mno_enterprise.templates.dashboard.marketplace.show.delete' | translate}}</a>
+                  <a class="btn btn-link btn-link-primary" href="" ng-click="vm.openCreateCommentModal(review, key)">
+                    <i class="fa fa-plus"></i> {{'mno_enterprise.templates.dashboard.marketplace.show.comment.feedback_list_links' | translate}}</a>
+                </div>
+              </div>
+
+              <!-- Comments -->
+              <div class="clearfix" ng-show="review.showComments" ng-repeat="(i, comment) in review.comments">
+                <div class="comment">
+                  <span class="pull-right top-buffer-1">
+                    <a class="btn btn-link btn-link-warning" ng-if="vm.canUserEditReview(comment)" ng-click="vm.openEditCommentModal(comment, i, key)">
+                      <i class="fa fa-edit"></i> {{'mno_enterprise.templates.dashboard.marketplace.show.edit' | translate}}</a>
+                    <a class="btn btn-link btn-link-danger" ng-if="vm.canUserEditReview(comment)" ng-click="vm.openDeleteCommentModal(comment, i, key)">
+                      <i class="fa fa-trash"></i> {{'mno_enterprise.templates.dashboard.marketplace.show.delete' | translate}}</a>
+                  </span>
+                  <blockquote>
+                    <p class="comment-description">{{comment.description}}</p>
+                    <footer class="top-buffer-1">
+                      <span ng-if="comment.user_admin_role == 'admin'">
+                        <span>{{comment.user_name}}, {{ 'mno_enterprise.templates.dashboard.marketplace.show.platform_admin' |
+                          translate }} </span>
+                      </span>
+                      <span ng-if="comment.user_admin_role != 'admin'">
+                        <span>{{comment.user_name}} {{ 'mno_enterprise.templates.dashboard.marketplace.show.from' | translate }}
+                        </span>
+                        <cite title="{{comment.organization_name}}">{{comment.organization_name}}</cite>
+                      </span>
+                      {{ 'mno_enterprise.templates.dashboard.marketplace.show.on' | translate }}
+                      <span ng-if="comment.created_at"> {{comment.created_at | date: "dd/MM/yyyy" }}</span>
+                      <span ng-if="!comment.created_at"> {{ 'mno_enterprise.templates.dashboard.marketplace.show.just_now' | translate }}</span>
+                      <span ng-if="comment.edited"> -
+                        <span ng-if="comment.edited_by_id == comment.user_id && comment.user_admin_role != 'admin'" uib-tooltip="{{ 'mno_enterprise.templates.dashboard.marketplace.show.edited_by_user_tooltip' | translate }}"
+                          ng-click="vm.showHistory(comment)">
+                          {{ 'mno_enterprise.templates.dashboard.marketplace.show.edited_by_user' | translate }}
+                        </span>
+                        <span ng-if="comment.edited_by_id != comment.user_id || comment.user_admin_role == 'admin'">
+                          {{ 'mno_enterprise.templates.dashboard.marketplace.show.edited_by_admin' | translate }}
+                        </span>
+                      </span>
+                    </footer>
+                  </blockquote>
+                </div>
+              </div>
+            </div>
+
+            <mno-pagination ng-if="vm.reviews.list.length != 0 " page="vm.reviews.page" nb-items="vm.reviews.nbItems" total-items="vm.reviews.totalItems"
+              on-change-cb="vm.reviews.pageChangedCb(vm.app.id, nbItems, page)" is-loading="vm.reviews.loading">
+            </mno-pagination>
+          </div>
+        </div>
+      </uib-tab>
+      <uib-tab ng-if="vm.areQuestionsEnabled" index="1" heading="Questions">
+        <div class="questions">
+          <div class="clearfix">
+            <div class="questions-panel pull-right">
+              <form>
+                <input class="form-control" type="text" name="name" value="" placeholder="{{'mno_enterprise.templates.dashboard.marketplace.show.question_search' | translate}}"
+                  ng-model="vm.searchWord">
+                <button class="fa fa-search" type="button" name="button" ng-click="vm.searchQuestion()"></button>
+              </form>
+              <button class="btn btn-primary" type="button" name="button" ng-click="vm.openCreateQuestionModal()">{{'mno_enterprise.templates.dashboard.marketplace.show.question_ask' | translate}}</button>
+            </div>
+          </div>
+          <div class='login-icon'>
+            <span ng-show="vm.questions.loading">
+              <i class="fa fa-refresh fa-spin fa-3x fa-fw"></i>
+            </span>
+          </div>
+          <div class="row">
+            <div ng-if="vm.questions.list.length == 0">
+              <span class="no-question-container" translate translate-value-name="{{vm.app.name}}">
+                mno_enterprise.templates.dashboard.marketplace.show.question.no_question
+              </span>
+            </div>
+
+            <div class="col-md-12" ng-repeat="(key, question) in vm.questions.list | filterQuestions:vm.searchWord">
+              <div class="ribbon-question">
+                <div class="row">
+                  <div class="row question-body">
+                    <div class="col-sm-9">
+                      <div class="col-md-2 question-title">
+                        {{'mno_enterprise.templates.dashboard.marketplace.show.question_title' | translate}}
+                      </div>
+                      <div class="col-md-10">
+                        <p class="question-text">{{ question.description }}</p>
+                        <p ng-if="question.user_admin_role != 'admin'" class="question-attribute">Posted by: {{ question.user_name }} in {{ question.organization_name }} on {{ question.created_at
+                          | date: "dd/MM/yyyy" }}</p>
+                        <p ng-if="question.user_admin_role == 'admin'" class="question-attribute">Posted by: {{ question.user_name }}, {{ 'mno_enterprise.templates.dashboard.marketplace.show.platform_admin'
+                          | translate }} on {{ question.created_at | date: "dd/MM/yyyy" }}</p>
+                      </div>
+                    </div>
+                    <div class="col-sm-3 question-actions">
+                      <a class="btn btn-link btn-link-primary" name="button" ng-if="vm.appInstance" ng-click="vm.openCreateAnswerModal(question, key)">
+                        <i class="fa fa-plus"></i> {{'mno_enterprise.templates.dashboard.marketplace.show.answer_q' | translate}}</a>
+                      <a class="btn btn-link btn-link-warning" name="button" ng-if="question.user_id == vm.userId" ng-click="vm.openEditQuestionModal(question, key)">
+                        <i class="fa fa-edit"></i> {{'mno_enterprise.templates.dashboard.marketplace.show.edit_q' | translate}}</a>
+                      <a class="btn btn-link btn-link-danger" name="button" ng-if="question.user_id == vm.userId" ng-click="vm.openDeleteQuestionModal(question, key)">
+                        <i class="fa fa-trash"></i> {{'mno_enterprise.templates.dashboard.marketplace.show.delete_q' | translate}}</a>
+                    </div>
+                  </div>
+                  <div class="row question-answers">
+                    <div class="col-xs-12">
+                      <div class="col-md-2 question-title">
+                        {{'mno_enterprise.templates.dashboard.marketplace.show.answers' | translate}}
+                      </div>
+                      <div class="col-md-10">
+                        <div class="question-answer" ng-repeat="(i, answer) in filteredAnswers = (question.answers | filter:{ status: 'approved' })">
+                          <p class="question-text">{{ answer.description }} </p>
+                          <p ng-if="answer.user_admin_role != 'admin'" class="question-attribute">Posted by {{ answer.user_name }} in {{ answer.organization_name }} on {{ answer.created_at | date:
+                            "dd/MM/yyyy" }}</p>
+                          <p ng-if="answer.user_admin_role == 'admin'" class="question-attribute">Posted by {{ answer.user_name }}, {{ 'mno_enterprise.templates.dashboard.marketplace.show.platform_admin'
+                            | translate }} on {{ answer.created_at | date: "dd/MM/yyyy" }}</p>
+                          <button class="btn btn-xs btn-warning" type="button" name="button" ng-if="answer.user_id == vm.userId" ng-click="vm.openEditAnswerModal(answer, i, key)">{{'mno_enterprise.templates.dashboard.marketplace.show.edit' | translate}}</button>
+                          <button class="btn btn-xs btn-danger" type="button" name="button" ng-if="answer.user_id == vm.userId" ng-click="vm.openDeleteAnswerModal(answer, i, key)">{{'mno_enterprise.templates.dashboard.marketplace.show.delete' | translate}}</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </uib-tab>
+    </uib-tabset>
+  </div>
+</div>
