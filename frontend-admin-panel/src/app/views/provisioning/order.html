@@ -1,0 +1,77 @@
+<div id="provisioning-order">
+  <mno-widget is-loading="vm.isLoading" icon="fa-sitemap" heading="{{ vm.subscriptionPlanText | translate }}">
+    <mno-widget-header>
+      <div class="breadcrumb-info">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item active">- {{ vm.subscription.product.name }}</li>
+        </ol>
+      </div>
+    </mno-widget-header>
+    <mno-widget-body class="no-padding">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th></th>
+          <th>{{ 'mnoe_admin_panel.dashboard.provisioning.order.name' | translate }}</th>
+          <th>{{ 'mnoe_admin_panel.dashboard.provisioning.order.description' | translate }}</th>
+          <th id="order-price">{{ 'mnoe_admin_panel.dashboard.provisioning.order.price' | translate }}</th>
+          <th><select class="form-control" ng-if="::main.adminConfig.isCurrencySelectionEnabled()" ng-model="vm.selectedCurrency" ng-options="c for c in vm.currencies" ng-change="vm.filterCurrencies()">
+          </select></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-if="vm.filteredPricingPlans.length === 0">
+          <td colspan="4" class="text-center">{{ 'mnoe_admin_panel.dashboard.provisioning.order.no_pricing_found' | translate:{'currency': vm.orgCurrency} }}</td>
+        </tr>
+        <tr ng-repeat="pricingPlan in vm.filteredPricingPlans" ng-click="vm.selectPlan(pricingPlan)">
+          <td><input type="radio" name="optradio" ng-model="vm.subscription.product_pricing.id" ng-value="pricingPlan.id"></td>
+          <td>{{ pricingPlan.name }}</td>
+          <td>{{ pricingPlan.description }}</td>
+          <td>
+            <span ng-show="vm.pricedPlan(pricingPlan)" ng-repeat="price in pricingPlan.prices | filterBy: ['currency']: vm.selectedCurrency" class="badge">
+              {{ price.currency }} {{ price.price_cents / 100 }}
+            </span>
+            <span ng-show="pricingPlan.pricing_type == 'recurring'">
+              / {{ pricingPlan.per_unit }} / {{ pricingPlan.per_duration }}
+            </span>
+            <span ng-show="pricingPlan.pricing_type == 'payg'">
+              {{ 'mnoe_admin_panel.dashboard.provisioning.order.pricing_type.payg' | translate }}
+            </span>
+            <span ng-show="pricingPlan.pricing_type == 'free'">
+              {{ 'mnoe_admin_panel.dashboard.provisioning.order.pricing_type.free' | translate }}
+            </span>
+          </td>
+          <td />
+        </tr>
+        </tbody>
+      </table>
+
+      <table class="table table-striped" id="license-table" ng-show="vm.subscription.product_pricing.license_based">
+        <tr>
+          <td>
+            <label>{{ 'mnoe_admin_panel.dashboard.provisioning.order.licenses' | translate }}:
+              <input type="number" name="input" ng-model="vm.subscription.max_licenses" min="1" ng-required="vm.subscription.product_pricing.license_based">
+            </label>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <label>{{ 'mnoe_admin_panel.dashboard.provisioning.order.total' | translate }}:
+              <span ng-show="vm.pricedPlan(vm.subscription.product_pricing.pricing_type)" ng-repeat="price in vm.subscription.product_pricing.prices | filterBy: ['currency']: vm.orgCurrency" class="badge">
+                {{ price.currency }} {{ price.price_cents / 100 * vm.subscription.max_licenses | number:2 }}
+              </span>
+              <span ng-show="vm.subscription.product_pricing.pricing_type == 'recurring'">
+                / {{ vm.subscription.product_pricing.per_unit }} / {{ vm.subscription.product_pricing.per_duration }}
+              </span>
+            </label>
+          </div>
+        </tr>
+      </table>
+    </mno-widget-body>
+  </mno-widget>
+
+  <button class="btn btn-primary top-buffer-1 pull-right" ng-click="vm.next(vm.subscription, vm.selectedCurrency)" ng-hide="vm.isLoading" ng-disabled="!vm.subscription.product_pricing" translate>
+    mnoe_admin_panel.dashboard.provisioning.order.next
+  </button>
+</div>

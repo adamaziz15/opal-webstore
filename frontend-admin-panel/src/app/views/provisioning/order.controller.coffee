@@ -6,6 +6,7 @@
   vm.selectedCurrency = ""
   vm.filteredPricingPlans = []
   vm.currenciesList = []
+  vm.isCurrencySelectionEnabled = MnoeAdminConfig.isCurrencySelectionEnabled()
   vm.pricedPlan = ProvisioningHelper.pricedPlan
 
   urlParams = {
@@ -62,10 +63,10 @@
       MnoeProvisioning.getSelectedCurrency()
     else if vm.subscription.currency
       vm.subscription.currency
-    else if vm.currencies.includes(vm.orgCurrency)
-      vm.orgCurrency
-    else
+    else if !vm.currencies.includes(vm.orgCurrency) && vm.isCurrencySelectionEnabled
       vm.currencies[0]
+    else
+      vm.orgCurrency
 
 
   fetchProduct = () ->
