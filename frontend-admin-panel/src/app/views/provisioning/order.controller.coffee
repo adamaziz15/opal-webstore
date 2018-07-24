@@ -6,6 +6,7 @@
   vm.selectedCurrency = ""
   vm.filteredPricingPlans = []
   vm.isCurrencySelectionEnabled = MnoeAdminConfig.isCurrencySelectionEnabled()
+  vm.currenciesList = []
   vm.pricedPlan = ProvisioningHelper.pricedPlan
 
   urlParams = {
@@ -40,6 +41,11 @@
       vm.subscription = response.subscription
       vm.subscription.organization_id = response.organization.data.id
     )
+
+  # Set currencies from BS Response if it is a BS product
+  loadBSBasedCurrencies = ->
+    if vm.subscription.product.js_editor_enabled
+        vm.currenciesList = JSON.parse(vm.subscription.product.custom_schema)?.currencies_list || []
 
   populateCurrencies = () ->
     currenciesArray = []
@@ -77,15 +83,22 @@
         MnoeProvisioning.setSubscription(vm.subscription)
     )
 
-  fetchCustomSchema = () ->
+  fetchCustomSchemaAndCurrency = () ->
     MnoeProducts.fetchCustomSchema(vm.productId, { editAction: $stateParams.editAction }).then((response) ->
       # Some products have custom schemas, whereas others do not.
       vm.subscription.product.custom_schema = response
+      loadBSBasedCurrencies()
     )
 
   handleRedirect = () ->
     if vm.bsEditorEnabled
-      vm.next(vm.subscription, vm.orgCurrency)
+      if vm.orgCurrency in vm.currenciesList
+        vm.next(vm.subscription, vm.orgCurrency)
+      else
+        # Reset all plan related data and prevent user from moving to next step
+        vm.subscription.product.product_pricings = []
+        vm.currencies = []
+        vm.filteredPricingPlans = []
     else if ProvisioningHelper.skipPriceSelection(vm.subscription.product)
       vm.next(vm.subscription)
 
@@ -93,7 +106,7 @@
   if _.isEmpty(vm.subscription)
     fetchSubscription()
       .then(fetchProduct)
-      .then(fetchCustomSchema)
+      .then(fetchCustomSchemaAndCurrency)
       .then(handleRedirect)
       .catch((error) ->
         toastr.error('mnoe_admin_panel.dashboard.provisioning.subscriptions.product_error')
@@ -102,15 +115,16 @@
       .finally(() -> vm.isLoading = false)
   else
     vm.bsEditorEnabled = vm.subscription.product.js_editor_enabled
-    # Skip this view when subscription plan is not editable
-    if ProvisioningHelper.skipPriceSelection(vm.subscription.product) || vm.bsEditorEnabled
-      vm.next(vm.subscription, vm.subscription.currency)
     # Grab subscription's selected pricing plan's currency, then filter currencies.
     vm.orgCurrency = MnoeProvisioning.getSelectedCurrency()
     populateCurrencies()
     selectDefaultCurrency()
     # Filters the pricing plans not available in the selected currency
     vm.filterCurrencies()
+    loadBSBasedCurrencies()
+    # Skip this view when subscription plan is not editable
+    if ProvisioningHelper.skipPriceSelection(vm.subscription.product) || (vm.bsEditorEnabled && !(vm.orgCurrency in vm.currenciesList))
+      vm.next(vm.subscription, vm.subscription.currency)
     vm.isLoading = false
 
   vm.subscriptionPlanText = switch $stateParams.editAction.toLowerCase()
