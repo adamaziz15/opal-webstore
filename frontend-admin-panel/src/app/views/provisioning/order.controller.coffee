@@ -45,7 +45,7 @@
   # Set currencies from BS Response if it is a BS product
   loadBSBasedCurrencies = ->
     if vm.subscription.product.js_editor_enabled
-        vm.currenciesList = JSON.parse(vm.subscription.product.custom_schema)?.currencies_list || []
+      vm.currenciesList = JSON.parse(vm.subscription.product.custom_schema)?.currencies_list || []
 
   populateCurrencies = () ->
     currenciesArray = []
