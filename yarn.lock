@@ -31,8 +31,8 @@ javascript-natural-sort@0.7.1:
   resolved "https://registry.yarnpkg.com/javascript-natural-sort/-/javascript-natural-sort-0.7.1.tgz#f9e2303d4507f6d74355a73664d1440fb5a0ef59"
 
 mathjs@^5.0.0:
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/mathjs/-/mathjs-5.0.3.tgz#68bbf5f1bb8391f69ffe88a2cf852015c84702a2"
+  version "5.0.4"
+  resolved "https://registry.yarnpkg.com/mathjs/-/mathjs-5.0.4.tgz#651bf7a9ca59ceb8d8f202ae125a5bfa91695a24"
   dependencies:
     complex.js "2.0.11"
     decimal.js "10.0.1"
@@ -47,9 +47,9 @@ mathjs@^5.0.0:
   version "2.0.0-dev"
   resolved "git+https://git@github.com/maestrano/mno-enterprise-angular.git#938658c638d8caad0902cdf740cac973dab35389"
 
-"mnoe-admin-panel@git+https://git@github.com/maestrano/mnoe-admin-panel.git#2.0":
+"mnoe-admin-panel@git+https://git@github.com/RidaAhmad/mnoe-admin-panel.git#mnoe-1265-admin-panel-does-not-respect-currency-selection-setting":
   version "2.0.0-dev"
-  resolved "git+https://git@github.com/maestrano/mnoe-admin-panel.git#c3c3a6cadfb27fff2838b45a94790cdaaa67cbc2"
+  resolved "git+https://git@github.com/RidaAhmad/mnoe-admin-panel.git#31c4aa62f294eabb66f46775780cda28085c987c"
 
 moment-jdateformatparser@^1.2.1:
   version "1.2.1"
