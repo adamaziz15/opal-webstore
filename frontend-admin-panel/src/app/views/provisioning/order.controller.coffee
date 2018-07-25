@@ -45,7 +45,7 @@
   # Set currencies from BS Response if it is a BS product
   loadBSBasedCurrencies = ->
     if vm.subscription.product.js_editor_enabled
-        vm.currenciesList = JSON.parse(vm.subscription.product.custom_schema)?.currencies_list || []
+      vm.currenciesList = JSON.parse(vm.subscription.product.custom_schema)?.currencies_list || []
 
   populateCurrencies = () ->
     currenciesArray = []
@@ -123,7 +123,7 @@
     vm.filterCurrencies()
     loadBSBasedCurrencies()
     # Skip this view when subscription plan is not editable
-    if ProvisioningHelper.skipPriceSelection(vm.subscription.product) || (vm.bsEditorEnabled && !(vm.orgCurrency in vm.currenciesList))
+    if ProvisioningHelper.skipPriceSelection(vm.subscription.product) || (vm.bsEditorEnabled && (vm.orgCurrency in vm.currenciesList))
       vm.next(vm.subscription, vm.subscription.currency)
     vm.isLoading = false
 
