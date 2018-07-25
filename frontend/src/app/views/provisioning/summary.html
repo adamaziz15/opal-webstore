@@ -20,7 +20,7 @@
         <div class="row th-row hidden-xs">
           <div class="cell col-sm-3">{{ 'mno_enterprise.templates.dashboard.provisioning.summary.order_type' | translate }}</div>
           <div ng-show="vm.quoteBased" class="cell col-sm-4">{{ 'mno_enterprise.templates.dashboard.provisioning.summary.quoted_price' | translate }}</div>
-          <div ng-show="vm.subscription.product.product_type == 'application'" class="cell" ng-class="{'col-sm-9': !vm.bsEditorEnabled, 'col-sm-5': vm.bsEditorEnabled}">{{ 'mno_enterprise.templates.dashboard.provisioning.summary.pricing_info.title' | translate }}</div>
+          <div ng-show="vm.subscription.product.product_type == 'application' || vm.subscription.product.js_editor_enabled" class="cell" ng-class="{'col-sm-9': !vm.bsEditorEnabled, 'col-sm-5': vm.bsEditorEnabled}">{{ 'mno_enterprise.templates.dashboard.provisioning.summary.pricing_info.title' | translate }}</div>
         </div>
         <div class="row td-row">
           <div class="cell col-sm-3">
@@ -37,7 +37,7 @@
               {{ 'mno_enterprise.templates.dashboard.provisioning.summary.quote_error' | translate }}
             </span>
           </div>
-          <div ng-show="vm.subscription.product.product_type == 'application'" class="cell" ng-class="{'col-sm-9': !vm.bsEditorEnabled, 'col-sm-5': vm.bsEditorEnabled}">
+          <div ng-show="vm.subscription.product.product_type == 'application' || vm.subscription.product.js_editor_enabled" class="cell" ng-class="{'col-sm-9': !vm.bsEditorEnabled, 'col-sm-5': vm.bsEditorEnabled}">
             <span class="cell-label visible-xs-inline">
               {{ 'mno_enterprise.templates.dashboard.provisioning.summary.pricing_info.title' | translate }}:
             </span>

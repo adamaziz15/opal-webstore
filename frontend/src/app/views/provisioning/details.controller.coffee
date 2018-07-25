@@ -37,7 +37,7 @@ angular.module 'mnoEnterpriseAngular'
 
       skipPricing = () ->
         # Able to skip pricing if subscription already has a product pricing, or pricing plans are skipped automatically.
-        vm.subscription.product_pricing || ProvisioningHelper.skipPriceSelection(vm.subscription.product)
+        vm.subscription.product_pricing || ProvisioningHelper.skipPriceSelection(vm.subscription.product) || vm.subscription.product.js_editor_enabled
 
       handleRedirect = (product) ->
         # If there is no custom schema and pricings are skipped -- go directly to the confirm page.

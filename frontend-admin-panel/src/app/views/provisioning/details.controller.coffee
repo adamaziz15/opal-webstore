@@ -32,7 +32,7 @@
 
   # Pricing does not need to be chosen if pricing can be skipped, or if you have already chosen a pricing.
   skipPricing = () ->
-    vm.subscription.product_pricing || ProvisioningHelper.skipPriceSelection(vm.subscription.product)
+    vm.subscription.product_pricing || ProvisioningHelper.skipPriceSelection(vm.subscription.product) || vm.subscription.product.js_editor_enabled
 
   handleRedirect = (product) ->
     # If there is no custom schema and pricings are skipped -- go directly to the confirm page.

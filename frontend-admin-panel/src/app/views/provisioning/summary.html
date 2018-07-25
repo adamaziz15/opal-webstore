@@ -14,7 +14,7 @@
         <tr>
           <th id="order-type">{{ 'mnoe_admin_panel.dashboard.provisioning.summary.order_type' | translate }}</th>
           <th ng-show="vm.quoteBased">{{ 'mnoe_admin_panel.dashboard.provisioning.summary.quoted_price' | translate }}</th>
-          <th ng-show="vm.subscription.product.product_type == 'application'">{{ 'mnoe_admin_panel.dashboard.provisioning.summary.pricing_info.title' | translate }}</th>
+          <th ng-show="vm.subscription.product.product_type == 'application' || vm.subscription.product.js_editor_enabled">{{ 'mnoe_admin_panel.dashboard.provisioning.summary.pricing_info.title' | translate }}</th>
         </tr>
         </thead>
         <tbody>
@@ -28,7 +28,7 @@
               {{ 'mnoe_admin_panel.dashboard.provisioning.summary.quote_error' | translate }}
             </span>
           </td>
-          <td ng-show="vm.subscription.product.product_type == 'application'">
+          <td ng-show="vm.subscription.product.product_type == 'application' || vm.subscription.product.js_editor_enabled">
             <span>
               {{ vm.pricingText() | translate }}
             </span>

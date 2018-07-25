@@ -1,0 +1,166 @@
+<h2 class="section-title" ng-show="vm.cartSubscriptions">
+  {{ 'mno_enterprise.templates.dashboard.provisioning.subscriptions.cart.title' | translate }}
+</h2>
+<h2 class="section-title" ng-hide="vm.cartSubscriptions" translate>
+  {{ 'mno_enterprise.templates.dashboard.provisioning.subscriptions.title' | translate }}
+</h2>
+
+<div id="provisioning-subscriptions" class="row top-buffer-2">
+  <div ng-show="vm.cartSubscriptions" class='text-right bottom-buffer-1'>
+    <button class='btn btn-primary' ng-click="vm.deleteCart()">
+      {{ 'mno_enterprise.templates.dashboard.provisioning.subscriptions.cart.delete_cart.title' | translate }}
+    </button>
+    <button class='btn btn-primary' ng-click="vm.submitCart()">
+      {{ 'mno_enterprise.templates.dashboard.provisioning.subscriptions.cart.submit_cart.title' | translate }}
+    </button>
+  </div>
+
+  <div class="well pricing-plans">
+    <div ng-show="vm.isLoading" class="text-center">
+      <i class="fa fa-refresh fa-spin fa-4x"></i>
+    </div>
+
+    <div ng-show="vm.displayCurrencyWarning" class="alert alert-warning" role="alert">
+      <i class="fa fa-exclamation-triangle"></i>
+      <span translate>mno_enterprise.templates.dashboard.provisioning.subscriptions.currency_warning</span>
+    </div>
+
+    <div ng-hide="vm.isLoading" class="table-cell" ng-show="!isLoading">
+      <div class="row th-row hidden-sm hidden-xs">
+        <div class='cell' ng-class="{ 'col-md-3': !vm.cartSubscriptions, 'col-md-5': vm.cartSubscriptions }">
+          <div class="row">
+            <div class="cell col-md-6">{{ 'mno_enterprise.templates.dashboard.provisioning.subscriptions.product' | translate }}</div>
+            <div class="cell col-md-6">{{ 'mno_enterprise.templates.dashboard.provisioning.subscriptions.subscription' | translate }}</div>
+          </div>
+        </div>
+        <div class='cell' ng-class="{ 'col-md-2': !vm.cartSubscriptions, 'col-md-3': vm.cartSubscriptions }">
+          {{ 'mno_enterprise.templates.dashboard.provisioning.subscriptions.amount' | translate }}
+        </div>
+        <div class='cell' ng-class="{ 'col-md-1': !vm.cartSubscriptions, 'col-md-2': vm.cartSubscriptions }">
+          {{ 'mno_enterprise.templates.dashboard.provisioning.subscriptions.licenses' | translate }}
+        </div>
+        <div class='cell col-md-4' ng-if="!vm.cartSubscriptions">
+          <div class="row">
+            <div class="cell col-md-4">{{ 'mno_enterprise.templates.dashboard.provisioning.subscriptions.start_date' | translate }}</div>
+            <div class="cell col-md-4">{{ 'mno_enterprise.templates.dashboard.provisioning.subscriptions.end_date' | translate }}</div>
+            <div class="cell col-md-4">{{ 'mno_enterprise.templates.dashboard.provisioning.subscriptions.status' | translate }}</div>
+          </div>
+        </div>
+        <div class="cell col-md-2">&nbsp;</div>
+      </div>
+
+      <div class="row td-row" ng-if="vm.subscriptions.length === 0">
+        <div class="cell col-md-12 text-center" translate>
+          mno_enterprise.templates.dashboard.provisioning.subscriptions.empty_list
+        </div>
+      </div>
+
+      <div class="row td-row" ng-repeat="subscription in vm.subscriptions">
+        <div class='cell' ng-class="{ 'col-md-3': !vm.cartSubscriptions, 'col-md-5': vm.cartSubscriptions }">
+          <div class="row">
+            <div class="cell col-md-6" ng-click="vm.goToSubscription(subscription)">
+              <span class="cell-label visible-xs-inline">
+                {{ 'mno_enterprise.templates.dashboard.provisioning.subscriptions.product' | translate }}:
+              </span>
+              <span title="{{ subscription.name }}" uib-tooltip="{{ subscription.product.name }}" tooltip-append-to-body="true">{{ subscription.product.name }}</span>
+            </div>
+
+            <div class="cell col-md-6" ng-click="vm.goToSubscription(subscription)">
+              <span class="cell-label visible-xs-inline">
+                {{ 'mno_enterprise.templates.dashboard.provisioning.subscriptions.subscription' | translate }}:
+              </span>
+              <span ng-show="subscription.product_pricing" title="{{ subscription.product_pricing.name }}">{{ subscription.product_pricing.name }}</span>&nbsp;<i class="fa fa-info-circle" ng-show="subscription.product_pricing.description" uib-tooltip="{{ subscription.product_pricing.description }}" tooltip-append-to-body="true"></i>
+              <span ng-hide="subscription.product_pricing">{{ 'mno_enterprise.templates.dashboard.provisioning.subscriptions.not_available' | translate }}</span>&nbsp;
+              <i class="fa fa-question-circle" ng-show="(vm.skipPriceSelection(subscription.product) || subscription.product.js_editor_enabled) && !vm.pendingSubscription(subscription)" uib-tooltip="{{'mno_enterprise.templates.dashboard.provisioning.subscriptions.tooltip.external_billing' | translate}}" tooltip-append-to-body="true"></i>
+              <i class="fa fa-question-circle" ng-show="vm.pendingSubscription(subscription)" uib-tooltip="{{'mno_enterprise.templates.dashboard.provisioning.subscriptions.tooltip.pending_subscription' | translate}}" tooltip-append-to-body="true"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class='cell' ng-class="{ 'col-md-2': !vm.cartSubscriptions, 'col-md-3': vm.cartSubscriptions }" ng-click="vm.goToSubscription(subscription)">
+          <span class="cell-label visible-xs-inline">
+            {{ 'mno_enterprise.templates.dashboard.provisioning.subscriptions.amount' | translate }}:
+          </span>
+          <div ng-hide="subscription.product_pricing.pricing_type == 'payg'" ng-repeat="price in subscription.product_pricing.prices | filterBy: ['currency']: subscription.currency" class="badge">
+            <span ng-hide="subscription.product_pricing.license_based">
+              {{ price.currency }} {{ price.price_cents / 100 | number:2 }}
+            </span>
+            <span ng-show="subscription.product_pricing.license_based">
+              {{ price.currency }} {{ price.price_cents / 100 * subscription.max_licenses | number:2 }}
+            </span>
+          </div>
+          <span ng-show="subscription.product_pricing.pricing_type == 'recurring'">
+            / {{ subscription.product_pricing.per_duration }}
+          </span>
+          <span ng-show="subscription.product_pricing.pricing_type == 'payg'">
+            {{ 'mno_enterprise.templates.dashboard.provisioning.order.pricing_type.payg' | translate }}
+          </span>
+        </div>
+
+        <div class='cell' ng-class="{ 'col-md-1': !vm.cartSubscriptions, 'col-md-2': vm.cartSubscriptions }" ng-click="vm.goToSubscription(subscription)">
+          <span class="cell-label visible-xs-inline">
+            {{ 'mno_enterprise.templates.dashboard.provisioning.subscriptions.licenses' | translate }}:
+          </span>
+          <div ng-show="subscription.max_licenses">
+            {{ subscription.max_licenses }}
+          </div>
+          <div ng-hide="subscription.max_licenses">
+            {{ 'mno_enterprise.templates.dashboard.provisioning.subscriptions.no_licenses.message' | translate }}
+            <span tooltip-append-to-body="true" uib-tooltip="{{ 'mno_enterprise.templates.dashboard.provisioning.subscriptions.no_licenses.tooltip' | translate}}">
+              <i class="fa fa-question-circle"></i>
+            </span>
+          </div>
+        </div>
+
+        <div class="cell col-md-4" ng-if="!vm.cartSubscriptions">
+          <div class="row">
+            <div class="cell col-md-4" ng-click="vm.goToSubscription(subscription)">
+              <span class="cell-label visible-xs-inline">
+                {{ 'mno_enterprise.templates.dashboard.provisioning.subscriptions.start_date' | translate }}:
+              </span>
+              <span title="{{subscription.start_date | amDateFormat: 'LL'}}">{{subscription.start_date | amDateFormat: 'L'}}</span>
+            </div>
+
+            <div class="cell col-md-4" ng-click="vm.goToSubscription(subscription)">
+              <span class="cell-label visible-xs-inline">
+                {{ 'mno_enterprise.templates.dashboard.provisioning.subscriptions.end_date' | translate }}:
+              </span>
+              <span title="{{subscription.end_date | amDateFormat: 'LL'}}">{{subscription.end_date | amDateFormat: 'L'}}</span>
+            </div>
+
+            <div class="cell col-md-4" ng-click="vm.goToSubscription(subscription)">
+              <span class="cell-label visible-xs-inline">
+                {{ 'mno_enterprise.templates.dashboard.provisioning.subscriptions.status' | translate }}:
+              </span>
+              <span title="{{ 'mno_enterprise.templates.dashboard.provisioning.subscriptions.states.' + subscription.status | translate }}">{{ 'mno_enterprise.templates.dashboard.provisioning.subscriptions.states.' + subscription.status | translate }}</span>
+              <i class="fa fa-info-circle" ng-hide="!vm.displayInfoTooltip(subscription)" uib-tooltip="{{'mno_enterprise.templates.dashboard.provisioning.subscriptions.tooltip.aborted' | translate}}" tooltip-append-to-body="true"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="cell col-md-2">
+          <div class="pull-left">
+            <a ng-click="vm.editSubscription(subscription, 'reactivate')" ng-show="vm.showEditAction(subscription, 'reactivate') && !vm.cartSubscriptions" class="btn btn-link btn-link-primary" uib-tooltip="{{ 'mno_enterprise.templates.dashboard.provisioning.subscriptions.reactivate_tooltip' | translate }}" tooltip-append-to-body="true">
+              <i class="fa fa-refresh"></i>
+            </a>
+            <a ng-click="vm.editSubscription(subscription, 'renew')" ng-show="vm.showEditAction(subscription, 'renew') && !vm.cartSubscriptions" class="btn btn-link btn-link-primary" uib-tooltip="{{ 'mno_enterprise.templates.dashboard.provisioning.subscriptions.renew_tooltip' | translate }}" tooltip-append-to-body="true">
+              <i class="fa fa-check-square"></i>
+            </a>
+            <a ng-click="vm.editSubscription(subscription, 'change')" ng-show="vm.showEditAction(subscription, 'change')" class="btn btn-link btn-link-warning" uib-tooltip="{{ 'mno_enterprise.templates.dashboard.provisioning.subscriptions.change_tooltip' | translate }}" tooltip-append-to-body="true">
+              <i class="fa fa-pencil-square-o"></i>
+            </a>
+            <a ng-click="vm.editSubscription(subscription, 'modify')" ng-show="vm.showEditAction(subscription, 'modify')" class="btn btn-link btn-link-warning" uib-tooltip="{{ 'mno_enterprise.templates.dashboard.provisioning.subscriptions.modify_tooltip' | translate }}" tooltip-append-to-body="true">
+              <i class="fa fa-pencil"></i>
+            </a>
+            <a ng-click="vm.editSubscription(subscription, 'suspend')" ng-show="vm.showEditAction(subscription, 'suspend')" class="btn btn-link btn-link-danger" uib-tooltip="{{ 'mno_enterprise.templates.dashboard.provisioning.subscriptions.suspend_tooltip' | translate }}" tooltip-append-to-body="true">
+              <i class="fa fa-remove"></i>
+            </a>
+            <a ng-click="vm.editSubscription(subscription, 'cancel')" ng-show="vm.showEditAction(subscription, 'cancel') || vm.showEditAction(subscription, 'abandon')" class="btn btn-link btn-link-danger" uib-tooltip="{{ vm.cartSubscriptions ? 'mno_enterprise.templates.dashboard.provisioning.subscriptions.cart.cancel_tooltip' : 'mno_enterprise.templates.dashboard.provisioning.subscriptions.cancel_tooltip' | translate }}" tooltip-append-to-body="true">
+              <i class="fa fa-ban"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

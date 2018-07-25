@@ -17,7 +17,7 @@ angular.module 'mnoEnterpriseAngular'
     initSummary = () ->
       vm.singleBilling = vm.subscription.product.single_billing_enabled
       vm.billedLocally = vm.subscription.product.billed_locally
-      vm.quoteBased = vm.subscription.product_pricing?.quote_based
+      vm.quoteBased = vm.subscription.product_pricing?.quote_based || vm.subscription.product.js_editor_enabled
       vm.quote = MnoeProvisioning.getCachedQuote() if vm.quoteBased
       vm.bsEditorEnabled = vm.subscription.product.js_editor_enabled
       setSchemaReadOnlyData() if vm.bsEditorEnabled
@@ -41,7 +41,7 @@ angular.module 'mnoEnterpriseAngular'
     )
 
     vm.pricingText = () ->
-      if !vm.singleBilling
+      if !vm.singleBilling || vm.subscription.product.js_editor_enabled
         'mno_enterprise.templates.dashboard.provisioning.summary.pricing_info.single_billing_disabled'
       else if vm.billedLocally
         'mno_enterprise.templates.dashboard.provisioning.summary.pricing_info.billed_locally'
