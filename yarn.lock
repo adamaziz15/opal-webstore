@@ -49,7 +49,7 @@ mathjs@^5.0.0:
 
 "mnoe-admin-panel@git+https://git@github.com/iseessel/mnoe-admin-panel.git#feature/225-add-support-role":
   version "2.0.0-dev"
-  resolved "git+https://git@github.com/iseessel/mnoe-admin-panel.git#3a1b2245e142235586374a8f347e7db16bc3ea4f"
+  resolved "git+https://git@github.com/iseessel/mnoe-admin-panel.git#75e3094f39c1277c3cf56d3b2bd9a68573fa701a"
 
 moment-jdateformatparser@^1.2.1:
   version "1.2.1"
