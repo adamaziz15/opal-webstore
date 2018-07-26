@@ -1,7 +1,7 @@
 GIT
-  remote: https://github.com/maestrano/mno-enterprise.git
-  revision: db55ee0c6b84b30aed9597758fbabb351a298bf5
-  branch: 4.0
+  remote: https://github.com/iseessel/mno-enterprise.git
+  revision: 1768bb17faa67db21bd196fe5fc8f2f728948653
+  branch: feature/support-user-role
   specs:
     mno-enterprise (4.0.0.pre.dev)
       mno-enterprise-api (= 4.0.0.pre.dev)

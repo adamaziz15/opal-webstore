@@ -47,9 +47,9 @@ mathjs@^5.0.0:
   version "2.0.0-dev"
   resolved "git+https://git@github.com/maestrano/mno-enterprise-angular.git#2152bca4a14a68d70fd648e8bb12494004187e57"
 
-"mnoe-admin-panel@git+https://git@github.com/maestrano/mnoe-admin-panel.git#2.0":
+"mnoe-admin-panel@git+https://git@github.com/iseessel/mnoe-admin-panel.git#feature/225-add-support-role":
   version "2.0.0-dev"
-  resolved "git+https://git@github.com/maestrano/mnoe-admin-panel.git#64a6708e1e23cbb367a518233743988cda28b2bf"
+  resolved "git+https://git@github.com/iseessel/mnoe-admin-panel.git#3a1b2245e142235586374a8f347e7db16bc3ea4f"
 
 moment-jdateformatparser@^1.2.1:
   version "1.2.1"
