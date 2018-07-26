@@ -21,11 +21,14 @@ namespace :mnoe do
 
         # TODO: remove when locales moved to four letters
         # 4-letters locales --> 2-letters locales
-       # dir = "#{locales_tmp_folder}/impac/"
-       # Dir.foreach(dir) do |f|
-       #   next unless f.include?(".json")
-       #   cp("#{dir}#{f}", "#{dir}#{f.slice(0,2)}.json")
-       # end
+        dir = "#{locales_tmp_folder}/impac/"
+        Dir.foreach(dir) do |f|
+          next unless f.include?(".json")
+          begin
+            cp("#{dir}#{f}", "#{dir}#{f.slice(0,2)}.json")
+          rescue
+          end
+        end
       end
     end
 

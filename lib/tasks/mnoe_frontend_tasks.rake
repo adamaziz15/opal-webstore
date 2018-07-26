@@ -323,7 +323,7 @@ namespace :mnoe do
       cp_r("#{frontend_dist_folder}/webworker", "#{frontend_tmp_folder}/src/webworker")
 
       # Generates locales
-      Rake::Task['mnoe:locales:generate'].invoke
+      Rake::Task['mnoe:locales:generate'].execute
 
       # Clear tmp cache in development - recompile assets otherwise
       if Rails.env.development? || Rails.env.test?
