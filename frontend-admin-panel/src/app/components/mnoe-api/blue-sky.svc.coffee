@@ -4,6 +4,7 @@
   _self = @
 
   bs_editor = {}
+  translations = {}
 
   @getSchemaTranslation = ->
     MnoeApiSvc.one("/schema_translations").get({locale: 'en-us'})
@@ -13,5 +14,11 @@
 
   @getCachedBSEditor = ->
     bs_editor
+
+  @setSchemaTranslations = (t) ->
+    translations = t
+
+  @getCachedTranslations = ->
+    translations
 
   return @

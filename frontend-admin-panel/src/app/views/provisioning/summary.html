@@ -9,33 +9,14 @@
       </div>
     </mno-widget-header>
     <mno-widget-body class="no-padding">
-      <table class="table table-striped">
-        <thead>
-        <tr>
-          <th id="order-type">{{ 'mnoe_admin_panel.dashboard.provisioning.summary.order_type' | translate }}</th>
-          <th ng-show="vm.quoteBased">{{ 'mnoe_admin_panel.dashboard.provisioning.summary.quoted_price' | translate }}</th>
-          <th ng-show="vm.subscription.product.product_type == 'application' || vm.subscription.product.js_editor_enabled">{{ 'mnoe_admin_panel.dashboard.provisioning.summary.pricing_info.title' | translate }}</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <td>{{ vm.orderTypeText | translate }}</td>
-          <td ng-show="vm.quoteBased">
-            <span ng-show="vm.quote.price">
-              {{ vm.quote.currency }} {{ vm.quote.price }}
-            </span>
-            <span ng-hide="vm.quote.price">
-              {{ 'mnoe_admin_panel.dashboard.provisioning.summary.quote_error' | translate }}
-            </span>
-          </td>
-          <td ng-show="vm.subscription.product.product_type == 'application' || vm.subscription.product.js_editor_enabled">
-            <span>
-              {{ vm.pricingText() | translate }}
-            </span>
-          </td>
-        </tr>
-        </tbody>
-      </table>
+      <span ng-show="vm.quoteBased && !vm.quoteFetched">
+        <i class="fa fa-spinner fa-pulse fa-fw"></i>
+      </span>
+      <mno-product-quote ng-if="vm.quoteBased && vm.quoteFetched && vm.quote"
+        quote-based="vm.quoteBased"
+        quote="vm.quote"
+        subscription="vm.subscription">
+      </mno-product-quote>
 
       <table class="table table-striped" ng-show="vm.subscription.product_pricing && !vm.bsEditorEnabled">
         <thead>

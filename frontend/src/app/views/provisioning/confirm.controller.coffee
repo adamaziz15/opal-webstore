@@ -12,8 +12,6 @@ angular.module 'mnoEnterpriseAngular'
     vm.quoteFetched = true
     vm.quoteBased = false
 
-    vm.orderTypeText = 'mno_enterprise.templates.dashboard.provisioning.subscriptions.' + $stateParams.editAction.toLowerCase()
-
     urlParams =
       subscriptionId: $stateParams.subscriptionId
       productId: $stateParams.productId
@@ -35,6 +33,21 @@ angular.module 'mnoEnterpriseAngular'
           setupNewForm() if vm.bsEditorEnabled
         ).finally(-> vm.dataLoading = false)
 
+    fetchQuote = ->
+      vm.quote = MnoeProvisioning.getCachedQuote()
+      if _.isEmpty(vm.quote)
+        MnoeProvisioning.getQuote(vm.subscription, vm.selectedCurrency).then(
+          (response) ->
+            vm.quote = response
+            # To be passed to the order summary screen.
+            MnoeProvisioning.setQuote(response)
+          (error) ->
+            $log.error(error)
+            toastr.error('mno_enterprise.templates.dashboard.marketplace.show.quote_error')
+        ).finally(-> vm.quoteFetched = true)
+      else
+        vm.quoteFetched = true
+
     vm.editOrder = (reload = true) ->
       switch $stateParams.editAction.toLowerCase()
         when 'change', 'provision', null
@@ -42,29 +55,16 @@ angular.module 'mnoEnterpriseAngular'
         else
           $state.go('home.provisioning.additional_details', urlParams, {reload: reload})
 
-    if vm.subscription.product_pricing?.quote_based || vm.subscription.product.js_editor_enabled
+    if vm.subscription.product_pricing?.quote_based || vm.subscription.product?.js_editor_enabled
       vm.quoteBased = true
       vm.quoteFetched = false
-      MnoeProvisioning.getQuote(vm.subscription, vm.selectedCurrency).then(
-        (response) ->
-          vm.quotedPrice = response.totalContractValue?.quote
-          vm.quotedCurrency = response.totalContractValue?.currency
-          # To be passed to the order summary screen.
-          MnoeProvisioning.setQuote(response.totalContractValue)
-          vm.quoteFetched = true
-        (error) ->
-          $log.error(error)
-          toastr.error('mno_enterprise.templates.dashboard.marketplace.show.quote_error')
-          vm.quoteFetched = true
-      )
+      fetchQuote()
 
     # Happens when the user reload the browser during the provisioning workflow.
     if _.isEmpty(vm.subscription)
       # Redirect the user to the first provisioning screen
       vm.editOrder(true)
     else
-      vm.singleBilling = vm.subscription.product.single_billing_enabled
-      vm.billedLocally = vm.subscription.product.billed_locally
       # Render custom Schema if it exists
       setCustomSchema() if vm.subscription.custom_data && vm.subscription.product.custom_schema
 
@@ -115,14 +115,6 @@ angular.module 'mnoEnterpriseAngular'
       (response) ->
         vm.orgCurrency = response.organization?.billing_currency || MnoeConfig.marketplaceCurrency()
     )
-
-    vm.pricingText = () ->
-      if !vm.singleBilling || vm.subscription.product.js_editor_enabled
-        'mno_enterprise.templates.dashboard.provisioning.confirm.pricing_info.single_billing_disabled'
-      else if vm.billedLocally
-        'mno_enterprise.templates.dashboard.provisioning.confirm.pricing_info.billed_locally'
-      else
-        'mno_enterprise.templates.dashboard.provisioning.confirm.pricing_info.externally_managed'
 
     # Delete the cached subscription when we are leaving the subscription workflow.
     $scope.$on('$stateChangeStart', (event, toState) ->

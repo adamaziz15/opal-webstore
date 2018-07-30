@@ -117,6 +117,7 @@ angular.module 'mnoEnterpriseAngular'
           (response) ->
             vm.errorTranslations = JSON.parse(response.error_translations)
             vm.productTranslations = JSON.parse(response.product_translations)
+            MnoeBlueSky.setSchemaTranslations(vm.productTranslations)
         )
 
       setupNewForm = ->
@@ -221,10 +222,8 @@ angular.module 'mnoEnterpriseAngular'
         vm.selectedCurrency = MnoeProvisioning.getSelectedCurrency()
         MnoeProvisioning.getQuote(vm.subscription, vm.selectedCurrency).then(
           (response) ->
-            vm.quotedPrice = response.totalContractValue?.quote
-            vm.quotedCurrency = response.totalContractValue?.currency
             # To be passed to the order confirm screen.
-            MnoeProvisioning.setQuote(response.totalContractValue)
+            MnoeProvisioning.setQuote(response)
             confirmOrder()
           (error) ->
             $log.error(error)

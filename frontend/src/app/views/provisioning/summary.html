@@ -17,35 +17,13 @@
 
     <div ng-hide="vm.isLoading">
       <div class="table-cell">
-        <div class="row th-row hidden-xs">
-          <div class="cell col-sm-3">{{ 'mno_enterprise.templates.dashboard.provisioning.summary.order_type' | translate }}</div>
-          <div ng-show="vm.quoteBased" class="cell col-sm-4">{{ 'mno_enterprise.templates.dashboard.provisioning.summary.quoted_price' | translate }}</div>
-          <div ng-show="vm.subscription.product.product_type == 'application' || vm.subscription.product.js_editor_enabled" class="cell" ng-class="{'col-sm-9': !vm.bsEditorEnabled, 'col-sm-5': vm.bsEditorEnabled}">{{ 'mno_enterprise.templates.dashboard.provisioning.summary.pricing_info.title' | translate }}</div>
-        </div>
-        <div class="row td-row">
-          <div class="cell col-sm-3">
-            <span class="cell-label visible-xs-inline">
-              {{ 'mno_enterprise.templates.dashboard.provisioning.summary.order_type' | translate }}:
-            </span>
-            {{ vm.orderTypeText | translate }}
-          </div>
-          <div ng-show="vm.quoteBased" class="cell col-sm-4">
-            <span ng-show="vm.quote.price">
-              {{ vm.quote.currency }} {{ vm.quote.price }}
-            </span>
-            <span ng-hide="vm.quote.price">
-              {{ 'mno_enterprise.templates.dashboard.provisioning.summary.quote_error' | translate }}
-            </span>
-          </div>
-          <div ng-show="vm.subscription.product.product_type == 'application' || vm.subscription.product.js_editor_enabled" class="cell" ng-class="{'col-sm-9': !vm.bsEditorEnabled, 'col-sm-5': vm.bsEditorEnabled}">
-            <span class="cell-label visible-xs-inline">
-              {{ 'mno_enterprise.templates.dashboard.provisioning.summary.pricing_info.title' | translate }}:
-            </span>
-            <div>
-              {{ vm.pricingText() | translate }}
-            </div>
-          </div>
-        </div>
+        <mno-loader ng-show="vm.quoteBased && !vm.quoteFetched" class="top-buffer-2">
+        </mno-loader>
+        <mno-product-quote ng-if="vm.quoteBased && vm.quoteFetched && vm.quote"
+          quote-based="vm.quoteBased"
+          quote="vm.quote"
+          subscription="vm.subscription">
+        </mno-product-quote>
       </div>
 
       <div ng-show="vm.subscription.product_pricing && !vm.bsEditorEnabled" class="table-cell">

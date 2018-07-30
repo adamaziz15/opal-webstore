@@ -41,32 +41,33 @@
         setupNewForm() if vm.bsEditorEnabled
       ).finally(-> vm.dataLoading = false)
 
-  if vm.subscription.product_pricing?.quote_based || vm.subscription.product.js_editor_enabled
+  fetchQuote = ->
+    vm.quote = MnoeProvisioning.getCachedQuote()
+    if _.isEmpty(vm.quote)
+      MnoeProvisioning.getQuote(vm.subscription, vm.selectedCurrency).then(
+        (response) ->
+          vm.quote = response.data
+          # To be passed to the order summary screen.
+          MnoeProvisioning.setQuote(response)
+        (error) ->
+          vm.quoteFetched = true
+          $log.error('Error while fetching quote', error)
+      ).finally(-> vm.quoteFetched = true)
+    else
+      vm.quoteFetched = true
+
+  if vm.subscription.product_pricing?.quote_based || vm.subscription.product?.js_editor_enabled
     vm.quoteBased = true
     vm.quoteFetched = false
-    MnoeProvisioning.getQuote(vm.subscription, vm.selectedCurrency).then(
-      (response) ->
-        vm.quotedPrice = response.data.totalContractValue?.quote
-        vm.quotedCurrency = response.data.totalContractValue?.currency
-        # To be passed to the order summary screen.
-        MnoeProvisioning.setQuote(response.data.totalContractValue)
-        vm.quoteFetched = true
-      (error) ->
-        vm.quoteFetched = true
-        $log.error('Error while fetching quote', error)
-    )
+    fetchQuote()
 
   # Happen when the user reload the browser during the provisioning
   if _.isEmpty(vm.subscription)
     # Redirect the user to the first provisioning screen
     vm.editOrder(true)
   else
-    vm.singleBilling = vm.subscription.product.single_billing_enabled
-    vm.billedLocally = vm.subscription.product.billed_locally
     # Render custom Schema if it exists
     setCustomSchema() if vm.subscription.custom_data && vm.subscription.product.custom_schema
-
-  vm.orderTypeText = 'mnoe_admin_panel.dashboard.provisioning.subscriptions.' + $stateParams.editAction.toLowerCase()
 
   vm.orderEditable = () ->
     # The order is editable if we are changing the plan, or the product has a custom schema.
@@ -116,14 +117,6 @@
       else
         MnoeProvisioning.setSubscription({})
   )
-
-  vm.pricingText = () ->
-    if !vm.singleBilling || vm.subscription.product.js_editor_enabled
-      'mnoe_admin_panel.dashboard.provisioning.confirm.pricing_info.single_billing_disabled'
-    else if vm.billedLocally
-      'mnoe_admin_panel.dashboard.provisioning.confirm.pricing_info.billed_locally'
-    else
-      'mnoe_admin_panel.dashboard.provisioning.confirm.pricing_info.externally_managed'
 
   return
 )
