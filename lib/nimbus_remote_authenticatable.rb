@@ -34,9 +34,9 @@ module NimbusRemoteAuthenticatable
     private
 
     def nimbus_auth(auth_params)
-      @response ||= HTTParty.get(
+      @response ||= HTTParty.post(
         ENV.fetch('REMOTE_AUTH_URL'),
-        query: {username: auth_params['email'], password: auth_params['password']}
+        body: {username: auth_params['email'], password: auth_params['password']}.to_json
       )
     rescue StandardError
       fail!
