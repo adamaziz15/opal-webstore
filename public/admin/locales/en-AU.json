@@ -539,7 +539,7 @@
   "mnoe_admin_panel.dashboard.provisioning.quote.unit_price": "Unit Price",
   "mnoe_admin_panel.dashboard.provisioning.quote.quantity": "Quantity",
   "mnoe_admin_panel.dashboard.provisioning.quote.total_price": "Total",
-  "mnoe_admin_panel.dashboard.provisioning.quote.total_price_list": "Total Price List",
+  "mnoe_admin_panel.dashboard.provisioning.quote.total_list_price": "Total List Price",
   "mnoe_admin_panel.dashboard.subscriptions.widget.list.title": "Orders",
   "mnoe_admin_panel.dashboard.subscriptions.widget.list.cart_title": "Company Cart",
   "mnoe_admin_panel.dashboard.subscriptions.widget.list.title_with_action": "Orders requiring your attention",

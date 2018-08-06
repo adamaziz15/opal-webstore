@@ -1240,7 +1240,7 @@
   "mno_enterprise.templates.dashboard.provisioning.quote.unit_price": "Unit Price",
   "mno_enterprise.templates.dashboard.provisioning.quote.quantity": "Quantity",
   "mno_enterprise.templates.dashboard.provisioning.quote.total_price": "Total",
-  "mno_enterprise.templates.dashboard.provisioning.quote.total_price_list": "Total Price List",
+  "mno_enterprise.templates.dashboard.provisioning.quote.total_list_price": "Total List Price",
   "mno_enterprise.templates.dashboard.app_management.heading": "Manage your applications",
   "mno_enterprise.templates.dashboard.app_management.access": "Access",
   "mno_enterprise.templates.dashboard.app_management.manage_app": "Manage",
