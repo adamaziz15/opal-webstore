@@ -61,8 +61,6 @@
     selectedCurrency
 
   @setQuote = (q) ->
-    console.log 'q'
-    console.log q
     quote = q
 
   @getCachedQuote = () ->

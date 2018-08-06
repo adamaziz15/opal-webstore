@@ -48,7 +48,7 @@
         (response) ->
           vm.quote = response.data
           # To be passed to the order summary screen.
-          MnoeProvisioning.setQuote(response)
+          MnoeProvisioning.setQuote(vm.quote)
         (error) ->
           vm.quoteFetched = true
           $log.error('Error while fetching quote', error)
