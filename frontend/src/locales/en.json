@@ -822,7 +822,7 @@
   "mno_enterprise.templates.dashboard.provisioning.quote.unit_price": "Unit Price",
   "mno_enterprise.templates.dashboard.provisioning.quote.quantity": "Quantity",
   "mno_enterprise.templates.dashboard.provisioning.quote.total_price": "Total",
-  "mno_enterprise.templates.dashboard.provisioning.quote.total_price_list": "Total Price List",
+  "mno_enterprise.templates.dashboard.provisioning.quote.total_list_price": "Total List Price",
   "mno_enterprise.templates.dashboard.marketplace.index.title": "Marketplace",
   "mno_enterprise.templates.dashboard.marketplace.index.select_all": "All",
   "mno_enterprise.templates.dashboard.marketplace.index.applications": "Products",
