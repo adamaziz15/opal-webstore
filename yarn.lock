@@ -49,7 +49,7 @@ mathjs@^5.0.0:
 
 "mnoe-admin-panel@git+https://git@github.com/MAhsenArif/mnoe-admin-panel.git#bug/535_invoice_info_page_adjustments":
   version "2.0.0-dev"
-  resolved "git+https://git@github.com/MAhsenArif/mnoe-admin-panel.git#e1599281d584351b34a73ff29a831610b75c106a"
+  resolved "git+https://git@github.com/MAhsenArif/mnoe-admin-panel.git#44e7602618ef6e0a67f3f05c612d00bc26713639"
 
 moment-jdateformatparser@^1.2.1:
   version "1.2.1"
