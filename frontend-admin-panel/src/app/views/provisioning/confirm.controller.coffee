@@ -66,8 +66,12 @@
     # Redirect the user to the first provisioning screen
     vm.editOrder(true)
   else
+    vm.singleBilling = vm.subscription.product.single_billing_enabled
+    vm.billedLocally = vm.subscription.product.billed_locally
     # Render custom Schema if it exists
     setCustomSchema() if vm.subscription.custom_data && vm.subscription.product.custom_schema
+
+  vm.orderTypeText = 'mnoe_admin_panel.dashboard.provisioning.subscriptions.' + $stateParams.editAction.toLowerCase()
 
   vm.orderEditable = () ->
     # The order is editable if we are changing the plan, or the product has a custom schema.
@@ -117,6 +121,14 @@
       else
         MnoeProvisioning.setSubscription({})
   )
+
+  vm.pricingText = () ->
+    if !vm.singleBilling || vm.subscription.product.js_editor_enabled
+      'mnoe_admin_panel.dashboard.provisioning.confirm.pricing_info.single_billing_disabled'
+    else if vm.billedLocally
+      'mnoe_admin_panel.dashboard.provisioning.confirm.pricing_info.billed_locally'
+    else
+      'mnoe_admin_panel.dashboard.provisioning.confirm.pricing_info.externally_managed'
 
   return
 )
