@@ -12,6 +12,8 @@ angular.module 'mnoEnterpriseAngular'
     vm.quoteFetched = true
     vm.quoteBased = false
 
+    vm.orderTypeText = 'mno_enterprise.templates.dashboard.provisioning.subscriptions.' + $stateParams.editAction.toLowerCase()
+
     urlParams =
       subscriptionId: $stateParams.subscriptionId
       productId: $stateParams.productId
@@ -65,6 +67,8 @@ angular.module 'mnoEnterpriseAngular'
       # Redirect the user to the first provisioning screen
       vm.editOrder(true)
     else
+      vm.singleBilling = vm.subscription.product.single_billing_enabled
+      vm.billedLocally = vm.subscription.product.billed_locally
       # Render custom Schema if it exists
       setCustomSchema() if vm.subscription.custom_data && vm.subscription.product.custom_schema
 
@@ -115,6 +119,14 @@ angular.module 'mnoEnterpriseAngular'
       (response) ->
         vm.orgCurrency = response.organization?.billing_currency || MnoeConfig.marketplaceCurrency()
     )
+
+    vm.pricingText = () ->
+      if !vm.singleBilling || vm.subscription.product.js_editor_enabled
+        'mno_enterprise.templates.dashboard.provisioning.confirm.pricing_info.single_billing_disabled'
+      else if vm.billedLocally
+        'mno_enterprise.templates.dashboard.provisioning.confirm.pricing_info.billed_locally'
+      else
+        'mno_enterprise.templates.dashboard.provisioning.confirm.pricing_info.externally_managed'
 
     # Delete the cached subscription when we are leaving the subscription workflow.
     $scope.$on('$stateChangeStart', (event, toState) ->

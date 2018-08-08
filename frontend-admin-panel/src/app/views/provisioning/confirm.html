@@ -18,6 +18,26 @@
         subscription="vm.subscription">
       </mno-product-quote>
 
+      <table class="table table-striped" ng-if="!vm.quoteBased">
+        <thead>
+        <tr>
+          <th id="order-type">{{ 'mnoe_admin_panel.dashboard.provisioning.confirm.order_type' | translate }}</th>
+          <th ng-show="vm.quoteBased" id="confirm-price">{{ 'mnoe_admin_panel.dashboard.provisioning.order.quoted_price' | translate }}</th>
+          <th ng-show="vm.subscription.product.product_type == 'application' || vm.subscription.product.js_editor_enabled">{{ 'mnoe_admin_panel.dashboard.provisioning.confirm.pricing_info.title' | translate }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>{{ vm.orderTypeText | translate }}</td>
+          <td ng-show="vm.subscription.product.product_type == 'application' || vm.subscription.product.js_editor_enabled">
+            <span>
+              {{ vm.pricingText() | translate }}
+            </span>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
       <table class="table table-striped" ng-show="vm.subscription.product_pricing && !vm.bsEditorEnabled">
         <thead>
         <tr>
