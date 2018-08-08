@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/MAhsenArif/mno-enterprise.git
-  revision: 5b57b8d43cbefd65c308adf02ee8445f4a4f5231
+  revision: d7de25882e7b6d59c655cd081c656b744d11219c
   branch: feature/532_quote_pricing_data
   specs:
     mno-enterprise (4.0.0.pre.dev)

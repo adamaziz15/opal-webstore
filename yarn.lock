@@ -23,8 +23,8 @@ fraction.js@4.0.8:
   resolved "https://registry.yarnpkg.com/fraction.js/-/fraction.js-4.0.8.tgz#e53618112e3b36b348c61a81323173bceb01e418"
 
 "impac-angular@git+https://git@github.com/maestrano/impac-angular.git#1.6.x":
-  version "1.6.10"
-  resolved "git+https://git@github.com/maestrano/impac-angular.git#79df9fca8bcf4b5b09ab2edb4b18c461c5700bd1"
+  version "1.6.11"
+  resolved "git+https://git@github.com/maestrano/impac-angular.git#5c37c7a5f0c2dc7c7ead8d9eb242b382bb1b8445"
 
 javascript-natural-sort@0.7.1:
   version "0.7.1"
