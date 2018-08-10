@@ -27,3 +27,10 @@ en:
         marketplace:
           index:
             applications: "Applications and Infrastructure"
+        provisioning:
+          quote:
+            unit_price: "Unit Price"
+            quantity: "Quantity"
+            total_price: "Total"
+            total_list_price: "Total List Price"
+            usage_based: "The pricing of this product is usage-based."
