@@ -1,6 +1,6 @@
 <table class="table table-striped">
   <thead>
-  <tr>
+  <tr ng-hide='quote.usage_based'>
     <th></th>
     <th>
       {{ 'mnoe_admin_panel.dashboard.provisioning.quote.unit_price' | translate }}
@@ -13,7 +13,7 @@
     </th>
   </tr>
   </thead>
-  <tbody>
+  <tbody ng-hide='quote.usage_based'>
     <tr ng-repeat="pricingDetail in quote.pricingDetails">
       <td>
         {{ pricingDetail.description }}
@@ -35,6 +35,13 @@
       </td>
       <td>
         {{ quotedCurrency }} {{ quotedPrice }}
+      </td>
+    </tr>
+  </tbody>
+  <tbody ng-show='quote.usage_based'>
+    <tr>
+      <td class='text-center'>
+        {{ 'mnoe_admin_panel.dashboard.provisioning.quote.usage_based' | translate }}
       </td>
     </tr>
   </tbody>

@@ -1,4 +1,4 @@
-<div class='row th-row hidden-xs'>
+<div class='row th-row hidden-xs' ng-hide='quote.usage_based'>
   <div class="cell col-sm-6">
   </div>
   <div class='cell col-sm-2'>
@@ -11,7 +11,7 @@
     {{ 'mno_enterprise.templates.dashboard.provisioning.quote.total_price' | translate }}
   </div>
 </div>
-<div class='row td-row' ng-repeat="pricingDetail in quote.pricingDetails">
+<div class='row td-row' ng-repeat="pricingDetail in quote.pricingDetails" ng-hide='quote.usage_based'>
   <div class='cell col-sm-6'>
     {{ pricingDetail.description }}
   </div>
@@ -25,13 +25,16 @@
     {{ quotedCurrency }} {{ pricingDetail.totalPrice }}
   </div>
 </div>
-<div class='row th-row hidden-xs'>
+<div class='row th-row hidden-xs' ng-hide='quote.usage_based'>
   <div class='cell col-sm-10'>
     {{ 'mno_enterprise.templates.dashboard.provisioning.quote.total_list_price' | translate }}
   </div>
   <div class='cell col-sm-2'>
     {{ quotedCurrency }} {{ quotedPrice }}
   </div>
+</div>
+<div class='row th-row hidden-xs text-center' ng-show='quote.usage_based'>
+  {{ 'mno_enterprise.templates.dashboard.provisioning.quote.usage_based' | translate }}
 </div>
 <div class='alert alert-danger text-center' ng-if="quote.disclaimer">
   {{ extractDisclaimerMsg() }}
