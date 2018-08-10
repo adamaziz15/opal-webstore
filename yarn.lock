@@ -23,8 +23,8 @@ fraction.js@4.0.8:
   resolved "https://registry.yarnpkg.com/fraction.js/-/fraction.js-4.0.8.tgz#e53618112e3b36b348c61a81323173bceb01e418"
 
 "impac-angular@git+https://git@github.com/maestrano/impac-angular.git#1.6.x":
-  version "1.6.10"
-  resolved "git+https://git@github.com/maestrano/impac-angular.git#79df9fca8bcf4b5b09ab2edb4b18c461c5700bd1"
+  version "1.6.11"
+  resolved "git+https://git@github.com/maestrano/impac-angular.git#5c37c7a5f0c2dc7c7ead8d9eb242b382bb1b8445"
 
 javascript-natural-sort@0.7.1:
   version "0.7.1"
@@ -45,11 +45,11 @@ mathjs@^5.0.0:
 
 "mno-enterprise-angular@git+https://git@github.com/maestrano/mno-enterprise-angular.git#2.0":
   version "2.0.0-dev"
-  resolved "git+https://git@github.com/maestrano/mno-enterprise-angular.git#2152bca4a14a68d70fd648e8bb12494004187e57"
+  resolved "git+https://git@github.com/maestrano/mno-enterprise-angular.git#2798e339c0beb2dd4d8ac11e819c5fb89da01944"
 
 "mnoe-admin-panel@git+https://git@github.com/maestrano/mnoe-admin-panel.git#2.0":
   version "2.0.0-dev"
-  resolved "git+https://git@github.com/maestrano/mnoe-admin-panel.git#64a6708e1e23cbb367a518233743988cda28b2bf"
+  resolved "git+https://git@github.com/maestrano/mnoe-admin-panel.git#a9834d53a72846ab134bcbb1466c592a0ec1ce49"
 
 moment-jdateformatparser@^1.2.1:
   version "1.2.1"
