@@ -5,6 +5,7 @@
   vm.subscription = MnoeProvisioning.getCachedSubscription()
   vm.selectedCurrency = MnoeProvisioning.getSelectedCurrency()
   vm.quoteBased = false
+  vm.quoteFetched = false
   vm.dataLoading = true
   subPromise = if _.isEmpty(vm.subscription)
     MnoeProvisioning.initSubscription({productId: $stateParams.productId, orgId: $stateParams.orgId, subscriptionId: $stateParams.subscriptionId})
@@ -26,8 +27,9 @@
       vm.subscription = response.subscription
       vm.singleBilling = vm.subscription.product.single_billing_enabled
       vm.billedLocally = vm.subscription.product.billed_locally
-      vm.quoteBased = vm.subscription.product_pricing?.quote_based || vm.subscription.product.js_editor_enabled
+      vm.quoteBased = vm.subscription.product_pricing?.quote_based || vm.subscription.product?.js_editor_enabled
       vm.quote = MnoeProvisioning.getCachedQuote() if vm.quoteBased
+      vm.quoteFetched = true
       vm.bsEditorEnabled = vm.subscription.product.js_editor_enabled
       setSchemaReadOnlyData() if vm.bsEditorEnabled
   ).finally(-> vm.isLoading = false)

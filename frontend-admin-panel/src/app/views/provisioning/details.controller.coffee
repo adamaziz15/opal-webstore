@@ -104,6 +104,7 @@
       (response) ->
         vm.errorTranslations = JSON.parse(response.data.error_translations)
         vm.productTranslations = JSON.parse(response.data.product_translations)
+        MnoeBlueSky.setSchemaTranslations(vm.productTranslations)
     )
 
   # TODO: Move this to a BS Editor Helper
@@ -212,10 +213,8 @@
     vm.selectedCurrency = MnoeProvisioning.getSelectedCurrency()
     MnoeProvisioning.getQuote(vm.subscription, vm.selectedCurrency).then(
       (response) ->
-        vm.quotedPrice = response.totalContractValue?.quote
-        vm.quotedCurrency = response.totalContractValue?.currency
         # To be passed to the order confirm screen.
-        MnoeProvisioning.setQuote(response.totalContractValue)
+        MnoeProvisioning.setQuote(response.data)
         confirmOrder()
       (error) ->
         $log.error(error)

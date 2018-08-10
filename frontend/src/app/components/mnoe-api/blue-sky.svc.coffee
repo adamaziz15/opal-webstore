@@ -5,6 +5,7 @@ angular.module 'mnoEnterpriseAngular'
     _self = @
 
     bs_editor = {}
+    translations = {}
 
     @getSchemaTranslation = ->
       MnoeApiSvc.one("/schema_translations").get()
@@ -14,5 +15,11 @@ angular.module 'mnoEnterpriseAngular'
 
     @getCachedBSEditor = ->
       bs_editor
+
+    @setSchemaTranslations = (t) ->
+      translations = t
+
+    @getCachedTranslations = ->
+      translations
 
     return @

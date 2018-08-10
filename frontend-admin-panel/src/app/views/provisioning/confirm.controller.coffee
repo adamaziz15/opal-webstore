@@ -41,20 +41,25 @@
         setupNewForm() if vm.bsEditorEnabled
       ).finally(-> vm.dataLoading = false)
 
-  if vm.subscription.product_pricing?.quote_based || vm.subscription.product.js_editor_enabled
+  fetchQuote = ->
+    vm.quote = MnoeProvisioning.getCachedQuote()
+    if _.isEmpty(vm.quote)
+      MnoeProvisioning.getQuote(vm.subscription, vm.selectedCurrency).then(
+        (response) ->
+          vm.quote = response.data
+          # To be passed to the order summary screen.
+          MnoeProvisioning.setQuote(vm.quote)
+        (error) ->
+          vm.quoteFetched = true
+          $log.error('Error while fetching quote', error)
+      ).finally(-> vm.quoteFetched = true)
+    else
+      vm.quoteFetched = true
+
+  if vm.subscription.product_pricing?.quote_based || vm.subscription.product?.js_editor_enabled
     vm.quoteBased = true
     vm.quoteFetched = false
-    MnoeProvisioning.getQuote(vm.subscription, vm.selectedCurrency).then(
-      (response) ->
-        vm.quotedPrice = response.data.totalContractValue?.quote
-        vm.quotedCurrency = response.data.totalContractValue?.currency
-        # To be passed to the order summary screen.
-        MnoeProvisioning.setQuote(response.data.totalContractValue)
-        vm.quoteFetched = true
-      (error) ->
-        vm.quoteFetched = true
-        $log.error('Error while fetching quote', error)
-    )
+    fetchQuote()
 
   # Happen when the user reload the browser during the provisioning
   if _.isEmpty(vm.subscription)

@@ -35,6 +35,21 @@ angular.module 'mnoEnterpriseAngular'
           setupNewForm() if vm.bsEditorEnabled
         ).finally(-> vm.dataLoading = false)
 
+    fetchQuote = ->
+      vm.quote = MnoeProvisioning.getCachedQuote()
+      if _.isEmpty(vm.quote)
+        MnoeProvisioning.getQuote(vm.subscription, vm.selectedCurrency).then(
+          (response) ->
+            vm.quote = response
+            # To be passed to the order summary screen.
+            MnoeProvisioning.setQuote(response)
+          (error) ->
+            $log.error(error)
+            toastr.error('mno_enterprise.templates.dashboard.marketplace.show.quote_error')
+        ).finally(-> vm.quoteFetched = true)
+      else
+        vm.quoteFetched = true
+
     vm.editOrder = (reload = true) ->
       switch $stateParams.editAction.toLowerCase()
         when 'change', 'provision', null
@@ -42,21 +57,10 @@ angular.module 'mnoEnterpriseAngular'
         else
           $state.go('home.provisioning.additional_details', urlParams, {reload: reload})
 
-    if vm.subscription.product_pricing?.quote_based || vm.subscription.product.js_editor_enabled
+    if vm.subscription.product_pricing?.quote_based || vm.subscription.product?.js_editor_enabled
       vm.quoteBased = true
       vm.quoteFetched = false
-      MnoeProvisioning.getQuote(vm.subscription, vm.selectedCurrency).then(
-        (response) ->
-          vm.quotedPrice = response.totalContractValue?.quote
-          vm.quotedCurrency = response.totalContractValue?.currency
-          # To be passed to the order summary screen.
-          MnoeProvisioning.setQuote(response.totalContractValue)
-          vm.quoteFetched = true
-        (error) ->
-          $log.error(error)
-          toastr.error('mno_enterprise.templates.dashboard.marketplace.show.quote_error')
-          vm.quoteFetched = true
-      )
+      fetchQuote()
 
     # Happens when the user reload the browser during the provisioning workflow.
     if _.isEmpty(vm.subscription)

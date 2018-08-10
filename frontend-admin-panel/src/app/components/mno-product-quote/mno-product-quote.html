@@ -1,0 +1,45 @@
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th></th>
+    <th>
+      {{ 'mnoe_admin_panel.dashboard.provisioning.quote.unit_price' | translate }}
+    </th>
+    <th>
+      {{ 'mnoe_admin_panel.dashboard.provisioning.quote.quantity' | translate }}
+    </th>
+    <th>
+      {{ 'mnoe_admin_panel.dashboard.provisioning.quote.total_price' | translate }}
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="pricingDetail in quote.pricingDetails">
+      <td>
+        {{ pricingDetail.description }}
+      </td>
+      <td>
+        {{ quotedCurrency }} {{ pricingDetail.unitPrice.value }}
+      </td>
+      <td>
+        {{ pricingDetail.quantity }}
+      </td>
+      <td>
+        {{ quotedCurrency }} {{ pricingDetail.totalPrice }}
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan='3'>
+        {{ 'mnoe_admin_panel.dashboard.provisioning.quote.total_list_price' | translate }}
+      </td>
+      <td>
+        {{ quotedCurrency }} {{ quotedPrice }}
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class='alert alert-danger text-center' ng-if="quote.disclaimer">
+  {{ extractDisclaimerMsg() }}
+</div>

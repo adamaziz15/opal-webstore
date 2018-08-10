@@ -5,6 +5,7 @@ angular.module 'mnoEnterpriseAngular'
     vm.dataLoading = true
     vm.isLoading = true
     vm.quoteBased = false
+    vm.quoteFetched = false
     vm.quote = {}
     vm.selectedCurrency = MnoeProvisioning.getSelectedCurrency()
     vm.subType = if $stateParams.cart == 'true' then 'cart' else 'active'
@@ -17,8 +18,9 @@ angular.module 'mnoEnterpriseAngular'
     initSummary = () ->
       vm.singleBilling = vm.subscription.product.single_billing_enabled
       vm.billedLocally = vm.subscription.product.billed_locally
-      vm.quoteBased = vm.subscription.product_pricing?.quote_based || vm.subscription.product.js_editor_enabled
+      vm.quoteBased = vm.subscription.product_pricing?.quote_based || vm.subscription.product?.js_editor_enabled
       vm.quote = MnoeProvisioning.getCachedQuote() if vm.quoteBased
+      vm.quoteFetched = true
       vm.bsEditorEnabled = vm.subscription.product.js_editor_enabled
       setSchemaReadOnlyData() if vm.bsEditorEnabled
 
