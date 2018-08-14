@@ -4,8 +4,8 @@
   "dependencies": {
     "impac-angular": "git+https://git@github.com/maestrano/impac-angular.git#1.6.x",
     "mathjs": "^5.0.0",
-    "mno-enterprise-angular": "git+https://git@github.com/maestrano/mno-enterprise-angular.git#2.0",
-    "mnoe-admin-panel": "git+https://git@github.com/maestrano/mnoe-admin-panel.git#2.0",
+    "mno-enterprise-angular": "git+https://git@github.com/MAhsenArif/mno-enterprise-angular.git#bug/286_prevent_user_reinvite",
+    "mnoe-admin-panel": "git+https://git@github.com/MAhsenArif/mnoe-admin-panel.git#bug/286_prevent_user_reinvite",
     "moment-jdateformatparser": "^1.2.1"
   },
   "engines": {
