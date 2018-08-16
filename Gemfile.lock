@@ -1,7 +1,7 @@
 GIT
-  remote: https://github.com/maestrano/mno-enterprise.git
-  revision: db55ee0c6b84b30aed9597758fbabb351a298bf5
-  branch: 4.0
+  remote: https://github.com/MAhsenArif/mno-enterprise.git
+  revision: be5625ef9a8747969974ba5f670c373757b3eb82
+  branch: bug/1275_disable_impersonation_conditions
   specs:
     mno-enterprise (4.0.0.pre.dev)
       mno-enterprise-api (= 4.0.0.pre.dev)
@@ -155,7 +155,7 @@ GEM
       html2haml (>= 1.0.1)
       railties (>= 4.0.1)
     hashdiff (0.3.4)
-    hashie (3.5.7)
+    hashie (3.6.0)
     health_check (2.8.0)
       railties (~> 4.0)
     highline (1.7.10)
@@ -206,7 +206,7 @@ GEM
       systemu (~> 2.6.2)
     mail (2.7.0)
       mini_mime (>= 0.1.1)
-    mini_mime (1.0.0)
+    mini_mime (1.0.1)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
     monetize (1.6.0)
@@ -245,7 +245,7 @@ GEM
       ttfunk (~> 1.5)
     prawn-table (0.2.2)
       prawn (>= 1.3.0, < 3.0.0)
-    public_suffix (3.0.2)
+    public_suffix (3.0.3)
     puma (3.11.0)
     rack (1.6.10)
     rack-rewrite (1.5.1)

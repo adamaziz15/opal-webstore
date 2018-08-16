@@ -31,8 +31,8 @@ javascript-natural-sort@0.7.1:
   resolved "https://registry.yarnpkg.com/javascript-natural-sort/-/javascript-natural-sort-0.7.1.tgz#f9e2303d4507f6d74355a73664d1440fb5a0ef59"
 
 mathjs@^5.0.0:
-  version "5.0.4"
-  resolved "https://registry.yarnpkg.com/mathjs/-/mathjs-5.0.4.tgz#651bf7a9ca59ceb8d8f202ae125a5bfa91695a24"
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/mathjs/-/mathjs-5.1.0.tgz#e25543e0ba6ce806250d71cee8400f513924e7cd"
   dependencies:
     complex.js "2.0.11"
     decimal.js "10.0.1"
@@ -41,15 +41,15 @@ mathjs@^5.0.0:
     javascript-natural-sort "0.7.1"
     seed-random "2.2.0"
     tiny-emitter "2.0.2"
-    typed-function "1.0.4"
+    typed-function "1.1.0"
 
 "mno-enterprise-angular@git+https://git@github.com/maestrano/mno-enterprise-angular.git#2.0":
   version "2.0.0-dev"
   resolved "git+https://git@github.com/maestrano/mno-enterprise-angular.git#2798e339c0beb2dd4d8ac11e819c5fb89da01944"
 
-"mnoe-admin-panel@git+https://git@github.com/maestrano/mnoe-admin-panel.git#2.0":
+"mnoe-admin-panel@git+https://git@github.com/MAhsenArif/mnoe-admin-panel.git#bug/1275_disable_impersonation_conditions":
   version "2.0.0-dev"
-  resolved "git+https://git@github.com/maestrano/mnoe-admin-panel.git#a9834d53a72846ab134bcbb1466c592a0ec1ce49"
+  resolved "git+https://git@github.com/MAhsenArif/mnoe-admin-panel.git#1cf43d86fa07389f1e6d63e1805deb49bd7a6b6f"
 
 moment-jdateformatparser@^1.2.1:
   version "1.2.1"
@@ -63,6 +63,6 @@ tiny-emitter@2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/tiny-emitter/-/tiny-emitter-2.0.2.tgz#82d27468aca5ade8e5fd1e6d22b57dd43ebdfb7c"
 
-typed-function@1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/typed-function/-/typed-function-1.0.4.tgz#6b25993b8587b0a5c3356585d6ef99aa63f6d317"
+typed-function@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/typed-function/-/typed-function-1.1.0.tgz#ea149706e0fb42aca1791c053a6d94ccd6c4fdcb"
