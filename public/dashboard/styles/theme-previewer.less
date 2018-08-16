@@ -2550,15 +2550,6 @@ form.editable-wrap .editable-controls input {
   }
 }
 
-#impac {
-  impac-dashboard.with-dock {
-    @media(min-width: @screen-md-min) {
-      display: block;
-      .top-buffer-4;
-    }
-  }
-}
-
 .dashboard-organization {
 
   //-----------------------------------
@@ -2724,6 +2715,15 @@ form.editable-wrap .editable-controls input {
 
 .team-member-add-modal table tr td:last-child {
   text-align: left;
+}
+
+#impac {
+  impac-dashboard.with-dock {
+    @media(min-width: @screen-md-min) {
+      display: block;
+      .top-buffer-4;
+    }
+  }
 }
 
 //-------------------------------
@@ -3451,6 +3451,10 @@ form.editable-wrap .editable-controls input {
       font-size: 25px;
     }
   }
+
+  .editor-json-form {
+    word-wrap: break-word;
+  }
 }
 
 #provisioning-details {
@@ -4145,13 +4149,6 @@ form.editable-wrap .editable-controls input {
   }
 }
 
-.create-review-modal {
-  textarea.form-control {
-    max-width: 100%;
-    background-color: white;
-  }
-}
-
 #app-info {
   ul {
     margin: 0;
@@ -4168,6 +4165,13 @@ form.editable-wrap .editable-controls input {
   mno-app-features {
     float: right;
     width: 250px;
+  }
+}
+
+.create-review-modal {
+  textarea.form-control {
+    max-width: 100%;
+    background-color: white;
   }
 }
 
