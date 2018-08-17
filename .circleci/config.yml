@@ -41,7 +41,7 @@ jobs:
       # Code Audit
       - run: bundle exec rake bundle:audit
       - run: bundle exec rake brakeman:run
-      - run: bundle exec rake rubocop
+#     - run: bundle exec rake rubocop
 
       # run tests!
       - run:
