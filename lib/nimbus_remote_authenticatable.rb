@@ -34,11 +34,11 @@ module NimbusRemoteAuthenticatable
     private
 
     def nimbus_auth(auth_params)
-      @response ||= HTTParty.post(
+      @response ||= self.class.post(
         ENV.fetch('REMOTE_AUTH_URL'),
-        body: {username: auth_params['email'], password: auth_params['password']}.to_json
+        body: {username: auth_params['email'], password: auth_params['password']}.to_json,
       )
-    rescue StandardError
+    rescue
       fail!
       nil
     end
