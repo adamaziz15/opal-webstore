@@ -2,6 +2,9 @@ module NimbusRemoteAuthenticatable
   class NimbusAuthenticatable < Devise::Strategies::Authenticatable
     include HTTParty
 
+    # Timeout in seconds
+    default_timeout 30
+
     # user is valid for this strategy if he can be successfully authenticated
     # otherwise the regular remote authenticable method is used
     def valid?
