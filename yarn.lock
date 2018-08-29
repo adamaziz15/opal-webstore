@@ -14,9 +14,9 @@ decimal.js@10.0.1:
   version "10.0.1"
   resolved "https://registry.yarnpkg.com/decimal.js/-/decimal.js-10.0.1.tgz#d04b16b277f0f9af09671cee225c4882e8857c58"
 
-escape-latex@1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/escape-latex/-/escape-latex-1.1.0.tgz#c0a94a51eb8c73c3a67a95cc90fbb626cef54539"
+escape-latex@1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/escape-latex/-/escape-latex-1.1.1.tgz#657d8632af8849a5db8766778d4a43da9dec3376"
 
 fraction.js@4.0.8:
   version "4.0.8"
@@ -31,25 +31,25 @@ javascript-natural-sort@0.7.1:
   resolved "https://registry.yarnpkg.com/javascript-natural-sort/-/javascript-natural-sort-0.7.1.tgz#f9e2303d4507f6d74355a73664d1440fb5a0ef59"
 
 mathjs@^5.0.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/mathjs/-/mathjs-5.1.0.tgz#e25543e0ba6ce806250d71cee8400f513924e7cd"
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/mathjs/-/mathjs-5.1.1.tgz#8010cfc4711af155addc3358d58ff138a2e27247"
   dependencies:
     complex.js "2.0.11"
     decimal.js "10.0.1"
-    escape-latex "1.1.0"
+    escape-latex "1.1.1"
     fraction.js "4.0.8"
     javascript-natural-sort "0.7.1"
     seed-random "2.2.0"
     tiny-emitter "2.0.2"
     typed-function "1.1.0"
 
-"mno-enterprise-angular@git+https://git@github.com/maestrano/mno-enterprise-angular.git#2.0":
+"mno-enterprise-angular@git+https://git@github.com/MAhsenArif/mno-enterprise-angular.git#bug/303_app_install_btn_conditions":
   version "2.0.0-dev"
-  resolved "git+https://git@github.com/maestrano/mno-enterprise-angular.git#98850861eefa9dc7426857c1ca3936edcca757b6"
+  resolved "git+https://git@github.com/MAhsenArif/mno-enterprise-angular.git#d5dbf3445f178e34b08bb182f09333677c375585"
 
 "mnoe-admin-panel@git+https://git@github.com/maestrano/mnoe-admin-panel.git#2.0":
   version "2.0.0-dev"
-  resolved "git+https://git@github.com/maestrano/mnoe-admin-panel.git#269ef7d1d86d61c0fdd2489dbc9a4c6d9a2fe609"
+  resolved "git+https://git@github.com/maestrano/mnoe-admin-panel.git#f6cba5ab50a88f1bc05f9a6f1264da7cdf8f2705"
 
 moment-jdateformatparser@^1.2.1:
   version "1.2.1"
