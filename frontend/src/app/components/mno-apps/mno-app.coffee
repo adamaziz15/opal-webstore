@@ -487,7 +487,7 @@ angular.module 'mnoEnterpriseAngular'
             # Find if we already have it
             appInstance = _.find(appInstances, { app_nid: app.nid })
             product = _.find(products, { nid: app.nid })
-            vm.enableBSEditor = product.js_editor_enabled
+            vm.enableBSEditor = product?.js_editor_enabled
             loadBlueSkyCurrencies(product) if vm.enableBSEditor
             vm.dataLoading = false unless vm.enableBSEditor
             vm.initialize(app, appInstance, product)
