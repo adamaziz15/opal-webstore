@@ -45,11 +45,11 @@ mathjs@^5.0.0:
 
 "mno-enterprise-angular@git+https://git@github.com/MAhsenArif/mno-enterprise-angular.git#bug/303_app_install_btn_conditions":
   version "2.0.0-dev"
-  resolved "git+https://git@github.com/MAhsenArif/mno-enterprise-angular.git#d5dbf3445f178e34b08bb182f09333677c375585"
+  resolved "git+https://git@github.com/MAhsenArif/mno-enterprise-angular.git#85ff5d14143256446e172d57ba9ed39ee5d1d41b"
 
 "mnoe-admin-panel@git+https://git@github.com/maestrano/mnoe-admin-panel.git#2.0":
   version "2.0.0-dev"
-  resolved "git+https://git@github.com/maestrano/mnoe-admin-panel.git#f6cba5ab50a88f1bc05f9a6f1264da7cdf8f2705"
+  resolved "git+https://git@github.com/maestrano/mnoe-admin-panel.git#ad78f764a6a5eec1c2fe2e4913219cb174956239"
 
 moment-jdateformatparser@^1.2.1:
   version "1.2.1"
