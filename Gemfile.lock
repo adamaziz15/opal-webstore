@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/maestrano/mno-enterprise.git
-  revision: cc94552fe806fe14a977fb7685a8c71a65760653
+  revision: 14ea1a65183cf4be8d40e292d3565b54075db315
   branch: 4.0
   specs:
     mno-enterprise (4.0.0.pre.dev)
@@ -412,4 +412,4 @@ DEPENDENCIES
   webmock (~> 3.0.1)
 
 BUNDLED WITH
-   1.16.1
+   1.16.4
