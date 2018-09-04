@@ -47,9 +47,9 @@ mathjs@^5.0.0:
   version "2.0.0-dev"
   resolved "git+https://git@github.com/maestrano/mno-enterprise-angular.git#770535cdc7fcf9736bdedfd2c0dda2b244b6cd1f"
 
-"mnoe-admin-panel@git+https://git@github.com/maestrano/mnoe-admin-panel.git#2.0":
+"mnoe-admin-panel@git+https://git@github.com/adamaziz15/mnoe-admin-panel.git#bug/258-local-product-plans":
   version "2.0.0-dev"
-  resolved "git+https://git@github.com/maestrano/mnoe-admin-panel.git#cc32e848ab44a37118467c07225f512f0454c98a"
+  resolved "git+https://git@github.com/adamaziz15/mnoe-admin-panel.git#49490d21a008e32262c3f967fd2b0442e1dfe1b4"
 
 moment-jdateformatparser@^1.2.1:
   version "1.2.1"
