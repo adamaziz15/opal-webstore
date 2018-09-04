@@ -5,7 +5,7 @@
     "impac-angular": "git+https://git@github.com/maestrano/impac-angular.git#1.6.x",
     "mathjs": "^5.0.0",
     "mno-enterprise-angular": "git+https://git@github.com/maestrano/mno-enterprise-angular.git#2.0",
-    "mnoe-admin-panel": "git+https://git@github.com/maestrano/mnoe-admin-panel.git#2.0",
+    "mnoe-admin-panel": "git+https://git@github.com/adamaziz15/mnoe-admin-panel.git#bug/258-local-product-plans",
     "moment-jdateformatparser": "^1.2.1"
   },
   "engines": {
