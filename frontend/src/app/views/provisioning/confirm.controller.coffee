@@ -95,6 +95,9 @@ angular.module 'mnoEnterpriseAngular'
           $state.go('home.provisioning.order_summary', {subscriptionId: $stateParams.subscriptionId, editAction: $stateParams.editAction, cart: $stateParams.cart})
         ).finally(-> vm.isLoading = false)
 
+    vm.cancel = ->
+      $state.go('home.marketplace')
+
     vm.addToCart = ->
       vm.isLoading = true
       vm.subscription.cart_entry = true

@@ -105,6 +105,9 @@
         $state.go('dashboard.provisioning.order_summary', {orgId: $stateParams.orgId, subscriptionId: subscription.id, editAction: $stateParams.editAction})
     ).finally(-> vm.isLoading = false)
 
+  vm.cancel = ->
+    $state.go('dashboard.customers.organization', {orgId: $stateParams.orgId})
+
   vm.addToCart = ->
     vm.isLoading = true
     vm.subscription.cart_entry = true
