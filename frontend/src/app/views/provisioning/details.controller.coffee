@@ -249,6 +249,9 @@ angular.module 'mnoEnterpriseAngular'
         MnoeProvisioning.setSubscription(vm.subscription)
         $state.go('home.provisioning.confirm', urlParams)
 
+      vm.cancel = ->
+        $state.go('home.marketplace')
+
       vm.submit = (form) ->
         vm.quoteLoading = true
         if vm.enableBSEditor

@@ -240,6 +240,9 @@
     MnoeProvisioning.setSubscription(vm.subscription)
     $state.go('dashboard.provisioning.confirm', urlParams)
 
+  vm.cancel = ->
+    $state.go('dashboard.customers.organization', { orgId: urlParams.orgId })
+
   vm.submit = (form) ->
     vm.quoteLoading = true
     if vm.enableBSEditor

@@ -34,11 +34,16 @@
     </mno-widget-body>
   </mno-widget>
 
-  <button ng-if="!vm.enableBSEditor" ng-click="vm.submit(vm.detailsForm)" ng-disabled="vm.isLoading || vm.detailsForm.$invalid" class="btn btn-primary pull-right top-buffer-1 bottom-buffer-1" translate>
-    mnoe_admin_panel.dashboard.provisioning.details.next
-  </button>
-  <button ng-if="vm.enableBSEditor" ng-click="vm.submit(vm.schemaDetails.editor.getValue())" ng-disabled="vm.isLoading || !vm.editorValid || vm.quoteLoading" class='btn btn-primary pull-right top-buffer-1'>
-    <span translate>mnoe_admin_panel.dashboard.provisioning.details.next</span>
-    <span ng-show="vm.quoteLoading"><i class='fa fa-spinner fa-pulse fa-fw'></i></span>
-  </button>
+  <span class='pull-right top-buffer-1'>
+    <button ng-click="vm.cancel()" class='btn btn-warning' ng-class="{'bottom-buffer-1': !vm.enableBSEditor}">
+      <span translate>mnoe_admin_panel.dashboard.provisioning.details.cancel</span>
+    </button>
+    <button ng-if="!vm.enableBSEditor" ng-click="vm.submit(vm.detailsForm)" ng-disabled="vm.isLoading || vm.detailsForm.$invalid" class="btn btn-primary bottom-buffer-1" translate>
+      mnoe_admin_panel.dashboard.provisioning.details.next
+    </button>
+    <button ng-if="vm.enableBSEditor" ng-click="vm.submit(vm.schemaDetails.editor.getValue())" ng-disabled="vm.isLoading || !vm.editorValid || vm.quoteLoading" class='btn btn-primary'>
+      <span translate>mnoe_admin_panel.dashboard.provisioning.details.next</span>
+      <span ng-show="vm.quoteLoading"><i class='fa fa-spinner fa-pulse fa-fw'></i></span>
+    </button>
+  </span>
 </div>
