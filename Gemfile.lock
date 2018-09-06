@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/maestrano/mno-enterprise.git
-  revision: cae1cdb9b903954b70eec37911910db10eaa0026
-  branch: 4.0
+  revision: d93de64722f9a8e755cee869daa4a38115faa6b2
+  branch: feature/249-fix-devise-failure-app
   specs:
     mno-enterprise (4.0.0.pre.dev)
       mno-enterprise-api (= 4.0.0.pre.dev)
