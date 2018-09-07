@@ -13,7 +13,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'uuid'
 
 # Maestrano Enterprise Engine
-gem 'mno-enterprise', git: 'https://github.com/maestrano/mno-enterprise.git', branch: 'feature/249-fix-devise-failure-app'
+gem 'mno-enterprise', git: 'https://github.com/MAhsenArif/mno-enterprise.git', branch: 'bug/294_refactor_app_management_sync_status'
 # gem 'mno-enterprise', path: '../mno-enterprise'
 
 # For Nimbus Authentication Strategy
