@@ -53,4 +53,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
   gem 'timecop'
+
+  # Circle CI
+  gem 'rspec_junit_formatter'
 end

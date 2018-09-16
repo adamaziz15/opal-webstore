@@ -24,7 +24,7 @@ module MnoEnterprise
     end
 
     def set_url_params(url, locale)
-      url.gsub!(":locale", locale)
+      url.gsub!(':locale', locale)
     end
 
     def default_locale
