@@ -123,9 +123,19 @@
     vm.filterCurrencies()
     loadBSBasedCurrencies()
     # Skip this view when subscription plan is not editable
-    if ProvisioningHelper.skipPriceSelection(vm.subscription.product) || (vm.bsEditorEnabled && (vm.orgCurrency in vm.currenciesList))
+    if ProvisioningHelper.skipPriceSelection(vm.subscription.product)
       vm.next(vm.subscription, vm.subscription.currency)
-    vm.isLoading = false
+    if vm.bsEditorEnabled
+      if vm.orgCurrency && (vm.orgCurrency in vm.currenciesList)
+        vm.next(vm.subscription, vm.orgCurrency)
+      else
+        delayLoader = true
+        orgPromise = MnoeOrganizations.get($stateParams.orgId).then(
+          (response) ->
+            vm.next(vm.subscription, response.data.billing_currency) if (response.data.billing_currency in vm.currenciesList)
+        ).finally(-> vm.isLoading = false)
+
+    vm.isLoading = false unless delayLoader
 
   vm.subscriptionPlanText = switch $stateParams.editAction.toLowerCase()
     when 'provision'
