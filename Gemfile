@@ -32,7 +32,7 @@ gem 'webmock', '~> 3.0.1'
 
 group :uat, :production do
   gem 'newrelic_rpm'
-  gem 'nex_client', '~> 0.16.0'
+  gem 'nex_client', '~> 0.17.0'
 end
 
 group :development, :test do
