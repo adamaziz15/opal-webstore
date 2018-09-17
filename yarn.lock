@@ -18,9 +18,9 @@ escape-latex@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/escape-latex/-/escape-latex-1.1.1.tgz#657d8632af8849a5db8766778d4a43da9dec3376"
 
-fraction.js@4.0.8:
-  version "4.0.8"
-  resolved "https://registry.yarnpkg.com/fraction.js/-/fraction.js-4.0.8.tgz#e53618112e3b36b348c61a81323173bceb01e418"
+fraction.js@4.0.9:
+  version "4.0.9"
+  resolved "https://registry.yarnpkg.com/fraction.js/-/fraction.js-4.0.9.tgz#ef7aa1ad47ef600021ad7fa7991dfd56c3b5f7c8"
 
 "impac-angular@git+https://git@github.com/maestrano/impac-angular.git#1.6.x":
   version "1.6.11"
@@ -31,13 +31,13 @@ javascript-natural-sort@0.7.1:
   resolved "https://registry.yarnpkg.com/javascript-natural-sort/-/javascript-natural-sort-0.7.1.tgz#f9e2303d4507f6d74355a73664d1440fb5a0ef59"
 
 mathjs@^5.0.0:
-  version "5.1.1"
-  resolved "https://registry.yarnpkg.com/mathjs/-/mathjs-5.1.1.tgz#8010cfc4711af155addc3358d58ff138a2e27247"
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/mathjs/-/mathjs-5.1.2.tgz#dab9352d9e50c235a51926666d4aba5936c7b33f"
   dependencies:
     complex.js "2.0.11"
     decimal.js "10.0.1"
     escape-latex "1.1.1"
-    fraction.js "4.0.8"
+    fraction.js "4.0.9"
     javascript-natural-sort "0.7.1"
     seed-random "2.2.0"
     tiny-emitter "2.0.2"
@@ -45,11 +45,11 @@ mathjs@^5.0.0:
 
 "mno-enterprise-angular@git+https://git@github.com/maestrano/mno-enterprise-angular.git#2.0":
   version "2.0.0-dev"
-  resolved "git+https://git@github.com/maestrano/mno-enterprise-angular.git#770535cdc7fcf9736bdedfd2c0dda2b244b6cd1f"
+  resolved "git+https://git@github.com/maestrano/mno-enterprise-angular.git#26b26f93a178348340c8a64352ddbf9d5063c4d3"
 
 "mnoe-admin-panel@git+https://git@github.com/maestrano/mnoe-admin-panel.git#2.0":
   version "2.0.0-dev"
-  resolved "git+https://git@github.com/maestrano/mnoe-admin-panel.git#a270d6aa349e02022c146ba97f635fefec11529e"
+  resolved "git+https://git@github.com/maestrano/mnoe-admin-panel.git#c13baa6105b2dc37f2137aec77b014186ab36ac8"
 
 moment-jdateformatparser@^1.2.1:
   version "1.2.1"
