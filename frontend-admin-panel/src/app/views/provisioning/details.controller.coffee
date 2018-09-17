@@ -9,19 +9,20 @@
 
   # Methods under the vm.model are used for calculated fields under #json_schema_opts, which are set on third-party adapters.
   # Used to calculate the end date for forms with a contractEndDate.
-  vm.model.calculateEndDate = (startDate, contractLength) ->
-    return null unless startDate && contractLength
-    moment(startDate)
-    .add(contractLength.split('Months')[0], 'M')
-    .format('YYYY-MM-DD')
-  # Used for forms that automatically calculate the startDate.
-  vm.model.timeNow = () ->
-    $filter('date')(new Date(), 'yyyy-MM-dd')
+  unless vm.subscription?.product?.js_editor_enabled
+    vm.model.calculateEndDate = (startDate, contractLength) ->
+      return null unless startDate && contractLength
+      moment(startDate)
+      .add(contractLength.split('Months')[0], 'M')
+      .format('YYYY-MM-DD')
+    # Used for forms that automatically calculate the startDate.
+    vm.model.timeNow = () ->
+      $filter('date')(new Date(), 'yyyy-MM-dd')
 
-  # Workaround. You can only specify defaults in the schema, and not the vm.form section.
-  # Since we are getting the schemas remotely, we must find a way to set defaults using vm.form.
-  vm.model.defaultContractLength = () ->
-    'Monthly'
+    # Workaround. You can only specify defaults in the schema, and not the vm.form section.
+    # Since we are getting the schemas remotely, we must find a way to set defaults using vm.form.
+    vm.model.defaultContractLength = () ->
+      'Monthly'
 
   urlParams =
     orgId: $stateParams.orgId,
@@ -239,6 +240,9 @@
   confirmOrder = ->
     MnoeProvisioning.setSubscription(vm.subscription)
     $state.go('dashboard.provisioning.confirm', urlParams)
+
+  vm.cancel = ->
+    $state.go('dashboard.customers.organization', { orgId: urlParams.orgId })
 
   vm.submit = (form) ->
     vm.quoteLoading = true

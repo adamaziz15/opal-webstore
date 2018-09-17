@@ -16,9 +16,15 @@
       <div ng-if="!vm.enableBSEditor">
         <form name="vm.detailsForm" ng-submit="vm.submit(vm.detailsForm)" sf-schema="vm.schema" sf-form="vm.form" sf-model="vm.model"></form>
 
-        <button type="submit" ng-click="vm.submit(vm.detailsForm)" ng-disabled="vm.isLoading || vm.detailsForm.$invalid" class="btn btn-primary pull-right top-buffer-1" translate>
-          mno_enterprise.templates.dashboard.provisioning.details.next
-        </button>
+        <span class='pull-right top-buffer-1'>
+          <button class='btn btn-warning' ng-click="vm.cancel()" ng-disabled="vm.isLoading" translate>
+            mno_enterprise.templates.dashboard.provisioning.details.cancel
+          </button>
+
+          <button type="submit" ng-click="vm.submit(vm.detailsForm)" ng-disabled="vm.isLoading || vm.detailsForm.$invalid" class="btn btn-primary" translate>
+            mno_enterprise.templates.dashboard.provisioning.details.next
+          </button>
+        </span>
       </div>
 
       <div id='bs-editor-flow' ng-if="vm.enableBSEditor">
@@ -41,10 +47,16 @@
             </div>
           </div>
 
-          <button class='btn btn-warning pull-right top-buffer-1' ng-click="vm.submit(vm.schemaDetails.editor.getValue())" ng-disabled="vm.isLoading || !vm.editorValid || vm.quoteLoading">
-            <span ng-show="vm.quoteLoading"><i class='fa fa-spinner fa-pulse fa-fw'></i></span>
-            <span translate>mno_enterprise.templates.dashboard.provisioning.details.next</span>
-          </button>
+          <span class='pull-right top-buffer-1'>
+            <button class='btn btn-warning' ng-click="vm.cancel()">
+              <span translate>mno_enterprise.templates.dashboard.provisioning.details.cancel</span>
+            </button>
+
+            <button class='btn btn-primary' ng-click="vm.submit(vm.schemaDetails.editor.getValue())" ng-disabled="vm.isLoading || !vm.editorValid || vm.quoteLoading">
+              <span ng-show="vm.quoteLoading"><i class='fa fa-spinner fa-pulse fa-fw'></i></span>
+              <span translate>mno_enterprise.templates.dashboard.provisioning.details.next</span>
+            </button>
+          </span>
         </section>
       </div>
     </div>
