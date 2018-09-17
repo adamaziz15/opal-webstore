@@ -15,7 +15,7 @@ frontend_host:
 url_config:
   developer_onboarding_url: <%= ENV['DEVELOPER_ONBOARDING_URL'] %>
 
-product_nids: ["aws-uat", "cisco-spark-uat", "microsoft-office-365-uat", "sep-endpoint-protection-cloud-uat", "cisco-meraki-uat", "symantec-end-point-protection-cloud-uat", "azure-uat", "symantec-web-security-cloud-uat", "cisco-umbrella-uat", "symantec-email-security-cloud-uat", "cisco-cmx-uat", "microsoft-azure-opal", "cisco-webex-uat", "cisco-web-security-uat"]
+product_nids: ["aws-uat", "cisco-spark-uat", "microsoft-office-365-uat", "sep-endpoint-protection-cloud-uat", "cisco-meraki-uat", "symantec-end-point-protection-cloud-uat", "azure-uat", "symantec-web-security-cloud-uat", "cisco-umbrella-uat", "symantec-email-security-cloud-uat", "cisco-cmx-uat", "microsoft-azure-opal", "cisco-webex-uat", "cisco-web-security-uat", "palo-alto-uat"]
 
 #===============================================
 # Feature Flags

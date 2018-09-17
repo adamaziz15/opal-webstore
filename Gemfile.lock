@@ -217,7 +217,7 @@ GEM
     multi_xml (0.6.0)
     multipart-post (2.0.0)
     newrelic_rpm (5.3.0.346)
-    nex_client (0.16.0)
+    nex_client (0.17.0)
       activesupport
       colorize
       commander
@@ -395,7 +395,7 @@ DEPENDENCIES
   monetize
   money
   newrelic_rpm
-  nex_client (~> 0.16.0)
+  nex_client (~> 0.17.0)
   puma
   rails (~> 4.2.4)
   redis-rails
