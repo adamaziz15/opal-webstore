@@ -22,6 +22,7 @@ angular.module 'mnoEnterpriseAngular'
 
     setupNewForm = ->
       vm.editor = MnoeBlueSky.getCachedBSEditor()
+      vm.editorValues = vm.editor.getValue()
 
     setCustomSchema = () ->
       parsedSchema = JSON.parse(vm.subscription.product.custom_schema)

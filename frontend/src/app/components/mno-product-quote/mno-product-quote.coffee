@@ -20,14 +20,17 @@ angular.module 'mnoEnterpriseAngular'
 
         $scope.extractDisclaimerMsg = ->
           keys = $scope.quote.disclaimer?.split('.')
-          translations = MnoeBlueSky.getCachedTranslations()
-          if keys.length == 1
-            return translations[key]
-          else
-            trans = translations
-            _.each keys, (key) ->
-              trans = trans[key]
-            trans
+          MnoeBlueSky.getSchemaTranslations().then(
+            () ->
+              translations = DomWorker.$Translations.productTranslations
+              if keys.length == 1
+                return translations[key]
+              else
+                trans = translations
+                _.each keys, (key) ->
+                  trans = trans[key]
+                trans
+          )
 
         return
     }
