@@ -18,19 +18,21 @@ angular.module 'mnoEnterpriseAngular'
         $scope.quotedPrice = $scope.quote.totalListPrice
         $scope.quotedCurrency = $scope.quote.totalContractValue?.currency
 
-        $scope.extractDisclaimerMsg = ->
+        extractDisclaimerMsg = ->
           keys = $scope.quote.disclaimer?.split('.')
+          return unless keys
+
           MnoeBlueSky.getSchemaTranslations().then(
-            () ->
-              translations = DomWorker.$Translations.productTranslations
-              if keys.length == 1
-                return translations[key]
-              else
-                trans = translations
-                _.each keys, (key) ->
-                  trans = trans[key]
-                trans
+            (response) ->
+              trans = angular.copy(response.productTranslations)
+              _.each keys, (key) ->
+                return unless trans
+                trans = trans[key]
+
+              $scope.disclaimerMsg = trans
           )
+
+        extractDisclaimerMsg()
 
         return
     }

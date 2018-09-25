@@ -19,8 +19,8 @@ angular.module 'mnoEnterpriseAngular'
     # Preload the BS JSON Editor to retrieve the editor instance
     loadHiddenEditorData = ->
       vm.schemaCopy = MnoeBlueSky.parseJsonEditorValues(angular.copy(vm.subscription.custom_data), true)
-      MnoeBlueSky.getSchemaTranslation().then(
-        (response) ->
+      MnoeBlueSky.getSchemaTranslations().then(
+        () ->
           vm.schemaDetails =
             schema: vm.schema
             editor: null

@@ -1,5 +1,5 @@
 @App.controller 'OrderController',
-  ($filter, $state, $stateParams, $uibModal, toastr, MnoeProvisioning, MnoeOrganizations, MnoeUsers, MnoConfirm, MnoeProducts, MnoeCurrentUser, MnoeBlueSky, UserRoles) ->
+  ($filter, $state, $stateParams, $uibModal, toastr, $q, MnoeProvisioning, MnoeOrganizations, MnoeUsers, MnoConfirm, MnoeProducts, MnoeCurrentUser, MnoeBlueSky, UserRoles) ->
     'ngInject'
     vm = this
 
@@ -39,11 +39,9 @@
 
     # Preload the BS JSON Editor to retrieve the editor instance
     loadHiddenEditorData = ->
-      MnoeBlueSky.getSchemaTranslation().then(
-        (response) ->
-          vm.errorTranslations = JSON.parse(response.data.error_translations)
-          vm.productTranslations = JSON.parse(response.data.product_translations)
-      ).finally(-> vm.loadHiddenEditor = true)
+      vm.subscriptionCopy = MnoeBlueSky.parseJsonEditorValues(angular.copy(vm.subscription.custom_data), true)
+      vm.orderCopy = MnoeBlueSky.parseJsonEditorValues(angular.copy(vm.order.subscription_details.custom_data), true)
+      MnoeBlueSky.getSchemaTranslations().then(-> vm.loadHiddenEditor = true)
 
     setSchemaReadOnlyData = ->
       vm.currentSchemaDetails =
@@ -69,11 +67,8 @@
               schema = JSON.parse(response)
               vm.schema = schema.json_schema || schema
               vm.form = schema.asf_options || ["*"]
-              setSchemaReadOnlyData() if vm.enableBSEditor
           )
-        ).finally(-> vm.isLoading = false)
-
-    fetchSubscription()
+        )
 
     fetchSubscriptionEvents = () ->
       MnoeProvisioning.getSubscriptionEvents(vm.subscriptionId, vm.orgId, null, null, 'created_at.desc').then(
@@ -85,7 +80,9 @@
             vm.order = _.find(vm.subscriptionEvents, (s) -> !s.obsolete)
       )
 
-    fetchSubscriptionEvents()
+    $q.all([fetchSubscription(), fetchSubscriptionEvents()])
+      .then(-> setSchemaReadOnlyData() if vm.enableBSEditor)
+      .finally(-> vm.isLoading = false)
 
     MnoeCurrentUser.getUser().then(
       (response) ->

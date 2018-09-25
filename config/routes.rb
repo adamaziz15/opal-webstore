@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     namespace :mnoe, module: :mno_enterprise do
       namespace :jpi do
         namespace :v1 do
-          get :schema_translations, to: 'blue_sky_translations#schema_translations'
+          get :bluesky_config, to: 'blue_sky_config#bluesky_config'
         end
       end
     end

@@ -17,7 +17,7 @@
 
   setSchemaReadOnlyData = ->
     vm.editor = MnoeBlueSky.getCachedBSEditor()
-    return if _.isEmpty(vm.editor)
+    vm.editorValues = vm.editor?.getValue()
     vm.dataLoading = false
 
   vm.isLoading = true

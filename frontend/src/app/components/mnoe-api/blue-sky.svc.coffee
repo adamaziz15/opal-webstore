@@ -1,34 +1,48 @@
-# Service for the retrieval of Translations from BlueSky
-
 angular.module 'mnoEnterpriseAngular'
-  .service 'MnoeBlueSky', ($locale, $q, $rootScope) ->
+  .service 'MnoeBlueSky', (MnoeApiSvc, $locale, $q, $rootScope) ->
     _self = @
 
     bs_editor = {}
-    translations = null
+    translationsDeferred = null
+    configPromise = null
 
-    @getSchemaTranslation = ->
-      return translations.promise if translations
+    @fetchBlueSkyConfig = ->
+      unless configPromise
+        configPromise = MnoeApiSvc.one("/bluesky_config").get()
 
-      translations = $q.defer()
+      configPromise
+
+    @getSchemaTranslations = ->
+      return translationsDeferred.promise if translationsDeferred
+
+      translationsDeferred = $q.defer()
 
       if translationsLoaded()
-        translations.resolve(true)
-      else
-        DomWorker.$Translations.$init({
-          'baseUrl': 'https://nimbus-hat.wgcloudconnect.com/language',
-          'fallback-lang': 'en-us',
-          'preferred-lang': $locale.id
+        translationsDeferred.resolve({
+          productTranslations: DomWorker.$Translations.productTranslations,
+          errorTranslations: DomWorker.$Translations.errorTranslations
         })
+      else
+        _self.fetchBlueSkyConfig().then(
+          (config) ->
+            DomWorker.$Translations.$init({
+              'baseUrl': config.bluesky_host + '/language',
+              'fallback-lang': 'en-us',
+              'preferred-lang': $locale.id
+            })
+        )
 
-      translations.promise
+      translationsDeferred.promise
 
     translationsLoaded = ->
       DomWorker.$Translations.productTranslations && DomWorker.$Translations.errorTranslations
 
     $rootScope.$watch(translationsLoaded, (newVal) ->
       if newVal
-        translations.resolve(true)
+        translationsDeferred.resolve({
+          productTranslations: DomWorker.$Translations.productTranslations,
+          errorTranslations: DomWorker.$Translations.errorTranslations
+        })
     ).bind(_self)
 
     @setBSEditor = (editor) ->

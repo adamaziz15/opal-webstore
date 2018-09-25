@@ -114,7 +114,7 @@ angular.module 'mnoEnterpriseAngular'
           defer.resolve(false)
           return defer.promise
 
-        MnoeBlueSky.getSchemaTranslation()
+        MnoeBlueSky.getSchemaTranslations()
 
       setupNewForm = ->
         # TODO: Move this to a helper/service as it's just static data

@@ -17,16 +17,21 @@
       $scope.quotedPrice = $scope.quote.totalListPrice
       $scope.quotedCurrency = $scope.quote.totalContractValue?.currency
 
-      $scope.extractDisclaimerMsg = ->
+      extractDisclaimerMsg = ->
         keys = $scope.quote.disclaimer?.split('.')
-        translations = MnoeBlueSky.getCachedTranslations()
-        if keys.length == 1
-          return translations[key]
-        else
-          trans = translations
-          _.each keys, (key) ->
-            trans = trans[key]
-          trans
+        return unless keys
+
+        MnoeBlueSky.getSchemaTranslations().then(
+          (response) ->
+            trans = angular.copy(response.productTranslations)
+            _.each keys, (key) ->
+              return unless trans
+              trans = trans[key]
+
+            $scope.disclaimerMsg = trans
+        )
+
+      extractDisclaimerMsg()
 
       return
   }

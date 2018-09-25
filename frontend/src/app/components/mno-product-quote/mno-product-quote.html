@@ -36,6 +36,6 @@
 <div class='row th-row hidden-xs text-center' ng-show='quote.usage_based'>
   {{ 'mno_enterprise.templates.dashboard.provisioning.quote.usage_based' | translate }}
 </div>
-<div class='alert alert-danger text-center' ng-if="quote.disclaimer">
-  {{ extractDisclaimerMsg() }}
+<div class='alert alert-danger text-center' ng-if="disclaimerMsg">
+  {{ disclaimerMsg }}
 </div>
