@@ -1,5 +1,5 @@
 angular.module 'mnoEnterpriseAngular'
-  .service 'MnoeBlueSky', (MnoeApiSvc, $locale, $q, $rootScope) ->
+  .service 'MnoeBlueSky', (MnoeApiSvc, $locale, $q, $http) ->
     _self = @
 
     bs_editor = {}
@@ -17,33 +17,43 @@ angular.module 'mnoEnterpriseAngular'
 
       translationsDeferred = $q.defer()
 
-      if translationsLoaded()
-        translationsDeferred.resolve({
-          productTranslations: DomWorker.$Translations.productTranslations,
-          errorTranslations: DomWorker.$Translations.errorTranslations
-        })
-      else
-        _self.fetchBlueSkyConfig().then(
-          (config) ->
-            DomWorker.$Translations.$init({
-              'baseUrl': config.bluesky_host + '/language',
-              'fallback-lang': 'en-us',
-              'preferred-lang': $locale.id
-            })
-        )
+      _self.fetchBlueSkyConfig().then(
+        (config) ->
+          DomWorker.$Translations.$init({
+            'baseUrl': config.bluesky_host + '/language',
+            'fallback-lang': 'en-us',
+            'preferred-lang': $locale.id
+          })
+
+          # Fetch portal locales (to translate disclaimers)
+          url = '/language/:locale/portal_:locale.json'
+          fallback = $http.get(config.bluesky_host + url.replace(/:locale/g, 'en-us'))
+          preferred = $http.get(config.bluesky_host + url.replace(/:locale/g, $locale.id))
+          $q.all({ fallback: fallback, preferred: preferred }).then(
+            (portalTranslations) ->
+              # The translationsDeferred promise should not be resolved until all translations are set
+              # on the DomWorker. This prevents loading of the editor before translations are present.
+              onEditorTranslationsLoaded = (iterations = 0) ->
+                iterations += 1
+                editorTranslations = DomWorker.$Translations
+                if (editorTranslations.errorTranslations && editorTranslations.productTranslations) || iterations == 60
+                  translationsDeferred.resolve({
+                    errorTranslations: editorTranslations.errorTranslations,
+                    productTranslations: editorTranslations.productTranslations,
+                    portalTranslations: angular.merge(portalTranslations.fallback.data, portalTranslations.preferred.data)
+                  })
+                else
+                  # If translations are not set on the DomWorker yet, check again in 250ms.
+                  # Continue checking for 60 iterations (15 seconds). If translations are
+                  # not set after 15 seconds, resolve the translationsDeferred promise
+                  # to avoid infinite loading.
+                  setTimeout(onEditorTranslationsLoaded.bind(null, iterations), 250)
+
+              onEditorTranslationsLoaded()
+          )
+      )
 
       translationsDeferred.promise
-
-    translationsLoaded = ->
-      DomWorker.$Translations.productTranslations && DomWorker.$Translations.errorTranslations
-
-    $rootScope.$watch(translationsLoaded, (newVal) ->
-      if newVal
-        translationsDeferred.resolve({
-          productTranslations: DomWorker.$Translations.productTranslations,
-          errorTranslations: DomWorker.$Translations.errorTranslations
-        })
-    ).bind(_self)
 
     @setBSEditor = (editor) ->
       bs_editor = editor

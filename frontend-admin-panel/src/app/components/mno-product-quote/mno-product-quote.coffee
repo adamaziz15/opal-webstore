@@ -23,7 +23,7 @@
 
         MnoeBlueSky.getSchemaTranslations().then(
           (response) ->
-            trans = angular.copy(response.productTranslations)
+            trans = angular.copy(response.portalTranslations)
             _.each keys, (key) ->
               return unless trans
               trans = trans[key]
