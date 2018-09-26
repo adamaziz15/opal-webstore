@@ -15,7 +15,8 @@
     controller: ($scope) ->
       $scope.bsEditorEnabled = $scope.subscription.product.js_editor_enabled
       $scope.quotedPrice = $scope.quote.totalListPrice
-      $scope.quotedCurrency = $scope.quote.totalContractValue?.currency
+      $scope.quotedCurrency = $scope.quote.config.currency
+      $scope.showContractMultiplier = $scope.quote.config.contract_multiplier > 1
 
       extractDisclaimerMsg = ->
         keys = $scope.quote.disclaimer?.split('.')

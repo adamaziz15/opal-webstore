@@ -542,6 +542,8 @@
   "mnoe_admin_panel.dashboard.provisioning.subscriptions.reactivate": "Reactivate",
   "mnoe_admin_panel.dashboard.provisioning.quote.unit_price": "Unit Price",
   "mnoe_admin_panel.dashboard.provisioning.quote.quantity": "Quantity",
+  "mnoe_admin_panel.dashboard.provisioning.quote.sub_total": "Subtotal",
+  "mnoe_admin_panel.dashboard.provisioning.quote.monthly": "(x Monthly)",
   "mnoe_admin_panel.dashboard.provisioning.quote.total_price": "Total",
   "mnoe_admin_panel.dashboard.provisioning.quote.total_list_price": "Total List Price",
   "mnoe_admin_panel.dashboard.provisioning.quote.usage_based": "The pricing of this product is usage-based.",
