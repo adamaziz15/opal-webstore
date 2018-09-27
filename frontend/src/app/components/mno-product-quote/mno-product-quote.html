@@ -27,7 +27,7 @@
   <div class='cell col-sm-2'>
     {{ quotedCurrency }} {{ pricingDetail.totalPrice | number:2 }}
   </div>
-  <div class='cell col-sm-2' ng-if='showContractMultiplier'>
+  <div class='cell col-sm-2 term-total' ng-if='showContractMultiplier'>
     {{ quotedCurrency }} {{ pricingDetail.termPrice | number:2 }}
     <sub class='text-muted'>
       {{ 'mno_enterprise.templates.dashboard.provisioning.quote.monthly' | translate }}

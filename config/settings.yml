@@ -15,8 +15,9 @@ frontend_host:
 url_config:
   developer_onboarding_url: <%= ENV['DEVELOPER_ONBOARDING_URL'] %>
 
-product_nids: ["aws-uat", "cisco-spark-uat", "microsoft-office-365-uat", "sep-endpoint-protection-cloud-uat", "cisco-meraki-uat", "symantec-end-point-protection-cloud-uat", "azure-uat", "symantec-web-security-cloud-uat", "cisco-umbrella-uat", "symantec-email-security-cloud-uat", "cisco-cmx-uat", "microsoft-azure-opal", "cisco-webex-uat", "cisco-web-security-uat", "palo-alto-uat"]
-
+bluesky_products: ["AMAZONWEBSERVICES", "CISCOSPARK", "MO365", "SEPC", "PALOALTO", "CISCOMERAKI", "SYMANTECENDPOINTPROTECTION", "AZURE", "SYMANTECWEBSECURITY", "CISCOUMBRELLA",
+"SYMANTECEMAILSECURITY", "CISCOCMX", "CISCOWEBEX", "CISCOWEBSECURITY", "MO365ACADEMIC_DYNAMICS365", "MO365ACADEMIC_O365", "MO365CHARITY_DYNAMICS365", "MO365CHARITY_O365",
+"MO365GOVERNMENT_DYNAMICS365", "MO365GOVERNMENT_O365", "MO365GOVERNMENT_O365", "MO365TRIAL_O365", "MO365_DYNAMICS365", "MO365_O365", "MO365_OFFICE365ENTERPRISE_NEW"]
 #===============================================
 # Feature Flags
 #===============================================
