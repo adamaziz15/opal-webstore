@@ -101,12 +101,7 @@
       defer.resolve(false)
       return defer.promise
 
-    MnoeBlueSky.getSchemaTranslation().then(
-      (response) ->
-        vm.errorTranslations = JSON.parse(response.data.error_translations)
-        vm.productTranslations = JSON.parse(response.data.product_translations)
-        MnoeBlueSky.setSchemaTranslations(vm.productTranslations)
-    )
+    MnoeBlueSky.getSchemaTranslations()
 
   # TODO: Move this to a BS Editor Helper
   formValidation = (errorsLength, values) ->
@@ -119,6 +114,9 @@
   setupNewForm = ->
     # TODO: Move this to a helper/service as it's just static data
     loadSessionData()
+
+    if vm.enableBSEditor && !_.isEmpty(vm.schemaCopy)
+      vm.schemaCopy = MnoeBlueSky.parseJsonEditorValues(angular.copy(vm.subscription.custom_data), true)
 
     vm.schemaDetails =
       schema: vm.schema
@@ -139,7 +137,7 @@
     # Set BS Editor flag
     if product.js_editor_enabled
       vm.enableBSEditor = true
-      vm.schemaCopy = angular.copy vm.subscription.custom_data if urlParams.editAction != 'provision' && _.isEmpty(vm.schemaCopy)
+      vm.schemaCopy = MnoeBlueSky.parseJsonEditorValues(angular.copy(vm.subscription.custom_data), true) if urlParams.editAction != 'provision' && _.isEmpty(vm.schemaCopy)
     vm.model = vm.subscription.custom_data || {}
     parsedSchema = JSON.parse(product.custom_schema)
     schema = parsedSchema.json_schema || parsedSchema
@@ -250,7 +248,7 @@
       vm.quoteErrors = []
       # Cache the editor instance
       MnoeBlueSky.setBSEditor(vm.schemaDetails.editor)
-      vm.subscription.custom_data = form
+      vm.subscription.custom_data = MnoeBlueSky.parseJsonEditorValues(angular.copy(form))
       fetchQuote()
     else
       $scope.$broadcast('schemaFormValidate')

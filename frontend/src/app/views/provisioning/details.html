@@ -36,9 +36,7 @@
             scrollable="true"
             editor="vm.schemaDetails.editor"
             initial-values="vm.schemaCopy"
-            callback-function="vm.formValidation"
-            error-translations="vm.errorTranslations"
-            product-translations="vm.productTranslations">
+            callback-function="vm.formValidation">
           </blue-sky-json-editor>
 
           <div ng-if="vm.quoteErrors.length > 0" class='text-right alert alert-danger'>

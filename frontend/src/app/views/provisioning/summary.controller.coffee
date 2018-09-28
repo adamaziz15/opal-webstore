@@ -13,6 +13,7 @@ angular.module 'mnoEnterpriseAngular'
 
     setSchemaReadOnlyData = ->
       vm.editor = MnoeBlueSky.getCachedBSEditor()
+      vm.editorValues = vm.editor?.getValue()
       vm.dataLoading = false
 
     initSummary = () ->

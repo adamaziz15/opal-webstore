@@ -36,9 +36,6 @@
         heading: scope.heading
         $locale: $locale
         externalvalidationurl: scope.externalvalidationurl # decide the flow for external validations OPAL-480
-        translations:
-          errorTranslations: scope.errorTranslations || errorTranslations
-          productSchemaTranlations: scope.productTranslations || productTranslations
         language: lang
         wrapLevel: scope.schema?.wrapLevel or attrs?.wrapLevel or defaultWrapLevel
         textNoResults: attrs.textNoResults

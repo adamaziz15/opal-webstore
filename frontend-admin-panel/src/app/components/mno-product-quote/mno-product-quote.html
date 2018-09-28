@@ -8,6 +8,9 @@
     <th>
       {{ 'mnoe_admin_panel.dashboard.provisioning.quote.quantity' | translate }}
     </th>
+    <th ng-if='showContractMultiplier'>
+      {{ 'mnoe_admin_panel.dashboard.provisioning.quote.sub_total' | translate }}
+    </th>
     <th>
       {{ 'mnoe_admin_panel.dashboard.provisioning.quote.total_price' | translate }}
     </th>
@@ -19,22 +22,28 @@
         {{ pricingDetail.description }}
       </td>
       <td>
-        {{ quotedCurrency }} {{ pricingDetail.unitPrice.value }}
+        {{ quotedCurrency }} {{ pricingDetail.unitPrice.value | number:2 }}
       </td>
       <td>
         {{ pricingDetail.quantity }}
       </td>
       <td>
-        {{ quotedCurrency }} {{ pricingDetail.totalPrice }}
+        {{ quotedCurrency }} {{ pricingDetail.totalPrice | number:2 }}
+      </td>
+      <td ng-if='showContractMultiplier'>
+        {{ quotedCurrency }} {{ pricingDetail.termPrice | number:2 }}
+        <sub class='text-muted'>
+          {{ 'mnoe_admin_panel.dashboard.provisioning.quote.monthly' | translate }}
+        </sub>
       </td>
     </tr>
 
     <tr>
-      <td colspan='3'>
+      <td colspan='{{ showContractMultiplier ? 4 : 3 }}'>
         {{ 'mnoe_admin_panel.dashboard.provisioning.quote.total_list_price' | translate }}
       </td>
       <td>
-        {{ quotedCurrency }} {{ quotedPrice }}
+        {{ quotedCurrency }} {{ quotedPrice | number:2 }}
       </td>
     </tr>
   </tbody>
@@ -47,6 +56,6 @@
   </tbody>
 </table>
 
-<div class='alert alert-danger text-center' ng-if="quote.disclaimer">
-  {{ extractDisclaimerMsg() }}
+<div class='alert alert-danger text-center' ng-if="disclaimerMsg">
+  {{ disclaimerMsg }}
 </div>

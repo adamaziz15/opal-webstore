@@ -289,9 +289,7 @@
       heading="true"
       scrollable="true"
       editor="vm.currentSchemaDetails.editor"
-      initial-values="vm.subscription.custom_data"
-      error-translations="vm.errorTranslations"
-      product-translations="vm.productTranslations">
+      initial-values="vm.subscriptionCopy">
     </blue-sky-json-editor>
   </section>
   <div ng-if="vm.currentSchemaDetails.editor">
@@ -305,9 +303,7 @@
       heading="true"
       scrollable="true"
       editor="vm.requestedSchemaDetails.editor"
-      initial-values="vm.order.subscription_details.custom_data"
-      error-translations="vm.errorTranslations"
-      product-translations="vm.productTranslations">
+      initial-values="vm.orderCopy">
     </blue-sky-json-editor>
   </section>
   <div ng-if="vm.requestedSchemaDetails.editor">

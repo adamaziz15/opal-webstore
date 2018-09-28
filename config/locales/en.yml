@@ -31,6 +31,8 @@ en:
           quote:
             unit_price: "Unit Price"
             quantity: "Quantity"
+            sub_total: "Subtotal"
+            monthly: "(x Monthly)"
             total_price: "Total"
             total_list_price: "Total List Price"
             usage_based: "The pricing of this product is usage-based."
