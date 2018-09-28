@@ -1,0 +1,139 @@
+web-worker button {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+web-worker h3 {
+    width: 100% !important;
+}
+
+web-worker .value-changed {
+    border: 1px solid #51cbee;
+    animation: highlight 5s ease-in-out;
+}
+
+@keyframes highlight {
+    0% {
+        box-shadow: 0 0 5px rgba(81, 203, 238, 0);
+    }
+    50% {
+        box-shadow: 0 0 5px #51cbee;
+    }
+    100% {
+        box-shadow: 0 0 5px rgba(81, 203, 238, 0);
+    }
+}
+
+web-worker .block-structure {
+    float: left;
+    margin-left: 12px;
+}
+
+web-worker #textNoResults {
+    display: none;
+    padding-bottom: 10px;
+}
+
+web-worker .tooltip.left {
+    margin-left: 10px;
+    padding: 0 5px;
+}
+
+.custom-properties web-worker .tooltip.bottom {
+    margin-top: 3px;
+    left: 0 !important;
+    padding: 5px 0;
+}
+
+web-worker .tooltip.bottom {
+    margin-top: 3px;
+    padding: 5px 0;
+}
+
+web-worker .tooltip .tooltip-inner {
+    max-width: 500px !important;
+    text-align: left;
+}
+
+#editorjsonform.scrollable {
+    max-height: 60vh;
+    display: block !important;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#editorjsonform .form-group {
+    margin-bottom: 10px;
+}
+
+#editorjsonform.scrollable::-webkit-scrollbar {
+    width: 12px;
+}
+
+#editorjsonform.scrollable::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+#editorjsonform.scrollable::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #91C3D7 !important;
+}
+
+#editorjsonform .infinite-scroll-area::-webkit-scrollbar {
+    width: 12px;
+}
+
+#editorjsonform .infinite-scroll-area::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+#editorjsonform .infinite-scroll-area::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #91C3D7 !important;
+}
+
+#editorjsonform h3 span {
+    color: #6a6e70;
+    font-size: 22px;
+}
+
+#editorjsonform p {
+    color: #6a6e70;
+}
+
+#editorjsonform .has-error .form-control {
+    border-color: #e14d43;
+}
+
+#editorjsonform .has-error label {
+    color: #6a6e70;
+}
+
+#editorjsonform .help-block {
+    padding-bottom: 0;
+}
+
+.help-block {
+    font-size: 14px;
+}
+
+.help-block.errormsg {
+    color: #e14d43 !important;
+}
+
+.help-block.errormsg::first-letter {
+    text-transform: uppercase;
+}
+
+.padding-5 {
+    padding-top: 5px !important;
+    padding-right: 5px !important;
+    padding-bottom: 5px !important;
+    padding-left: 5px !important;
+}
+.clear{
+    clear: both;
+}
