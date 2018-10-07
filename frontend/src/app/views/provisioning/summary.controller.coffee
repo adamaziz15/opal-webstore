@@ -7,9 +7,9 @@ angular.module 'mnoEnterpriseAngular'
     vm.quoteBased = false
     vm.quoteFetched = false
     vm.quote = {}
-    vm.selectedCurrency = MnoeProvisioning.getSelectedCurrency()
     vm.subType = if $stateParams.cart == 'true' then 'cart' else 'active'
     vm.subscription = MnoeProvisioning.getCachedSubscription()
+    vm.selectedCurrency = MnoeProvisioning.getSelectedCurrency() || vm.subscription.currency
 
     setSchemaReadOnlyData = ->
       vm.editor = MnoeBlueSky.getCachedBSEditor()

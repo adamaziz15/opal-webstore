@@ -3,7 +3,7 @@
 
   orgPromise = MnoeOrganizations.get($stateParams.orgId)
   vm.subscription = MnoeProvisioning.getCachedSubscription()
-  vm.selectedCurrency = MnoeProvisioning.getSelectedCurrency()
+  vm.selectedCurrency = MnoeProvisioning.getSelectedCurrency() || vm.subscription.currency
   vm.quoteBased = false
   vm.quoteFetched = false
   vm.dataLoading = true

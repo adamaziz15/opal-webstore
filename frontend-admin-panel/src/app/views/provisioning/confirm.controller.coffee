@@ -5,7 +5,7 @@
   vm.dataLoading = true
   orgPromise = MnoeOrganizations.get($stateParams.orgId)
   vm.subscription = MnoeProvisioning.getCachedSubscription()
-  vm.selectedCurrency = MnoeProvisioning.getSelectedCurrency()
+  vm.selectedCurrency = MnoeProvisioning.getSelectedCurrency() || vm.subscription.currency
   vm.bsEditorEnabled = vm.subscription?.product?.js_editor_enabled
   vm.cartItem = $stateParams.cart == 'true'
   vm.quoteFetched = true
