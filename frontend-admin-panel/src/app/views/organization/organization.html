@@ -1,0 +1,217 @@
+<div id="organization">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1 translate>mnoe_admin_panel.dashboard.organization.organization_info</h1>
+
+      <div class="row">
+        <div class="col-xs-12 top-buffer-1 text-right">
+          <button ng-if="::main.adminConfig.isUserManagementEnabled()" ng-click="vm.users.createUserModal()" ng-disabled="!vm.organization" class="btn btn-primary" translate>
+            mnoe_admin_panel.dashboard.organization.add_a_user
+          </button>
+          <button ng-if="::vm.managementAndProvisioningEnabled" ng-click="vm.openSelectProductModal()" ng-disabled="!vm.organization || vm.isLoadingProducts" class="btn btn-primary">
+            <span translate>mnoe_admin_panel.dashboard.organization.create_an_order</span>
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div ng-class="::vm.managementAndProvisioningEnabled ? 'col-md-6' : 'col-md-12'">
+          <mno-widget is-loading="!vm.organization.invoices" icon="fa-sitemap" heading="{{vm.organization.name}}">
+            <mno-widget-header></mno-widget-header>
+            <mno-widget-body class="large">
+              <div class="row">
+                <div class="col-xs-6">
+                  <div class="label-cell" translate>mnoe_admin_panel.dashboard.organization.uid</div>
+                </div>
+                <div class="col-xs-6">
+                  {{vm.organization.uid}}
+                </div>
+              </div>
+              <div class="row"  ng-if="vm.organization.external_id">
+                <div class="col-xs-6">
+                  <div class="label-cell" translate>mnoe_admin_panel.dashboard.organization.external_id</div>
+                </div>
+                <div class="col-xs-6">
+                  {{vm.organization.external_id}}
+                </div>
+              </div>
+              <div class="row" ng-if="vm.organization.main_address_attributes">
+                <div class="col-xs-6">
+                  <div class="label-cell" translate>mnoe_admin_panel.dashboard.organization.main_address</div>
+                </div>
+                <div class="col-xs-6">
+                  <mno-address-line address="vm.organization.main_address_attributes"></mno-address-line>
+                </div>
+              </div>
+              <!-- <div class="row">
+                <div class="col-xs-6">
+                  <div class="label-cell" translate>mnoe_admin_panel.dashboard.organization.account_frozen</div>
+                </div>
+                <div class="col-xs-6">
+                  <span ng-if="vm.organization.account_frozen" role="button" uib-tooltip="{{ 'mnoe_admin_panel.dashboard.organization.account_frozen.tooltip' | translate }}" translate>mnoe_admin_panel.dashboard.organization.account_frozen.yes</span>
+                  <span ng-if="!vm.organization.account_frozen" translate>mnoe_admin_panel.dashboard.organization.account_frozen.no</span>
+                  <a href="" ng-hide="vm.organization.account_frozen" ng-click="vm.freezeOrganization()"><i class="fa fa-ban"></i></a>
+                  <a href="" ng-show="vm.organization.account_frozen" ng-click="vm.unfreezeOrganization()"><i class="fa fa-check"></i></a>
+                </div>
+              </div> -->
+              <div class="row">
+                <div class="col-xs-6">
+                  <div class="label-cell" translate>mnoe_admin_panel.dashboard.organization.demo_account</div>
+                </div>
+                <div class="col-xs-6">
+                  <span ng-if="vm.organization.demo_account" translate>mnoe_admin_panel.dashboard.organization.demo_account.yes</span>
+                  <span ng-if="!vm.organization.demo_account" translate>mnoe_admin_panel.dashboard.organization.demo_account.no</span>
+                  <span ng-show="vm.organization.demo_account" class="text-muted">({{vm.organization.demo_account}})</span>
+                </div>
+              </div>
+              <div class="row" ng-if="::main.adminConfig.isPaymentEnabled()">
+                <div class="col-xs-6">
+                  <div class="label-cell" translate>mnoe_admin_panel.dashboard.organization.credit_card</div>
+                </div>
+                <div class="col-xs-6">
+                  <span ng-if="vm.organization.credit_card.presence" class="text-success" translate>mnoe_admin_panel.dashboard.organization.credit_card.presence.yes</span>
+                  <span ng-if="!vm.organization.credit_card.presence" class="text-danger" translate>mnoe_admin_panel.dashboard.organization.credit_card.presence.no</span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6">
+                  <div class="label-cell" translate>mnoe_admin_panel.dashboard.organization.billing_currency</div>
+                </div>
+                <div class="col-xs-5">
+                  <select ng-model="vm.organization.billing_currency" ng-show="vm.editmode">
+                    <option ng-repeat="currency in vm.availableBillingCurrencies" value="{{currency}}">{{currency}}</option>
+                  </select>
+                  <span ng-click="vm.editmode = true" ng-hide="vm.editmode">{{vm.organization.billing_currency}}</span>
+                  <a href="" ng-hide="vm.editmode" ng-click="vm.editmode = true"><i class="fa fa-pencil"></i></a>
+                  <a href="" ng-show="vm.editmode" ng-click="vm.updateOrganization()"><i class="fa fa-check"></i></a>
+                  <a href="" ng-show="vm.editmode" ng-click="vm.resetBillingCurrency()"><i class="fa fa-eraser"></i></a>
+                  <span ng-show="vm.isSaving"><i class="fa fa-spinner fa-pulse fa-fw"></i></span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6">
+                  <div class="label-cell" translate>mnoe_admin_panel.dashboard.organization.created_at</div>
+                </div>
+                <div class="col-xs-6">
+                  {{vm.organization.created_at | date: 'dd/MM/yyyy'}}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6">
+                  <div class="label-cell" translate>mnoe_admin_panel.dashboard.organization.credit_card_updated</div>
+                </div>
+                <div class="col-xs-6">
+                  {{(vm.organization.credit_card.updated_at | date: 'dd/MM/yyyy') || ('mnoe_admin_panel.dashboard.organization.credit_card_updated.never' | translate)}}
+                </div>
+              </div>
+              <div class='row' ng-show="vm.orgCreditManagement">
+                <div class='col-xs-6'>
+                  <div class='label-cell' translate>
+                    mnoe_admin_panel.constants.transaction_types.credit
+                  </div>
+                </div>
+                <div class='col-xs-6'>
+                  {{ vm.organization.billing.credit.value | currency: vm.organization.billing.credit.options.symbol }}
+                  ({{ vm.organization.billing.credit.options.iso_code }})
+                  <a href='' ng-click="vm.openTransactionModal()">
+                    <i class='fa fa-plus'></i>
+                  </a>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="label-cell">{{'mnoe_admin_panel.dashboard.organization.active_apps' | translate}}
+                    <a ng-if="vm.organization.active_apps.length > 0 && vm.hasDisconnectedApps" ui-sref="dashboard.customers.connect-app({orgId: vm.organization.id})" translate>mnoe_admin_panel.dashboard.organization.connect_apps</a>
+                  </div>
+                </div>
+                <div ng-class="::vm.managementAndProvisioningEnabled ? 'col-sm-12' : 'col-sm-6'">
+                  <div class="row apps-box">
+                    <div class="app-wrapper col-xs-6 col-sm-4 col-md-3" ng-repeat="app in vm.organization.active_apps">
+                      <div class="small-app-card ellipsis" uib-tooltip="{{app.app_name}}">
+                        <i ng-if="::vm.managementAndProvisioningEnabled" class="fa fa-trash app-remove" ng-click="vm.openRemoveAppModal(app, $index)" uib-tooltip="{{'mnoe_admin_panel.dashboard.organization.remove_app' | translate:{'app_name': app.app_name} }}" tooltip-append-to-body="true"></i>
+                        <i ng-show="vm.status[app.nid]" class="fa fa-check-circle app-state state-success" uib-tooltip="{{'mnoe_admin_panel.dashboard.organization.app_connected' | translate:{'app_name': app.app_name} }}" tooltip-append-to-body="true"></i>
+                        <i ng-show="!vm.status[app.nid]" class="fa fa-exclamation-circle app-state state-warning" uib-tooltip="{{'mnoe_admin_panel.dashboard.organization.app_not_connected' | translate:{'app_name': app.app_name} }}" tooltip-append-to-body="true"></i>
+                        <img ng-src="{{::app.app_logo}}" width="60">
+                        <span>{{::app.app_name}}</span>
+                      </div>
+                    </div>
+                    <div class="app-wrapper col-xs-6 col-sm-4 col-md-3" ng-if="::vm.managementAndProvisioningEnabled">
+                      <div class="small-app-card ellipsis add-app" ng-click="vm.openSelectProductModal()">
+                        <span>{{'mnoe_admin_panel.dashboard.organization.add_an_app' | translate}}<i class="fa fa-plus"></i></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </mno-widget-body>
+          </mno-widget>
+        </div>
+        <div class="col-md-6" ng-if="::vm.managementAndProvisioningEnabled">
+          <mnoe-subscription-events-list title-key="title_with_action" filters="{ 'where[obsolete]': false }" organization="vm.organization"></mnoe-subscription-events-list>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12" ng-if="::vm.managementAndProvisioningEnabled">
+      <mnoe-subscriptions-list filters="{ 'where[subscription_status_in]': 'visible' }" title-key="title_with_history"></mnoe-subscriptions-list>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 bottom-buffer-1">
+      <mnoe-users-local-list list="vm.organization.members" organization="vm.organization" view="all"></mnoe-users-local-list>
+    </div>
+    <div class="col-md-12 bottom-buffer-1" ng-if="::main.adminConfig.isFinanceEnabled()">
+      <mno-widget icon="fa-file-text-o" heading="{{'mnoe_admin_panel.dashboard.organization.invoices.title' | translate}}" is-loading="!vm.organization.invoices" >
+        <mno-widget-header></mno-widget-header>
+        <mno-widget-body class="medium no-padding">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th translate>mnoe_admin_panel.dashboard.organization.invoices.table.start</th>
+                  <th translate>mnoe_admin_panel.dashboard.organization.invoices.table.end</th>
+                  <th translate>mnoe_admin_panel.dashboard.organization.invoices.table.amount</th>
+                  <th class="text-center" translate>mnoe_admin_panel.dashboard.organization.invoices.table.paid</th>
+                  <th class="text-center"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="invoice in vm.organization.invoices">
+                  <td>{{invoice.started_at | amUtc | amDateFormat:'DD/MM/YYYY'}}</a></td>
+                  <td>{{invoice.ended_at | amUtc | amSubtract:1:'second' | amDateFormat:'DD/MM/YYYY'}}</td>
+                  <td>{{invoice.amount.options.iso_code}} {{invoice.amount.value}}</td>
+                  <td class="text-center">
+                    <span ng-if="invoice.paid" class="text-success" translate>mnoe_admin_panel.dashboard.organization.invoices.table.yes</span>
+                    <span ng-if="!invoice.paid" class="text-danger" translate>mnoe_admin_panel.dashboard.organization.invoices.table.no</span>
+                  </td>
+                  <td class="text-center">
+                    <a ng-if="invoice.link" ng-href="{{invoice.link}}" target="_blank">
+                      <i class="fa fa-cloud-download"></i>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </mno-widget-body>
+      </mno-widget>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <mnoe-teams-list organization="vm.organization" ></mnoe-teams-list>
+    </div>
+  </div>
+
+  <div class='row'>
+    <div class="col-md-12 bottom-buffer-1">
+      <mnoe-product-markups-list ng-if="!vm.isLoading" customer-org="vm.organization" view="all"></mnoe-product-markups-list>
+    </div>
+  </div>
+</div>
+
+<div class='row'>
+  <div class="col-md-6" ng-if="::vm.managementAndProvisioningEnabled">
+    <mnoe-subscriptions-list company-cart='true' filters="{ 'where[subscription_status_in]': 'staged' }" title-key='cart_title'></mnoe-subscriptions-list>
+  </div>
+</div>
