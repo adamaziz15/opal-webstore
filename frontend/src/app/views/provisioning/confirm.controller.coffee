@@ -7,7 +7,7 @@ angular.module 'mnoEnterpriseAngular'
     vm.dataLoading = true
     vm.subscription = MnoeProvisioning.getCachedSubscription()
     vm.bsEditorEnabled = vm.subscription?.product?.js_editor_enabled
-    vm.selectedCurrency = MnoeProvisioning.getSelectedCurrency()
+    vm.selectedCurrency = MnoeProvisioning.getSelectedCurrency() || vm.subscription.currency
     vm.cartItem = $stateParams.cart == 'true'
     vm.quoteFetched = true
     vm.quoteBased = false
