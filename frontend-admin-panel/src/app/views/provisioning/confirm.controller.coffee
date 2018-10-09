@@ -1,4 +1,4 @@
-@App.controller('ProvisioningConfirmCtrl', ($scope, $q, $log, $state, $stateParams, MnoeOrganizations, MnoeProvisioning, MnoeAdminConfig, ProvisioningHelper, MnoeBlueSky, schemaForm) ->
+@App.controller('ProvisioningConfirmCtrl', ($scope, $q, $log, $state, $stateParams, MnoeOrganizations, MnoeProvisioning, MnoeAdminConfig, ProvisioningHelper, MnoeBlueSky, MnoConfirm, schemaForm) ->
   vm = this
 
   vm.isLoading = true
@@ -89,6 +89,37 @@
     (response) ->
       vm.orgCurrency = response.organization.data.billing_currency || MnoeAdminConfig.marketplaceCurrency()
   ).finally(-> vm.isLoading = false)
+
+  vm.confirmAction = (action) ->
+    switch action
+      when 'validate'
+        vm.validate()
+      when 'cart'
+        vm.addToCart()
+
+  # Conditions are:
+  #   Pricing plan currency is not same as billing currency
+  #   Subscription does not exist(we only want disclaimer when creating a new subscription)
+  vm.disclaimerAndConfirm = (action) ->
+    if vm.selectedCurrency != vm.orgCurrency && !vm.subscription.id
+      modalOptions =
+        closeButtonText: 'mnoe_admin_panel.dashboard.provisioning.confirm.disclaimer.cancel'
+        actionButtonText: 'mnoe_admin_panel.dashboard.provisioning.confirm.disclaimer.ok'
+        headerText: 'mnoe_admin_panel.dashboard.provisioning.confirm.disclaimer.header'
+        bodyText: 'mnoe_admin_panel.dashboard.provisioning.confirm.disclaimer.body'
+        bodyTextExtraData: { currency: vm.selectedCurrency }
+        type: 'danger'
+
+      MnoConfirm.showModal(modalOptions).then(
+        ->
+          # Success
+          vm.confirmAction(action)
+        ->
+          # Error
+          return false
+      )
+    else
+      vm.confirmAction(action)
 
   vm.validate = () ->
     vm.isLoading = true
