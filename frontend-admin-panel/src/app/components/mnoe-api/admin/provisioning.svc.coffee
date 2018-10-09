@@ -104,7 +104,7 @@
       product_pricing_id: s.product_pricing?.id,
       subscription_details: {
         start_date: s.start_date,
-        custom_data: s.custom_data,
+        custom_data: JSON.stringify(s.custom_data),
         currency: c,
         max_licenses: s.max_licenses
       }
@@ -115,13 +115,6 @@
       (error) ->
         MnoErrorsHandler.processServerError(error)
     )
-
-  updateSubscription = (s, c) ->
-    subscription.patch({subscription:
-      {currency: c, product_id: s.product.id, product_pricing_id: s.product_pricing?.id, max_licenses: s.max_licenses, custom_data: s.custom_data, edit_action: s.edit_action, cart_entry: s.cart_entry
-      }}).catch((error) ->
-        MnoErrorsHandler.processServerError(error)
-      )
 
   createSubscriptionEvent = (s, c, orgId) ->
     MnoeAdminApiSvc.one('organizations', orgId).one('subscriptions', s.id).all('subscription_events')
@@ -147,11 +140,19 @@
 
   @saveSubscriptionCart = (s, c) ->
     if s.id
-      subscription.patch({subscription:
-        {currency: c, product_id: s.product.id, product_pricing_id: s.product_pricing?.id, max_licenses: s.max_licenses, custom_data: s.custom_data, edit_action: s.event_type, cart_entry: s.cart_entry
-        }}).catch(
-          (error) ->
-            MnoErrorsHandler.processServerError(error)
+      subscription.patch({
+        subscription: {
+          currency: c,
+          product_id: s.product.id,
+          product_pricing_id: s.product_pricing?.id,
+          max_licenses: s.max_licenses,
+          custom_data: JSON.stringify(s.custom_data),
+          edit_action: s.event_type,
+          cart_entry: s.cart_entry
+        }
+      }).catch(
+        (error) ->
+          MnoErrorsHandler.processServerError(error)
       )
     else
       subscriptionsApi(s.organization_id).post({subscription:
