@@ -216,7 +216,7 @@ module MnoEnterprise
       #===============================
       # Disclaimer
       #===============================
-      @pdf.move_down 45
+      @pdf.move_down 55
       @pdf.text t('customer_invoice_disclaimer'), color: 'a94442'
 
       #===============================

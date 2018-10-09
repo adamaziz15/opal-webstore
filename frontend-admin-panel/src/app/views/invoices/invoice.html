@@ -1,14 +1,12 @@
-<div class='invoice-heading'>
-  <h1 translate>mnoe_admin_panel.dashboard.invoice.invoice_info</h1>
-  <div class='text-right alert alert-danger' translate>
-    mnoe_admin_panel.dashboard.invoice.invoice_disclaimer
-  </div>
-</div>
+<h1 translate>mnoe_admin_panel.dashboard.invoice.invoice_info</h1>
 <a ui-sref="dashboard.invoices" class="text-muted">
   <i class="fa fa-chevron-left"></i>
   <span translate>mnoe_admin_panel.dashboard.invoice.back</span>
 </a>
 <!-- invoice summary -->
+<div class='alert alert-danger invoice-disclaimer' translate>
+  mnoe_admin_panel.dashboard.invoice.invoice_disclaimer
+</div>
 <div id="single-invoice">
   <mno-widget is-loading="vm.isLoading" icon="fa-file-text-o" heading="{{'mnoe_admin_panel.dashboard.invoice.summary.widget.list.title' | translate}}">
     <mno-widget-header>
