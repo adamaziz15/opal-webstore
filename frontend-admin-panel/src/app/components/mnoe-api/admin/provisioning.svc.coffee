@@ -211,7 +211,13 @@
     )
 
   @getQuote = (s, currency) ->
-    quoteParams = {product_id: s.product.id, product_pricing_id: s.product_pricing?.id, custom_data: s.custom_data, organization_id: s.organization_id, selected_currency: currency}
+    quoteParams = {
+      product_id: s.product.id,
+      product_pricing_id: s.product_pricing?.id,
+      custom_data: JSON.stringify(s.custom_data),
+      organization_id: s.organization_id,
+      selected_currency: currency
+    }
     MnoeAdminApiSvc.one('organizations', s.organization_id).all('quotes').post(quote: quoteParams)
 
   @approveSubscriptionEvent = (s) ->
