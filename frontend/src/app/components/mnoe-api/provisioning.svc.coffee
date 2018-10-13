@@ -78,7 +78,7 @@ angular.module 'mnoEnterpriseAngular'
         product_pricing_id: s.product_pricing?.id,
         subscription_details: {
           start_date: s.start_date,
-          custom_data: s.custom_data,
+          custom_data: JSON.stringify(s.custom_data),
           currency: c,
           max_licenses: s.max_licenses
         }
@@ -165,7 +165,13 @@ angular.module 'mnoEnterpriseAngular'
     @getQuote = (s, currency) ->
       MnoeOrganizations.get().then(
         (response) ->
-          quoteParams = {product_id: s.product.id, product_pricing_id: s.product_pricing?.id, custom_data: s.custom_data, organization_id: response.organization.id, selected_currency: currency}
+          quoteParams = {
+            product_id: s.product.id,
+            product_pricing_id: s.product_pricing?.id,
+            custom_data: JSON.stringify(s.custom_data),
+            organization_id: response.organization.id,
+            selected_currency: currency
+          }
           MnoeApiSvc.one('organizations', response.organization.id).all('quotes').post(quote: quoteParams)
       )
 
@@ -183,7 +189,7 @@ angular.module 'mnoEnterpriseAngular'
     @saveSubscriptionCart = (s, c) ->
       subscription_params = {
         currency: c, product_id: s.product.id, product_pricing_id: s.product_pricing?.id,
-        max_licenses: s.max_licenses, edit_action: s.event_type, custom_data: s.custom_data, cart_entry: s.cart_entry
+        max_licenses: s.max_licenses, edit_action: s.event_type, custom_data: JSON.stringify(s.custom_data), cart_entry: s.cart_entry
       }
       deferred = $q.defer()
       if s.id

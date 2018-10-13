@@ -86,6 +86,7 @@ angular.module 'mnoEnterpriseAngular'
           _.each(item, (subItem) ->
             _.each(subItem, (subValue, subKey) ->
               subItem[subKey] = parseValues(subKey, subItem[subKey])
+              return
             )
           )
         else
@@ -94,6 +95,7 @@ angular.module 'mnoEnterpriseAngular'
               getNextValue(subValue)
             else
               item[subKey] = parseValues(subKey, item[subKey])
+            return
           )
 
       _.each(values, (value, key) ->
@@ -101,6 +103,7 @@ angular.module 'mnoEnterpriseAngular'
           getNextValue(value)
         else
           values[key] = parseValues(key, values[key])
+        return
       )
 
       values

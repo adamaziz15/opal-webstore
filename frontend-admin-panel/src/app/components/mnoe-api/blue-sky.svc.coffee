@@ -88,6 +88,7 @@
         _.each(item, (subItem) ->
           _.each(subItem, (subValue, subKey) ->
             subItem[subKey] = parseValues(subKey, subItem[subKey])
+            return
           )
         )
       else
@@ -96,6 +97,7 @@
             getNextValue(subValue)
           else
             item[subKey] = parseValues(subKey, item[subKey])
+          return
         )
 
     _.each(values, (value, key) ->
@@ -103,6 +105,7 @@
         getNextValue(value)
       else
         values[key] = parseValues(key, values[key])
+      return
     )
 
     values
