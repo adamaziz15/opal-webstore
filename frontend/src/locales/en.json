@@ -637,7 +637,7 @@
   "mno_enterprise.templates.dashboard.organization.index.settings.title": "Settings",
   "mno_enterprise.templates.dashboard.organization.invoices.disclaimer": "All amounts are displayed in {currency}",
   "mno_enterprise.templates.dashboard.organization.invoices.period": "Period",
-  "mno_enterprise.templates.dashboard.organization.invoices.amount": "Amount",
+  "mno_enterprise.templates.dashboard.organization.invoices.amount": "Amount (Excl. tax)",
   "mno_enterprise.templates.dashboard.organization.invoices.paid": "Paid",
   "mno_enterprise.templates.dashboard.organization.invoices.download": "Download",
   "mno_enterprise.templates.dashboard.organization.members.invite_users": "Invite Users",

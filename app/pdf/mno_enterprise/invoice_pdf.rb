@@ -231,11 +231,11 @@ module MnoEnterprise
       summary_data_amount = @data[:invoice_total_payable_with_tax] if payment_enabled
 
       summary_data = []
-      summary_data << [t('period'), t('total_payable') + (@data[:invoice_tax_pips] > 0 ? "\n<font size='8'><i>(#{t('including_tax')})</i></font>" : '')]
+      summary_data << [t('period'), t('total_payable') + (@data[:invoice_tax_pips] >= 0 ? "\n<font size='8'><i>(#{t('including_tax')})</i></font>" : '')]
       summary_data << ["#{@data[:period_started_at].strftime("%B, %e %Y")} to #{@data[:period_ended_at].strftime("%B, %e %Y")}",money(summary_data_amount)]
 
       # Draw Table background
-      bg_height = @data[:invoice_tax_pips] > 0 ? 58 : 50
+      bg_height = @data[:invoice_tax_pips] >= 0 ? 58 : 50
       @pdf.float do
         original_color = @pdf.fill_color
         @pdf.fill_color "d1e17c"
@@ -351,7 +351,7 @@ module MnoEnterprise
           @pdf.fill_rounded_rectangle [0,@pdf.cursor], 80, 50, 5
           @pdf.fill_color = original_color
           @pdf.move_down 21
-          if @data[:invoice_tax_pips] > 0
+          if @data[:invoice_tax_pips] >= 0
             @pdf.text_box t('excluding_tax'), at: [12,@pdf.cursor]
           else
             @pdf.text_box t('details'), at: [20,@pdf.cursor]
@@ -385,7 +385,7 @@ module MnoEnterprise
         #=================================
         # Account Situation - Tax Section
         #=================================
-        if @data[:invoice_tax_pips] > 0
+        if @data[:invoice_tax_pips] >= 0
 
           #-----------------
           # Tax row
@@ -515,7 +515,7 @@ module MnoEnterprise
         t('details_section.product'),
         t('details_section.type'),
         t('details_section.usage'),
-        t('details_section.price') + (@data[:invoice_tax_pips] > 0 ? "\n<font size='8'><i>(#{t('excluding_tax')})</i></font>" : '')
+        t('details_section.price') + (@data[:invoice_tax_pips] >= 0 ? "\n<font size='8'><i>(#{t('excluding_tax')})</i></font>" : '')
       ]
       app_details_data += @data[:billing_report]
 
