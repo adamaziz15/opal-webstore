@@ -4,6 +4,9 @@
   <span translate>mnoe_admin_panel.dashboard.invoice.back</span>
 </a>
 <!-- invoice summary -->
+<div class='alert alert-danger invoice-disclaimer' translate>
+  mnoe_admin_panel.dashboard.invoice.invoice_disclaimer
+</div>
 <div id="single-invoice">
   <mno-widget is-loading="vm.isLoading" icon="fa-file-text-o" heading="{{'mnoe_admin_panel.dashboard.invoice.summary.widget.list.title' | translate}}">
     <mno-widget-header>
@@ -143,11 +146,11 @@
         <div class="top-buffer-1" ng-if="!vm.isInvoiceEditedPaid">
           <button ui-sref="dashboard.invoices" class="btn btn-default" translate>mnoe_admin_panel.dashboard.invoice.adjustments.cancel</button>
           <button ng-click="vm.update()" class="btn btn-primary" translate>mnoe_admin_panel.dashboard.invoice.adjustments.update</button>
-          <button ng-click="vm.sendInvoiceToCustomer()" class="btn btn-primary" translate>mnoe_admin_panel.dashboard.invoice.adjustments.send_to_customer</button>
+          <button ng-click="vm.sendInvoiceToCustomer()" class="btn btn-primary hidden" translate>mnoe_admin_panel.dashboard.invoice.adjustments.send_to_customer</button>
         </div>
         <div class="top-buffer-1" ng-if="vm.isInvoiceEditedPaid">
           <button ui-sref="dashboard.invoices" class="btn btn-default" translate>mnoe_admin_panel.dashboard.invoice.back</button>
-          <button ng-click="vm.sendInvoiceToCustomer()" class="btn btn-primary" translate>mnoe_admin_panel.dashboard.invoice.adjustments.send_to_customer</button>
+          <button ng-click="vm.sendInvoiceToCustomer()" class="btn btn-primary hidden" translate>mnoe_admin_panel.dashboard.invoice.adjustments.send_to_customer</button>
         </div>
       </div>
     </div>

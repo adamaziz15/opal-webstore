@@ -1,0 +1,5 @@
+en:
+  mno_enterprise:
+    pdf:
+      invoice_pdf:
+        customer_invoice_disclaimer: 'Note: The amount on this invoice is subject to change on or before the 2nd of the following month after an invoice is generated. Customers will be charged automatically on the 2nd. If you have any questions or concerns about this invoice, please contact support before the 2nd. Any adjustments identified after the 2nd will be reflected in a future invoice.'

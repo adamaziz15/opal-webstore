@@ -727,6 +727,7 @@
   "mnoe_admin_panel.dashboard.invoices.paid": "Paid",
   "mnoe_admin_panel.dashboard.invoice.tax_rate": "Tax Rate",
   "mnoe_admin_panel.dashboard.invoice.invoice_info": "Invoice info",
+  "mnoe_admin_panel.dashboard.invoice.invoice_disclaimer": "Note: All the end customer invoices must be amended as needed on or before the 2nd of the following month after an invoice is generated. Customer payments will be processed automatically against the outstanding invoices on the 2nd. Any discrepancies identified in a processed invoice should be adjusted in a future invoice.",
   "mnoe_admin_panel.dashboard.invoice.send_invoice.toastr_success": "Invoice successfully sent to customer",
   "mnoe_admin_panel.dashboard.invoice.send_invoice.toastr_error": "An error occured while sending the invoice to the customer",
   "mnoe_admin_panel.dashboard.invoices.title": "Invoices",
