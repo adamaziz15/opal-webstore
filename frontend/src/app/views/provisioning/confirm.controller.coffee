@@ -85,7 +85,7 @@ angular.module 'mnoEnterpriseAngular'
       #   Pricing plan currency is not same as billing currency
       #   Subscription does not exist(we only want disclaimer when creating a new subscription)
       vm.disclaimerAndConfirm = (action) ->
-        if vm.selectedCurrency != vm.orgCurrency && !vm.subscription.id
+        if (vm.subscription.product_pricing || vm.subscription.product.js_editor_enabled) && vm.selectedCurrency != vm.orgCurrency && !vm.subscription.id
           modalOptions =
             closeButtonText: 'mno_enterprise.templates.dashboard.provisioning.confirm.disclaimer.cancel'
             actionButtonText: 'mno_enterprise.templates.dashboard.provisioning.confirm.disclaimer.ok'
