@@ -1,0 +1,62 @@
+<mno-widget icon="fa-user" heading="{{users.widgetTitle | translate:{length: list.length} }}" is-loading="!list">
+  <mno-widget-header>
+    &nbsp;<a href="" ng-click="switchState()" ng-show="list && users.switchLinkTitle" translate>{{users.switchLinkTitle}}</a>
+    <input type="text" ng-model="users.search" ng-change="updateDisplayState()" placeholder="{{ 'mnoe_admin_panel.dashboard.users.widget.local_list.search_users.placeholder.search_all' | translate}}" class="form-control input-sm search-bar" />
+  </mno-widget-header>
+  <mno-widget-body class="large-auto-height no-padding">
+    <table class="table table-layout-fixed">
+      <thead>
+        <tr>
+          <th style="width: 20%;" translate>mnoe_admin_panel.dashboard.users.widget.local_list.table.username</th>
+          <th style="width: 10%;" translate>mnoe_admin_panel.dashboard.users.widget.local_list.table.user_uid</th>
+          <th style="width: 10%;" translate>mnoe_admin_panel.dashboard.users.widget.local_list.table.created_at</th>
+          <th style="width: 10%;" translate>mnoe_admin_panel.dashboard.users.widget.local_list.table.last_login</th>
+          <th style="width: 10%;" ng-if="organizationContext" translate>mnoe_admin_panel.dashboard.users.widget.local_list.table.status</th>
+          <th style="width: 10%;" ng-if="organizationContext" translate>mnoe_admin_panel.dashboard.users.widget.local_list.table.role</th>
+          <th style="width: 10%;" ng-if="isImpersonationEnabled && organizationContext" translate>mnoe_admin_panel.dashboard.users.widget.local_list.table.access</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="user in users.displayList">
+          <td>
+            <a ui-sref="dashboard.customers.user({userId: user.id})">
+              <div ng-show="user.name && user.surname">{{::user.name}} {{::user.surname}}</div>
+              <div ng-show="!user.name && !user.surname">nc</div>
+            </a>
+            <small editable-text="user.email" onaftersave="updateUserMail(user)" e-form="emailForm">{{user.email}}</small>
+            <a href class='email_edit_link' ng-hide="user.isUpdatingEmail || emailForm.$visible" ng-click="emailForm.$show()"><i class="fa fa-pencil-square-o fa-1"></i></a>
+            <span ng-show="user.isUpdatingEmail"><i class="fa fa-spinner fa-pulse fa-fw"></i></span>
+          </td>
+          <td>{{user.uid}}</td>
+          <td>{{user.created_at | amDateFormat:'L'}}</td>
+          <td>{{(user.last_sign_in_at | amDateFormat:'L') || ('mnoe_admin_panel.dashboard.users.widget.local_list.last_login.never' | translate)}}</td>
+          <td ng-if="organizationContext">
+            <button ng-show="user.status === 'pending'" ng-click="sendInvitation(user)" class="btn btn-xs btn-warning" ng-disabled="user.isSendingInvite">
+              <span ng-show="user.isSendingInvite"><i class="fa fa-spinner fa-pulse fa-fw"></i></span>
+              {{'mnoe_admin_panel.dashboard.users.widget.local_list.invite' | translate}}
+            </button>
+            <button ng-show="user.status === 'invited'" ng-click="sendInvitation(user)" class="btn btn-xs btn-default" ng-disabled="user.isSendingInvite">
+              <span ng-show="user.isSendingInvite"><i class="fa fa-spinner fa-pulse fa-fw"></i></span>
+              {{'mnoe_admin_panel.dashboard.users.widget.local_list.resend_invite' | translate}}
+            </button>
+            <span ng-show="user.status === 'active'" translate>mnoe_admin_panel.dashboard.users.widget.local_list.active</span>
+            <span ng-show="user.status === 'pending'" ng-click="removeUserFromOrganization(user)" uib-tooltip="{{'mnoe_admin_panel.dashboard.users.widget.local_list.cancel_adding_user' | translate}}"><i class="fa fa-close fa-1"></i></span>
+            <span ng-show="user.status === 'invited'" ng-click="removeUserFromOrganization(user)" uib-tooltip="{{'mnoe_admin_panel.dashboard.users.widget.local_list.cancel_invite' | translate}}"><i class="fa fa-close fa-1"></i></span>
+          </td>
+          <td ng-if="organizationContext">
+            <select ng-show="user.editMode" ng-model="user.role" ng-options="role.value as role.translatedLabel for role in userRoles.availableRolesForOptions"></select>
+            <span ng-show="user.isUpdatingRole"><i class="fa fa-spinner fa-pulse fa-fw"></i></span>
+            <span ng-click="editRole(user)" ng-hide="user.editMode">{{ userRoles.keyFromRole(user.role) | translate }}</span>
+            <a class="role_edit_link" ng-hide="user.editMode" ng-click="editRole(user)"><i class="fa fa-pencil"></i></a>
+            <a class="role_edit_link" ng-show="user.editMode" ng-click="updateUserRole(user, user.role)"><i class="fa fa-check"></i></a>
+            <a class="role_edit_link" ng-show="user.editMode" ng-click="exitEditRole(user)"><i class="fa fa-times"></i></a>
+            <span ng-show="vm.isSaving"><i class="fa fa-spinner fa-pulse fa-fw"></i></span>
+          </td>
+          <td ng-if="isImpersonationEnabled && organizationContext">
+            <mnoe-impersonate-button btn-class-names="btn btn-xs btn-default" user="user" organization-id="organization.id"></mnoe-impersonate-button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </mno-widget-body>
+</mno-widget>
