@@ -36,3 +36,9 @@ en:
             total_price: "Total"
             total_list_price: "Total List Price"
             usage_based: "The pricing of this product is usage-based."
+          confirm:
+            disclaimer:
+              cancel: "Cancel"
+              ok: "Ok"
+              header: "<b>Finalize Purchase</b>"
+              body: "<span style='color: #a94442;'>Please note that you are about to contract this product in <b>{currency}</b>. By purchasing this product you agree to be billed in the <b>{currency}</b> dollar value, converted to your billing currency at the time of invoice.</span>"
