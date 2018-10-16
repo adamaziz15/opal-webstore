@@ -951,6 +951,7 @@
   "mno_enterprise.templates.dashboard.marketplace.compare.pricing_not_available": "pricing information not available",
   "mno_enterprise.templates.dashboard.marketplace.compare.no_review": "Rating not yet available",
   "mno_enterprise.templates.dashboard.account.my_account": "My Account",
+  "mno_enterprise.templates.dashboard.account.support_email": "For any support issues, please contact {support_email}",
   "mno_enterprise.templates.dashboard.account.personal_information": "Personal Information",
   "mno_enterprise.templates.dashboard.account.user_form_name": "Name",
   "mno_enterprise.templates.dashboard.account.user_form_surname": "Surname",

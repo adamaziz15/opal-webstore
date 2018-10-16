@@ -1,0 +1,188 @@
+<div id="account">
+  <h2 class="section-title">{{ 'mno_enterprise.templates.dashboard.account.my_account' | translate }}</h2>
+
+  <div ng-if="vm.supportEmail" class='alert alert-danger top-buffer-2'>
+    {{ 'mno_enterprise.templates.dashboard.account.support_email' | translate:{support_email: vm.supportEmail} }}
+  </div>
+
+  <div uib-accordion class="accordion">
+    <div uib-accordion-group is-open="vm.isPersoInfoOpen">
+      <div uib-accordion-heading>
+        {{ 'mno_enterprise.templates.dashboard.account.personal_information' | translate }} <span class="fa pull-right" ng-class="{'fa-caret-down': !vm.isPersoInfoOpen, 'fa-caret-up': vm.isPersoInfoOpen}"></span>
+      </div>
+
+      <div class="alert alert-error" ng-show="vm.errors.user">
+        <button class="close" ng-click="vm.errors.user=''">×</button>
+        <ul>
+          <li ng-repeat="error in vm.errors.user">{{error}}</li>
+        </ul>
+      </div>
+      <div class="alert alert-success" ng-show="vm.success.user">
+        <button class="close" ng-click="vm.success.user=''">×</button>
+        <p>{{vm.success.user}}</p>
+      </div>
+      <form name='form'>
+        <div class='row'>
+          <div class='col-md-6'>
+            <label>{{ 'mno_enterprise.templates.dashboard.account.user_form_name' | translate }}</label>
+            <input type='text' ng-model='vm.user.model.name' class='form-control' ng-readonly="!vm.isUserManagementEnabled">
+          </div>
+          <div class='col-md-6'>
+            <label>{{ 'mno_enterprise.templates.dashboard.account.user_form_surname' | translate }}</label>
+            <input type='text' ng-model='vm.user.model.surname' class='form-control' ng-readonly="!vm.isUserManagementEnabled">
+          </div>
+        </div>
+        <div class='row'>
+          <div class='col-md-6'>
+            <label>{{ 'mno_enterprise.templates.dashboard.account.user_form_email' | translate }}</label>
+            <input type='text' ng-model='vm.user.model.email' class='form-control' ng-readonly="!vm.isUserManagementEnabled">
+          </div>
+          <div class='col-md-6'>
+            <label>{{ 'mno_enterprise.templates.dashboard.account.user_form_phone' | translate }}</label>
+            <div class="input-group">
+              <div class="input-group-addon select">
+                <select ng-options="country.alpha2 as country.phone_prefix for country in vm.validCountries()" ng-model='vm.user.model.phone_country_code' ng-disabled="!vm.isUserManagementEnabled"></select>
+              </div>
+              <input type='text' ng-model='vm.user.model.phone' class='form-control' ng-readonly="!vm.isUserManagementEnabled">
+            </div>
+          </div>
+        </div>
+        <div class='row' ng-if="vm.isUserManagementEnabled">
+          <div class='col-md-12'>
+            <button ng-disabled="!vm.user.hasChanged() || vm.user.loading" class='btn btn-warning' ng-click="vm.user.update()">
+              <span ng-show="vm.user.loading"><i class="fa fa-spinner fa-pulse fa-fw"></i></span>
+              {{ 'mno_enterprise.templates.dashboard.account.user_form_save' | translate }}
+            </button>
+            <button ng-show="vm.user.hasChanged() && !vm.user.loading" class='btn btn-default ng-hide' ng-click="vm.user.cancelChanges()">
+              {{ 'mno_enterprise.templates.dashboard.account.user_form_cancel' | translate }}
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!--
+      Change Password Section
+    -->
+    <div uib-accordion-group ng-if="vm.isUserManagementEnabled" is-open="vm.isChangePasswordOpen">
+      <div uib-accordion-heading>
+          {{ 'mno_enterprise.templates.dashboard.account.change_password' | translate }} <span class="fa pull-right" ng-class="{'fa-caret-down': !vm.isChangePasswordOpen, 'fa-caret-up': vm.isChangePasswordOpen}"></span>
+      </div>
+      <form name='vm.form' novalidate>
+        <mno-password form="vm.form"
+          data="vm.user.password"
+          current="true"
+          confirm="true"
+          current-text="{{'mno_enterprise.templates.components.mno_password.current_password' | translate}}"
+          new-text="{{'mno_enterprise.templates.components.mno_password.new_password' | translate}}"
+          confirm-text="{{'mno_enterprise.templates.components.mno_password.confirm_password' | translate}}">
+        </mno-password>
+
+        <div class='row top-buffer-1'>
+          <div class='col-md-12'>
+            <button ng-click="vm.user.updatePassword(vm.form)" ng-disabled="vm.form.$invalid || vm.user.loading" class='btn btn-warning'>
+              <span ng-show="vm.user.loading"><i class="fa fa-spinner fa-pulse fa-fw"></i></span>
+              {{'mno_enterprise.templates.components.mno_password.save' | translate}}
+            </button>
+            <button ng-click="vm.user.cancelPassword()" ng-show="vm.user.cancelPasswordEnabled() && !vm.user.loading" class='btn btn-default'>
+              {{'mno_enterprise.templates.components.mno_password.cancel' | translate}}
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!--
+      Developer section
+    -->
+    <div uib-accordion-group ng-if="vm.isDeveloperSectionEnabled" is-open="vm.isDevOpen">
+      <div uib-accordion-heading>{{ 'mno_enterprise.templates.dashboard.account.developer' | translate }} <span class="fa pull-right" ng-class="{'fa-caret-down': !vm.isDevOpen, 'fa-caret-up': vm.isDevOpen}"></span>
+      </div>
+      <div ng-if="!vm.user.model.api_key && !vm.user.model.api_secret" class="row">
+        <div class='col-md-12'>
+          <p>{{ 'mno_enterprise.templates.dashboard.account.are_you_developer' | translate }}</p>
+          <button class='btn btn-warning' ng-click="vm.user.registerDeveloper()">{{ 'mno_enterprise.templates.dashboard.account.register' | translate }}</button>
+        </div>
+      </div>
+      <div ng-if="vm.user.model.api_key && vm.user.model.api_secret">
+        <div class="row">
+          <strong class="col-sm-3">{{ 'mno_enterprise.templates.dashboard.account.api_key' | translate }}: </strong>
+          <div class="col-sm-9">{{vm.user.model.api_key}}</div>
+        </div>
+        <div class="row">
+          <strong class="col-sm-3">{{ 'mno_enterprise.templates.dashboard.account.secret_key' | translate }}:</strong>
+          <div class="col-sm-9">
+            <span ng-show="vm.isSecretKeyRevealed">{{vm.user.model.api_secret}}</span>
+            <button ng-hide="vm.isSecretKeyRevealed" class='btn btn-warning' ng-click="vm.user.switchSecretKey()">{{ 'mno_enterprise.templates.dashboard.account.show' | translate }}</button>
+            <button ng-show="vm.isSecretKeyRevealed" class='btn btn-warning' ng-click="vm.user.switchSecretKey()">{{ 'mno_enterprise.templates.dashboard.account.hide' | translate }}</button>
+          </div>
+        </div>
+        <div class="row">
+          <strong class="col-sm-3">{{ 'mno_enterprise.templates.dashboard.account.organizations' | translate }}: </strong>
+          <div class="col-sm-9">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>{{ 'mno_enterprise.templates.dashboard.account.name' | translate }}</th>
+                  <th>{{ 'mno_enterprise.templates.dashboard.account.uid' | translate }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="org in vm.user.model.organizations track by $index">
+                  <td>{{org.name}}</td>
+                  <td>{{org.uid}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="row" style="text-align: center; margin-top: 20px;">
+          <p>{{ 'mno_enterprise.templates.dashboard.account.view_developer_docs' | translate }} <a href="https://maestrano.atlassian.net/wiki/pages/viewpage.action?pageId=20742248" target="_blank"><strong>{{ 'mno_enterprise.templates.dashboard.account.here' | translate }}</strong> </a></p>
+        </div>
+      </div>
+    </div>
+
+
+    <!--
+      Change locale section
+    -->
+    <div uib-accordion-group ng-if="vm.isLocalizationVisible" is-open="vm.isLocalizationOpen">
+      <div uib-accordion-heading>
+          {{ 'mno_enterprise.templates.dashboard.account.settings' | translate }} <span class="fa pull-right" ng-class="{'fa-caret-down': !vm.isLocalizationOpen, 'fa-caret-up': vm.isLocalizationOpen}"></span>
+      </div>
+      <dashboard-language-selectbox></dashboard-language-selectbox>
+    </div>
+
+    <!--
+      Authorize Admin Access Section
+    -->
+    <div uib-accordion-group ng-if="vm.isAuthorizeAdminAccessVisible" is-open="vm.isAuthorizeAdminAccessOpen">
+      <div uib-accordion-heading translate>
+        {{ 'mno_enterprise.templates.dashboard.account.admin_access_to_your_account' | translate }}
+        <span class="fa pull-right" ng-class="{'fa-caret-down': !vm.isAuthorizeAdminAccessOpen, 'fa-caret-up': vm.isAuthorizeAdminAccessOpen}"></span>
+      </div>
+      <div ng-if="vm.user.authorizationActive()">
+        <p ng-if="vm.user.last_access_request.expiration_date">{{'mno_enterprise.templates.dashboard.account.access_granted_until_expired' | translate}} <span>{{vm.user.last_access_request.expiration_date | date : format : timezone}}</span>
+        </p>
+        <p ng-if="!vm.user.last_access_request.expiration_date" translate>mno_enterprise.templates.dashboard.account.access_granted_until_revoked</p>
+        <button class='btn btn-warning' ng-click="vm.user.revokeAccess()" translate>mno_enterprise.templates.dashboard.account.revoke.action</button>
+      </div>
+
+      <form ng-if="!vm.user.authorizationActive()">
+        <p translate>mno_enterprise.templates.dashboard.account.authorize_admin_access</p>
+        <label><input type="radio" ng-model="vm.access_duration" value="24_HOURS">
+          {{'mno_enterprise.templates.dashboard.account.twenty_four_hours' | translate}}
+        </label><br/>
+        <label><input type="radio" ng-model="vm.access_duration" value="UNTIL_REVOKED">
+          {{'mno_enterprise.templates.dashboard.account.until_revoke' | translate}}
+        </label><br/>
+        <button class='btn btn-warning' ng-click="vm.user.authorizeAccess()" translate>mno_enterprise.templates.dashboard.account.authorize.action</button>
+      </form>
+    </div>
+
+    <!--
+      Account Deletion Section
+      (Removed: cf. git log)
+      -->
+  </div>
+</div>

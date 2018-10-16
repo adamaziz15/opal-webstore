@@ -24,6 +24,8 @@ en:
   mno_enterprise:
     templates:
       dashboard:
+        account:
+          support_email: "For any support issues, please contact {support_email}"
         marketplace:
           index:
             applications: "Applications and Infrastructure"
