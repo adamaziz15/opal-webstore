@@ -210,7 +210,7 @@
         $q.reject(error)
     )
 
-  @getQuote = (s, currency) ->
+  @getQuote = (s, currency, editAction) ->
     quoteParams = {
       product_id: s.product.id,
       product_pricing_id: s.product_pricing?.id,
@@ -218,7 +218,11 @@
       organization_id: s.organization_id,
       selected_currency: currency
     }
-    MnoeAdminApiSvc.one('organizations', s.organization_id).all('quotes').post(quote: quoteParams)
+    MnoeAdminApiSvc.one('organizations', s.organization_id).all('quotes').post({
+      quote: quoteParams,
+      subscription_id: s.id,
+      edit_action: editAction
+    })
 
   @approveSubscriptionEvent = (s) ->
     MnoeAdminApiSvc.one('subscription_events', s.id).post('/approve').then(

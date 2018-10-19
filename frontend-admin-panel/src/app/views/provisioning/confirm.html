@@ -22,14 +22,13 @@
         <thead>
         <tr>
           <th id="order-type">{{ 'mnoe_admin_panel.dashboard.provisioning.confirm.order_type' | translate }}</th>
-          <th ng-show="vm.quoteBased" id="confirm-price">{{ 'mnoe_admin_panel.dashboard.provisioning.order.quoted_price' | translate }}</th>
-          <th ng-show="vm.subscription.product.product_type == 'application' || vm.subscription.product.js_editor_enabled">{{ 'mnoe_admin_panel.dashboard.provisioning.confirm.pricing_info.title' | translate }}</th>
+          <th ng-show="vm.subscription.product.product_type == 'application' && !vm.bsEditorEnabled">{{ 'mnoe_admin_panel.dashboard.provisioning.confirm.pricing_info.title' | translate }}</th>
         </tr>
         </thead>
         <tbody>
         <tr>
           <td>{{ vm.orderTypeText | translate }}</td>
-          <td ng-show="vm.subscription.product.product_type == 'application' || vm.subscription.product.js_editor_enabled">
+          <td ng-show="vm.subscription.product.product_type == 'application' && !vm.bsEditorEnabled">
             <span>
               {{ vm.pricingText() | translate }}
             </span>
@@ -84,7 +83,7 @@
   </mno-widget>
 
   <!-- Display Read-Only Custom Form Data If It Exists -->
-  <div ng-if="vm.subscription.custom_data && vm.subscription.product.custom_schema">
+  <div ng-if="vm.subscription.custom_data && vm.subscription.product.custom_schema && !vm.nonSchemaAction">
     <mno-widget icon="fa-info" heading="{{'mnoe_admin_panel.dashboard.provisioning.confirm.details_header' | translate}}" is-loading="vm.isLoading">
       <mno-widget-header></mno-widget-header>
       <mno-widget-body>

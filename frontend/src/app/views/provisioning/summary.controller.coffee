@@ -2,13 +2,15 @@ angular.module 'mnoEnterpriseAngular'
   .controller('ProvisioningSummaryCtrl', ($scope, $state, $stateParams, MnoeOrganizations, MnoeProvisioning, MnoeConfig, MnoeBlueSky) ->
 
     vm = this
+    vm.subscription = MnoeProvisioning.getCachedSubscription()
+    vm.nonSchemaAction = $stateParams.editAction in (vm.subscription.non_schema_actions || [])
+    vm.bsEditorEnabled = vm.subscription.product.js_editor_enabled && !vm.nonSchemaAction
     vm.dataLoading = true
     vm.isLoading = true
-    vm.quoteBased = false
+    vm.quoteBased = vm.subscription.product_pricing?.quote_based || vm.bsEditorEnabled
     vm.quoteFetched = false
     vm.quote = {}
     vm.subType = if $stateParams.cart == 'true' then 'cart' else 'active'
-    vm.subscription = MnoeProvisioning.getCachedSubscription()
     vm.selectedCurrency = MnoeProvisioning.getSelectedCurrency() || vm.subscription.currency
 
     setSchemaReadOnlyData = ->
@@ -19,10 +21,8 @@ angular.module 'mnoEnterpriseAngular'
     initSummary = () ->
       vm.singleBilling = vm.subscription.product.single_billing_enabled
       vm.billedLocally = vm.subscription.product.billed_locally
-      vm.quoteBased = vm.subscription.product_pricing?.quote_based || vm.subscription.product?.js_editor_enabled
       vm.quote = MnoeProvisioning.getCachedQuote() if vm.quoteBased
       vm.quoteFetched = true
-      vm.bsEditorEnabled = vm.subscription.product.js_editor_enabled
       setSchemaReadOnlyData() if vm.bsEditorEnabled
 
     if !_.isEmpty(vm.subscription)

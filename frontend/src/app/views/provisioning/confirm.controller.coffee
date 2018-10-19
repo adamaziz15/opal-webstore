@@ -8,6 +8,7 @@ angular.module 'mnoEnterpriseAngular'
       vm.dataLoading = true
       vm.subscription = MnoeProvisioning.getCachedSubscription()
       vm.bsEditorEnabled = vm.subscription?.product?.js_editor_enabled
+      vm.nonSchemaAction = $stateParams.editAction in (vm.subscription.non_schema_actions || [])
       vm.selectedCurrency = MnoeProvisioning.getSelectedCurrency() || vm.subscription.currency
       vm.cartItem = $stateParams.cart == 'true'
       vm.quoteFetched = true
@@ -22,6 +23,7 @@ angular.module 'mnoEnterpriseAngular'
         cart: $stateParams.cart
 
       setupNewForm = ->
+        return if vm.nonSchemaAction
         vm.editor = MnoeBlueSky.getCachedBSEditor()
         vm.editorValues = vm.editor.getValue()
 
@@ -40,7 +42,7 @@ angular.module 'mnoEnterpriseAngular'
       fetchQuote = ->
         vm.quote = MnoeProvisioning.getCachedQuote()
         if _.isEmpty(vm.quote)
-          MnoeProvisioning.getQuote(vm.subscription, vm.selectedCurrency).then(
+          MnoeProvisioning.getQuote(vm.subscription, vm.selectedCurrency, $stateParams.editAction).then(
             (response) ->
               vm.quote = response
               # To be passed to the order summary screen.
@@ -59,7 +61,8 @@ angular.module 'mnoEnterpriseAngular'
           else
             $state.go('home.provisioning.additional_details', urlParams, {reload: reload})
 
-      if vm.subscription.product_pricing?.quote_based || vm.subscription.product?.js_editor_enabled
+      # Do not fetch quotes for non schema actions
+      if (vm.subscription.product_pricing?.quote_based || vm.bsEditorEnabled) && !vm.nonSchemaAction
         vm.quoteBased = true
         vm.quoteFetched = false
         fetchQuote()
@@ -108,6 +111,7 @@ angular.module 'mnoEnterpriseAngular'
       vm.validate = () ->
         vm.isLoading = true
         vm.subscription.event_type = $stateParams.editAction
+        vm.subscription.custom_data = {} if vm.nonSchemaAction
 
         if vm.cartItem
           vm.subscription.cart_entry = true
@@ -134,6 +138,7 @@ angular.module 'mnoEnterpriseAngular'
       vm.addToCart = ->
         vm.isLoading = true
         vm.subscription.cart_entry = true
+        vm.subscription.custom_data = {} if vm.nonSchemaAction
         MnoeProvisioning.saveSubscriptionCart(vm.subscription, vm.selectedCurrency).then(
           (response) ->
             MnoeProvisioning.refreshCartSubscriptions()
