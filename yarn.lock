@@ -22,10 +22,10 @@ escape-latex@1.1.1:
   resolved "https://registry.yarnpkg.com/escape-latex/-/escape-latex-1.1.1.tgz#657d8632af8849a5db8766778d4a43da9dec3376"
   integrity sha512-N2D6Z2kXh8x/pQNQH+natXDCwrzghhXMRII5dZ518mlTLeuba80NL0LCQyaahqOrAidoLivmmG6GKPnGhHse+A==
 
-fraction.js@4.0.9:
-  version "4.0.9"
-  resolved "https://registry.yarnpkg.com/fraction.js/-/fraction.js-4.0.9.tgz#ef7aa1ad47ef600021ad7fa7991dfd56c3b5f7c8"
-  integrity sha512-qP1sNwdrcA+Vs5TTvGETuaaUmz4Tm48V6Jc+8Oh/gqvkb1d42s99w5kvSrZkIATp/mz3rV4CTef6xINkCofu+A==
+fraction.js@4.0.10:
+  version "4.0.10"
+  resolved "https://registry.yarnpkg.com/fraction.js/-/fraction.js-4.0.10.tgz#08a2776cd6697902ae589715a485f99bcc4251ba"
+  integrity sha512-MHkhk6ggCtwVhKR4pbF+aWrV+8cIVxyWhucESF/1NEcYDgRm4oze/2M09yGTGUQ3WQyZSdcoswJSThc2VGb+KQ==
 
 "impac-angular@git+https://git@github.com/maestrano/impac-angular.git#1.6.x":
   version "1.6.11"
@@ -37,14 +37,14 @@ javascript-natural-sort@0.7.1:
   integrity sha1-+eIwPUUH9tdDVac2ZNFED7Wg71k=
 
 mathjs@^5.0.0:
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/mathjs/-/mathjs-5.2.0.tgz#229de7b08ba2fdab5f5b9ec4470061c4123d3bc4"
-  integrity sha512-TwiegJ/k9zXRhyYFjeuBB5Nmw+GXDq4pRC9bcRhRlq654DZLv4QAvp24l9dEk2G2QiU1PfzvP1dd/CCEqsMZ+w==
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/mathjs/-/mathjs-5.2.1.tgz#e9c918f66841cf8c55378b15e6ae7ce04ce4e89f"
+  integrity sha512-l+imExQ09Jj6Mz/YX8LbCb3Q32kjvYq5HQmUhMonuwhSU3o5XKvcnW6T6OzXkD+xadH2/Qg4zXC1ejI1MYcJeg==
   dependencies:
     complex.js "2.0.11"
     decimal.js "10.0.1"
     escape-latex "1.1.1"
-    fraction.js "4.0.9"
+    fraction.js "4.0.10"
     javascript-natural-sort "0.7.1"
     seed-random "2.2.0"
     tiny-emitter "2.0.2"
