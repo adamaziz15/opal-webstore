@@ -41,66 +41,77 @@
         <mno-widget-header></mno-widget-header>
         <mno-widget-body>
           <div class="row">
-            <div class="col-xs-6">
+            <div class="col-xs-5">
+              <div class="label-cell" translate>mnoe_admin_panel.dashboard.subscription.id</div>
+            </div>
+            <div class="col-xs-7">
+              {{vm.subscription.id}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-5">
               <div class="label-cell" translate>mnoe_admin_panel.dashboard.subscription.reference</div>
             </div>
-            <div class="col-xs-6">
+            <div class="col-xs-7">
               {{vm.subscription.external_id}}
             </div>
           </div>
           <div class="row">
-            <div class="col-xs-6">
+            <div class="col-xs-5">
               <div class="label-cell" translate>mnoe_admin_panel.dashboard.subscription.start_date</div>
             </div>
-            <div class="col-xs-6">
+            <div class="col-xs-7">
               {{vm.subscription.start_date | amDateFormat:'L'}}
             </div>
           </div>
           <div class="row">
-            <div class="col-xs-6">
+            <div class="col-xs-5">
               <div class="label-cell" translate>mnoe_admin_panel.dashboard.subscription.end_date</div>
             </div>
-            <div class="col-xs-6">
+            <div ng-hide="vm.subscription.start_date && !vm.subscription.end_date" class="col-xs-7">
               {{vm.subscription.end_date | amDateFormat:'L'}}
+            </div>
+            <div ng-show="vm.subscription.start_date && !vm.subscription.end_date" class="col-xs-7" translate>
+              mnoe_admin_panel.dashboard.subscription.open_ended
             </div>
           </div>
           <div class="row">
-            <div class="col-xs-6">
+            <div class="col-xs-5">
               <div class="label-cell" translate>mnoe_admin_panel.dashboard.subscription.product</div>
             </div>
-            <div class="col-xs-6">
+            <div class="col-xs-7">
               {{vm.subscription.product.name}}
             </div>
           </div>
           <div class="row">
-            <div class="col-xs-6">
+            <div class="col-xs-5">
               <div class="label-cell" translate>mnoe_admin_panel.dashboard.subscription.pricing_plan</div>
             </div>
-            <div class="col-xs-6">
+            <div class="col-xs-7">
               {{vm.subscription.product_pricing.name}}
             </div>
           </div>
           <div class="row">
-            <div class="col-xs-6">
+            <div class="col-xs-5">
               <div class="label-cell" translate>mnoe_admin_panel.dashboard.subscription.price</div>
             </div>
-            <div class="col-xs-6">
+            <div class="col-xs-7">
               <mnoe-product-pricing-prices subscription="vm.subscription" selected-currency="vm.subscription.currency">
             </div>
           </div>
           <div class="row" ng-show="vm.subscription.product_pricing.license_based">
-            <div class="col-xs-6">
+            <div class="col-xs-5">
               <div class="label-cell" translate>mnoe_admin_panel.dashboard.subscription.licenses</div>
             </div>
-            <div class="col-xs-6">
+            <div class="col-xs-7">
               {{vm.subscription.max_licenses}}
             </div>
           </div>
           <div class="row">
-            <div class="col-xs-6">
+            <div class="col-xs-5">
               <div class="label-cell" translate>mnoe_admin_panel.dashboard.subscription.status</div>
             </div>
-            <div class="col-xs-6">
+            <div class="col-xs-7">
               {{vm.subscription.status}}
               <a class="label-cell" href="" ng-hide="!vm.displayInfoTooltip()" ng-click="vm.displayStatusInfo()"><i class="fa fa-info-circle"></i></a>
             </div>
@@ -233,7 +244,7 @@
     </div>
   </div>
   <div class="row">
-    <div class='col-xs-6'>
+    <div class='col-xs-12'>
       <mno-widget icon="fa-info-circle" heading="{{'mnoe_admin_panel.dashboard.orders.provision.subscription.events' | translate}}" is-loading="vm.isLoading">
         <mno-widget-header></mno-widget-header>
         <mno-widget-body>
@@ -243,33 +254,44 @@
           <table class="table table-striped table-responsive" >
             <thead>
               <tr>
-                <th class="col-lg-3" translate>
+                <th class="col-lg-2" translate>
                   mnoe_admin_panel.dashboard.subscriptions.events.list.table.created_date
                 </th>
-                <th class="col-lg-3" translate>
+                <th class="col-lg-2" translate>
                   mnoe_admin_panel.dashboard.subscriptions.events.list.table.event_type
                 </th>
-                <th class="col-lg-3" translate>
+                <th class="col-lg-2" translate>
                   mnoe_admin_panel.dashboard.subscriptions.events.list.table.status
                 </th>
                 <th class="col-lg-3" translate>
                   mnoe_admin_panel.dashboard.subscriptions.events.list.table.message
                 </th>
+                <th class="col-lg-3" translate>
+                  mnoe_admin_panel.dashboard.subscriptions.events.list.table.provisioning_data
+                </th>
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="subscriptionEvent in vm.subscriptionEvents" ng-click="vm.openSubscriptionEventInfoModal(subscriptionEvent, vm.subscription)">
+              <tr ng-repeat="subscriptionEvent in vm.subscriptionEvents"> 
                 <td>{{ subscriptionEvent.created_at | amDateFormat: 'L' }}</td>
                 <td>{{ subscriptionEvent.event_type }}</td>
                 <td>{{ subscriptionEvent.status }}</td>
                 <td>{{ subscriptionEvent.message }}</td>
+                <td>
+                  <user-friendly-json-tree
+                    start-expanded="false"
+                    object="subscriptionEvent.provisioning_data"
+                    options="vm.jsonTreeSettings"
+                    root-name="vm.rootName">
+                  </user-friendly-json-tree>
+                </td>
               </tr>
             </tbody>
           </table>
         </mno-widget-body>
       </mno-widget>
     </div>
-    <div class="col-xs-6">
+    <div class="col-xs-6 hidden">
       <mno-widget icon="fa-info-circle" heading="{{'mnoe_admin_panel.dashboard.order.provisioning_data' | translate}}" is-loading="vm.isLoading">
         <mno-widget-header></mno-widget-header>
         <mno-widget-body>

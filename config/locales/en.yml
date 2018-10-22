@@ -42,7 +42,12 @@ en:
               ok: "Ok"
               header: "<b>Finalize Purchase</b>"
               body: "<span style='color: #a94442;'>Please note that you are about to contract this product in <b>{currency}</b>. By purchasing this product you agree to be billed in the <b>{currency}</b> dollar value, converted to your billing currency at the time of invoice.</span>"
-        dashboard:
-          organization:
-            invoices:
-              amount: "Amount (Excl. tax)"
+          subscription:
+            open_ended: "OPEN"
+            current_data: "Current subscription information"
+            id: "ID"
+          subscriptions:
+            open_ended: "OPEN"
+        organization:
+          invoices:
+            amount: "Amount (Excl. tax)"

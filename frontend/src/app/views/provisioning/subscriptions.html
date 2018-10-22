@@ -125,7 +125,8 @@
               <span class="cell-label visible-xs-inline">
                 {{ 'mno_enterprise.templates.dashboard.provisioning.subscriptions.end_date' | translate }}:
               </span>
-              <span title="{{subscription.end_date | amDateFormat: 'LL'}}">{{subscription.end_date | amDateFormat: 'L'}}</span>
+              <span ng-hide="subscription.start_date && !subscription.end_date" title="{{subscription.end_date | amDateFormat: 'LL'}}">{{subscription.end_date | amDateFormat: 'L'}}</span>
+              <span ng-show="subscription.start_date && !subscription.end_date" title="{{ 'mno_enterprise.templates.dashboard.provisioning.subscriptions.open_ended' | translate }}">{{ 'mno_enterprise.templates.dashboard.provisioning.subscriptions.open_ended' | translate }}</span>
             </div>
 
             <div class="cell col-md-4" ng-click="vm.goToSubscription(subscription)">
