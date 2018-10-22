@@ -39,8 +39,10 @@
 
     # Preload the BS JSON Editor to retrieve the editor instance
     loadHiddenEditorData = ->
-      vm.subscriptionCopy = MnoeBlueSky.parseJsonEditorValues(angular.copy(vm.subscription.custom_data), true)
-      vm.orderCopy = MnoeBlueSky.parseJsonEditorValues(angular.copy(vm.order.subscription_details.custom_data), true)
+      unless _.isEmpty(vm.subscription.custom_data)
+        vm.subscriptionCopy = MnoeBlueSky.parseJsonEditorValues(angular.copy(vm.subscription.custom_data), true)
+      unless _.isEmpty(vm.order.subscription_details?.custom_data)
+        vm.orderCopy = MnoeBlueSky.parseJsonEditorValues(angular.copy(vm.order.subscription_details.custom_data), true)
       MnoeBlueSky.getSchemaTranslations().then(-> vm.loadHiddenEditor = true)
 
     setSchemaReadOnlyData = ->
@@ -48,7 +50,7 @@
         schema: vm.schema
         editor: null
       vm.requestedSchemaDetails =
-        schema: vm.schema
+        schema: vm.requestedSchema
         editor: null
       loadHiddenEditorData()
 
@@ -59,8 +61,6 @@
           vm.subscription = response.data.plain()
           vm.enableBSEditor = vm.subscription.product.js_editor_enabled
           vm.getInfo()
-          # If the user is viewing a specific #subscription_event(order), fetch it, otherwise show the user's non-obsolete #subscription_event
-          fetchSubscriptionEvent() if vm.orderId
           if vm.subscription.externally_provisioned?
             MnoeProducts.fetchCustomSchema(vm.subscription.product.id).then((response) ->
               return unless response
@@ -80,9 +80,23 @@
             vm.order = _.find(vm.subscriptionEvents, (s) -> !s.obsolete)
       )
 
-    $q.all([fetchSubscription(), fetchSubscriptionEvents()])
-      .then(-> setSchemaReadOnlyData() if vm.enableBSEditor)
-      .finally(-> vm.isLoading = false)
+    $q.all([fetchSubscription, fetchSubscriptionEvents, fetchSubscriptionEvent])
+      .then(
+        ->
+          if vm.subscription.externally_provisioned?
+            if vm.order.event_type == 'provision'
+              vm.requestedSchema = vm.schema
+            else
+              MnoeProducts.fetchCustomSchema(vm.subscription.product.id, { editAction: vm.order.event_type }).then((response) ->
+                return unless response
+                schema = JSON.parse(response)
+                vm.requestedSchema = schema.json_schema || schema
+              )
+      ).finally(
+        ->
+          setSchemaReadOnlyData() if vm.enableBSEditor
+          vm.isLoading = false
+      )
 
     MnoeCurrentUser.getUser().then(
       (response) ->

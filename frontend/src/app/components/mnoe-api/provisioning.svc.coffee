@@ -162,7 +162,7 @@ angular.module 'mnoEnterpriseAngular'
           )
       )
 
-    @getQuote = (s, currency) ->
+    @getQuote = (s, currency, editAction) ->
       MnoeOrganizations.get().then(
         (response) ->
           quoteParams = {
@@ -172,7 +172,11 @@ angular.module 'mnoEnterpriseAngular'
             organization_id: response.organization.id,
             selected_currency: currency
           }
-          MnoeApiSvc.one('organizations', response.organization.id).all('quotes').post(quote: quoteParams)
+          MnoeApiSvc.one('organizations', response.organization.id).all('quotes').post({
+            quote: quoteParams,
+            subscription_id: s.id,
+            edit_action: editAction
+          })
       )
 
     @submitCartSubscriptions = ->

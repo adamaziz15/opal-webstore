@@ -11,7 +11,7 @@
     <div class="table-cell" ng-if="vm.quoteBased">
       <mno-loader ng-show="vm.quoteBased && !vm.quoteFetched" class="top-buffer-2">
       </mno-loader>
-      <mno-product-quote ng-if="vm.quoteBased && vm.quoteFetched && vm.quote"
+      <mno-product-quote ng-if="vm.quoteFetched && vm.quote"
         quote-based="vm.quoteBased"
         quote="vm.quote"
         subscription="vm.subscription">
@@ -21,8 +21,9 @@
     <div class="table-cell" ng-if="!vm.quoteBased">
       <div class="row th-row hidden-xs">
         <div class="cell col-sm-3">{{ 'mno_enterprise.templates.dashboard.provisioning.confirm.order_type' | translate }}</div>
-        <div ng-show="vm.subscription.product.product_type == 'application' || vm.subscription.product.js_editor_enabled" class="cell" ng-class="{'col-sm-5': vm.bsEditorEnabled, 'col-sm-9': !vm.bsEditorEnabled}">{{ 'mno_enterprise.templates.dashboard.provisioning.confirm.pricing_info.title' | translate }}</div>
-
+        <div ng-show="vm.subscription.product.product_type == 'application' && !vm.bsEditorEnabled" class="cell col-sm-9">
+          {{ 'mno_enterprise.templates.dashboard.provisioning.confirm.pricing_info.title' | translate }}
+        </div>
       </div>
       <div class="row td-row">
         <div class="cell col-sm-3">
@@ -31,7 +32,7 @@
           </span>
           {{ vm.orderTypeText | translate }}
         </div>
-        <div ng-show="vm.subscription.product.product_type == 'application' || vm.subscription.product.js_editor_enabled" class="cell" ng-class="{'col-sm-5': vm.bsEditorEnabled, 'col-sm-9': !vm.bsEditorEnabled}">
+        <div ng-show="vm.subscription.product.product_type == 'application' && !vm.bsEditorEnabled" class="cell col-sm-9">
           <span class="cell-label visible-xs-inline">
             {{ 'mno_enterprise.templates.dashboard.provisioning.confirm.pricing_info.title' | translate }}:
           </span>
@@ -125,7 +126,7 @@
     </div>
 
     <!-- Display Read-Only Custom Form Data If It Exists -->
-    <div ng-if="vm.subscription.custom_data && vm.subscription.product.custom_schema">
+    <div ng-if="vm.subscription.custom_data && vm.subscription.product.custom_schema && !vm.nonSchemaAction">
       <mno-widget is-loading="vm.isLoading">
         <mno-widget-header></mno-widget-header>
         <mno-widget-body>

@@ -132,7 +132,8 @@
   # to resolve cyclic references
   setCustomSchema = (product) ->
     # If there is a custom schema and we can skip pricing, stay on this page.
-    return handleRedirect(product) unless product.custom_schema && skipPricing()
+    # Additionally, if the edit action is a non_schema_action in BlueSky we should redirect to confirm page
+    return handleRedirect(product) unless product.custom_schema && skipPricing() && $stateParams.editAction not in (vm.subscription?.non_schema_actions || [])
 
     # Set BS Editor flag
     if product.js_editor_enabled
@@ -210,7 +211,7 @@
 
   fetchQuote = ->
     vm.selectedCurrency = MnoeProvisioning.getSelectedCurrency()
-    MnoeProvisioning.getQuote(vm.subscription, vm.selectedCurrency).then(
+    MnoeProvisioning.getQuote(vm.subscription, vm.selectedCurrency, $stateParams.editAction).then(
       (response) ->
         # To be passed to the order confirm screen.
         MnoeProvisioning.setQuote(response.data)
@@ -243,8 +244,8 @@
     $state.go('dashboard.customers.organization', { orgId: urlParams.orgId })
 
   vm.submit = (form) ->
-    vm.quoteLoading = true
     if vm.enableBSEditor
+      vm.quoteLoading = true
       vm.quoteErrors = []
       # Cache the editor instance
       MnoeBlueSky.setBSEditor(vm.schemaDetails.editor)

@@ -25,12 +25,13 @@
     (response) ->
       vm.orgCurrency = response.organization.data.billing_currency || MnoeAdminConfig.marketplaceCurrency()
       vm.subscription = response.subscription
+      vm.nonSchemaAction = $stateParams.editAction in (vm.subscription.non_schema_actions || [])
       vm.singleBilling = vm.subscription.product.single_billing_enabled
       vm.billedLocally = vm.subscription.product.billed_locally
-      vm.quoteBased = vm.subscription.product_pricing?.quote_based || vm.subscription.product?.js_editor_enabled
+      vm.bsEditorEnabled = vm.subscription.product.js_editor_enabled && !vm.nonSchemaAction
+      vm.quoteBased = vm.subscription.product_pricing?.quote_based || vm.bsEditorEnabled
       vm.quote = MnoeProvisioning.getCachedQuote() if vm.quoteBased
       vm.quoteFetched = true
-      vm.bsEditorEnabled = vm.subscription.product.js_editor_enabled
       setSchemaReadOnlyData() if vm.bsEditorEnabled
   ).finally(-> vm.isLoading = false)
 
