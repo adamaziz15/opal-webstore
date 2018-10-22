@@ -133,7 +133,7 @@
   setCustomSchema = (product) ->
     # If there is a custom schema and we can skip pricing, stay on this page.
     # Additionally, if the edit action is a non_schema_action in BlueSky we should redirect to confirm page
-    return handleRedirect(product) unless product.custom_schema && skipPricing() && $stateParams.editAction not in vm.subscription?.non_schema_actions
+    return handleRedirect(product) unless product.custom_schema && skipPricing() && $stateParams.editAction not in (vm.subscription?.non_schema_actions || [])
 
     # Set BS Editor flag
     if product.js_editor_enabled

@@ -232,7 +232,7 @@
         <mno-widget-header></mno-widget-header>
         <mno-widget-body>
           <span ng-show="vm.showNoDetailsProvied(vm.order.subscription_details.custom_data)" translate>mnoe_admin_panel.dashboard.order.no_custom_data</span>
-          <form ng-if="!vm.enableBSEditor && vm.order.subscription_details.custom_data" name="vm.detailsForm" sf-schema="vm.schema" sf-form="vm.form" sf-model="vm.order.subscription_details.custom_data" sf-options="{ formDefaults: { readonly: { true } }}"></form>
+          <form ng-if="!vm.enableBSEditor && vm.order.subscription_details.custom_data" name="vm.detailsForm" sf-schema="vm.requestedSchema" sf-form="vm.form" sf-model="vm.order.subscription_details.custom_data" sf-options="{ formDefaults: { readonly: { true } }}"></form>
           <section ng-if="vm.showBSReadOnlyForm(vm.order.subscription_details.custom_data)" class='editor-json-form'>
             <blue-sky-json-summary
               editor="vm.reqSubEditor"
@@ -304,7 +304,7 @@
 </div>
 
 <div ng-if="vm.loadHiddenEditor" class='hidden'>
-  <section class="editor-wrapper">
+  <section class="editor-wrapper" ng-if="vm.subscriptionCopy">
     <blue-sky-json-editor
       schema-name="vm.subscription.product.external_id"
       schema="vm.currentSchemaDetails.schema"
@@ -318,7 +318,7 @@
     {{vm.setReadOnlyFormVars('currentSubscription')}}
   </div>
 
-  <section class="editor-wrapper">
+  <section class="editor-wrapper" ng-if="vm.orderCopy">
     <blue-sky-json-editor
       schema-name="vm.subscription.product.external_id"
       schema="vm.requestedSchemaDetails.schema"

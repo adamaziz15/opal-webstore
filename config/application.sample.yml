@@ -18,7 +18,10 @@ SMTP_USERNAME:
 SMTP_PASSWORD:
 
 #Opal endpoint for authentication
-REMOTE_AUTH_URL: https://awg-capability4.verecloud.com//nimbus4-api/auth
+REMOTE_AUTH_URL: https://nimbus-hat.wgcloudconnect.com/nimbus4-api/auth
 
 #Opal translations host
-BS_LOCALE_HOST: https://awg-capability4.verecloud.com
+BS_LOCALE_HOST: https://nimbus-hat.wgcloudconnect.com
+
+# Bluesky adapter url
+BLUESKY_ADAPTER_URL: https://seamless-whale-7.app.uat.maestrano.io

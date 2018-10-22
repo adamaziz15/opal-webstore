@@ -82,8 +82,9 @@ angular.module 'mnoEnterpriseAngular'
       vm.currencies = _.uniq(currenciesArray)
 
     handleRedirect = () ->
-      # If bsEditor is enabled, set plan to the first plan returned and skip plan selection
+      # If bsEditor is enabled, set subscription currency and skip plan selection
       if vm.bsEditorEnabled
+        vm.subscription.currency = vm.orgCurrency
         vm.next(vm.subscription, vm.orgCurrency)
       else if ProvisioningHelper.skipPriceSelection(vm.subscription.product)
         vm.next(vm.subscription, vm.selectedCurrency)

@@ -93,6 +93,7 @@
   handleRedirect = () ->
     if vm.bsEditorEnabled
       if vm.orgCurrency in vm.currenciesList
+        vm.subscription.currency = vm.orgCurrency
         vm.next(vm.subscription, vm.orgCurrency)
       else
         # Reset all plan related data and prevent user from moving to next step

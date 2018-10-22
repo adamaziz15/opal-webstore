@@ -46,6 +46,7 @@ en:
             open_ended: "OPEN"
             current_data: "Current subscription information"
             id: "ID"
+            events: "Order history"
           subscriptions:
             open_ended: "OPEN"
         organization:
