@@ -80,7 +80,7 @@
             vm.order = _.find(vm.subscriptionEvents, (s) -> !s.obsolete)
       )
 
-    $q.all([fetchSubscription, fetchSubscriptionEvents, fetchSubscriptionEvent])
+    $q.all([fetchSubscription(), fetchSubscriptionEvents(), fetchSubscriptionEvent()])
       .then(
         ->
           if vm.subscription.externally_provisioned?
