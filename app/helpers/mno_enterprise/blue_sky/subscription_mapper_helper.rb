@@ -21,6 +21,7 @@ module MnoEnterprise
 
         # Map data to subscription
         @subscription.custom_data = config['configuration']
+        @subscription.status = config['status']
         @subscription.available_actions = config['availableActions']
         @subscription.non_schema_actions = config['nonSchemaActions']
       elsif @subscriptions
@@ -28,7 +29,7 @@ module MnoEnterprise
         remote_subs = @subscriptions.select { |s| has_remote_data?(s) }
         return if remote_subs.blank?
 
-        # Fetch supported order types
+        # Fetch supported order types (status are included as well)
         available_actions = get_order_types(remote_subs)
 
         # Map data to subscriptions
@@ -36,6 +37,7 @@ module MnoEnterprise
           config = available_actions.find { |actions| actions['hub_id'] == s.id }
           next unless config
 
+          s.status = config['status']
           s.available_actions = config['availableActions']
           s.non_schema_actions = config['nonSchemaActions']
         end
