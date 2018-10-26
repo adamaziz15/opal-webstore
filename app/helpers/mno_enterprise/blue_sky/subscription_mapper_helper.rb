@@ -11,7 +11,7 @@ module MnoEnterprise
     private
 
     def map_remote_subscription_data
-      return unless @subscription || @subscriptions
+      return unless MnoEnterprise::Tenant.show.external_id.presence && (@subscription || @subscriptions)
 
       if @subscription
         return unless has_remote_data?(@subscription)
@@ -74,8 +74,8 @@ module MnoEnterprise
     end
 
     def has_remote_data?(subscription)
-      ['fulfilled', 'suspended'].include?(subscription.status) &&
-      Settings.bluesky_products.to_a.include?(subscription.product.external_id)
+      !%w[pending provisioning].include?(subscription.status) &&
+        Settings.bluesky_products.to_a.include?(subscription.product.external_id)
     end
 
     def adapter_host

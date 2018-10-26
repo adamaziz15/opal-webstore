@@ -29,6 +29,9 @@ en:
         marketplace:
           index:
             applications: "Applications and Infrastructure"
+          show:
+            details_required_message: "Before adding products to this account, please "
+            details_required_link: "update your billing information."
         provisioning:
           quote:
             unit_price: "Unit Price"
@@ -54,3 +57,13 @@ en:
         organization:
           invoices:
             amount: "Amount (Excl. tax)"
+          credit_card:
+            confirm_modal:
+              cancel: "Cancel"
+              confirm: "Ok"
+              header: "<b>Payment terms</b>"
+              disclaimer: "<span class='text-danger'>Please note: This credit card will be used to process all outstanding invoices automatically on the 2nd of each month. Click ok to continue.</span>"
+      components:
+        app_install_btn:
+          connect_app: "Connect"
+          billing_details_req: "Billing details required"
