@@ -52,9 +52,24 @@ module MnoEnterprise
       @data[:invoice_previous_total_due] = @invoice.previous_total_due
       @data[:invoice_previous_total_paid] = @invoice.previous_total_paid
 
+      # Split billing summary in the event that one group
+      # has a large number of items (greater than 25).
+      # This prevents blank pages being added to the invoice
+      # by the pdf generator due to items not fitting on the page.
+      @invoice.billing_summary.each do |item|
+        while item[:lines].count > 25
+          @invoice.billing_summary << {
+            label: "#{item[:label]} cont'd.",
+            price_tag: '',
+            lines: item[:lines].slice!(25, 50)
+          }
+        end
+      end.sort_by! { |group| group[:label] }
+
       # Billing details
       @data[:billing_report] = @invoice.billing_summary.map do |item|
         item_label = item[:label]
+        item_label += ' & Adjustments' if item_label == 'Platform Usage'
         price_label = format_price item
 
         (item[:lines] || []).each do |item_line|
@@ -129,17 +144,24 @@ module MnoEnterprise
 
     # Add a repeated header to the document
     def add_page_header
+      tenant = MnoEnterprise::Tenant.show
       title = Settings.dashboard.payment.enabled ? "#{t(:monthly_invoice)} - " : "#{t(:account_statement)} - "
       @pdf.repeat :all do
         @pdf.bounding_box([0, @pdf.bounds.top+@format[:header_size]], width: 540, height: @format[:footer_size]) do
           @pdf.float do
             @pdf.image main_logo_white_bg_path(true), fit: [135, (@format[:footer_size])]
           end
+          @pdf.text tenant.name, align: :right, inline_format: true
+          if tenant.main_address.present?
+            tenant_address = "#{tenant.main_address.dig('street')}\n#{tenant.main_address.dig('city')}\n#{ISO3166::Country.new(tenant.main_address.dig('country_code')).name}"
+            @pdf.move_down 5
+            @pdf.text "<color rgb='999999'>#{tenant_address}</color>", align: :right, inline_format: true, style: :italic, size: 9
+          end
           if contact_details = Settings.dashboard&.organization_management&.billing&.invoice_contact_details.presence
-            @pdf.move_down 10
+            @pdf.move_down 5
             @pdf.font_size(10) { @pdf.text contact_details, align: :right }
           end
-          @pdf.move_down 52
+          @pdf.move_down 10
           @pdf.font_size(20) { @pdf.text "#{title} #{@data[:period_month]}", style: :bold, align: :right }
         end
       end
@@ -231,8 +253,8 @@ module MnoEnterprise
       summary_data_amount = @data[:invoice_total_payable_with_tax] if payment_enabled
 
       summary_data = []
-      summary_data << [t('period'), t('total_payable') + (@data[:invoice_tax_pips] >= 0 ? "\n<font size='8'><i>(#{t('including_tax')})</i></font>" : '')]
-      summary_data << ["#{@data[:period_started_at].strftime("%B, %e %Y")} to #{@data[:period_ended_at].strftime("%B, %e %Y")}",money(summary_data_amount)]
+      summary_data << [t('invoice_date'), t('invoice_due_date'), t('total_payable') + (@data[:invoice_tax_pips] >= 0 ? "\n<font size='8'><i>(#{t('including_tax')})</i></font>" : '')]
+      summary_data << [@data[:period_ended_at].strftime("%B %e, %Y"), @data[:period_charge_date].strftime("%B %e, %Y"), money(summary_data_amount)]
 
       # Draw Table background
       bg_height = @data[:invoice_tax_pips] >= 0 ? 58 : 50
@@ -247,14 +269,17 @@ module MnoEnterprise
       @pdf.table(summary_data) do |t|
         t.header = true
         t.width = 540
-        t.column_widths = [435,105]
+        # t.column_widths = [435,105]
+        t.column_widths = [215,215,110]
         t.cell_style = { borders: [] }
         t.row(0).font_style = :bold
 
         t.cell_style = { padding: [5, 5, 5, 10], inline_format: true }
         t.cells.style do |c|
-          if c.column == 1
+          if c.column == 2
             c.align = :center
+          elsif c.column == 1
+            c.align = :left
           end
         end
       end
