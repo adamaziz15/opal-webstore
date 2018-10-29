@@ -73,16 +73,22 @@ angular.module 'mnoEnterpriseAngular'
       }
 
     subscriptionEventParams = (s, c) ->
-      {
+      params = {
         event_type: s.event_type,
         product_pricing_id: s.product_pricing?.id,
         subscription_details: {
           start_date: s.start_date,
           custom_data: JSON.stringify(s.custom_data),
           currency: c,
-          max_licenses: s.max_licenses
+          max_licenses: s.max_licenses,
+          order_type: s.event_type
         }
       }
+      # Since bluesky products have their own provisioning workflow we set event type
+      # to modify. This prevents issues with state transitions in MnoHub.
+      if s.product.js_editor_enabled && (s.event_type not in ['provision', 'cancel'])
+        params.event_type = 'modify'
+      params
 
     @createSubscription = (s, c) ->
       deferred = $q.defer()

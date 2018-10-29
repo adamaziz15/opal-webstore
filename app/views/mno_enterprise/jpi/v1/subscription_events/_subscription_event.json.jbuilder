@@ -1,5 +1,5 @@
 json.id subscription_event.id
-json.event_type subscription_event.event_type
+json.event_type subscription_event.subscription_details.dig('order_type') || subscription_event.event_type
 json.status subscription_event.status
 json.message subscription_event.message
 json.provisioning_data subscription_event.provisioning_data
