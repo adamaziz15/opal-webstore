@@ -98,6 +98,8 @@ angular.module 'mnoEnterpriseAngular'
 
       MnoeOrganizations.get().then((response) -> vm.user_role = response.current_user.role)
 
+      vm.billingDetailsRequired = MnoeConfig.isPaymentEnabled() && _.isEmpty(MnoeOrganizations.selected.credit_card)
+
       # Init initials reviews if enabled
       if vm.isReviewingEnabled
         vm.reviews =

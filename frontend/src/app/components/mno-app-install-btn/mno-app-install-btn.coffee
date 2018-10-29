@@ -71,10 +71,12 @@ angular.module 'mnoEnterpriseAngular'
       vm.canProvisionApp = false
 
       vm.buttonDisabled = () ->
-        !vm.canProvisionApp || vm.appInstallationStatus() == "CONFLICT" || !vm.orderPossible
+        vm.billingDetailsRequired || !vm.canProvisionApp || vm.appInstallationStatus() == "CONFLICT" || !vm.orderPossible
 
       vm.updateButtonDisabledTooltip = () ->
-        if !vm.canProvisionApp
+        if vm.billingDetailsRequired
+          'mno_enterprise.templates.components.app_install_btn.billing_details_req'
+        else if !vm.canProvisionApp
           'mno_enterprise.templates.components.app_install_btn.insufficient_privilege'
         else if !vm.orderPossible
           'mno_enterprise.templates.dashboard.marketplace.show.no_pricing_plans_found_tooltip'
@@ -202,6 +204,7 @@ angular.module 'mnoEnterpriseAngular'
             )
 
             organization = MnoeOrganizations.selected.organization
+            vm.billingDetailsRequired = MnoeConfig.isPaymentEnabled() && _.isEmpty(MnoeOrganizations.selected.credit_card)
             vm.canProvisionApp = _.find(authorizedOrganizations, (org) -> org.id == organization.id)
 
             # Find if the user already have an instance of it
