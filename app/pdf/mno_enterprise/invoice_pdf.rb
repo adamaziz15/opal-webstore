@@ -57,6 +57,7 @@ module MnoEnterprise
       # This prevents blank pages being added to the invoice
       # by the pdf generator due to items not fitting on the page.
       @invoice.billing_summary.each do |item|
+        item[:label] = 'Adjustments' if item[:label] == 'Platform Usage'
         while item[:lines].count > 25
           @invoice.billing_summary << {
             label: "#{item[:label]} cont'd.",
@@ -64,12 +65,15 @@ module MnoEnterprise
             lines: item[:lines].slice!(25, 50)
           }
         end
-      end.sort_by! { |group| group[:label] }
+      end.sort! do |a, b|
+        a_label = a[:label].in?(['Adjustments', "Adjustments cont'd."]) ? 'zzzzzzz' + a[:label] : a[:label]
+        b_label = b[:label].in?(['Adjustments', "Adjustments cont'd."]) ? 'zzzzzzz' + b[:label] : b[:label]
+        a_label <=> b_label
+      end
 
       # Billing details
       @data[:billing_report] = @invoice.billing_summary.map do |item|
         item_label = item[:label]
-        item_label += ' & Adjustments' if item_label == 'Platform Usage'
         price_label = format_price item
 
         (item[:lines] || []).each do |item_line|
