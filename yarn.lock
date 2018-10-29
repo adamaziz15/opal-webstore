@@ -37,9 +37,9 @@ javascript-natural-sort@0.7.1:
   integrity sha1-+eIwPUUH9tdDVac2ZNFED7Wg71k=
 
 mathjs@^5.0.0:
-  version "5.2.1"
-  resolved "https://registry.yarnpkg.com/mathjs/-/mathjs-5.2.1.tgz#e9c918f66841cf8c55378b15e6ae7ce04ce4e89f"
-  integrity sha512-l+imExQ09Jj6Mz/YX8LbCb3Q32kjvYq5HQmUhMonuwhSU3o5XKvcnW6T6OzXkD+xadH2/Qg4zXC1ejI1MYcJeg==
+  version "5.2.2"
+  resolved "https://registry.yarnpkg.com/mathjs/-/mathjs-5.2.2.tgz#0f5ff904d7f238fb3b27f8d0de664f7f5750ca30"
+  integrity sha512-TG0ynGCMXuYE04Z5ODQRl1V7WVneRwzDLUh0k5qihyErpr6k5YbTc/JVkLHFvMe9fuJDvJM5nC1+pAyyE5pbxA==
   dependencies:
     complex.js "2.0.11"
     decimal.js "10.0.1"
@@ -56,7 +56,7 @@ mathjs@^5.0.0:
 
 "mnoe-admin-panel@git+https://git@github.com/maestrano/mnoe-admin-panel.git#2.0":
   version "2.0.0-dev"
-  resolved "git+https://git@github.com/maestrano/mnoe-admin-panel.git#aa8b6d6abc8d68a30de87888ce7cddb37740f67e"
+  resolved "git+https://git@github.com/maestrano/mnoe-admin-panel.git#6f50d53364b992028918255359435e1ae53323b5"
 
 moment-jdateformatparser@^1.2.1:
   version "1.2.1"
