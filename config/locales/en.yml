@@ -54,6 +54,10 @@ en:
             events: "Order history"
           subscriptions:
             open_ended: "OPEN"
+            states:
+              active: "active"
+              inactive: "inactive"
+              failed: "failed"
         organization:
           invoices:
             amount: "Amount (Excl. tax)"
