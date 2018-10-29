@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-unless ENV['FEATURE_RESTRICTIONS_DISABLED']
+unless ENV['FEATURE_RESTRICTIONS_DISABLED'] && ENV['PAYMENT_RESTRICTIONS_DISABLED']
 
   module MnoEnterprise
     # Monkey patch method refresh_json_schema! to disable the ability to enable finance
@@ -13,6 +13,12 @@ unless ENV['FEATURE_RESTRICTIONS_DISABLED']
         disable_features = { admin_panel: { finance_readonly: true, dashboard_templates: { enabled_readonly: true } },
                              dashboard: { organization_management: { billing_readonly: true }, impac_readonly: true,
                                           payment_readonly: true } }
+
+        if ENV['FEATURE_RESTRICTIONS_DISABLED']
+          disable_features.delete(:admin_panel)
+          disable_features[:dashboard].delete(:impac_readonly)
+          disable_features[:dashboard][:organization_management] = { billing: { enabled_readonly: true } }
+        end
 
         frontend_config.deep_merge!(disable_features)
         # End Monkey Patch
@@ -41,6 +47,17 @@ unless ENV['FEATURE_RESTRICTIONS_DISABLED']
             payment: { enabled: false }
           }
         }
+
+        if ENV['FEATURE_RESTRICTIONS_DISABLED']
+          override.delete(:admin_panel)
+          override[:dashboard].delete(:impac)
+        end
+
+        unless ENV['PAYMENT_RESTRICTIONS_DISABLED']
+          override[:dashboard][:organization_management][:billing][:enabled] = true
+          override[:dashboard][:payment][:enabled] = true
+        end
+
         frontend_config.deep_merge!(override)
         # End Monkey Patch
 
