@@ -51,6 +51,7 @@ DashboardOrganizationCreditCardCtrl = ($scope, $window, MnoeOrganizations, MnoCo
             angular.copy(response.credit_card, $scope.origModel)
             if $scope.callback
               $scope.callback()
+            MnoeOrganizations.reloadCurrentOrganization()
           (errors) ->
             $scope.errors = Utilities.processRailsError(errors)
         )
