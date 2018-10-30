@@ -1204,6 +1204,7 @@
   "mno_enterprise.templates.dashboard.organization.invoices.period": "Period",
   "mno_enterprise.templates.dashboard.organization.invoices.paid": "Paid",
   "mno_enterprise.templates.dashboard.organization.invoices.download": "Download",
+  "mno_enterprise.templates.dashboard.organization.credit_card.success_toastr": "Your billing details have been updated successfully",
   "mno_enterprise.templates.dashboard.organization.credit_card.confirm_modal.cancel": "Cancel",
   "mno_enterprise.templates.dashboard.organization.credit_card.confirm_modal.confirm": "Ok",
   "mno_enterprise.templates.dashboard.organization.credit_card.confirm_modal.header": "<b>Payment terms</b>",
