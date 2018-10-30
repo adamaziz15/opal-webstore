@@ -6,7 +6,7 @@ angular.module 'mnoEnterpriseAngular'
       currenciesList: '='
     },
     templateUrl: 'app/components/mno-app-install-btn/mno-app-install-btn.html',
-    controller: ($q, $state, $window, $uibModal, toastr, MnoeMarketplace, MnoeProvisioning, MnoeCurrentUser, MnoeOrganizations, MnoeAppInstances, MnoeConfig, ProvisioningHelper) ->
+    controller: ($q, $state, $window, $uibModal, $translate, toastr, MnoeMarketplace, MnoeProvisioning, MnoeCurrentUser, MnoeOrganizations, MnoeAppInstances, MnoeConfig, ProvisioningHelper) ->
       vm = this
       vm.orderPossible = true
       vm.buttonText = ''
@@ -80,6 +80,8 @@ angular.module 'mnoEnterpriseAngular'
           'mno_enterprise.templates.components.app_install_btn.insufficient_privilege'
         else if !vm.orderPossible
           'mno_enterprise.templates.dashboard.marketplace.show.no_pricing_plans_found_tooltip'
+        else if vm.conflictingApp
+          $translate.instant('mno_enterprise.templates.components.app_install_btn.conflicting_app') + ' ' + vm.conflictingApp.name
 
       vm.updateButtonText = () ->
         if vm.isExternallyProvisioned

@@ -1,5 +1,5 @@
 
-DashboardOrganizationCreditCardCtrl = ($scope, $window, MnoeOrganizations, MnoConfirm, VALID_COUNTRIES, Utilities) ->
+DashboardOrganizationCreditCardCtrl = ($scope, $window, toastr, MnoeOrganizations, MnoConfirm, VALID_COUNTRIES, Utilities) ->
   'ngInject'
 
   #====================================
@@ -51,6 +51,10 @@ DashboardOrganizationCreditCardCtrl = ($scope, $window, MnoeOrganizations, MnoCo
             angular.copy(response.credit_card, $scope.origModel)
             if $scope.callback
               $scope.callback()
+            MnoeOrganizations.reloadCurrentOrganization().then(
+              ->
+                toastr.success('mno_enterprise.templates.dashboard.organization.credit_card.success_toastr')
+            )
           (errors) ->
             $scope.errors = Utilities.processRailsError(errors)
         )

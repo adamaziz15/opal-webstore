@@ -627,6 +627,7 @@
   "mno_enterprise.templates.dashboard.organization.credit_card.confirm_modal.confirm": "Ok",
   "mno_enterprise.templates.dashboard.organization.credit_card.confirm_modal.header": "<b>Payment terms</b>",
   "mno_enterprise.templates.dashboard.organization.credit_card.confirm_modal.disclaimer": "<span class='text-danger'>Please note: This credit card will be used to process all outstanding invoices automatically on the 2nd of each month. Click ok to continue.</span>",
+  "mno_enterprise.templates.dashboard.organization.credit_card.success_toastr": "Your billing details have been updated successfully",
   "mno_enterprise.templates.dashboard.organization.index.title": "Company",
   "mno_enterprise.templates.dashboard.organization.index.audit_log.title": "Audit Log",
   "mno_enterprise.templates.dashboard.organization.index.billing.title": "Billing",

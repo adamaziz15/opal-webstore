@@ -62,6 +62,7 @@ en:
           invoices:
             amount: "Amount (Excl. tax)"
           credit_card:
+            success_toastr: "Your billing details have been updated successfully"
             confirm_modal:
               cancel: "Cancel"
               confirm: "Ok"
