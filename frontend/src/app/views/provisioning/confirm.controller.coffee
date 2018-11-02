@@ -84,11 +84,18 @@ angular.module 'mnoEnterpriseAngular'
           when 'cart'
             vm.addToCart()
 
-      # Conditions are:
-      #   Pricing plan currency is not same as billing currency
-      #   Subscription does not exist(we only want disclaimer when creating a new subscription)
+      # Do we need to display a currency disclaimer?
+      # Returns true if the following conditions are met:
+      # 1. This is a new subscription
+      # 2. The subscription has a priced plan OR the product is a BlueSky product
+      # 3. The selected currency and billing currency do not match
+      isCurrencyDisclaimerNeeded = () ->
+        hasPricedPlan = vm.subscription.product_pricing && ProvisioningHelper.pricedPlan(vm.subscription.product_pricing)
+        return false unless vm.subscription.id && (hasPricedPlan || vm.subscription.product.js_editor_enabled)
+        vm.selectedCurrency != vm.orgCurrency
+
       vm.disclaimerAndConfirm = (action) ->
-        if (vm.subscription.product_pricing || vm.subscription.product.js_editor_enabled) && vm.selectedCurrency != vm.orgCurrency && !vm.subscription.id
+        if isCurrencyDisclaimerNeeded()
           modalOptions =
             closeButtonText: 'mno_enterprise.templates.dashboard.provisioning.confirm.disclaimer.cancel'
             actionButtonText: 'mno_enterprise.templates.dashboard.provisioning.confirm.disclaimer.ok'
