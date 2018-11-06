@@ -98,7 +98,13 @@ angular.module 'mnoEnterpriseAngular'
 
       MnoeOrganizations.get().then((response) -> vm.user_role = response.current_user.role)
 
-      vm.billingDetailsRequired = MnoeConfig.isPaymentEnabled() && _.isEmpty(MnoeOrganizations.selected.credit_card)
+      # Is an up to date account required to allow app management and is the account past due?
+      paymentRequired = MnoeConfig.isCurrentAccountRequired() && organization.in_arrears
+      # Are billing details required and are they present?
+      detailsRequired = MnoeConfig.areBillingDetailsRequired() && _.isEmpty(MnoeOrganizations.selected.credit_card)
+      # Billing details need to be updated if payment or billing details are required
+      # This is only enforced if payment is enabled (allows end user to add/update billing details)
+      vm.billingDetailsRequired = (paymentRequired || detailsRequired) && MnoeConfig.isPaymentEnabled()
 
       # Init initials reviews if enabled
       if vm.isReviewingEnabled
