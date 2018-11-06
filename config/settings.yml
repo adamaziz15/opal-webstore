@@ -39,6 +39,9 @@ dashboard:
     enabled: true
   registration:
      enabled: false
+  app_management_requirements:
+    billing_details: true
+    current_account: true
 api:
   events:
     currency: USD
