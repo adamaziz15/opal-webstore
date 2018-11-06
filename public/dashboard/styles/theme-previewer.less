@@ -2443,42 +2443,6 @@ form.editable-wrap .editable-controls input {
   }
 }
 
-.dashboard-apps-management {
-  .apps-wrapper {
-    border: 1px solid @dashboard-app-management-border-color;
-    border-radius: 3px;
-    padding: 20px;
-  }
-  .app-section {
-    border-bottom: 1px solid @dashboard-app-management-border-color;
-    padding: 20px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    &:last-child {
-      border-bottom: 1px solid transparent;
-    }
-  }
-
-  .app-logo-wrapper,
-  .app-btn-events,
-  .app-info {
-    flex: 1;
-  }
-
-  .app-btn-events {
-    a {
-      margin-left: 10px;
-    }
-  }
-
-  .app-info {
-    span, strong {
-      display: block;
-    }
-  }
-}
-
 #dashboard-apps-list {
   .app-dashboard {
     min-height: 280px;
@@ -2567,6 +2531,42 @@ form.editable-wrap .editable-controls input {
       &:hover {
         color: @brand-warning;
       }
+    }
+  }
+}
+
+.dashboard-apps-management {
+  .apps-wrapper {
+    border: 1px solid @dashboard-app-management-border-color;
+    border-radius: 3px;
+    padding: 20px;
+  }
+  .app-section {
+    border-bottom: 1px solid @dashboard-app-management-border-color;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:last-child {
+      border-bottom: 1px solid transparent;
+    }
+  }
+
+  .app-logo-wrapper,
+  .app-btn-events,
+  .app-info {
+    flex: 1;
+  }
+
+  .app-btn-events {
+    a {
+      margin-left: 10px;
+    }
+  }
+
+  .app-info {
+    span, strong {
+      display: block;
     }
   }
 }
@@ -3906,16 +3906,6 @@ form.editable-wrap .editable-controls input {
 
 }
 
-.dashboard-app-management {
-  .margin-left-20 {
-    margin-left: 20px;
-  }
-
-  .order-histroy {
-    background-color: white;
-  }
-}
-
 #app-connect-modal {
 
   select {
@@ -3997,6 +3987,16 @@ form.editable-wrap .editable-controls input {
         color: @deletion-sentence-color;
       }
     }
+  }
+}
+
+.dashboard-app-management {
+  .margin-left-20 {
+    margin-left: 20px;
+  }
+
+  .order-histroy {
+    background-color: white;
   }
 }
 
@@ -4176,6 +4176,13 @@ form.editable-wrap .editable-controls input {
   }
 }
 
+.create-review-modal {
+  textarea.form-control {
+    max-width: 100%;
+    background-color: white;
+  }
+}
+
 #app-info {
   ul {
     margin: 0;
@@ -4192,13 +4199,6 @@ form.editable-wrap .editable-controls input {
   mno-app-features {
     float: right;
     width: 250px;
-  }
-}
-
-.create-review-modal {
-  textarea.form-control {
-    max-width: 100%;
-    background-color: white;
   }
 }
 
