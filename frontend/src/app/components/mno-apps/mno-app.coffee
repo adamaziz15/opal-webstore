@@ -99,7 +99,7 @@ angular.module 'mnoEnterpriseAngular'
       MnoeOrganizations.get().then((response) -> vm.user_role = response.current_user.role)
 
       # Is an up to date account required to allow app management and is the account past due?
-      paymentRequired = MnoeConfig.isCurrentAccountRequired() && organization.in_arrears
+      paymentRequired = MnoeConfig.isCurrentAccountRequired() && MnoeOrganizations.selected.organization.in_arrears
       # Are billing details required and are they present?
       detailsRequired = MnoeConfig.areBillingDetailsRequired() && _.isEmpty(MnoeOrganizations.selected.credit_card)
       # Billing details need to be updated if payment or billing details are required
