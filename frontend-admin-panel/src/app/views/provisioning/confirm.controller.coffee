@@ -104,12 +104,26 @@
   #   Pricing plan currency is not same as billing currency
   #   Subscription does not exist(we only want disclaimer when creating a new subscription)
   vm.disclaimerAndConfirm = (action) ->
-    if (vm.subscription.product_pricing || vm.subscription.product.js_editor_enabled) && vm.selectedCurrency != vm.orgCurrency && !vm.subscription.id
+    # Show currency disclaimer any time a new order is being placed in a currency other than the organization billing currency
+    hasPricedPlan = vm.subscription.product_pricing && ProvisioningHelper.pricedPlan(vm.subscription.product_pricing)
+    showCurrencyDisclaimer = (hasPricedPlan || vm.subscription.product.js_editor_enabled) && vm.selectedCurrency != vm.orgCurrency && !vm.subscription.id
+    # Show billing disclaimer when an order is being placed for a product that is billed outside the platform
+    showBillingDisclaimer = !vm.subscription.product.single_billing_enabled
+    # Show disclaimer when ordering a usage based local product
+    showLocalUsageDisclaimer = vm.subscription.product.local && (vm.subscription.product_pricing?.pricing_type == 'payg')
+    if showCurrencyDisclaimer || showBillingDisclaimer || showLocalUsageDisclaimer
+      disclaimerType = if showCurrencyDisclaimer
+        'currency_disclaimer'
+      else if showBillingDisclaimer
+        'billing_disclaimer'
+      else
+        'usage_disclaimer'
+
       modalOptions =
         closeButtonText: 'mnoe_admin_panel.dashboard.provisioning.confirm.disclaimer.cancel'
         actionButtonText: 'mnoe_admin_panel.dashboard.provisioning.confirm.disclaimer.ok'
         headerText: 'mnoe_admin_panel.dashboard.provisioning.confirm.disclaimer.header'
-        bodyText: 'mnoe_admin_panel.dashboard.provisioning.confirm.disclaimer.body'
+        bodyText: 'mnoe_admin_panel.dashboard.provisioning.confirm.' + disclaimerType + '.body'
         bodyTextExtraData: { currency: vm.selectedCurrency }
         type: 'danger'
 
