@@ -17,10 +17,10 @@ decimal.js@10.0.1:
   resolved "https://registry.yarnpkg.com/decimal.js/-/decimal.js-10.0.1.tgz#d04b16b277f0f9af09671cee225c4882e8857c58"
   integrity sha512-vklWB5C4Cj423xnaOtsUmAv0/7GqlXIgDv2ZKDyR64OV3OSzGHNx2mk4p/1EKnB5s70k73cIOOEcG9YzF0q4Lw==
 
-escape-latex@1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/escape-latex/-/escape-latex-1.1.1.tgz#657d8632af8849a5db8766778d4a43da9dec3376"
-  integrity sha512-N2D6Z2kXh8x/pQNQH+natXDCwrzghhXMRII5dZ518mlTLeuba80NL0LCQyaahqOrAidoLivmmG6GKPnGhHse+A==
+escape-latex@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/escape-latex/-/escape-latex-1.2.0.tgz#07c03818cf7dac250cce517f4fda1b001ef2bca1"
+  integrity sha512-nV5aVWW1K0wEiUIEdZ4erkGGH8mDxGyxSeqPzRNtWP7ataw+/olFObw7hujFWlVjNsaDFw5VZ5NzVSIqRgfTiw==
 
 fraction.js@4.0.10:
   version "4.0.10"
@@ -37,13 +37,13 @@ javascript-natural-sort@0.7.1:
   integrity sha1-+eIwPUUH9tdDVac2ZNFED7Wg71k=
 
 mathjs@^5.0.0:
-  version "5.2.2"
-  resolved "https://registry.yarnpkg.com/mathjs/-/mathjs-5.2.2.tgz#0f5ff904d7f238fb3b27f8d0de664f7f5750ca30"
-  integrity sha512-TG0ynGCMXuYE04Z5ODQRl1V7WVneRwzDLUh0k5qihyErpr6k5YbTc/JVkLHFvMe9fuJDvJM5nC1+pAyyE5pbxA==
+  version "5.2.3"
+  resolved "https://registry.yarnpkg.com/mathjs/-/mathjs-5.2.3.tgz#636f1680ea3e62bb0685cb0688840893cc1eb848"
+  integrity sha512-XGwLHIHANLK2pU/C6HNsr0f/SSjixce5vesHV6F6R8uGaIPfkorr3MNhEsqlDDwkNXiyfkzc5qX7SMIfZ3NXiw==
   dependencies:
     complex.js "2.0.11"
     decimal.js "10.0.1"
-    escape-latex "1.1.1"
+    escape-latex "1.2.0"
     fraction.js "4.0.10"
     javascript-natural-sort "0.7.1"
     seed-random "2.2.0"
@@ -56,7 +56,7 @@ mathjs@^5.0.0:
 
 "mnoe-admin-panel@git+https://git@github.com/maestrano/mnoe-admin-panel.git#2.0":
   version "2.0.0-dev"
-  resolved "git+https://git@github.com/maestrano/mnoe-admin-panel.git#6f50d53364b992028918255359435e1ae53323b5"
+  resolved "git+https://git@github.com/maestrano/mnoe-admin-panel.git#04c4fbe2281683cc45a44947ce664bc184da8278"
 
 moment-jdateformatparser@^1.2.1:
   version "1.2.1"
