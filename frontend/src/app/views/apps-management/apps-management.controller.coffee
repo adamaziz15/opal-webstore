@@ -28,7 +28,10 @@ angular.module 'mnoEnterpriseAngular'
               (product) ->
                 product_subscriptions = _.filter(response.subscriptions, (subscription) -> subscription.product_instance_id == product.id)
                 if product_subscriptions
-                  fulfilled_subs = _.filter(product_subscriptions, { status: 'fulfilled'} )
+                  fulfilled_subs = _.filter(product_subscriptions, (sub) ->
+                    sub.status in ['fulfilled', 'active']
+                  )
+
                   product.subscription = if fulfilled_subs.length > 0
                     vm.recentSubscription(fulfilled_subs)
                   else
