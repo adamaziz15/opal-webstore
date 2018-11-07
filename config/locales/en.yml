@@ -49,9 +49,9 @@ en:
             currency_disclaimer:
               body: "<span style='color: #a94442;'>Please note that you are about to contract this product in <b>{currency}</b>. By purchasing this product you agree to be billed in the <b>{currency}</b> dollar value, converted to your billing currency at the time of invoice.</span>"
             billing_disclaimer:
-              body: "<span style='color: #a94442;'>Please note that charges for this product will not be included in your monthly invoice. You will be billed directly by the product provider.</span>"
+              body: "<span style='color: #a94442;'>Please note that charges for this product will not be included in your monthly consolidated invoice. You will be billed directly by the product provider.</span>"
             usage_disclaimer:
-              body: "<span style='color: #a94442;'>Please note that charges for this product will not be included in your monthly invoice. You will be billed separately by your platform provider in your selected billing currency, <b>{currency}</b>.</span>"
+              body: "<span style='color: #a94442;'>Please note that charges for this product will not be included in your monthly consolidated invoice. You will be billed separately in your selected billing currency, <b>{currency}</b>.</span>"
           subscription:
             open_ended: "OPEN"
             current_data: "Current subscription information"

@@ -117,7 +117,7 @@
       else if showBillingDisclaimer
         'billing_disclaimer'
       else
-        vm.selectedCurrency ?= vm.orgCurrency
+        vm.selectedCurrency = vm.orgCurrency
         'usage_disclaimer'
 
       modalOptions =
