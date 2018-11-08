@@ -2747,294 +2747,6 @@ form.editable-wrap .editable-controls input {
   }
 }
 
-
-#onboarding {
-  header.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: @onboarding-header-height;
-    background: @onboarding-header-background-color;
-    color: @onboarding-header-font-color;
-
-    @media (max-width: @screen-xs-max) {
-      .name {
-        display: none;
-      }
-    }
-    
-    .onboarding-menu {
-      padding-right: 10px;
-
-      .default-link {
-        color: @onboarding-header-menu-text;
-        background: @onboarding-header-bg-menu;
-        padding: 10px 20px;
-
-        i {
-          width: 20px;
-        }
-
-        &:hover {
-          text-decoration: none;
-          color: @onboarding-header-menu-text-hover;
-          background-color: @onboarding-header-bg-menu-hover;
-        }
-      }
-      
-      .box-content {
-        padding-top: 5px;
-        position: absolute;
-        margin-right: 10px;
-        width: 100%;
-        overflow: hidden;
-        border-bottom-left-radius: 1em;
-
-        a {
-          display: block;
-        }  
-      }
-    }
-
-    .logo {
-      height: 40px;
-      margin-left: 10px;
-    }
-
-    .avatar {
-      .img-circle;
-      margin-left: 10px;
-      margin-right: 10px;
-    }
-  }
-
-  .sub-header {
-    .z-depth(3);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: @onboarding-subheader-height;
-    background: @onboarding-subheader-background-color;
-    color: @onboarding-subheader-font-color;
-    margin-bottom: 20px;
-
-    .breadcrumb-item {
-      text-decoration: none;
-
-      // Deactivate the link
-      pointer-events: none;
-
-      .badge {
-        color: @onboarding-breadcrumb-badge-color;
-        background-color: @onboarding-breadcrumb-badge-bg;
-      }
-
-      &.active {
-        .badge {
-          color: @onboarding-breadcrumb-badge-color-active;
-          background: @onboarding-breadcrumb-badge-bg-active;
-        }
-      }
-
-      .title {
-        color: @onboarding-breadcrumb-link-color;
-
-        @media (max-width: @screen-xs-max) {
-          display: none;
-        }
-
-        &:hover, &:focus {
-          font-weight: 400;
-        }
-      }
-    }
-  }
-
-  .content-panel {
-    .z-depth(6);
-    border-radius: @onboarding-content-panel-border-radius;
-    padding: 20px;
-    margin-bottom: 30px;
-    background-color: @onboarding-content-panel-bg;
-    color: @onboarding-content-panel-color;
-
-    h1 {
-      margin-top: 0;
-    }
-  }
-
-  .next-button {
-    .top-buffer-2;
-    font-size: larger;
-  }
-}
-
-#step1 {
-
-}
-
-#step2 {
-  .apps-container {
-    display: flex;
-    flex-wrap: wrap;
-    text-align: center;
-    justify-content: flex-start;
-    padding: 1em;
-
-    #data-shared {
-      margin-left: 0.5em;
-      flex: 1;
-      padding: 0.5em;
-    }
-
-    #apps-widget {
-      flex: 1;
-      padding: 0.5em;
-    }
-
-    #apps-widget {
-      #widget-header-bar {
-        position: relative;
-        display: flex;
-        justify-content: space-around;
-
-        #app-search, #app-category {
-          width: 45%;
-          flex: 1;
-        }
-
-        #app-category {
-          margin-left: 5%;
-        }
-      }
-
-      .app-tile {
-        position: relative;
-        max-width: 108px;
-        margin: 10px;
-        float: left;
-
-        .app-info-modal {
-          position: absolute;
-          top: 0;
-          right: 3px;
-          z-index: 10;
-          width: 14px;
-          color: @onboarding-app-selector-info;
-        }
-
-        .app-icon {
-          outline: none;
-          position: relative;
-
-          .app-logo {
-            width: 100%;
-          }
-
-          .checked {
-            position: absolute;
-            border-radius: 6px;
-            background-color: @onboarding-app-selector-check-color;
-            left: 0;
-            right: 0;
-            top: 0;
-            bottom: 0;
-
-            // Center the tick
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
-        }
-
-        .app-title {
-          color: @onboarding-app-selector-title;
-          text-align: center;
-          margin-top: 5px;
-          .ellipsis;
-        }
-      }
-    }
-
-    #data-shared {
-      max-width: 50%;
-
-      @media (max-width: @screen-sm-max) {
-        display: none;
-      }
-
-      .table-data-shared {
-        table-layout: fixed;
-        text-align: center;
-        margin: 5px 5px 0 10px;
-
-        .fa-check {
-          color: @onboarding-app-entities-checked;
-        }
-
-        .fa-times {
-          color: @onboarding-app-entities-unchecked;
-        }
-
-        .th-app {
-          text-align: center;
-
-          .header-logo {
-            width: 60px;
-          }
-
-          .app-title {
-            margin-top: 5px;
-            .ellipsis;
-          }
-        }
-      }
-    }
-  }
-
-  .onboarding-footer {
-    margin-top: 15px;
-  }
-}
-
-#step3 {
-
-  .apps-loader {
-    color: @onboarding-fetching-apps-loader-color;
-  }
-
-  .apps-wrapper {
-    .top-buffer-1;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-
-    .app-card {
-      .top-buffer-1;
-      text-align: center;
-      background-color: @onboarding-app-card-bg-color;
-      color: @onboarding-app-card-text-color;
-      padding: @onboarding-app-card-padding;
-      .z-depth(3);
-      width: 220px;
-
-      h4 {
-        margin-top: 5px;
-      }
-
-      mno-app-install-btn {
-        display: block;
-        .top-buffer-1;
-      }
-    }
-  }
-
-  .next-button-wrapper {
-    width: 100%;
-    float: left;
-  }
-}
-
 //-------------------------------
 // Show View
 //-------------------------------
@@ -3461,6 +3173,294 @@ form.editable-wrap .editable-controls input {
   }
   .marketplace-app-card:hover .arrow {
     visibility: visible;
+  }
+}
+
+
+#onboarding {
+  header.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: @onboarding-header-height;
+    background: @onboarding-header-background-color;
+    color: @onboarding-header-font-color;
+
+    @media (max-width: @screen-xs-max) {
+      .name {
+        display: none;
+      }
+    }
+    
+    .onboarding-menu {
+      padding-right: 10px;
+
+      .default-link {
+        color: @onboarding-header-menu-text;
+        background: @onboarding-header-bg-menu;
+        padding: 10px 20px;
+
+        i {
+          width: 20px;
+        }
+
+        &:hover {
+          text-decoration: none;
+          color: @onboarding-header-menu-text-hover;
+          background-color: @onboarding-header-bg-menu-hover;
+        }
+      }
+      
+      .box-content {
+        padding-top: 5px;
+        position: absolute;
+        margin-right: 10px;
+        width: 100%;
+        overflow: hidden;
+        border-bottom-left-radius: 1em;
+
+        a {
+          display: block;
+        }  
+      }
+    }
+
+    .logo {
+      height: 40px;
+      margin-left: 10px;
+    }
+
+    .avatar {
+      .img-circle;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
+
+  .sub-header {
+    .z-depth(3);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: @onboarding-subheader-height;
+    background: @onboarding-subheader-background-color;
+    color: @onboarding-subheader-font-color;
+    margin-bottom: 20px;
+
+    .breadcrumb-item {
+      text-decoration: none;
+
+      // Deactivate the link
+      pointer-events: none;
+
+      .badge {
+        color: @onboarding-breadcrumb-badge-color;
+        background-color: @onboarding-breadcrumb-badge-bg;
+      }
+
+      &.active {
+        .badge {
+          color: @onboarding-breadcrumb-badge-color-active;
+          background: @onboarding-breadcrumb-badge-bg-active;
+        }
+      }
+
+      .title {
+        color: @onboarding-breadcrumb-link-color;
+
+        @media (max-width: @screen-xs-max) {
+          display: none;
+        }
+
+        &:hover, &:focus {
+          font-weight: 400;
+        }
+      }
+    }
+  }
+
+  .content-panel {
+    .z-depth(6);
+    border-radius: @onboarding-content-panel-border-radius;
+    padding: 20px;
+    margin-bottom: 30px;
+    background-color: @onboarding-content-panel-bg;
+    color: @onboarding-content-panel-color;
+
+    h1 {
+      margin-top: 0;
+    }
+  }
+
+  .next-button {
+    .top-buffer-2;
+    font-size: larger;
+  }
+}
+
+#step1 {
+
+}
+
+#step2 {
+  .apps-container {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: flex-start;
+    padding: 1em;
+
+    #data-shared {
+      margin-left: 0.5em;
+      flex: 1;
+      padding: 0.5em;
+    }
+
+    #apps-widget {
+      flex: 1;
+      padding: 0.5em;
+    }
+
+    #apps-widget {
+      #widget-header-bar {
+        position: relative;
+        display: flex;
+        justify-content: space-around;
+
+        #app-search, #app-category {
+          width: 45%;
+          flex: 1;
+        }
+
+        #app-category {
+          margin-left: 5%;
+        }
+      }
+
+      .app-tile {
+        position: relative;
+        max-width: 108px;
+        margin: 10px;
+        float: left;
+
+        .app-info-modal {
+          position: absolute;
+          top: 0;
+          right: 3px;
+          z-index: 10;
+          width: 14px;
+          color: @onboarding-app-selector-info;
+        }
+
+        .app-icon {
+          outline: none;
+          position: relative;
+
+          .app-logo {
+            width: 100%;
+          }
+
+          .checked {
+            position: absolute;
+            border-radius: 6px;
+            background-color: @onboarding-app-selector-check-color;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+
+            // Center the tick
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+
+        .app-title {
+          color: @onboarding-app-selector-title;
+          text-align: center;
+          margin-top: 5px;
+          .ellipsis;
+        }
+      }
+    }
+
+    #data-shared {
+      max-width: 50%;
+
+      @media (max-width: @screen-sm-max) {
+        display: none;
+      }
+
+      .table-data-shared {
+        table-layout: fixed;
+        text-align: center;
+        margin: 5px 5px 0 10px;
+
+        .fa-check {
+          color: @onboarding-app-entities-checked;
+        }
+
+        .fa-times {
+          color: @onboarding-app-entities-unchecked;
+        }
+
+        .th-app {
+          text-align: center;
+
+          .header-logo {
+            width: 60px;
+          }
+
+          .app-title {
+            margin-top: 5px;
+            .ellipsis;
+          }
+        }
+      }
+    }
+  }
+
+  .onboarding-footer {
+    margin-top: 15px;
+  }
+}
+
+#step3 {
+
+  .apps-loader {
+    color: @onboarding-fetching-apps-loader-color;
+  }
+
+  .apps-wrapper {
+    .top-buffer-1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    .app-card {
+      .top-buffer-1;
+      text-align: center;
+      background-color: @onboarding-app-card-bg-color;
+      color: @onboarding-app-card-text-color;
+      padding: @onboarding-app-card-padding;
+      .z-depth(3);
+      width: 220px;
+
+      h4 {
+        margin-top: 5px;
+      }
+
+      mno-app-install-btn {
+        display: block;
+        .top-buffer-1;
+      }
+    }
+  }
+
+  .next-button-wrapper {
+    width: 100%;
+    float: left;
   }
 }
 
@@ -3906,6 +3906,16 @@ form.editable-wrap .editable-controls input {
   }
 }
 
+.dashboard-app-management {
+  .margin-left-20 {
+    margin-left: 20px;
+  }
+
+  .order-histroy {
+    background-color: white;
+  }
+}
+
 #app-connect-modal {
 
   select {
@@ -3987,16 +3997,6 @@ form.editable-wrap .editable-controls input {
         color: @deletion-sentence-color;
       }
     }
-  }
-}
-
-.dashboard-app-management {
-  .margin-left-20 {
-    margin-left: 20px;
-  }
-
-  .order-histroy {
-    background-color: white;
   }
 }
 
@@ -4176,6 +4176,13 @@ form.editable-wrap .editable-controls input {
   }
 }
 
+.create-review-modal {
+  textarea.form-control {
+    max-width: 100%;
+    background-color: white;
+  }
+}
+
 #app-info {
   ul {
     margin: 0;
@@ -4195,13 +4202,6 @@ form.editable-wrap .editable-controls input {
   }
 }
 
-.create-review-modal {
-  textarea.form-control {
-    max-width: 100%;
-    background-color: white;
-  }
-}
-
 // Custom fonts
 // The @font-path variable is defined in frontend/src/app/stylesheets/variables.less
 @font-face {
@@ -4211,71 +4211,50 @@ form.editable-wrap .editable-controls input {
   font-style: normal
 }
 
-/*
-Icon classes can be used entirely standalone. They are named after their original file names.
 
-Example usage in HTML:
-
-`display: block` sprite:
-<div class="icon-home"></div>
-
-To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
-
-// CSS
-.icon {
-  display: inline-block;
+.mnoe-icon {
+  background-image: url('../images/sprites/mnoe-sprites.png');
 }
 
-// HTML
-<i class="icon icon-home"></i>
-*/
 .mnoe-icon-cc-icons-mno-cc-amex {
-  background-image: url(../images/sprites/mnoe-sprites.png);
-  background-position: -175px -32px;
+  background-position: -0px -0px;
   width: 46px;
   height: 30px;
 }
 .mnoe-icon-cc-icons-mno-cc-jcb {
-  background-image: url(../images/sprites/mnoe-sprites.png);
-  background-position: -221px -32px;
+  background-position: -0px -30px;
   width: 46px;
   height: 30px;
 }
-.mnoe-icon-cc-icons-mno-cc-lock {
-  background-image: url(../images/sprites/mnoe-sprites.png);
-  background-position: -140px -32px;
-  width: 35px;
-  height: 46px;
-}
 .mnoe-icon-cc-icons-mno-cc-mastercard {
-  background-image: url(../images/sprites/mnoe-sprites.png);
-  background-position: -140px -78px;
+  background-position: -0px -60px;
   width: 46px;
   height: 30px;
 }
 .mnoe-icon-cc-icons-mno-cc-visa {
-  background-image: url(../images/sprites/mnoe-sprites.png);
-  background-position: -186px -78px;
+  background-position: -0px -90px;
   width: 46px;
   height: 30px;
 }
+.mnoe-icon-cpy-logo-siteseal {
+  background-position: -0px -120px;
+  width: 131px;
+  height: 32px;
+}
+.mnoe-icon-cc-icons-mno-cc-lock {
+  background-position: -0px -152px;
+  width: 35px;
+  height: 46px;
+}
 .mnoe-icon-cpy-logo-cba {
-  background-image: url(../images/sprites/mnoe-sprites.png);
-  background-position: 0px -70px;
+  background-position: -0px -198px;
   width: 94px;
   height: 70px;
 }
 .mnoe-icon-cpy-logo-eway {
-  background-image: url(../images/sprites/mnoe-sprites.png);
-  background-position: 0px 0px;
+  background-position: -0px -268px;
   width: 140px;
   height: 70px;
-}
-.mnoe-icon-cpy-logo-siteseal {
-  background-image: url(../images/sprites/mnoe-sprites.png);
-  background-position: -140px 0px;
-  width: 131px;
-  height: 32px;
 }
 
 // endinjector
