@@ -97,7 +97,7 @@
       bodyText: 'mnoe_admin_panel.dashboard.pricing.confirm.disclaimer.body'
       type: 'danger'
 
-    if pricingPlan.pricing_type == 'payg'
+    if pricingPlan?.pricing_type == 'payg'
       MnoConfirm.showModal(modalOptions).then(
         ->
           # Success
