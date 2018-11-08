@@ -52,7 +52,7 @@ mathjs@^5.0.0:
 
 "mno-enterprise-angular@git+https://git@github.com/maestrano/mno-enterprise-angular.git#2.0":
   version "2.0.0-dev"
-  resolved "git+https://git@github.com/maestrano/mno-enterprise-angular.git#55bd55b6a5eb2b0614a6887ba3dc82c9e1b11db8"
+  resolved "git+https://git@github.com/maestrano/mno-enterprise-angular.git#26b26f93a178348340c8a64352ddbf9d5063c4d3"
 
 "mnoe-admin-panel@git+https://git@github.com/maestrano/mnoe-admin-panel.git#2.0":
   version "2.0.0-dev"
