@@ -1,5 +1,5 @@
 # TODO: start direcly from ruby image?
-FROM maestrano/web-ruby:2.3
+FROM maestrano/web-ruby:2.3-latest
 MAINTAINER developpers@maestrano.com
 
 # Build-time metadata as defined at http://label-schema.org
