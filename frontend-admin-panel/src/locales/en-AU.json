@@ -839,7 +839,7 @@
   "mnoe_admin_panel.dashboard.pricing.confirm.disclaimer.cancel": "Cancel",
   "mnoe_admin_panel.dashboard.pricing.confirm.disclaimer.ok": "Ok",
   "mnoe_admin_panel.dashboard.pricing.confirm.disclaimer.header": "<b>Add Pricing</b>",
-  "mnoe_admin_panel.dashboard.pricing.confirm.disclaimer.body": "<span style='color: #a94442;'>Please note that charges for usage based plans will not be included in monthly invoices. By adding this plan you acknowledge that you will need to invoice customers outside of this platform in their selected billing currency.</span>",
+  "mnoe_admin_panel.dashboard.pricing.confirm.disclaimer.body": "<span style='color: #a94442;'>Please note that charges for usage based plans will not be included in monthly consolidated invoices. By adding this plan you acknowledge that you will need to invoice customers outside of this platform in their selected billing currency.</span>",
   "mnoe_admin_panel.dashboard.product.file_upload": "File upload section",
   "mnoe_admin_panel.dashboard.product.logo_upload": "Logo upload",
   "mnoe_admin_panel.dashboard.product.screenshots_upload": "Screenshots upload",
