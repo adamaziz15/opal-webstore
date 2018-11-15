@@ -13,7 +13,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'uuid'
 
 # Maestrano Enterprise Engine
-gem 'mno-enterprise', git: 'https://github.com/adamaziz15/mno-enterprise.git', branch: 'feature/345-account-details'
+gem 'mno-enterprise', git: 'https://github.com/maestrano/mno-enterprise.git', branch: '4.0'
 # gem 'mno-enterprise', path: '../mno-enterprise'
 
 # For Nimbus Authentication Strategy
