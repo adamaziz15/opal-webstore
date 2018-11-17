@@ -88,11 +88,13 @@ angular.module 'mnoEnterpriseAngular'
       #   Pricing plan currency is not same as billing currency
       #   Subscription does not exist(we only want disclaimer when creating a new subscription)
       vm.disclaimerAndConfirm = (action) ->
+        # Check if product is a single billed bluesky product
+        singleBilledBlueskyProduct = vm.subscription.product.js_editor_enabled && (vm.subscription.product.external_id not in ['SEPC', 'SYMANTECWEBSECURITY', 'SYMANTECEMAILSECURITY'])
         # Show currency disclaimer any time a new order is being placed in a currency other than the organization billing currency
-        hasPricedPlan = vm.subscription.product_pricing && ProvisioningHelper.pricedPlan(vm.subscription.product_pricing)
-        showCurrencyDisclaimer = (hasPricedPlan || vm.subscription.product.js_editor_enabled) && vm.selectedCurrency != vm.orgCurrency && !vm.subscription.id
+        hasPricedPlan = (vm.subscription.product_pricing && ProvisioningHelper.pricedPlan(vm.subscription.product_pricing)) || singleBilledBlueskyProduct
+        showCurrencyDisclaimer = hasPricedPlan && vm.selectedCurrency != vm.orgCurrency && !vm.subscription.id
         # Show billing disclaimer when an order is being placed for a product that is billed outside the platform
-        showBillingDisclaimer = !vm.subscription.product.single_billing_enabled
+        showBillingDisclaimer = !vm.subscription.product.single_billing_enabled || (vm.subscription.product.js_editor_enabled && !singleBilledBlueskyProduct)
         # Show disclaimer when ordering a usage based local product
         showLocalUsageDisclaimer = vm.subscription.product.local && (vm.subscription.product_pricing?.pricing_type == 'payg')
         if showCurrencyDisclaimer || showBillingDisclaimer || showLocalUsageDisclaimer

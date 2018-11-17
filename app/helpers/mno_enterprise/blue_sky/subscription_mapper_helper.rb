@@ -76,7 +76,7 @@ module MnoEnterprise
     end
 
     def has_remote_data?(subscription)
-      !%w[pending provisioning].include?(subscription.status) &&
+      !%w[pending provisioning staged].include?(subscription.status) &&
         Settings.bluesky_products.to_a.include?(subscription.product.external_id)
     end
 
